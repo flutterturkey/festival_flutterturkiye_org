@@ -29,8 +29,10 @@
 version
 # Flutter/Dart/Pub related
 **/doc/api/
+.fvm/
 .dart_tool/
 .flutter-plugins
+.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
