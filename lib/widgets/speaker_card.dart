@@ -26,8 +26,8 @@ class _SpeakerCardState extends State<SpeakerCard> {
               Padding(
                 padding: EdgeInsets.only(right: 20),
                 child: ClipOval(
-                  child: Image.network(
-                    'https://pbs.twimg.com/profile_images/1318566995961536512/odoupU0h_400x400.jpg',
+                  child: Image.asset(
+                    'assets/images/avatar.png',
                     fit: BoxFit.fitHeight,
                     //height: 200,
                   ),
@@ -39,12 +39,11 @@ class _SpeakerCardState extends State<SpeakerCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Adem Furkan Özcan',
+                      'Göktuğ Özdemir',
                       maxLines: 2,
                       style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
                     ),
-                    Text('Flutter Developer & Flutter Engineer @ Flutter Türkiye',
-                        maxLines: 2, style: TextStyle(fontFamily: 'Montserrat', color: Colors.white, fontSize: 16)),
+                    Text('Flutter Dev @ Unknown', maxLines: 2, style: TextStyle(fontFamily: 'Montserrat', color: Colors.white, fontSize: 16)),
                   ],
                 ),
               )
