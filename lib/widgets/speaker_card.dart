@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SpeakerCard extends StatefulWidget {
-  final BuildContext ctx;
-  SpeakerCard({this.ctx});
+  final BuildContext context;
+  SpeakerCard({this.context});
 
   @override
   _SpeakerCardState createState() => _SpeakerCardState();
@@ -17,7 +17,6 @@ class _SpeakerCardState extends State<SpeakerCard> {
         //TODO: Implement when speaker detail on finished
       },
       child: Container(
-        width: MediaQuery.of(widget.ctx).size.width / 4,
         decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(15)), color: Color(0xff212937)),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
