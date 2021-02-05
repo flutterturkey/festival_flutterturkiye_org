@@ -14,10 +14,6 @@ class ThemeHelper {
     accentColor: lightColor,
     primaryColor: darkColor,
     brightness: brightness,
-    appBarTheme: const AppBarTheme(
-      color: darkColor,
-      centerTitle: false,
-    ),
     buttonTheme: const ButtonThemeData(
       buttonColor: lightColor,
       textTheme: ButtonTextTheme.primary,
