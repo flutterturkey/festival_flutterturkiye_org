@@ -35,6 +35,10 @@ As a rule of thumb, try to follow the Dart analyser and following rules.
 - DO use new class widgets / DON'T use functions for widgets
 - ...
 
+# Related Links
+
+- [Figma]( https://www.figma.com/file/hREXj4gXWuZ9dSvoW7q2ev/Flutter-Türkiye )
+
 ## Current Flutter Development Version 
 
 ##### Flutter (Channel dev, 1.26.0-8.0.pre, on macOS 11.1 20C69 darwin-x64, locale en-TR)
