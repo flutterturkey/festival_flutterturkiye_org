@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_flutterturkiye_org/core/styles/theme_helper.dart';
 import 'package:hackathon_flutterturkiye_org/pages/home_page.dart';
 
 void main() {
@@ -10,11 +11,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Festival',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Manrope',
-      ),
+      theme: ThemeHelper.themeData,
       home: HomePage(title: 'Flutter Festival'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
