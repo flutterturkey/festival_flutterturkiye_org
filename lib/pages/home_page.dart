@@ -3,9 +3,10 @@ import '../core/components/app_bar/app_bar_action_button.dart';
 import '../core/components/app_bar/base_app_bar.dart';
 import '../core/components/drawer/base_drawer.dart';
 import '../core/model/app_bar_and_drawer_item_model.dart';
-import '../widgets/footer_view.dart';
-import '../widgets/section_title.dart';
-import '../widgets/speakers_section.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/countdown_section.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/footer_view.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/section_title.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/speakers_section.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              CountdownSection(),
               SectionTitle(title: 'Konuşmacılar'),
               SpeakersSection(),
               FooterView(),
