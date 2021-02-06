@@ -3,7 +3,7 @@ name: On Website Deploy
 'on':
   push:
     branches:
-      - "feature/#21-add-ci-cd-to-deploy-github-actions"
+      - "main"
 jobs:
   on-push-main:
     runs-on: ubuntu-latest
