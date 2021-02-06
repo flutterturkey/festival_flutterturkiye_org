@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/footer_view.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/section_title.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/speakers_section.dart';
 
@@ -24,7 +25,11 @@ class _HomePageState extends State<HomePage> {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[SectionTitle(title: 'Konuşmacılar'), SpeakersSection()],
+              children: <Widget>[
+                SectionTitle(title: 'Konuşmacılar'),
+                SpeakersSection(),
+                FooterView(),
+              ],
             ),
           ),
         ),
