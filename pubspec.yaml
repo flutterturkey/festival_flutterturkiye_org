@@ -15,13 +15,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   material_design_icons_flutter: ^4.0.5855
   url_launcher: ^5.7.10
+  pedantic: ^1.9.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   integration_test:
     sdk: flutter
-
 flutter:
   uses-material-design: true
 
