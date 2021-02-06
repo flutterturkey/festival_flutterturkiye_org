@@ -7,7 +7,8 @@ class SectionTitle extends StatelessWidget {
   const SectionTitle({
     @required this.title,
     this.textColor = Colors.black,
-  });
+  })  : assert(title != null),
+        assert(textColor != null);
 
   @override
   Widget build(BuildContext context) {

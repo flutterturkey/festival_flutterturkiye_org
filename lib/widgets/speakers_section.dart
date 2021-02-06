@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/speaker_card.dart';
 
-class SpeakersSection extends StatefulWidget {
-  @override
-  _SpeakersSectionState createState() => _SpeakersSectionState();
-}
+class SpeakersSection extends StatelessWidget {
+  const SpeakersSection({Key key}) : super(key: key);
 
-class _SpeakersSectionState extends State<SpeakersSection> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
