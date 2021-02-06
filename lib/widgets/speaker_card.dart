@@ -15,18 +15,20 @@ class _SpeakerCardState extends State<SpeakerCard> {
         //TODO: Implement when speaker detail on finished
       },
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(15)), color: Color(0xff212937)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          color: Color(0xff212937),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(right: 20),
+                padding: const EdgeInsets.only(right: 20),
                 child: ClipOval(
                   child: Image.asset(
                     Assets.speakerPlaceHolder,
                     fit: BoxFit.fitHeight,
-                    //height: 200,
                   ),
                 ),
               ),
@@ -38,9 +40,20 @@ class _SpeakerCardState extends State<SpeakerCard> {
                     Text(
                       'Göktuğ Özdemir',
                       maxLines: 2,
-                      style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
+                      style: const TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
-                    Text('Flutter Dev @ Unknown', maxLines: 2, style: TextStyle(fontFamily: 'Montserrat', color: Colors.white, fontSize: 16)),
+                    Text('Flutter Dev @ Unknown',
+                        maxLines: 2,
+                        style: const TextStyle(
+                          fontFamily: 'Montserrat',
+                          color: Colors.white,
+                          fontSize: 16,
+                        )),
                   ],
                 ),
               )
