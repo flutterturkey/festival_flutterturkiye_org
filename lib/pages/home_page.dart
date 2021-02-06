@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/countdown_section.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/footer_view.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/section_title.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/speakers_section.dart';
@@ -16,9 +17,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints:
@@ -27,6 +25,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                CountdownSection(),
                 SectionTitle(title: 'Konuşmacılar'),
                 SpeakersSection(),
                 FooterView(),
