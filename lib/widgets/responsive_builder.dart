@@ -11,10 +11,10 @@ class ResponsiveBuilder extends StatelessWidget {
         assert(desktop != null, 'Desktop cannot be empty.'),
         super(key: key);
 
-  /// 0px - 799px
+  /// 0px - 768px
   final Widget mobile;
 
-  /// 800px - 1199px
+  /// 768px - 1199px
   final Widget tablet;
 
   /// 1200px
