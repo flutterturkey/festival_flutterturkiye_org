@@ -4,32 +4,32 @@ import 'package:hackathon_flutterturkiye_org/core/utils/responsive_helper.dart';
 class ResponsiveBuilder extends StatelessWidget {
   const ResponsiveBuilder({
     Key key,
-    @required this.mobile,
-    this.tablet,
-    @required this.desktop,
-  })  : assert(mobile != null, 'Mobile cannot be empty.'),
-        assert(desktop != null, 'Desktop cannot be empty.'),
+    @required this.smallWidget,
+    this.mediumWidget,
+    @required this.largeWidget,
+  })  : assert(smallWidget != null, 'Small Widget cannot be empty.'),
+        assert(largeWidget != null, 'Large Widget cannot be empty.'),
         super(key: key);
 
-  /// 0px - 768px
-  final Widget mobile;
+  /// It can displayable on [small] screens.
+  final Widget smallWidget;
 
-  /// 768px - 1199px
-  final Widget tablet;
+  /// It can displayable on [medium] screens.
+  final Widget mediumWidget;
 
-  /// 1200px
-  final Widget desktop;
+  /// It can displayable on [large] screens.
+  final Widget largeWidget;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= ResponsiveHelper.mediumWidth) {
-          return desktop;
+          return largeWidget;
         } else if (constraints.maxWidth >= ResponsiveHelper.largeWidth) {
-          return tablet ?? mobile;
+          return mediumWidget ?? smallWidget;
         } else {
-          return mobile;
+          return smallWidget;
         }
       },
     );
