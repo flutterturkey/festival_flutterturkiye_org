@@ -29,18 +29,23 @@ flutter:
   fonts:
     - family: Manrope
       fonts:
-        - asset: fonts/Manrope-Regular.ttf
-        - asset: fonts/Manrope-Light.ttf
         - asset: fonts/Manrope-ExtraLight.ttf
+          weight: 200
+        - asset: fonts/Manrope-Light.ttf
+          weight: 300
+        - asset: fonts/Manrope-Regular.ttf
+          weight: 400
         - asset: fonts/Manrope-Medium.ttf
-        - asset: fonts/Manrope-SemiBold.ttf
           weight: 500
+        - asset: fonts/Manrope-SemiBold.ttf
+          weight: 600
         - asset: fonts/Manrope-Bold.ttf
           weight: 700
         - asset: fonts/Manrope-ExtraBold.ttf
-          weight: 900
+          weight: 800
     - family: Montserrat
       fonts:
         - asset: fonts/Montserrat-Regular.ttf
+          weight: 400         
         - asset: fonts/Montserrat-Bold.ttf
           weight: 700
