@@ -7,8 +7,8 @@ class ResponsiveBuilder extends StatelessWidget {
     @required this.mobile,
     this.tablet,
     @required this.desktop,
-  })  : assert(mobile != null, "Mobile cannot be empty."),
-        assert(desktop != null, "Desktop cannot be empty."),
+  })  : assert(mobile != null, 'Mobile cannot be empty.'),
+        assert(desktop != null, 'Desktop cannot be empty.'),
         super(key: key);
 
   /// 0px - 799px
@@ -24,9 +24,9 @@ class ResponsiveBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth >= ResponsiveHelper.desktopMinWidth) {
+        if (constraints.maxWidth >= ResponsiveHelper.mediumWidth) {
           return desktop;
-        } else if (constraints.maxWidth >= ResponsiveHelper.tabletMinWidth) {
+        } else if (constraints.maxWidth >= ResponsiveHelper.largeWidth) {
           return tablet ?? mobile;
         } else {
           return mobile;

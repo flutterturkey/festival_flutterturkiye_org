@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveHelper {
-  static const double tabletMinWidth = 800;
-  static const double desktopMinWidth = 1200;
+  static const double mediumWidth = 768;
+  static const double largeWidth = 1200;
 
-  static bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width < tabletMinWidth;
+  static bool isSmallScreen(BuildContext context) =>
+      MediaQuery.of(context).size.width < mediumWidth;
 
-  static bool isTablet(BuildContext context) =>
-      MediaQuery.of(context).size.width >= tabletMinWidth &&
-      MediaQuery.of(context).size.width < desktopMinWidth;
+  static bool isMediumScreen(BuildContext context) =>
+      MediaQuery.of(context).size.width >= mediumWidth &&
+      MediaQuery.of(context).size.width < largeWidth;
 
-  static bool isDesktop(BuildContext context) =>
-      MediaQuery.of(context).size.width >= desktopMinWidth;
+  static bool isLargeScreen(BuildContext context) =>
+      MediaQuery.of(context).size.width >= largeWidth;
 }
