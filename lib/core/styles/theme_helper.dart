@@ -8,6 +8,8 @@ class ThemeHelper {
   static const Color eventPointColor = Color(0xFFFF9B05);
   static const Color eventFlowColor = Color(0xFF212937);
   static const Color footerTextColor = Color(0xFFD9DBE1);
+  static const Color appBarActionColor = Color(0xFFF2F2F2);
+
   static const Brightness brightness = Brightness.light;
 
   static final ThemeData themeData = ThemeData(
