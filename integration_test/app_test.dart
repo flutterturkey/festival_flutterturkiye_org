@@ -7,6 +7,4 @@
 
 void main() => _testMain();
 
-void _testMain() {
-
-}
+void _testMain() {}
