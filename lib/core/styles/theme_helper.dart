@@ -14,6 +14,7 @@ class ThemeHelper {
     accentColor: lightColor,
     primaryColor: darkColor,
     brightness: brightness,
+    fontFamily: 'Manrope',
     buttonTheme: const ButtonThemeData(
       buttonColor: lightColor,
       textTheme: ButtonTextTheme.primary,
