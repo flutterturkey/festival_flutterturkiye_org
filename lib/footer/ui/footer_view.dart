@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:hackathon_flutterturkiye_org/utils/assets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:hackathon_flutterturkiye_org/core/utils/assets.dart';
+
+const _footerBackground = 'assets/images/footer_bg.jpg';
 
 class FooterView extends StatefulWidget {
   FooterView({Key key}) : super(key: key);
@@ -25,7 +27,7 @@ class _FooterViewState extends State<FooterView> {
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(Assets.footerBackground),
+                  image: AssetImage(_footerBackground),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -42,7 +44,7 @@ class _FooterViewState extends State<FooterView> {
                       top: 40.0,
                     ),
                     child: Image.asset(
-                      Assets.logo,
+                      ImageAssets.logo,
                     ),
                   ),
                   Padding(

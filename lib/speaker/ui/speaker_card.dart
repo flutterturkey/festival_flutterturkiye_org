@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/utils/assets.dart';
+
+const _speakerPlaceholder = 'assets/images/speaker_placeholder.png';
 
 class SpeakerCard extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _SpeakerCardState extends State<SpeakerCard> {
                 padding: const EdgeInsets.only(right: 20),
                 child: ClipOval(
                   child: Image.asset(
-                    Assets.speakerPlaceHolder,
+                    _speakerPlaceholder,
                     fit: BoxFit.fitHeight,
                   ),
                 ),

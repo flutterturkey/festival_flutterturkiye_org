@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/speaker_card.dart';
+import 'file:///C:/Users/Pc/IdeaProjects/hackathon_flutterturkiye_org/lib/speaker/ui/speaker_card.dart';
 
 class SpeakersSection extends StatelessWidget {
   const SpeakersSection({Key key}) : super(key: key);

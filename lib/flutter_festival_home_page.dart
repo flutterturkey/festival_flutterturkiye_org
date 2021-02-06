@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/footer_view.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/section_title.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/speakers_section.dart';
+import 'package:hackathon_flutterturkiye_org/core/ui/section_title.dart';
+import 'package:hackathon_flutterturkiye_org/footer/ui/footer_view.dart';
+import 'package:hackathon_flutterturkiye_org/speaker/ui/speakers_section.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
+class FlutterFestivalHomePage extends StatefulWidget {
+  FlutterFestivalHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _FlutterFestivalHomePageState createState() =>
+      _FlutterFestivalHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _FlutterFestivalHomePageState extends State<FlutterFestivalHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
