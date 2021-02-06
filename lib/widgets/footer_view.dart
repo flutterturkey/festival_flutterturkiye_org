@@ -17,25 +17,30 @@ class _FooterViewState extends State<FooterView> {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        padding: EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 20),
         height: MediaQuery.of(context).size.height / 2.3,
         width: MediaQuery.of(context).size.width,
         child: Stack(
           children: [
             Container(
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage(Assets.footerBackground),
-                fit: BoxFit.cover,
-              )),
+                image: DecorationImage(
+                  image: AssetImage(Assets.footerBackground),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ), // background
-            Container(color: Colors.black.withOpacity(0.75)), // black filter
+            Container(
+              color: Colors.black.withOpacity(0.75),
+            ), // black filter
             Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 40.0),
+                    padding: const EdgeInsets.only(
+                      top: 40.0,
+                    ),
                     child: Image.asset(
                       Assets.logo,
                     ),
@@ -47,12 +52,20 @@ class _FooterViewState extends State<FooterView> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.mail, color: Colors.white),
+                          Icon(
+                            Icons.mail,
+                            color: Colors.white,
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),
                             child: Text(
                               'hackathon@flutterturkiye.org',
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24, fontFamily: 'Montserrat'),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                                fontFamily: 'Montserrat',
+                              ),
                             ),
                           ),
                         ],
@@ -69,11 +82,21 @@ class _FooterViewState extends State<FooterView> {
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: MediaQuery.of(context).size.width > 1200
-                          ? const EdgeInsets.only(top: 10, left: 100, right: 100)
-                          : const EdgeInsets.only(top: 10, left: 10),
+                          ? const EdgeInsets.only(
+                              top: 10,
+                              left: 100,
+                              right: 100,
+                            )
+                          : const EdgeInsets.only(
+                              top: 10,
+                              left: 10,
+                            ),
                       child: Text(
                         '© 2021 Flutter Türkiye',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
@@ -145,7 +168,16 @@ class _BottomViewState extends State<BottomView> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: MediaQuery.of(context).size.width > 1200 ? const EdgeInsets.only(top: 10, left: 100, right: 100) : const EdgeInsets.only(top: 10, left: 10),
+        padding: MediaQuery.of(context).size.width > 1200
+            ? const EdgeInsets.only(
+                top: 10,
+                left: 100,
+                right: 100,
+              )
+            : const EdgeInsets.only(
+                top: 10,
+                left: 10,
+              ),
         child: MediaQuery.of(context).size.width > 1200
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -170,11 +202,14 @@ class SocialIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        icon: Icon(
-          icon,
-          color: iconColor,
-        ),
-        onPressed: () => launch(link));
+      padding: EdgeInsets.symmetric(
+        horizontal: 15,
+      ),
+      icon: Icon(
+        icon,
+        color: iconColor,
+      ),
+      onPressed: () => launch(link),
+    );
   }
 }
