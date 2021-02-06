@@ -16,7 +16,6 @@ const double _paddingMedium = 48.0;
 const double _paddingLarge = 72.0;
 
 final DateTime _eventStartingDate = DateTime(2021, 3, 6, 10, 0);
-final DateTime _eventDueDate = DateTime(2021, 3, 7, 20, 0);
 
 class CountdownSection extends StatelessWidget {
   @override
@@ -87,15 +86,15 @@ class _CountdownWidgetState extends State<CountdownWidget> {
   Widget build(BuildContext context) {
     final currentDate = DateTime.now();
     final remainingTime = _eventStartingDate.difference(currentDate);
-    final text = "<bold>${remainingTime.inDays}</bold> gün " +
-        "<bold>${remainingTime.inHours % 24}</bold> saat " +
-        "<bold>${remainingTime.inMinutes % 60}</bold> dakika " +
-        "<bold>${remainingTime.inSeconds % 60}</bold> saniye kaldı";
+    final text = '<bold>${remainingTime.inDays}</bold> gün '
+        '<bold>${remainingTime.inHours % 24}</bold> saat '
+        '<bold>${remainingTime.inMinutes % 60}</bold> dakika '
+        '<bold>${remainingTime.inSeconds % 60}</bold> saniye kaldı';
 
     return _CountdownText(text: text);
   }
 
-  _setTimer() {
+  void _setTimer() {
     _timer = Timer.periodic(
       const Duration(seconds: 1),
       (timer) {
