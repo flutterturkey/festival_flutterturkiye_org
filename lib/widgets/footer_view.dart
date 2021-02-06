@@ -197,7 +197,11 @@ class SocialIcon extends StatelessWidget {
   final String link;
   final Color iconColor;
 
-  SocialIcon({@required this.icon, @required this.link, this.iconColor = Colors.white});
+  SocialIcon({
+    @required this.icon,
+    @required this.link,
+    this.iconColor = Colors.white,
+  });
 
   @override
   Widget build(BuildContext context) {
