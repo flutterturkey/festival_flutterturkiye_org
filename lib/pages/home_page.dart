@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/section_title.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/speaker_card.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/speakers_section.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,10 +24,7 @@ class _HomePageState extends State<HomePage> {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                sectionTitle('Konuşmacılar'),
-                speakersSection(context),
-              ],
+              children: <Widget>[SectionTitle(title: 'Konuşmacılar'), SpeakersSection()],
             ),
           ),
         ),

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SpeakerCard extends StatefulWidget {
-  final BuildContext context;
-  SpeakerCard({this.context});
-
   @override
   _SpeakerCardState createState() => _SpeakerCardState();
 }
@@ -13,7 +10,7 @@ class _SpeakerCardState extends State<SpeakerCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print('clicked 2 speaker card');
+        debugPrint('clicked 2 speaker card');
         //TODO: Implement when speaker detail on finished
       },
       child: Container(
@@ -26,7 +23,7 @@ class _SpeakerCardState extends State<SpeakerCard> {
                 padding: EdgeInsets.only(right: 20),
                 child: ClipOval(
                   child: Image.asset(
-                    'assets/images/avatar.png',
+                    'assets/images/speaker_placeholder.png',
                     fit: BoxFit.fitHeight,
                     //height: 200,
                   ),
