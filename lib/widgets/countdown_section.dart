@@ -18,6 +18,8 @@ const double _paddingLarge = 72.0;
 final DateTime _eventStartingDate = DateTime(2021, 3, 6, 10, 0);
 
 class CountdownSection extends StatelessWidget {
+  const CountdownSection();
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;

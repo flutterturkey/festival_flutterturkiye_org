@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              CountdownSection(),
+              const CountdownSection(),
               SectionTitle(title: 'Konuşmacılar'),
               SpeakersSection(),
               FooterView(),
