@@ -48,7 +48,8 @@ class _FooterViewState extends State<FooterView> {
                   Padding(
                     padding: const EdgeInsets.only(top: 30, bottom: 10),
                     child: InkWell(
-                      onTap: () => launch('mailto:hackathon@flutterturkiye.org'),
+                      onTap: () =>
+                          launch('mailto:hackathon@flutterturkiye.org'),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
