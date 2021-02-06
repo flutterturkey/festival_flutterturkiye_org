@@ -50043,7 +50043,7 @@ return new M.qx(new E.o_(r,new P.O(1/0,56),s),new E.A7(!0,new T.dW(new S.aq(0,1/
 F.oV.prototype={
 aJ:function(){return new F.CQ(C.n)}}
 F.CQ.prototype={
-L:function(a,b){var s=null,r=t.w,q=b.U(r).f,p=b.U(r).f,o=M.jy(s,s,s,s,new S.de(s,new X.wa(new L.l5("assets/images/footer_bg.jpg",s,s),C.oi),s,s,s,s,C.a0),s,s,s,s),n=M.jy(s,s,P.br(191,0,0,0),s,s,s,s,s,s),m=U.a1V("assets/images/flutter_tr.png",s),l=t.fQ,k=R.ZR(!1,!0,T.a_k(H.c([L.ZP(C.vr,C.j),new T.d7(C.v3,L.iT("hackathon@flutterturkiye.org",s,A.iU(s,s,C.j,s,s,s,s,s,"Montserrat",s,s,24,s,C.cf,s,s,!0,s,s,s,s,s,s)),s)],l),C.eN,C.mr,C.hQ),s,!0,s,s,s,s,s,s,s,s,s,new F.UH(),s)
+L:function(a,b){var s=null,r=t.w,q=b.U(r).f,p=b.U(r).f,o=M.jy(s,s,s,s,new S.de(s,new X.wa(new L.l5("assets/images/footer_bg.jpg",s,s),C.oi),s,s,s,s,C.a0),s,s,s,s),n=M.jy(s,s,P.br(191,0,0,0),s,s,s,s,s,s),m=U.a1V("assets/images/logo.png",s),l=t.fQ,k=R.ZR(!1,!0,T.a_k(H.c([L.ZP(C.vr,C.j),new T.d7(C.v3,L.iT("hackathon@flutterturkiye.org",s,A.iU(s,s,C.j,s,s,s,s,s,"Montserrat",s,s,24,s,C.cf,s,s,!0,s,s,s,s,s,s)),s)],l),C.eN,C.mr,C.hQ),s,!0,s,s,s,s,s,s,s,s,s,new F.UH(),s)
 r=b.U(r).f.a.a>1200?C.oT:C.oU
 return new T.fO(C.nY,s,s,M.jy(s,T.At(C.iA,H.c([o,n,T.og(T.Zy(H.c([new T.d7(C.v2,m,s),new T.d7(C.v1,k,s),new Z.wn(0.5,100,100,C.j,s),new T.fO(C.rH,s,s,new T.d7(r,L.iT("\xa9 2021 Flutter T\xfcrkiye",s,C.zb),s),s),new F.oa(s)],l),C.eN,C.mq),s,s)],l),C.ip),s,s,s,q.a.b/2.3,s,C.v0,p.a.a),s)}}
 F.UH.prototype={
