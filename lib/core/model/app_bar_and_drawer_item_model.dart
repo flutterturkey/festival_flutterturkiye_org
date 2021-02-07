@@ -6,5 +6,6 @@ class AppBarAndDrawerItemModel {
   final VoidCallback onPressed;
   final bool isFilled;
 
-  AppBarAndDrawerItemModel(this.title, this.icon, this.onPressed, {this.isFilled});
+  AppBarAndDrawerItemModel(this.title, this.icon, this.onPressed,
+      {this.isFilled});
 }

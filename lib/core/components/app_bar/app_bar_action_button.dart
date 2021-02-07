@@ -44,8 +44,11 @@ class AppBarActionButton extends StatelessWidget {
 
   ButtonStyle get buildTextButtonStyle {
     return TextButton.styleFrom(
-      backgroundColor: isFilledButton ? ThemeHelper.appBarActionColor : Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      backgroundColor:
+          isFilledButton ? ThemeHelper.appBarActionColor : Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
     );
   }
 }
