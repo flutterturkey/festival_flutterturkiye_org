@@ -13,6 +13,7 @@ class ThemeHelper {
   static const Brightness brightness = Brightness.light;
 
   static final ThemeData themeData = ThemeData(
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     accentColor: lightColor,
     primaryColor: darkColor,
     brightness: brightness,

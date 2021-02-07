@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../core/components/app_bar/app_bar_action_button.dart';
-import '../core/components/app_bar/app_bar_title.dart';
+import '../core/components/app_bar/base_app_bar.dart';
+import '../core/components/drawer/base_drawer.dart';
+import '../core/model/app_bar_and_drawer_item_model.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -13,24 +15,65 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  List<AppBarAndDrawerItemModel> pageSectionsList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    initPageSectionList();
+  }
+
+  void initPageSectionList() {
+    pageSectionsList.add(AppBarAndDrawerItemModel('Konuşmacılar', Icons.group_rounded, () {}));
+    pageSectionsList.add(AppBarAndDrawerItemModel('Etkinlik Programı', Icons.event_rounded, () {}));
+    pageSectionsList.add(AppBarAndDrawerItemModel('Etkinlik', Icons.celebration, () {}));
+    pageSectionsList.add(AppBarAndDrawerItemModel('SSS', Icons.help_center_rounded, () {}));
+    pageSectionsList.add(AppBarAndDrawerItemModel('İletişim', Icons.phone_in_talk_rounded, () {}));
+    pageSectionsList.add(AppBarAndDrawerItemModel('Kayıt Ol', Icons.account_circle_rounded, () {}, isFilled: true));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: AppBarTitle(),
-        actions: [
-          AppBarActionButton(onPressed: () {}, title: 'Konuşmacılar'),
-          AppBarActionButton(onPressed: () {}, title: 'Etkinlik Programı'),
-          AppBarActionButton(onPressed: () {}, title: 'Sponsorlar'),
-          AppBarActionButton(onPressed: () {}, title: 'SSS'),
-          AppBarActionButton(onPressed: () {}, title: 'İletişim'),
-          AppBarActionButton(onPressed: () {}, title: 'Kayıt Ol', isFilledButton: true),
-        ],
-      ),
+      key: _scaffoldKey,
+      appBar: (MediaQuery.of(context).size.width > 800) ? buildAppBarWeb : buildAppBarMobile,
       body: Container(),
       backgroundColor: Colors.red,
+      drawer: (MediaQuery.of(context).size.width > 800) ? SizedBox.shrink() : BaseDrawer(drawerList: pageSectionsList),
+    );
+  }
+
+  List<Widget> get pageSectionsListActions {
+    return List.generate(
+      pageSectionsList.length,
+      (index) => AppBarActionButton(
+        title: pageSectionsList[index].title,
+        onPressed: pageSectionsList[index].onPressed,
+        isFilledButton: pageSectionsList[index].isFilled ?? false,
+      ),
+    );
+  }
+
+  Widget get buildAppBarWeb {
+    return BaseAppBar(
+      actions: pageSectionsListActions,
+    );
+  }
+
+  Widget get buildAppBarMobile {
+    return BaseAppBar(
+      actions: [],
+      isCenterTitle: true,
+      leading: buildDrawerButton,
+    );
+  }
+
+  IconButton get buildDrawerButton {
+    return IconButton(
+      icon: Icon(Icons.menu_rounded),
+      onPressed: () => _scaffoldKey.currentState.openDrawer(),
     );
   }
 }
