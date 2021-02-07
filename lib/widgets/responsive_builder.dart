@@ -24,9 +24,9 @@ class ResponsiveBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth >= ResponsiveHelper.mediumWidth) {
+        if (constraints.maxWidth >= ResponsiveHelper.largeWidth) {
           return largeWidget;
-        } else if (constraints.maxWidth >= ResponsiveHelper.largeWidth) {
+        } else if (constraints.maxWidth >= ResponsiveHelper.mediumWidth) {
           return mediumWidget ?? smallWidget;
         } else {
           return smallWidget;
