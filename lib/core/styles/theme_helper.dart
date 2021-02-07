@@ -9,9 +9,12 @@ class ThemeHelper {
   static const Color speakerDetailImageBorder = Color(0xFFFF7A00);
   static const Color cardBackgroundColor = Color(0xFF1C1C1D);
   static const Color footerTextColor = Color(0xFFD9DBE1);
+  static const Color appBarActionColor = Color(0xFFF2F2F2);
+
   static const Brightness brightness = Brightness.light;
 
   static final ThemeData themeData = ThemeData(
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     accentColor: lightColor,
     primaryColor: darkColor,
     brightness: brightness,
