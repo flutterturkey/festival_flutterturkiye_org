@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hackathon_flutterturkiye_org/core/styles/theme_helper.dart';
 
@@ -21,6 +20,7 @@ class SpeakerDetailSubText extends StatelessWidget {
       text,
       style: TextStyle(
         color: textColor,
+        fontWeight: fontWeight,
         fontSize: 22.0,
       ),
     );
