@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../styles/theme_helper.dart';
 import 'app_bar_title.dart';
 
 class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -18,7 +19,7 @@ class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: ThemeHelper.cardBackgroundColor,
       elevation: 0,
       automaticallyImplyLeading: false,
       title: AppBarTitle(),

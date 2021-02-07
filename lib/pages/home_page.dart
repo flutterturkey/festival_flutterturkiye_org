@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/core/components/app_bar/app_bar_action_button.dart';
-import 'package:hackathon_flutterturkiye_org/core/components/app_bar/base_app_bar.dart';
-import 'package:hackathon_flutterturkiye_org/core/components/drawer/base_drawer.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/footer_view.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/section_title.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/speakers_section.dart';
-
-import 'package:hackathon_flutterturkiye_org/core/model/app_bar_and_drawer_item_model.dart';
+import '../core/components/app_bar/app_bar_action_button.dart';
+import '../core/components/app_bar/base_app_bar.dart';
+import '../core/components/drawer/base_drawer.dart';
+import '../core/model/app_bar_and_drawer_item_model.dart';
+import '../widgets/footer_view.dart';
+import '../widgets/section_title.dart';
+import '../widgets/speakers_section.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -18,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<AppBarAndDrawerItemModel> pageSectionsList = [];
 
   @override
@@ -50,11 +49,27 @@ class _HomePageState extends State<HomePage> {
       appBar: (MediaQuery.of(context).size.width > 800)
           ? buildAppBarWeb
           : buildAppBarMobile,
-      body: Container(),
-      backgroundColor: Colors.red,
+      body: SingleChildScrollView(
+          child: ConstrainedBox(
+        constraints:
+            BoxConstraints(minHeight: MediaQuery.of(context).size.height),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SectionTitle(title: 'Konuşmacılar'),
+              SpeakersSection(),
+              FooterView(),
+            ],
+          ),
+        ),
+      )),
+      backgroundColor: Colors.white,
       drawer: (MediaQuery.of(context).size.width > 800)
           ? SizedBox.shrink()
-          : BaseDrawer(drawerList: pageSectionsList),
+          : BaseDrawer(
+              drawerList: pageSectionsList,
+            ),
     );
   }
 
