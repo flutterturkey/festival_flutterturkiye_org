@@ -9,5 +9,5 @@ class AppImages {
 
   AppImages._init();
 
-  String get logo => "logo".toPNG;
+  String get logo => 'logo'.toPNG;
 }

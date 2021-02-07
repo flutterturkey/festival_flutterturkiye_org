@@ -12,7 +12,9 @@ class AppBarActionButton extends StatelessWidget {
     @required this.title,
     @required this.onPressed,
     this.isFilledButton = false,
-  }) : super(key: key);
+  })  : assert(title != null),
+        assert(onPressed != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {

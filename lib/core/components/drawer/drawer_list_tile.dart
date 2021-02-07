@@ -10,7 +10,10 @@ class DrawerListTile extends StatelessWidget {
     @required this.title,
     @required this.icon,
     @required this.onTapListTile,
-  }) : super(key: key);
+  })  : assert(title != null),
+        assert(icon != null),
+        assert(onTapListTile != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {

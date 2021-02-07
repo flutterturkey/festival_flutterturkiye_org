@@ -9,13 +9,14 @@ class BaseDrawer extends StatelessWidget {
   const BaseDrawer({
     Key key,
     @required this.drawerList,
-  }) : super(key: key);
+  })  : assert(drawerList != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView.builder(
-        padding: EdgeInsets.only(top: 20.0),
+        padding: const EdgeInsets.only(top: 20.0),
         itemCount: drawerList.length,
         itemBuilder: (BuildContext context, int index) {
           return DrawerListTile(

@@ -12,7 +12,8 @@ class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
     @required this.actions,
     this.leading,
     this.isCenterTitle = false,
-  }) : super(key: key);
+  })  : assert(actions != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
