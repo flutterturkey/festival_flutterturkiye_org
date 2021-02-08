@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/countdown_section.dart';
 import '../core/components/app_bar/app_bar_action_button.dart';
 import '../core/components/app_bar/base_app_bar.dart';
 import '../core/components/drawer/base_drawer.dart';
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              const CountdownSection(),
               SectionTitle(title: 'Konuşmacılar'),
               SpeakersSection(),
               FooterView(),
