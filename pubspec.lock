@@ -330,6 +330,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
+  tag_highlighting:
+    dependency: "direct main"
+    description:
+      name: tag_highlighting
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   term_glyph:
     dependency: transitive
     description:
