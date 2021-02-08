@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:tag_highlighting/tag_highlighting.dart';
 
 import 'package:hackathon_flutterturkiye_org/core/styles/theme_helper.dart';
 import 'package:hackathon_flutterturkiye_org/core/utils/responsive_helper.dart';
@@ -53,12 +52,21 @@ class CountdownSection extends StatelessWidget {
 class CountdownTitle extends StatelessWidget {
   const CountdownTitle();
 
-  final String text =
-      "Türkiye'nin en büyük\n<bold>Flutter Festivali</bold> başlıyor";
-
   @override
   Widget build(BuildContext context) {
-    return _CountdownText(text: text);
+    final textSpans = <TextSpan>[
+      _textSpan("Türkiye'nin en büyük\n"),
+      _textSpan('Flutter Festivali', fontWeight: FontWeight.bold),
+      _textSpan(' başlıyor'),
+    ];
+    return _CountdownTextBuilder(textSpans: textSpans);
+  }
+
+  TextSpan _textSpan(String text, {FontWeight fontWeight}) {
+    return TextSpan(
+      text: text,
+      style: fontWeight != null ? TextStyle(fontWeight: fontWeight) : null,
+    );
   }
 }
 
@@ -88,12 +96,18 @@ class _CountdownWidgetState extends State<CountdownWidget> {
   Widget build(BuildContext context) {
     final currentDate = DateTime.now();
     final remainingTime = _eventStartingDate.difference(currentDate);
-    final text = '<bold>${remainingTime.inDays}</bold> gün '
-        '<bold>${remainingTime.inHours % 24}</bold> saat '
-        '<bold>${remainingTime.inMinutes % 60}</bold> dakika '
-        '<bold>${remainingTime.inSeconds % 60}</bold> saniye kaldı';
+    final textSpans = <TextSpan>[
+      _textSpan('${remainingTime.inDays}', fontWeight: FontWeight.bold),
+      _textSpan(' gün '),
+      _textSpan('${remainingTime.inHours % 24}', fontWeight: FontWeight.bold),
+      _textSpan(' saat '),
+      _textSpan('${remainingTime.inMinutes % 60}', fontWeight: FontWeight.bold),
+      _textSpan(' dakika '),
+      _textSpan('${remainingTime.inSeconds % 60}', fontWeight: FontWeight.bold),
+      _textSpan(' saniye kaldı'),
+    ];
 
-    return _CountdownText(text: text);
+    return _CountdownTextBuilder(textSpans: textSpans);
   }
 
   void _setTimer() {
@@ -104,72 +118,70 @@ class _CountdownWidgetState extends State<CountdownWidget> {
       },
     );
   }
+
+  TextSpan _textSpan(String text, {FontWeight fontWeight}) {
+    return TextSpan(
+      text: text,
+      style: fontWeight != null ? TextStyle(fontWeight: fontWeight) : null,
+    );
+  }
 }
 
-class _CountdownText extends StatelessWidget {
-  final String text;
-  final String tagName;
+class _CountdownTextBuilder extends StatelessWidget {
+  final List<TextSpan> textSpans;
+  final FontWeight fontWeight;
 
-  const _CountdownText({
+  _CountdownTextBuilder({
     Key key,
-    @required this.text,
-    this.tagName = 'bold',
-  })  : assert(text != null),
-        assert(tagName != null),
+    @required this.textSpans,
+    this.fontWeight = FontWeight.normal,
+  })  : assert(textSpans != null),
+        assert(textSpans.isNotEmpty),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
-      smallWidget: _CountdownTextHighlighting(
-        text: text,
+      smallWidget: _CountdownText(
+        textSpans: textSpans,
         fontSize: _fontSizeSmall,
       ),
-      mediumWidget: _CountdownTextHighlighting(
-        text: text,
+      mediumWidget: _CountdownText(
+        textSpans: textSpans,
         fontSize: _fontSizeMedium,
       ),
-      largeWidget: _CountdownTextHighlighting(
-        text: text,
+      largeWidget: _CountdownText(
+        textSpans: textSpans,
         fontSize: _fontSizeLarge,
       ),
     );
   }
 }
 
-class _CountdownTextHighlighting extends StatelessWidget {
-  const _CountdownTextHighlighting({
+class _CountdownText extends StatelessWidget {
+  const _CountdownText({
     Key key,
-    @required this.text,
-    this.tagName = 'bold',
+    @required this.textSpans,
+    this.textAlign = TextAlign.center,
     this.fontSize,
-  })  : assert(text != null),
-        assert(tagName != null),
+  })  : assert(textSpans != null),
         super(key: key);
 
-  final String text;
-  final String tagName;
+  final List<TextSpan> textSpans;
+  final TextAlign textAlign;
   final double fontSize;
 
   @override
   Widget build(BuildContext context) {
-    return TagHighlighting(
-      text: text,
-      textAlign: TextAlign.center,
-      defaultTextStyle: TextStyle(
-        color: ThemeHelper.lightColor,
-        fontSize: fontSize,
+    return RichText(
+      textAlign: textAlign,
+      text: TextSpan(
+        children: textSpans,
+        style: TextStyle(
+          color: ThemeHelper.lightColor,
+          fontSize: fontSize,
+        ),
       ),
-      tags: [
-        TagHighlight(
-          tagName: tagName,
-          textStyle: TextStyle(
-            color: ThemeHelper.lightColor,
-            fontSize: fontSize,
-            fontWeight: FontWeight.bold,
-          ),
-        )
-      ],
     );
   }
 }
