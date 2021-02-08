@@ -32,7 +32,7 @@ class CountdownSection extends StatelessWidget {
         children: [
           const CountdownTitle(),
           SizedBox(height: screenSize.height * 0.1),
-          const CountdownWidget(),
+          CountdownWidget(),
         ],
       ),
     );
@@ -70,54 +70,54 @@ class CountdownTitle extends StatelessWidget {
   }
 }
 
-class CountdownWidget extends StatefulWidget {
-  const CountdownWidget();
-
-  @override
-  _CountdownWidgetState createState() => _CountdownWidgetState();
-}
-
-class _CountdownWidgetState extends State<CountdownWidget> {
-  Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _setTimer();
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
+class CountdownWidget extends StatelessWidget {
+  CountdownWidget();
 
   @override
   Widget build(BuildContext context) {
-    final currentDate = DateTime.now();
-    final remainingTime = _eventStartingDate.difference(currentDate);
-    final textSpans = <TextSpan>[
-      _textSpan('${remainingTime.inDays}', fontWeight: FontWeight.bold),
-      _textSpan(' gün '),
-      _textSpan('${remainingTime.inHours % 24}', fontWeight: FontWeight.bold),
-      _textSpan(' saat '),
-      _textSpan('${remainingTime.inMinutes % 60}', fontWeight: FontWeight.bold),
-      _textSpan(' dakika '),
-      _textSpan('${remainingTime.inSeconds % 60}', fontWeight: FontWeight.bold),
-      _textSpan(' saniye kaldı'),
-    ];
-
-    return _CountdownTextBuilder(textSpans: textSpans);
+    return StreamBuilder<Duration>(
+        stream: getCountdown(),
+        initialData: _calculateRemainingTime(),
+        builder: (context, remainingTimeSnapshot) {
+          if (remainingTimeSnapshot.hasData) {
+            final textSpans = <TextSpan>[
+              _textSpan(
+                '${_dateFixer(remainingTimeSnapshot.data.inDays)}',
+                fontWeight: FontWeight.bold,
+              ),
+              _textSpan(' gün '),
+              _textSpan(
+                '${_dateFixer(remainingTimeSnapshot.data.inHours % 24)}',
+                fontWeight: FontWeight.bold,
+              ),
+              _textSpan(' saat '),
+              _textSpan(
+                '${_dateFixer(remainingTimeSnapshot.data.inMinutes % 60)}',
+                fontWeight: FontWeight.bold,
+              ),
+              _textSpan(' dakika '),
+              _textSpan(
+                '${_dateFixer(remainingTimeSnapshot.data.inSeconds % 60)}',
+                fontWeight: FontWeight.bold,
+              ),
+              _textSpan(' saniye kaldı'),
+            ];
+            return _CountdownTextBuilder(textSpans: textSpans);
+          }
+          return SizedBox.shrink();
+        });
   }
 
-  void _setTimer() {
-    _timer = Timer.periodic(
-      const Duration(seconds: 1),
-      (timer) {
-        setState(() {});
-      },
-    );
+  Stream<Duration> getCountdown() async* {
+    yield* Stream.periodic(Duration(seconds: 1), (_) {
+      return _calculateRemainingTime();
+    });
   }
+
+  Duration _calculateRemainingTime() =>
+      _eventStartingDate.difference(DateTime.now());
+
+  String _dateFixer(int date) => '${date < 10 ? '0' : ''}$date';
 
   TextSpan _textSpan(String text, {FontWeight fontWeight}) {
     return TextSpan(
