@@ -6,8 +6,10 @@ class CountdownText extends StatelessWidget {
     Key key,
     @required this.textSpans,
     this.textAlign = TextAlign.center,
-    this.fontSize,
+    @required this.fontSize,
   })  : assert(textSpans != null),
+        assert(textAlign != null),
+        assert(fontSize != null),
         super(key: key);
 
   final List<TextSpan> textSpans;

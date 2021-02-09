@@ -12,6 +12,7 @@ class CountdownTextBuilder extends StatelessWidget {
     this.fontWeight = FontWeight.normal,
   })  : assert(textSpans != null),
         assert(textSpans.isNotEmpty),
+        assert(fontWeight != null),
         super(key: key);
 
   @override

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackathon_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
 
 class CountdownWidget extends StatelessWidget {
-  CountdownWidget();
+  const CountdownWidget();
 
   @override
   Widget build(BuildContext context) {

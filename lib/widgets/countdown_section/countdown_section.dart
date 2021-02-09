@@ -54,6 +54,7 @@ class _CountdownTitle extends StatelessWidget {
   }
 
   TextSpan _textSpan(String text, {FontWeight fontWeight}) {
+    assert(text != null);
     return TextSpan(
       text: text,
       style: fontWeight != null ? TextStyle(fontWeight: fontWeight) : null,
