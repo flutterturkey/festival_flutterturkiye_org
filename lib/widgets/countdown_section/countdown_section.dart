@@ -13,8 +13,9 @@ class CountdownSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+
     return Container(
-      decoration: BoxDecoration(color: Colors.black),
+      decoration: const BoxDecoration(color: Colors.black),
       height: screenSize.height,
       padding: _padding(context),
       child: Column(
@@ -23,7 +24,7 @@ class CountdownSection extends StatelessWidget {
         children: [
           const _CountdownTitle(),
           SizedBox(height: screenSize.height * 0.1),
-          CountdownWidget(),
+          const CountdownWidget(),
         ],
       ),
     );
