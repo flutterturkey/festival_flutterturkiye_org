@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/event_flow_section/event_flow_section.dart';
 import '../core/components/app_bar/app_bar_action_button.dart';
 import '../core/components/app_bar/base_app_bar.dart';
 import '../core/components/drawer/base_drawer.dart';
@@ -58,8 +59,9 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SectionTitle(title: 'Konuşmacılar'),
+              const EventFlowSection(),
               SpeakersSection(),
-              FooterView(),
+              // FooterView(),
             ],
           ),
         ),

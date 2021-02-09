@@ -27,7 +27,7 @@ flutter:
 
   assets:
     - assets/images/
-
+    - assets/images/speakers/
   fonts:
     - family: Manrope
       fonts:
@@ -48,6 +48,6 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: fonts/Montserrat-Regular.ttf
-          weight: 400         
+          weight: 400
         - asset: fonts/Montserrat-Bold.ttf
           weight: 700
