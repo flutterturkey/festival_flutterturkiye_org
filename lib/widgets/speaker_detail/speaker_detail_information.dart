@@ -11,7 +11,8 @@ class SpeakerInformation extends StatelessWidget {
     this.speakerTwitter,
     this.speakerGithub,
     this.speakerLinkedIn,
-  }) : super(key: key);
+  })  : assert(speakerName != null),
+        super(key: key);
 
   final String speakerName;
   final String speakerCompany;
@@ -42,17 +43,17 @@ class SpeakerInformation extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SpeakerName(
+        _SpeakerName(
           speakerName: speakerName,
           textAlign: textAlign,
           speakerNameFontSize: speakerNameFontSize,
         ),
         // Divider
-        SpeakerDetailDivider(width: dividerWidth),
+        AdjustableWidthDivider(width: dividerWidth, thickness: 8.0),
         // Space
         const SizedBox(height: 16.0),
         // Company
-        SpeakerCompany(speakerCompany: speakerCompany, textAlign: textAlign),
+        _SpeakerCompany(speakerCompany: speakerCompany, textAlign: textAlign),
         // Space
         const SizedBox(height: 24.0),
         // Social Medias
@@ -66,13 +67,16 @@ class SpeakerInformation extends StatelessWidget {
   }
 }
 
-class SpeakerName extends StatelessWidget {
-  const SpeakerName({
+class _SpeakerName extends StatelessWidget {
+  const _SpeakerName({
     Key key,
     @required this.speakerName,
-    @required this.textAlign,
+    this.textAlign = TextAlign.start,
     @required this.speakerNameFontSize,
-  }) : super(key: key);
+  })  : assert(speakerName != null),
+        assert(textAlign != null),
+        assert(speakerNameFontSize != null),
+        super(key: key);
 
   final String speakerName;
   final TextAlign textAlign;
@@ -92,11 +96,11 @@ class SpeakerName extends StatelessWidget {
   }
 }
 
-class SpeakerCompany extends StatelessWidget {
-  const SpeakerCompany({
+class _SpeakerCompany extends StatelessWidget {
+  const _SpeakerCompany({
     Key key,
-    @required this.speakerCompany,
-    @required this.textAlign,
+    this.speakerCompany,
+    this.textAlign,
   }) : super(key: key);
 
   final String speakerCompany;
@@ -104,6 +108,9 @@ class SpeakerCompany extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (speakerCompany == null) {
+      return SizedBox.shrink();
+    }
     return Text(
       speakerCompany,
       textAlign: textAlign,

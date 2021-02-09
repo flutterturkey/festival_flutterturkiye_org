@@ -39,7 +39,7 @@ class SpeakerDetailPage extends StatelessWidget {
                 speakerLinkedIn: speakerLinkedIn,
               ),
               const SizedBox(height: 36.0),
-              SpeakerAbout(about: speakerAbout),
+              _SpeakerAbout(about: speakerAbout),
               const SizedBox(height: 36.0),
               SessionAbout(
                 name: sessionName,
@@ -55,18 +55,20 @@ class SpeakerDetailPage extends StatelessWidget {
 
   EdgeInsets _padding(BuildContext context) {
     if (ResponsiveHelper.isLargeScreen(context)) {
-      return EdgeInsets.symmetric(horizontal: 72.0, vertical: 72.0);
+      return const EdgeInsets.all(72.0);
     } else if (ResponsiveHelper.isLargeScreen(context)) {
-      return EdgeInsets.symmetric(horizontal: 48.0, vertical: 48.0);
+      return const EdgeInsets.all(48.0);
     } else {
-      return EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0);
+      return const EdgeInsets.all(24.0);
     }
   }
 }
 
-class SpeakerAbout extends StatelessWidget {
-  const SpeakerAbout({Key key, @required this.about})
-      : assert(about != null),
+class _SpeakerAbout extends StatelessWidget {
+  const _SpeakerAbout({
+    Key key,
+    @required this.about,
+  })  : assert(about != null),
         super(key: key);
 
   final String about;

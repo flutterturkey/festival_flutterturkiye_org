@@ -32,7 +32,7 @@ class SpeakerDetailSubTitle extends StatelessWidget {
             fontSize: 28.0,
           ),
         ),
-        SpeakerDetailDivider(width: dividerWidth),
+        AdjustableWidthDivider(width: dividerWidth, thickness: 4.0),
         const SizedBox(height: 16.0),
       ],
     );

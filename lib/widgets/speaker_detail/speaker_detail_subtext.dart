@@ -8,6 +8,8 @@ class SpeakerDetailSubText extends StatelessWidget {
     this.textColor = ThemeHelper.lightColor,
     this.fontWeight = FontWeight.w300,
   })  : assert(text != null),
+        assert(textColor != null),
+        assert(fontWeight != null),
         super(key: key);
 
   final String text;

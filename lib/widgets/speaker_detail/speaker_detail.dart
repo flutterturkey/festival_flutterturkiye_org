@@ -1,4 +1,4 @@
-export 'speaker_detail_divider.dart';
+export 'adjustable_width_divider.dart';
 export 'speaker_detail_header.dart';
 export 'speaker_detail_information.dart';
 export 'speaker_detail_session_about.dart';

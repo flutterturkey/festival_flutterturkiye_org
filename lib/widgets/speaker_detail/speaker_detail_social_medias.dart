@@ -5,16 +5,27 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:url_launcher/url_launcher.dart';
 
 class SpeakerSocialMedias extends StatelessWidget {
+  /// Twitter username of the Speaker.
+  ///
+  /// https://www.twitter.com/ + `username`
+  final String twitter;
+
+  /// Github username of the Speaker.
+  ///
+  /// https://www.github.com/ + `username`
+  final String github;
+
+  /// LinkedIn username of the Speaker.
+  ///
+  /// https://www.linkedin.com/in/ + `username`
+  final String linkedin;
+
   const SpeakerSocialMedias({
     Key key,
     this.twitter,
     this.github,
     this.linkedin,
   }) : super(key: key);
-
-  final String twitter;
-  final String github;
-  final String linkedin;
 
   @override
   Widget build(BuildContext context) {

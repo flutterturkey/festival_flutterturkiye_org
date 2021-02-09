@@ -10,6 +10,8 @@ class SessionAbout extends StatelessWidget {
     @required this.startingDate,
     @required this.dueDate,
   })  : assert(name != null),
+        assert(startingDate != null),
+        assert(dueDate != null),
         super(key: key);
 
   final String name;
@@ -41,9 +43,7 @@ class SessionAbout extends StatelessWidget {
 }
 
 class _SpeakerDetailAddToCalendar extends StatelessWidget {
-  const _SpeakerDetailAddToCalendar({
-    Key key,
-  }) : super(key: key);
+  const _SpeakerDetailAddToCalendar({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,12 @@ class _SpeakerDetailAddToCalendar extends StatelessWidget {
         ),
       ),
       color: ThemeHelper.blueColor,
-      onPressed: () {},
+      onPressed: () {
+        /* 
+          * TODO: Add to Calendar will be added. Issue: #43
+          * https://github.com/flutterturkey/hackathon_flutterturkiye_org/issues/43
+         */
+      },
     );
   }
 }

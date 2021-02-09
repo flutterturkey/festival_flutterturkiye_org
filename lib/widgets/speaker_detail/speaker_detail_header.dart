@@ -12,7 +12,9 @@ class SpeakerDetailHeader extends StatelessWidget {
     this.speakerTwitter,
     this.speakerGithub,
     this.speakerLinkedIn,
-  }) : super(key: key);
+  })  : assert(speakerImage != null),
+        assert(speakerName != null),
+        super(key: key);
 
   final String speakerImage;
   final String speakerName;
