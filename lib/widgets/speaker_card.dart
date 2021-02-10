@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_flutterturkiye_org/utils/assets.dart';
+import 'package:hackathon_flutterturkiye_org/widgets/speaker_detail/speaker_detail_page.dart';
 
 class SpeakerCard extends StatefulWidget {
   @override
@@ -11,8 +12,11 @@ class _SpeakerCardState extends State<SpeakerCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        debugPrint('clicked 2 speaker card');
-        //TODO: Implement when speaker detail on finished
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => SpeakerDetailPage(),
+          ),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
