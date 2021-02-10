@@ -144,7 +144,7 @@ class _BottomViewState extends State<BottomView> {
   List<Widget> widgets = [
     Expanded(
       child: Text(
-        'Flutter and the related logo are trademarks of Google LLC. Flutter Hackathon is not affiliated with or otherwise sponsored by Google LLC.',
+        'Flutter and the related logo are trademarks of Google LLC. Flutter Festival is not affiliated with or otherwise sponsored by Google LLC.',
         style: TextStyle(color: Colors.white),
       ),
     ),
