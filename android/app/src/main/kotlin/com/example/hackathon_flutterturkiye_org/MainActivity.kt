@@ -1,4 +1,4 @@
-package com.example.hackathon_flutterturkiye_org
+package com.example.festival_flutterturkiye_org
 
 import io.flutter.embedding.android.FlutterActivity
 

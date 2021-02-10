@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:hackathon_flutterturkiye_org/core/utils/responsive_helper.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
+import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
+import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
 
 const double _paddingSmall = 24.0;
 const double _paddingMedium = 48.0;

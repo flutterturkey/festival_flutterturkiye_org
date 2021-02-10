@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/core/utils/responsive_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 
 class ResponsiveBuilder extends StatelessWidget {
   const ResponsiveBuilder({
