@@ -8,7 +8,7 @@
 PRODUCT_NAME = festival_flutterturkiye_org
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.hackathonFlutterturkiyeOrg
+PRODUCT_BUNDLE_IDENTIFIER = com.example.festivalFlutterturkiyeOrg
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2021 com.example. All rights reserved.
