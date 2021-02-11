@@ -5,7 +5,7 @@ import '../core/components/app_bar/app_bar_action_button.dart';
 import '../core/components/app_bar/base_app_bar.dart';
 import '../core/components/drawer/base_drawer.dart';
 import '../core/model/app_bar_and_drawer_item_model.dart';
-import '../widgets/footer_view.dart';
+import '../widgets/footer_section.dart';
 import '../widgets/section_title.dart';
 import '../widgets/speakers_section.dart';
 
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SectionTitle(title: 'Konuşmacılar'),
                 SpeakersSection(),
-                FooterView(),
+                FooterSection(),
               ],
             ),
           ),
