@@ -22,13 +22,13 @@ const RESOURCES = {
 "assets/fonts/Montserrat-Regular.ttf": "ee6539921d713482b8ccd4d0d23961bb",
 "assets/fonts/Manrope-Medium.ttf": "9846b3db6e4eec04b6f956169f65b3aa",
 "assets/fonts/Manrope-ExtraBold.ttf": "9a4548b7ec8765f156ad01e9999b24ef",
-"index.html": "0f908ce4602bd4b6935777ada2aa9ea8",
-"/": "0f908ce4602bd4b6935777ada2aa9ea8",
-"main.dart.js": "f818456efdf0e6f9577b85de1fd81cc9",
+"index.html": "51e38621e7121b2eba06aaf54c352fe4",
+"/": "51e38621e7121b2eba06aaf54c352fe4",
+"main.dart.js": "ca2fa3d39bb14d072c1b989a5c98dae9",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
-"manifest.json": "01bcc17a532fcd2e7b0037ec19ab91d9",
-"version.json": "3f5f3edbb3818582e3ac2b7fac7e4f19",
+"manifest.json": "5751bd016b8bc0299e5d7f484c8a650c",
+"version.json": "c11c92b7eee7515d5ca5c09497464ae4",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
 };
 
