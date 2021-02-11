@@ -19,7 +19,7 @@ class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: ThemeHelper.cardBackgroundColor,
+      backgroundColor: Colors.transparent,
       elevation: 0,
       automaticallyImplyLeading: false,
       title: AppBarTitle(),

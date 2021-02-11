@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+      extendBodyBehindAppBar: true,
       appBar: (MediaQuery.of(context).size.width > 800)
           ? buildAppBarWeb
           : buildAppBarMobile,
