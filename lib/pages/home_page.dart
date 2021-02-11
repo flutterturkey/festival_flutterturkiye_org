@@ -3,7 +3,6 @@ import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
 import 'package:festival_flutterturkiye_org/speaker/ui/speaker_section.dart';
-import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_section.dart';
 import 'package:festival_flutterturkiye_org/widgets/footer_view.dart';
 import 'package:flutter/material.dart';
 
@@ -84,21 +83,21 @@ class _HomePageState extends State<HomePage> {
                       id: 'id',
                       about:
                           'Lorem ipsum dolor sit amet, consectetur adipiscing '
-                              'elit. Morbi interdum justo a mauris pharetra '
-                              'finibus. Fusce aliquet tortor mi, vitae feugiat '
-                              'arcu fringilla ut. Sed quis massa vulputate, '
-                              'dignissim sem a, rutrum dui. In ac nunc dui. '
-                              'Morbi scelerisque finibus libero et auctor. '
-                              'Aenean lacus mi, placerat eu commodo nec, '
-                              'luctus nec arcu. Suspendisse eleifend vehicula '
-                              'quam, sed tincidunt lorem consequat luctus. '
-                              'In hac habitasse platea dictumst. In malesuada '
-                              'luctus ex, volutpat auctor ex placerat eget. '
-                              'Aenean egestas tempor lorem a maximus. Ut sed '
-                              'risus urna. Sed facilisis lacus at fringilla '
-                              'maximus. Nulla id tempus magna. Aenean sit amet'
-                              ' t ellus odio. Cras tincidunt felis vitae odio '
-                              'elementum semper. ',
+                          'elit. Morbi interdum justo a mauris pharetra '
+                          'finibus. Fusce aliquet tortor mi, vitae feugiat '
+                          'arcu fringilla ut. Sed quis massa vulputate, '
+                          'dignissim sem a, rutrum dui. In ac nunc dui. '
+                          'Morbi scelerisque finibus libero et auctor. '
+                          'Aenean lacus mi, placerat eu commodo nec, '
+                          'luctus nec arcu. Suspendisse eleifend vehicula '
+                          'quam, sed tincidunt lorem consequat luctus. '
+                          'In hac habitasse platea dictumst. In malesuada '
+                          'luctus ex, volutpat auctor ex placerat eget. '
+                          'Aenean egestas tempor lorem a maximus. Ut sed '
+                          'risus urna. Sed facilisis lacus at fringilla '
+                          'maximus. Nulla id tempus magna. Aenean sit amet'
+                          ' t ellus odio. Cras tincidunt felis vitae odio '
+                          'elementum semper. ',
                       github: 'salihgueler',
                       linkedin: 'msalihguler',
                       twitter: 'salihgueler',
