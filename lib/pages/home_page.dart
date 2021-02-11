@@ -69,27 +69,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const CountdownSection(),
-                Container(
-                  width: double.infinity,
-                  color: Colors.black,
-                  padding: const EdgeInsets.symmetric(vertical: 24.0),
-                  child: Column(
-                    children: [
-                      // For Countdown Section
-                      const SignInButton(
-                        fontSize: 28.0,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 56.0,
-                          vertical: 20.0,
-                        ),
-                      ),
-                      const SizedBox(height: 16.0),
-                      // For AppBar
-                      const SignInButton(),
-                    ],
-                  ),
-                ),
+                CountdownSection(),
                 const SectionTitle(title: 'Konuşmacılar'),
                 const SpeakersSection(),
                 const FooterSection(),
