@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:hackathon_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 
 /// TODO: Application form link will be updated with the new special link.
 ///
-/// Issue: #39 https://github.com/flutterturkey/hackathon_flutterturkiye_org/issues/39
+/// Issue: #39 https://github.com/flutterturkey/festival_flutterturkiye_org/issues/39
 const String _applicationFormUrl = 'https://forms.gle/987YW6xKdyYbPUtR6';
 
 /// This button always navigates to the [Application Form].

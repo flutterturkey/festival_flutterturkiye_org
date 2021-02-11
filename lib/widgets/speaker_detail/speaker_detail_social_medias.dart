@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/core/styles/theme_helper.dart';
-import 'package:hackathon_flutterturkiye_org/core/utils/responsive_helper.dart';
+import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 

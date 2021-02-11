@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/utils/assets.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/speaker_detail/speaker_detail_page.dart';
+import 'package:festival_flutterturkiye_org/utils/assets.dart';
+import 'package:festival_flutterturkiye_org/widgets/speaker_detail/speaker_detail_page.dart';
 
 class SpeakerCard extends StatefulWidget {
   @override

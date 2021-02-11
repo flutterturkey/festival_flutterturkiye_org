@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
+import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
 
 class CountdownWidget extends StatelessWidget {
   const CountdownWidget();
