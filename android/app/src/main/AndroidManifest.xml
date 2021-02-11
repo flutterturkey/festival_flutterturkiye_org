@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.festival_flutterturkiye_org">
+    package="org.flutterturkiye.festival_flutterturkiye_org">
    <application
         android:label="festival_flutterturkiye_org"
         android:icon="@mipmap/ic_launcher">
