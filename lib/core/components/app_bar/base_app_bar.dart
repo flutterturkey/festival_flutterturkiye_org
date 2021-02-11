@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../styles/theme_helper.dart';
 import 'app_bar_title.dart';
 
 class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
