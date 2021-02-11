@@ -11,9 +11,9 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
-      largeWidget: LargeWidget(),
-      mediumWidget: MediumWidget(),
-      smallWidget: SmallWidget(),
+      largeWidget: const LargeWidget(),
+      mediumWidget: const MediumWidget(),
+      smallWidget: const SmallWidget(),
     );
   }
 }
@@ -62,12 +62,12 @@ class SmallWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.mail,
                               color: Colors.white,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10.0),
                               child: Text(
                                 'hackathon@flutterturkiye.org',
                                 style: TextStyle(
@@ -82,29 +82,29 @@ class SmallWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       indent: 100,
                       endIndent: 100,
                       color: Colors.white,
                       thickness: 0.5,
                     ),
-                    Align(
+                    const Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
-                        padding: const EdgeInsets.only(
+                        padding: EdgeInsets.only(
                           top: 10,
                           left: 24,
                         ),
                         child: Text(
                           '© 2021 Flutter Türkiye',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                           ),
                         ),
                       ),
                     ),
-                    BottomView(),
+                    const BottomView(),
                   ],
                 ),
               ),
@@ -158,12 +158,12 @@ class MediumWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.mail,
                               color: Colors.white,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10.0),
                               child: Text(
                                 'hackathon@flutterturkiye.org',
                                 style: TextStyle(
@@ -178,30 +178,30 @@ class MediumWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       indent: 100,
                       endIndent: 100,
                       color: Colors.white,
                       thickness: 0.5,
                     ),
-                    Align(
+                    const Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
-                        padding: const EdgeInsets.only(
+                        padding: EdgeInsets.only(
                           top: 10,
                           left: 100,
                           right: 100,
                         ),
                         child: Text(
                           '© 2021 Flutter Türkiye',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
                           ),
                         ),
                       ),
                     ),
-                    BottomView(),
+                    const BottomView(),
                   ],
                 ),
               ),
@@ -255,12 +255,12 @@ class LargeWidget extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.mail,
                             color: Colors.white,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10.0),
                             child: Text(
                               'hackathon@flutterturkiye.org',
                               style: TextStyle(
@@ -275,30 +275,30 @@ class LargeWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     indent: 100,
                     endIndent: 100,
                     color: Colors.white,
                     thickness: 0.5,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                         top: 10,
                         left: 100,
                         right: 100,
                       ),
                       child: Text(
                         '© 2021 Flutter Türkiye',
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                         ),
                       ),
                     ),
                   ),
-                  BottomView(),
+                  const BottomView(),
                 ],
               ),
             ),
@@ -310,59 +310,7 @@ class LargeWidget extends StatelessWidget {
 }
 
 class BottomView extends StatelessWidget {
-  BottomView({Key key}) : super(key: key);
-
-  final List<Widget> mobileWidgets = [
-    Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Text(
-        'Flutter and the related logo are trademarks of Google LLC. Flutter Festival is not affiliated with or otherwise sponsored by Google LLC.',
-        textAlign: TextAlign.justify,
-        style: TextStyle(color: Colors.white, fontSize: 16),
-      ),
-    ),
-    SocialIcon(
-      icon: MdiIcons.twitter,
-      link: 'https://twitter.com/Flutter_Turkiye',
-    ),
-    SocialIcon(
-      icon: MdiIcons.youtube,
-      link: 'https://www.youtube.com/c/fluttert%C3%BCrkiye',
-    ),
-    SocialIcon(
-      icon: MdiIcons.telegram,
-      link: 'https://t.me/FlutterTR',
-    ),
-    SocialIcon(
-      icon: MdiIcons.discord,
-      link: 'https://discord.gg/bkSkTzw',
-    )
-  ];
-
-  final List<Widget> widgets = [
-    Expanded(
-      child: Text(
-        'Flutter and the related logo are trademarks of Google LLC. Flutter Hackathon is not affiliated with or otherwise sponsored by Google LLC.',
-        style: TextStyle(color: Colors.white),
-      ),
-    ),
-    SocialIcon(
-      icon: MdiIcons.twitter,
-      link: 'https://twitter.com/Flutter_Turkiye',
-    ),
-    SocialIcon(
-      icon: MdiIcons.youtube,
-      link: 'https://www.youtube.com/c/fluttert%C3%BCrkiye',
-    ),
-    SocialIcon(
-      icon: MdiIcons.telegram,
-      link: 'https://t.me/FlutterTR',
-    ),
-    SocialIcon(
-      icon: MdiIcons.discord,
-      link: 'https://discord.gg/bkSkTzw',
-    )
-  ];
+  const BottomView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -375,7 +323,30 @@ class BottomView extends StatelessWidget {
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: widgets,
+            children: [
+              Expanded(
+                child: Text(
+                  'Flutter and the related logo are trademarks of Google LLC. Flutter Hackathon is not affiliated with or otherwise sponsored by Google LLC.',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SocialIcon(
+                icon: MdiIcons.twitter,
+                link: 'https://twitter.com/Flutter_Turkiye',
+              ),
+              SocialIcon(
+                icon: MdiIcons.youtube,
+                link: 'https://www.youtube.com/c/fluttert%C3%BCrkiye',
+              ),
+              SocialIcon(
+                icon: MdiIcons.telegram,
+                link: 'https://t.me/FlutterTR',
+              ),
+              SocialIcon(
+                icon: MdiIcons.discord,
+                link: 'https://discord.gg/bkSkTzw',
+              )
+            ],
           )),
       smallWidget: Padding(
           padding: const EdgeInsets.only(
@@ -386,7 +357,32 @@ class BottomView extends StatelessWidget {
             alignment: WrapAlignment.center,
             spacing: 20,
             runSpacing: 20,
-            children: mobileWidgets,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  'Flutter and the related logo are trademarks of Google LLC. Flutter Festival is not affiliated with or otherwise sponsored by Google LLC.',
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+              SocialIcon(
+                icon: MdiIcons.twitter,
+                link: 'https://twitter.com/Flutter_Turkiye',
+              ),
+              SocialIcon(
+                icon: MdiIcons.youtube,
+                link: 'https://www.youtube.com/c/fluttert%C3%BCrkiye',
+              ),
+              SocialIcon(
+                icon: MdiIcons.telegram,
+                link: 'https://t.me/FlutterTR',
+              ),
+              SocialIcon(
+                icon: MdiIcons.discord,
+                link: 'https://discord.gg/bkSkTzw',
+              )
+            ],
           )),
     );
   }
