@@ -20,14 +20,32 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<AppBarAndDrawerItemModel> pageSectionsList = [];
+  final ScrollController scrollController = ScrollController();
+  bool isAppbarCollapsing = false;
 
   @override
   void initState() {
     super.initState();
-    initPageSectionList();
+    _initializeScrollController();
+    _initPageSectionList();
   }
 
-  void initPageSectionList() {
+  void _initializeScrollController() {
+    scrollController.addListener(() {
+      if (scrollController.offset == 0.0 &&
+          !scrollController.position.outOfRange) {
+        if (!mounted) return;
+        setState(() => isAppbarCollapsing = false);
+      }
+      if (scrollController.offset >= 9.0 &&
+          !scrollController.position.outOfRange) {
+        if (!mounted) return;
+        setState(() => isAppbarCollapsing = true);
+      }
+    });
+  }
+
+  void _initPageSectionList() {
     pageSectionsList.add(
       AppBarAndDrawerItemModel('Konuşmacılar', Icons.group_rounded, () {}),
     );
@@ -62,6 +80,7 @@ class _HomePageState extends State<HomePage> {
           ? buildAppBarWeb
           : buildAppBarMobile,
       body: SingleChildScrollView(
+        controller: scrollController,
         child: ConstrainedBox(
           constraints:
               BoxConstraints(minHeight: MediaQuery.of(context).size.height),
@@ -101,6 +120,7 @@ class _HomePageState extends State<HomePage> {
   Widget get buildAppBarWeb {
     return BaseAppBar(
       actions: pageSectionsListActions,
+      isAppbarCollapsing: isAppbarCollapsing,
     );
   }
 
@@ -109,6 +129,7 @@ class _HomePageState extends State<HomePage> {
       actions: [],
       isCenterTitle: true,
       leading: buildDrawerButton,
+      isAppbarCollapsing: isAppbarCollapsing,
     );
   }
 
