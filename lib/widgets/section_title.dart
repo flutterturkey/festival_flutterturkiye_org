@@ -9,7 +9,7 @@ class SectionTitle extends StatelessWidget {
   const SectionTitle(
       {@required this.title,
       this.textColor = Colors.black,
-      this.padding = const EdgeInsets.symmetric(vertical: 72.0),
+      this.padding = const EdgeInsets.symmetric(vertical: 48.0),
       this.fontSize = 48})
       : assert(title != null),
         assert(textColor != null),
