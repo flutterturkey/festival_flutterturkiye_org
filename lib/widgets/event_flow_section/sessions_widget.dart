@@ -1,11 +1,9 @@
+import 'package:festival_flutterturkiye_org/core/model/session_model.dart';
+import 'package:festival_flutterturkiye_org/core/model/speaker_model.dart';
+import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_session_point.dart';
+import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_info_field.dart';
+import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_time_field.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/core/model/session_model.dart';
-import 'package:hackathon_flutterturkiye_org/core/model/speaker_model.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/event_flow_section/event_flow_session_point.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/event_flow_section/session_info_field.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/event_flow_section/session_time_field.dart';
-
-enum SessionStatus { waiting, active, passed }
 
 final _speakers = <SpeakerModel>[
   SpeakerModel(
@@ -123,14 +121,13 @@ class _SessionWidget extends StatelessWidget {
     final speaker = session.speakerId;
     final startingTime = _getTime(session.startingTime);
     final dueTime = _getTime(session.startingTime.add(session.duration));
-    final sessionStatus = SessionStatus.waiting;
+    final sessionStatus = session.status;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // TODO: SessionStatus
           Expanded(
             child: EventFlowSessionText(
               text: '$startingTime - $dueTime',

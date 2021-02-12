@@ -1,6 +1,6 @@
+import 'package:festival_flutterturkiye_org/core/model/session_model.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/core/styles/theme_helper.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/event_flow_section/sessions_widget.dart';
+import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 
 class EventFlowSessionPoint extends StatelessWidget {
   final SessionStatus sessionStatus;
@@ -15,25 +15,24 @@ class EventFlowSessionPoint extends StatelessWidget {
 
     switch (sessionStatus) {
       case SessionStatus.active:
-        pointColor = ThemeHelper.lightColor;
-        radius = 12.0;
+        pointColor = ThemeHelper.eventPointColor;
+        radius = 28.0;
         break;
       case SessionStatus.passed:
         pointColor = ThemeHelper.appBarActionColor;
-        radius = 8.0;
+        radius = 20.0;
         break;
       case SessionStatus.waiting:
       default:
-        pointColor = ThemeHelper.eventPointColor;
-        radius = 8.0;
+        pointColor = ThemeHelper.blueColor;
+        radius = 20.0;
         break;
     }
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
-      child: CircleAvatar(
-        radius: radius,
-        backgroundColor: pointColor,
-      ),
+    return Container(
+      height: radius,
+      width: radius,
+      margin: const EdgeInsets.symmetric(horizontal: 12.0),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: pointColor),
     );
   }
 }

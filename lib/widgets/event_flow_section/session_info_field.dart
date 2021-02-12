@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/core/model/session_model.dart';
-import 'package:hackathon_flutterturkiye_org/core/model/speaker_model.dart';
-import 'package:hackathon_flutterturkiye_org/core/styles/theme_helper.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/event_flow_section/session_time_field.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/event_flow_section/sessions_widget.dart';
+import 'package:festival_flutterturkiye_org/core/model/session_model.dart';
+import 'package:festival_flutterturkiye_org/core/model/speaker_model.dart';
+import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_time_field.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SessionInfoField extends StatelessWidget {
@@ -20,10 +19,9 @@ class SessionInfoField extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // TODO: SessionStatus
         EventFlowSessionText(
           text: session.title,
-          sessionStatus: SessionStatus.waiting,
+          sessionStatus: session.status,
         ),
         const _EventFlowAddToCalendar(),
         EventFlowSpeaker(

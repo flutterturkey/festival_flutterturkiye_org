@@ -1,6 +1,7 @@
+import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
+import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_section.dart';
+import 'package:festival_flutterturkiye_org/widgets/sign_in_button.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
-import 'package:hackathon_flutterturkiye_org/widgets/sign_in_button.dart';
 import '../core/components/app_bar/app_bar_action_button.dart';
 import '../core/components/app_bar/base_app_bar.dart';
 import '../core/components/drawer/base_drawer.dart';
@@ -92,6 +93,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SectionTitle(title: 'Konuşmacılar'),
                 SpeakersSection(),
+                const EventFlowSection(),
                 FooterView(),
               ],
             ),

@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/services/calendar_client.dart';
 import 'package:flutter/material.dart';
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/speaker_detail/speaker_detail.dart';
@@ -61,6 +62,9 @@ class _SpeakerDetailAddToCalendar extends StatelessWidget {
           * TODO: Add to Calendar will be added. Issue: #43
           * https://github.com/flutterturkey/festival_flutterturkiye_org/issues/43
          */
+        final startDate = DateTime.now();
+        final endDate = startDate.add(Duration(minutes: 30));
+        CalendarClient.instance.insertEvent('Deneme', startDate, endDate);
       },
     );
   }
