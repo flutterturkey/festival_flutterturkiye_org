@@ -60,7 +60,7 @@ class SmallWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 30, bottom: 10),
                       child: InkWell(
                         onTap: () =>
-                            launch('mailto:hackathon@flutterturkiye.org'),
+                            launch('mailto:festival@flutterturkiye.org'),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -71,7 +71,7 @@ class SmallWidget extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.only(left: 10.0),
                               child: Text(
-                                'hackathon@flutterturkiye.org',
+                                'festival@flutterturkiye.org',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -158,7 +158,7 @@ class MediumWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 30, bottom: 10),
                       child: InkWell(
                         onTap: () =>
-                            launch('mailto:hackathon@flutterturkiye.org'),
+                            launch('mailto:festival@flutterturkiye.org'),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -169,7 +169,7 @@ class MediumWidget extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.only(left: 10.0),
                               child: Text(
-                                'hackathon@flutterturkiye.org',
+                                'festival@flutterturkiye.org',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -256,8 +256,7 @@ class LargeWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 30, bottom: 10),
                     child: InkWell(
-                      onTap: () =>
-                          launch('mailto:hackathon@flutterturkiye.org'),
+                      onTap: () => launch('mailto:festival@flutterturkiye.org'),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -268,7 +267,7 @@ class LargeWidget extends StatelessWidget {
                           const Padding(
                             padding: EdgeInsets.only(left: 10.0),
                             child: Text(
-                              'hackathon@flutterturkiye.org',
+                              'festival@flutterturkiye.org',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -332,7 +331,7 @@ class BottomView extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Flutter and the related logo are trademarks of Google LLC. Flutter Hackathon is not affiliated with or otherwise sponsored by Google LLC.',
+                  'Flutter and the related logo are trademarks of Google LLC. Flutter Festival is not affiliated with or otherwise sponsored by Google LLC.',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
