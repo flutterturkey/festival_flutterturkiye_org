@@ -40,7 +40,9 @@ class SmallWidget extends StatelessWidget {
                 ),
               ), // background
               Container(
-                color: Colors.black.withOpacity(0.75),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.75),
+                ),
               ), // black filter
               Center(
                 child: Column(
@@ -136,7 +138,9 @@ class MediumWidget extends StatelessWidget {
                 ),
               ), // background
               Container(
-                color: Colors.black.withOpacity(0.75),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.75),
+                ),
               ), // black filter
               Center(
                 child: Column(
@@ -233,7 +237,9 @@ class LargeWidget extends StatelessWidget {
               ),
             ), // background
             Container(
-              color: Colors.black.withOpacity(0.75),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.75),
+              ),
             ), // black filter
             Center(
               child: Column(
