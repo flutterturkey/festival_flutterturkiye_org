@@ -8,7 +8,7 @@ import '../widgets/footer_view.dart';
 import '../widgets/section_title.dart';
 import '../widgets/speakers_section.dart';
 
-const _scrollofset = 12.0;
+const _scrolloffset = 12.0;
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
