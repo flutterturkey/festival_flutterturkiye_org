@@ -8,6 +8,8 @@ import '../widgets/footer_view.dart';
 import '../widgets/section_title.dart';
 import '../widgets/speakers_section.dart';
 
+const _scrollofset = 12.0;
+
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
 
@@ -37,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         if (!mounted) return;
         setState(() => isAppbarCollapsing = false);
       }
-      if (scrollController.offset >= 9.0 &&
+      if (scrollController.offset >= _scrollofset &&
           !scrollController.position.outOfRange) {
         if (!mounted) return;
         setState(() => isAppbarCollapsing = true);
