@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         if (!mounted) return;
         setState(() => isAppbarCollapsing = false);
       }
-      if (scrollController.offset >= _scrollofset &&
+      if (scrollController.offset >= _scrolloffset &&
           !scrollController.position.outOfRange) {
         if (!mounted) return;
         setState(() => isAppbarCollapsing = true);
