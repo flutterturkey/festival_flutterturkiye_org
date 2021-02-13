@@ -4,7 +4,7 @@ import '../../model/app_bar_and_drawer_item_model.dart';
 import 'drawer_list_tile.dart';
 
 class BaseDrawer extends StatelessWidget {
-  final List<AppBarAndDrawerItemModel> drawerList;
+  final List<DrawerItemModel> drawerList;
 
   const BaseDrawer({
     Key key,
