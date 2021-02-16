@@ -17,6 +17,7 @@ class ThemeHelper {
     visualDensity: VisualDensity.adaptivePlatformDensity,
     accentColor: lightColor,
     primaryColor: darkColor,
+    canvasColor: ThemeHelper.darkColor,
     brightness: brightness,
     fontFamily: 'Manrope',
     buttonTheme: const ButtonThemeData(
