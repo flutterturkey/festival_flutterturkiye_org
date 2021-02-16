@@ -5,7 +5,7 @@ class DrawerItemModel {
   final IconData icon;
   final VoidCallback onPressed;
 
-  DrawerItemModel(
+  const DrawerItemModel(
     this.title,
     this.icon,
     this.onPressed,

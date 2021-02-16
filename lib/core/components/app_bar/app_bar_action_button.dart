@@ -18,7 +18,7 @@ class AppBarActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 7.0),
+      padding: const EdgeInsets.all(7.0),
       child: TextButton(
         child: buildButtonTitle,
         style: buildTextButtonStyle,
