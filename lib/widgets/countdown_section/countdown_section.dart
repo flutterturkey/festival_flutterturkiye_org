@@ -1,30 +1,97 @@
+import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/widgets/sign_in_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
+import 'package:video_player/video_player.dart';
 
 const double _paddingSmall = 24.0;
 const double _paddingMedium = 48.0;
 const double _paddingLarge = 72.0;
 
-class CountdownSection extends StatelessWidget {
-  const CountdownSection();
+class CountdownSection extends StatefulWidget {
+  @override
+  _CountdownSectionState createState() => _CountdownSectionState();
+}
+
+class _CountdownSectionState extends State<CountdownSection> {
+  final VideoPlayerController _controller =
+      VideoPlayerController.asset('assets/videos/countdown_bg.mp4');
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.initialize().then(
+      (_) {
+        _controller.setVolume(0);
+        _controller.play();
+        _controller.setLooping(true);
+        setState(() {});
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
     return Container(
-      decoration: const BoxDecoration(color: Colors.black),
       height: screenSize.height,
-      padding: _padding(context),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
+      width: screenSize.width,
+      color: ThemeHelper.cardBackgroundColor,
+      child: Stack(
         children: [
-          const _CountdownTitle(),
-          SizedBox(height: screenSize.height * 0.1),
-          const CountdownWidget(),
+          SizedBox.expand(
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: SizedBox(
+                width: _controller.value.size?.width ?? 0,
+                height: _controller.value.size?.height ?? 0,
+                child: VideoPlayer(_controller),
+              ),
+            ),
+          ),
+          Container(
+            height: screenSize.height,
+            color: Colors.black.withOpacity(0.75),
+          ),
+          Container(
+            padding: _padding(context),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const _CountdownTitle(),
+                SizedBox(height: screenSize.height * 0.1),
+                const CountdownWidget(),
+                SizedBox(height: screenSize.height * 0.1),
+                Container(
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  padding: const EdgeInsets.symmetric(vertical: 24.0),
+                  child: Column(
+                    children: [
+                      // For Countdown Section
+                      const SignInButton(
+                        fontSize: 28.0,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 56.0,
+                          vertical: 20.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
