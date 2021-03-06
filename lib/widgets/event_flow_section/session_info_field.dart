@@ -6,30 +6,56 @@ import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_t
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SessionInfoField extends StatelessWidget {
-  const SessionInfoField({Key key, @required this.session, this.speaker})
-      : assert(session != null),
+  const SessionInfoField({
+    Key key,
+    @required this.session,
+    this.speaker,
+    this.horizontalAxisAlignment = CrossAxisAlignment.start,
+    this.isSmallScreen = false,
+  })  : assert(session != null),
+        assert(horizontalAxisAlignment != null),
+        assert(isSmallScreen != null),
         super(key: key);
 
   final SessionModel session;
   final SpeakerModel speaker;
+  final CrossAxisAlignment horizontalAxisAlignment;
+  final bool isSmallScreen;
 
   @override
   Widget build(BuildContext context) {
+    final startingTime = _getTime(session.startingTime);
+    final dueTime = _getTime(session.startingTime.add(session.duration));
+
     return Column(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: horizontalAxisAlignment,
       children: [
         EventFlowSessionText(
           text: session.title,
           sessionStatus: session.status,
         ),
+        if (isSmallScreen) ...[
+          const SizedBox(height: 8.0),
+          EventFlowSessionText(
+            text: '$startingTime - $dueTime',
+            sessionStatus: session.status,
+          ),
+        ],
         const _EventFlowAddToCalendar(),
+        const SizedBox(height: 8.0),
         EventFlowSpeaker(
           speaker: speaker,
         ),
       ],
     );
   }
+
+  String _getTime(DateTime dateTime) =>
+      '${_dateFixer(dateTime.hour)}:${_dateFixer(dateTime.minute)}';
+
+  String _dateFixer(int date) => '${date < 10 ? '0' : ''}$date';
 }
 
 class _EventFlowAddToCalendar extends StatelessWidget {
@@ -39,10 +65,10 @@ class _EventFlowAddToCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton.icon(
       padding: EdgeInsets.zero,
-      icon: Icon(MdiIcons.calendarPlus),
-      label: Text('Takvime ekle'),
+      icon: const Icon(MdiIcons.calendarPlus),
+      label: const Text('Takvime ekle'),
       onPressed: () {
-        //TODO: Add to Calendar
+        //TODO: Add to Calendar Issue: #43
       },
     );
   }
@@ -60,7 +86,7 @@ class EventFlowSpeaker extends StatelessWidget {
     }
     return GestureDetector(
       onTap: () {
-        // TODO: It will connect to Speaker Detail
+        // TODO: It will connect to Speaker Detail Issue: #57
         debugPrint('Go To Speaker Detail');
       },
       child: Row(
@@ -72,7 +98,7 @@ class EventFlowSpeaker extends StatelessWidget {
           const SizedBox(width: 8.0),
           Text(
             '${speaker.name} ${speaker.surname}',
-            style: TextStyle(
+            style: const TextStyle(
               color: ThemeHelper.blueColor,
               fontSize: 16.0,
               fontWeight: FontWeight.w500,

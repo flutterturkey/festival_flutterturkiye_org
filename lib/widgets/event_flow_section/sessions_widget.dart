@@ -3,6 +3,7 @@ import 'package:festival_flutterturkiye_org/core/model/speaker_model.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_session_point.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_info_field.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_time_field.dart';
+import 'package:festival_flutterturkiye_org/widgets/responsive_builder.dart';
 import 'package:flutter/material.dart';
 
 final _speakers = <SpeakerModel>[
@@ -90,6 +91,7 @@ class SessionsWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _SessionWidget(session: _sessions[0]),
           _SessionWidget(session: _sessions[1]),
@@ -117,32 +119,70 @@ class _SessionWidget extends StatelessWidget {
   final SessionModel session;
   @override
   Widget build(BuildContext context) {
-    // TODO: Refactor speaker
     final speaker = session.speakerId;
     final startingTime = _getTime(session.startingTime);
     final dueTime = _getTime(session.startingTime.add(session.duration));
-    final sessionStatus = session.status;
 
+    return ResponsiveBuilder(
+      smallWidget: Padding(
+        padding: const EdgeInsets.only(bottom: 16.0),
+        child: SessionInfoField(
+          session: session,
+          speaker: speaker,
+          isSmallScreen: true,
+          horizontalAxisAlignment: CrossAxisAlignment.start,
+        ),
+      ),
+      mediumWidget: Padding(
+        padding: const EdgeInsets.only(bottom: 16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: EventFlowSessionText(
+                text: '$startingTime - $dueTime',
+                sessionStatus: session.status,
+              ),
+            ),
+            EventFlowSessionPoint(sessionStatus: session.status),
+            Expanded(
+              child: SessionInfoField(
+                session: session,
+                speaker: speaker,
+              ),
+            ),
+          ],
+        ),
+      ),
+      largeWidget: Padding(
+        padding: const EdgeInsets.only(bottom: 16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: EventFlowSessionText(
+                text: '$startingTime - $dueTime',
+                sessionStatus: session.status,
+              ),
+            ),
+            EventFlowSessionPoint(sessionStatus: session.status),
+            Expanded(
+              child: SessionInfoField(
+                session: session,
+                speaker: speaker,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget widget({@required Widget child}) {
+    assert(child != null);
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: EventFlowSessionText(
-              text: '$startingTime - $dueTime',
-              sessionStatus: sessionStatus,
-            ),
-          ),
-          EventFlowSessionPoint(sessionStatus: sessionStatus),
-          Expanded(
-            child: SessionInfoField(
-              session: session,
-              speaker: speaker,
-            ),
-          ),
-        ],
-      ),
+      child: child,
     );
   }
 

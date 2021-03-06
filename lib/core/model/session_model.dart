@@ -19,7 +19,7 @@ class SessionModel {
         assert(duration != null);
 
   SessionStatus get status {
-    final currentDate = DateTime(2021, 3, 6, 11, 45);
+    final currentDate = DateTime(2021, 3, 6, 11, 00);
 
     final isStarted = currentDate.compareTo(startingTime);
 

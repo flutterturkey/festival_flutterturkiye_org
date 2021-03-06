@@ -1,5 +1,6 @@
-import 'package:festival_flutterturkiye_org/core/model/session_model.dart';
 import 'package:flutter/material.dart';
+
+import 'package:festival_flutterturkiye_org/core/model/session_model.dart';
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 
 class EventFlowSessionText extends StatelessWidget {
@@ -40,7 +41,7 @@ class EventFlowSessionText extends StatelessWidget {
 
     return Text(
       text,
-      textAlign: TextAlign.end,
+      textAlign: TextAlign.start,
       style: TextStyle(
         color: textColor,
         fontSize: fontSize,
