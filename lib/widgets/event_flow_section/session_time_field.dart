@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
-
-import 'package:festival_flutterturkiye_org/core/model/session_model.dart';
+import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:flutter/material.dart';
 
 class EventFlowSessionText extends StatelessWidget {
   const EventFlowSessionText({
-    Key key,
     @required this.text,
     this.sessionStatus = SessionStatus.waiting,
+    Key key,
   })  : assert(text != null),
         assert(sessionStatus != null),
         super(key: key);

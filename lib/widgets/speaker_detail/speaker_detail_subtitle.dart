@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/speaker_detail/speaker_detail.dart';
+import 'package:flutter/material.dart';
 
 class SpeakerDetailSubTitle extends StatelessWidget {
   const SpeakerDetailSubTitle({
-    Key key,
     @required this.title,
+    Key key,
   })  : assert(title != null),
         super(key: key);
 
@@ -29,11 +29,11 @@ class SpeakerDetailSubTitle extends StatelessWidget {
           style: const TextStyle(
             color: ThemeHelper.lightColor,
             fontWeight: FontWeight.w500,
-            fontSize: 28.0,
+            fontSize: 28,
           ),
         ),
-        AdjustableWidthDivider(width: dividerWidth, thickness: 4.0),
-        const SizedBox(height: 16.0),
+        AdjustableWidthDivider(width: dividerWidth, thickness: 4),
+        const SizedBox(height: 16),
       ],
     );
   }

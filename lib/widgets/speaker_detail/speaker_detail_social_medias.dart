@@ -1,10 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SpeakerSocialMedias extends StatelessWidget {
+  const SpeakerSocialMedias({
+    this.twitter,
+    this.github,
+    this.linkedin,
+    Key key,
+  }) : super(key: key);
+
   /// Twitter username of the Speaker.
   ///
   /// https://www.twitter.com/ + `username`
@@ -19,13 +26,6 @@ class SpeakerSocialMedias extends StatelessWidget {
   ///
   /// https://www.linkedin.com/in/ + `username`
   final String linkedin;
-
-  const SpeakerSocialMedias({
-    Key key,
-    this.twitter,
-    this.github,
-    this.linkedin,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +59,10 @@ class SpeakerSocialMedias extends StatelessWidget {
 
 class _SpeakerSocialMediaButton extends StatelessWidget {
   const _SpeakerSocialMediaButton({
-    Key key,
     @required this.icon,
     @required this.url,
     this.username,
+    Key key,
   })  : assert(icon != null),
         assert(url != null),
         super(key: key);
@@ -74,24 +74,24 @@ class _SpeakerSocialMediaButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (username == null) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
 
     return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
+      padding: const EdgeInsets.only(right: 8),
       child: ClipOval(
         child: Material(
-          elevation: 8.0,
+          elevation: 8,
           shadowColor: Colors.black,
           color: Colors.white10,
           child: InkWell(
             onTap: () async {
               if (await canLaunch(url + username)) {
-                return await launch(url + username);
+                await launch(url + username);
               }
             },
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Icon(
                 icon,
                 color: ThemeHelper.lightColor,

@@ -1,13 +1,15 @@
-import 'package:festival_flutterturkiye_org/core/model/session_model.dart';
-import 'package:flutter/material.dart';
+import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:flutter/material.dart';
 
 class EventFlowSessionPoint extends StatelessWidget {
+  const EventFlowSessionPoint({
+    @required this.sessionStatus,
+    Key key,
+  })  : assert(sessionStatus != null),
+        super(key: key);
   final SessionStatus sessionStatus;
 
-  const EventFlowSessionPoint({Key key, @required this.sessionStatus})
-      : assert(sessionStatus != null),
-        super(key: key);
   @override
   Widget build(BuildContext context) {
     Color pointColor;
@@ -31,7 +33,7 @@ class EventFlowSessionPoint extends StatelessWidget {
     return Container(
       height: radius,
       width: radius,
-      margin: const EdgeInsets.symmetric(horizontal: 12.0),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(shape: BoxShape.circle, color: pointColor),
     );
   }

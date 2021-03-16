@@ -1,25 +1,25 @@
-import 'package:festival_flutterturkiye_org/core/model/speaker_model.dart';
+import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:meta/meta.dart';
 
 enum SessionStatus { waiting, active, passed }
 
-class SessionModel {
-  final SpeakerModel speakerId;
-  final String title;
-  final DateTime startingTime;
-  final Duration duration;
-
-  const SessionModel({
-    this.speakerId,
+class Session {
+  const Session({
     @required this.title,
     @required this.startingTime,
     @required this.duration,
+    this.speakerId,
   })  : assert(title != null),
         assert(startingTime != null),
         assert(duration != null);
 
+  final Speaker speakerId;
+  final String title;
+  final DateTime startingTime;
+  final Duration duration;
+
   SessionStatus get status {
-    final currentDate = DateTime(2021, 3, 6, 11, 00);
+    final currentDate = DateTime(2021, 4, 17, 11);
 
     final isStarted = currentDate.compareTo(startingTime);
 

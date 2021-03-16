@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ThemeHelper {
+  ThemeHelper._();
+
   static const Color darkColor = Color(0xFF212937);
   static const Color lightColor = Color(0xFFFFFFFF);
   static const Color blueColor = Color(0xFF07C6F9);

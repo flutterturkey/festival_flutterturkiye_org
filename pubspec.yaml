@@ -9,11 +9,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
   material_design_icons_flutter: ^4.0.5855
-  pedantic: ^1.9.2
   url_launcher: ^5.7.10
   video_player: ^1.0.1
 
@@ -22,6 +21,10 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
+  superlint:
+    git:
+      url: https://github.com/superlistapp/superlint
+      ref: main
 flutter:
   uses-material-design: true
 

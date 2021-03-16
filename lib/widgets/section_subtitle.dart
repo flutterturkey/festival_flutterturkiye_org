@@ -10,71 +10,71 @@ import 'package:flutter/material.dart';
 /// - 28.0 => Medium Screen
 /// - 32.0 => Large Screen
 class SectionSubtitle extends StatelessWidget {
-  final String title;
-  final Color textColor;
-  final EdgeInsets padding;
-
   const SectionSubtitle({
     @required this.title,
     this.textColor = ThemeHelper.lightColor,
     this.padding = EdgeInsets.zero,
+    Key key,
   })  : assert(title != null),
         assert(textColor != null),
-        assert(padding != null);
+        assert(padding != null),
+        super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return ResponsiveBuilder(
-      smallWidget: _SectionSubtitleResponsiveText(
-        title: title,
-        fontSize: 24.0,
-        textColor: textColor,
-        padding: padding,
-      ),
-      mediumWidget: _SectionSubtitleResponsiveText(
-        title: title,
-        fontSize: 28.0,
-        textColor: textColor,
-        padding: padding,
-      ),
-      largeWidget: _SectionSubtitleResponsiveText(
-        title: title,
-        fontSize: 32.0,
-        textColor: textColor,
-        padding: padding,
-      ),
-    );
-  }
-}
-
-class _SectionSubtitleResponsiveText extends StatelessWidget {
   final String title;
   final Color textColor;
   final EdgeInsets padding;
-  final double fontSize;
 
+  @override
+  Widget build(BuildContext context) => ResponsiveBuilder(
+        smallWidget: _SectionSubtitleResponsiveText(
+          title: title,
+          fontSize: 24,
+          textColor: textColor,
+          padding: padding,
+        ),
+        mediumWidget: _SectionSubtitleResponsiveText(
+          title: title,
+          fontSize: 28,
+          textColor: textColor,
+          padding: padding,
+        ),
+        largeWidget: _SectionSubtitleResponsiveText(
+          title: title,
+          fontSize: 32,
+          textColor: textColor,
+          padding: padding,
+        ),
+      );
+}
+
+class _SectionSubtitleResponsiveText extends StatelessWidget {
   const _SectionSubtitleResponsiveText({
     @required this.title,
     this.textColor = ThemeHelper.lightColor,
     this.padding = EdgeInsets.zero,
     this.fontSize = 36.0,
+    Key key,
   })  : assert(title != null),
         assert(textColor != null),
         assert(padding != null),
-        assert(fontSize != null);
+        assert(fontSize != null),
+        super(key: key);
+
+  final String title;
+  final Color textColor;
+  final EdgeInsets padding;
+  final double fontSize;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: padding,
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: fontSize,
-          color: textColor,
+  Widget build(BuildContext context) => Padding(
+        padding: padding,
+        child: Text(
+          title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: fontSize,
+            color: textColor,
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

@@ -1,24 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:festival_flutterturkiye_org/core/model/session_model.dart';
-import 'package:festival_flutterturkiye_org/core/model/speaker_model.dart';
+import 'package:festival_flutterturkiye_org/core/model/session.dart';
+import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_time_field.dart';
+import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SessionInfoField extends StatelessWidget {
   const SessionInfoField({
-    Key key,
     @required this.session,
-    this.speaker,
     this.horizontalAxisAlignment = CrossAxisAlignment.start,
     this.isSmallScreen = false,
+    this.speaker,
+    Key key,
   })  : assert(session != null),
         assert(horizontalAxisAlignment != null),
         assert(isSmallScreen != null),
         super(key: key);
 
-  final SessionModel session;
-  final SpeakerModel speaker;
+  final Session session;
+  final Speaker speaker;
   final CrossAxisAlignment horizontalAxisAlignment;
   final bool isSmallScreen;
 
@@ -29,7 +29,6 @@ class SessionInfoField extends StatelessWidget {
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: horizontalAxisAlignment,
       children: [
         EventFlowSessionText(
@@ -37,14 +36,14 @@ class SessionInfoField extends StatelessWidget {
           sessionStatus: session.status,
         ),
         if (isSmallScreen) ...[
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 8),
           EventFlowSessionText(
             text: '$startingTime - $dueTime',
             sessionStatus: session.status,
           ),
         ],
         const _EventFlowAddToCalendar(),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 8),
         EventFlowSpeaker(
           speaker: speaker,
         ),
@@ -62,27 +61,24 @@ class _EventFlowAddToCalendar extends StatelessWidget {
   const _EventFlowAddToCalendar();
 
   @override
-  Widget build(BuildContext context) {
-    return FlatButton.icon(
-      padding: EdgeInsets.zero,
-      icon: const Icon(MdiIcons.calendarPlus),
-      label: const Text('Takvime ekle'),
-      onPressed: () {
-        //TODO: Add to Calendar Issue: #43
-      },
-    );
-  }
+  Widget build(BuildContext context) => TextButton.icon(
+        icon: const Icon(MdiIcons.calendarPlus),
+        label: const Text('Takvime ekle'),
+        onPressed: () {
+          //TODO: Add to Calendar Issue: #43
+        },
+      );
 }
 
 class EventFlowSpeaker extends StatelessWidget {
   const EventFlowSpeaker({Key key, this.speaker}) : super(key: key);
 
-  final SpeakerModel speaker;
+  final Speaker speaker;
 
   @override
   Widget build(BuildContext context) {
     if (speaker == null) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
     return GestureDetector(
       onTap: () {
@@ -93,14 +89,14 @@ class EventFlowSpeaker extends StatelessWidget {
         children: [
           _SpeakerImage(
             speakerImage: speaker.image,
-            imageSize: 64.0,
+            imageSize: 64,
           ),
-          const SizedBox(width: 8.0),
+          const SizedBox(width: 8),
           Text(
             '${speaker.name} ${speaker.surname}',
             style: const TextStyle(
               color: ThemeHelper.blueColor,
-              fontSize: 16.0,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
           )
@@ -113,9 +109,9 @@ class EventFlowSpeaker extends StatelessWidget {
 // TODO: It will be merged with SpeakerImage after PR #38
 class _SpeakerImage extends StatelessWidget {
   const _SpeakerImage({
-    Key key,
     @required this.speakerImage,
     @required this.imageSize,
+    Key key,
   })  : assert(speakerImage != null),
         assert(imageSize != null),
         super(key: key);
@@ -124,21 +120,19 @@ class _SpeakerImage extends StatelessWidget {
   final double imageSize;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: imageSize,
-      width: imageSize,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(speakerImage),
-          fit: BoxFit.cover,
+  Widget build(BuildContext context) => Container(
+        height: imageSize,
+        width: imageSize,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(speakerImage),
+            fit: BoxFit.cover,
+          ),
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: ThemeHelper.blueColor,
+            width: 2,
+          ),
         ),
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: ThemeHelper.blueColor,
-          width: 2,
-        ),
-      ),
-    );
-  }
+      );
 }

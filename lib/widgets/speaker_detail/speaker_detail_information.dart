@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/speaker_detail/speaker_detail.dart';
+import 'package:flutter/material.dart';
 
 class SpeakerInformation extends StatelessWidget {
   const SpeakerInformation({
-    Key key,
     @required this.speakerName,
     this.speakerCompany,
     this.speakerTwitter,
     this.speakerGithub,
     this.speakerLinkedIn,
+    Key key,
   })  : assert(speakerName != null),
         super(key: key);
 
@@ -49,13 +49,13 @@ class SpeakerInformation extends StatelessWidget {
           speakerNameFontSize: speakerNameFontSize,
         ),
         // Divider
-        AdjustableWidthDivider(width: dividerWidth, thickness: 8.0),
+        AdjustableWidthDivider(width: dividerWidth, thickness: 8),
         // Space
-        const SizedBox(height: 16.0),
+        const SizedBox(height: 16),
         // Company
         _SpeakerCompany(speakerCompany: speakerCompany, textAlign: textAlign),
         // Space
-        const SizedBox(height: 24.0),
+        const SizedBox(height: 24),
         // Social Medias
         SpeakerSocialMedias(
           twitter: speakerTwitter,
@@ -69,10 +69,10 @@ class SpeakerInformation extends StatelessWidget {
 
 class _SpeakerName extends StatelessWidget {
   const _SpeakerName({
-    Key key,
+    @required this.speakerNameFontSize,
     @required this.speakerName,
     this.textAlign = TextAlign.start,
-    @required this.speakerNameFontSize,
+    Key key,
   })  : assert(speakerName != null),
         assert(textAlign != null),
         assert(speakerNameFontSize != null),
@@ -83,17 +83,15 @@ class _SpeakerName extends StatelessWidget {
   final double speakerNameFontSize;
 
   @override
-  Widget build(BuildContext context) {
-    return Text(
-      speakerName,
-      textAlign: textAlign,
-      style: TextStyle(
-        color: ThemeHelper.lightColor,
-        fontWeight: FontWeight.w600,
-        fontSize: speakerNameFontSize,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Text(
+        speakerName,
+        textAlign: textAlign,
+        style: TextStyle(
+          color: ThemeHelper.lightColor,
+          fontWeight: FontWeight.w600,
+          fontSize: speakerNameFontSize,
+        ),
+      );
 }
 
 class _SpeakerCompany extends StatelessWidget {
@@ -109,7 +107,7 @@ class _SpeakerCompany extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (speakerCompany == null) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
     return Text(
       speakerCompany,
@@ -117,7 +115,7 @@ class _SpeakerCompany extends StatelessWidget {
       style: const TextStyle(
         color: ThemeHelper.lightColor,
         fontWeight: FontWeight.w300,
-        fontSize: 24.0,
+        fontSize: 24,
       ),
     );
   }

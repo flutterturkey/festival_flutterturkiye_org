@@ -1,16 +1,17 @@
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
-import 'package:festival_flutterturkiye_org/widgets/sign_in_button.dart';
-import 'package:flutter/material.dart';
-
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
+import 'package:festival_flutterturkiye_org/widgets/sign_in_button.dart';
+import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-const double _paddingSmall = 24.0;
-const double _paddingMedium = 48.0;
-const double _paddingLarge = 72.0;
+const double _paddingSmall = 24;
+const double _paddingMedium = 48;
+const double _paddingLarge = 72;
 
 class CountdownSection extends StatefulWidget {
+  const CountdownSection({Key key}) : super(key: key);
+
   @override
   _CountdownSectionState createState() => _CountdownSectionState();
 }
@@ -24,9 +25,10 @@ class _CountdownSectionState extends State<CountdownSection> {
     super.initState();
     _controller.initialize().then(
       (_) {
-        _controller.setVolume(0);
-        _controller.play();
-        _controller.setLooping(true);
+        _controller
+          ..setVolume(0)
+          ..play()
+          ..setLooping(true);
         setState(() {});
       },
     );
@@ -75,15 +77,15 @@ class _CountdownSectionState extends State<CountdownSection> {
                 Container(
                   width: double.infinity,
                   color: Colors.transparent,
-                  padding: const EdgeInsets.symmetric(vertical: 24.0),
+                  padding: const EdgeInsets.symmetric(vertical: 24),
                   child: Column(
-                    children: [
+                    children: const [
                       // For Countdown Section
-                      const SignInButton(
-                        fontSize: 28.0,
+                      SignInButton(
+                        fontSize: 28,
                         padding: EdgeInsets.symmetric(
-                          horizontal: 56.0,
-                          vertical: 20.0,
+                          horizontal: 56,
+                          vertical: 20,
                         ),
                       ),
                     ],
@@ -99,11 +101,11 @@ class _CountdownSectionState extends State<CountdownSection> {
 
   EdgeInsets _padding(BuildContext context) {
     if (ResponsiveHelper.isLargeScreen(context)) {
-      return EdgeInsets.symmetric(horizontal: _paddingLarge);
+      return const EdgeInsets.symmetric(horizontal: _paddingLarge);
     } else if (ResponsiveHelper.isMediumScreen(context)) {
-      return EdgeInsets.symmetric(horizontal: _paddingMedium);
+      return const EdgeInsets.symmetric(horizontal: _paddingMedium);
     } else {
-      return EdgeInsets.symmetric(horizontal: _paddingSmall);
+      return const EdgeInsets.symmetric(horizontal: _paddingSmall);
     }
   }
 }
