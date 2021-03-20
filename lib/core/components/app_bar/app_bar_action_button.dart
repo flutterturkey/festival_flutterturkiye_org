@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
 
 class AppBarActionButton extends StatelessWidget {
   final String title;
@@ -19,7 +18,7 @@ class AppBarActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 5.0),
+      padding: const EdgeInsets.all(7.0),
       child: TextButton(
         child: buildButtonTitle,
         style: buildTextButtonStyle,

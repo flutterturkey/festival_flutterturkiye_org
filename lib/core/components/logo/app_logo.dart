@@ -1,12 +1,11 @@
+import 'package:festival_flutterturkiye_org/utils/assets.dart';
 import 'package:flutter/material.dart';
-
-import '../../constants/app_images.dart';
 
 class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      AppImages.instance.logo,
+      Assets.logo,
       scale: 2,
     );
   }

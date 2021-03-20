@@ -1,7 +1,7 @@
 import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
-import 'package:flutter/material.dart';
+import 'package:festival_flutterturkiye_org/core/components/app_bar/app_bar_title.dart';
 
-import 'app_bar_title.dart';
+import 'package:flutter/material.dart';
 
 class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
   final bool isAppbarCollapsing;
