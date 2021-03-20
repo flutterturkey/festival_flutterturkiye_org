@@ -1,5 +1,4 @@
 import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
-import 'package:flutter/foundation.dart';
 
 final DateTime _eventStartingDate = DateTime(2021, 4, 17, 11);
 final DateTime _eventCompletingDate = DateTime(2021, 4, 18, 20);
@@ -57,13 +56,9 @@ class CountdownRepository {
   Stream<Duration> getCompletingCountdown() =>
       _countdownDurationCalculator(_eventCompletingDate);
 
-  Stream<Duration> _countdownDurationCalculator(
-    DateTime dateTime,
-  ) {
-    debugPrint(dateTime.toString());
-    return Stream.periodic(
-      const Duration(seconds: 1),
-      (_) => _remainingTimeCalculator(dateTime),
-    );
-  }
+  Stream<Duration> _countdownDurationCalculator(DateTime dateTime) =>
+      Stream.periodic(
+        const Duration(seconds: 1),
+        (_) => _remainingTimeCalculator(dateTime),
+      );
 }
