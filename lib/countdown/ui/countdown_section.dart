@@ -1,7 +1,11 @@
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
-import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
+import 'package:festival_flutterturkiye_org/countdown/countdown_repository.dart';
+import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_builder.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_span.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -9,6 +13,7 @@ const double _paddingSmall = 24;
 const double _paddingMedium = 48;
 const double _paddingLarge = 72;
 
+// TODO: When the screen height too low, it has a bottom overflowed error.
 class CountdownSection extends StatefulWidget {
   const CountdownSection({Key key}) : super(key: key);
 
@@ -17,15 +22,15 @@ class CountdownSection extends StatefulWidget {
 }
 
 class _CountdownSectionState extends State<CountdownSection> {
-  final VideoPlayerController _controller =
+  final VideoPlayerController _videoPlayerController =
       VideoPlayerController.asset('assets/videos/countdown_bg.mp4');
 
   @override
   void initState() {
     super.initState();
-    _controller.initialize().then(
+    _videoPlayerController.initialize().then(
       (_) {
-        _controller
+        _videoPlayerController
           ..setVolume(0)
           ..play()
           ..setLooping(true);
@@ -37,7 +42,7 @@ class _CountdownSectionState extends State<CountdownSection> {
   @override
   void dispose() {
     super.dispose();
-    _controller.dispose();
+    _videoPlayerController.dispose();
   }
 
   @override
@@ -54,25 +59,28 @@ class _CountdownSectionState extends State<CountdownSection> {
             child: FittedBox(
               fit: BoxFit.fill,
               child: SizedBox(
-                width: _controller.value.size?.width ?? 0,
-                height: _controller.value.size?.height ?? 0,
-                child: VideoPlayer(_controller),
+                width: _videoPlayerController.value.size?.width ?? 0,
+                height: _videoPlayerController.value.size?.height ?? 0,
+                child: VideoPlayer(_videoPlayerController),
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: screenSize.height,
-            color: Colors.black.withOpacity(0.75),
+            width: screenSize.width,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.black.withOpacity(0.75)),
+            ),
           ),
-          Container(
+          Padding(
             padding: _padding(context),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const _CountdownTitle(),
+                _CountdownTitle(),
                 SizedBox(height: screenSize.height * 0.1),
-                const CountdownWidget(),
+                CountdownCounter(),
                 SizedBox(height: screenSize.height * 0.1),
                 Container(
                   width: double.infinity,
@@ -82,11 +90,19 @@ class _CountdownSectionState extends State<CountdownSection> {
                     children: [
                       // For Countdown Section
                       GenericButton(
-                        title: 'Kayit Ol',
-                        onPressed: (){
+                        title: 'Kayıt Ol',
+                        onPressed: () {
                           // TODO: Open the browser for the form or Kommunity
+                          debugPrint(
+                            'Open the browser for the form or Kommunity',
+                          );
                         },
                         isFilledButton: true,
+                        textStyle: const TextStyle(fontSize: 36),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 24,
+                        ),
                       ),
                     ],
                   ),
@@ -111,23 +127,29 @@ class _CountdownSectionState extends State<CountdownSection> {
 }
 
 class _CountdownTitle extends StatelessWidget {
-  const _CountdownTitle();
+  _CountdownTitle() : _countdownRepository = CountdownRepository();
+
+  final CountdownRepository _countdownRepository;
 
   @override
   Widget build(BuildContext context) {
     final textSpans = <TextSpan>[
-      _textSpan("Türkiye'nin en büyük\n"),
-      _textSpan('Flutter Festivali', fontWeight: FontWeight.bold),
-      _textSpan(' başlıyor'),
+      CountdownTextSpan("Türkiye'nin en büyük\n"),
+      CountdownTextSpan('Flutter Festivali ', fontWeight: FontWeight.bold),
     ];
-    return CountdownTextBuilder(textSpans: textSpans);
-  }
 
-  TextSpan _textSpan(String text, {FontWeight fontWeight}) {
-    assert(text != null);
-    return TextSpan(
-      text: text,
-      style: fontWeight != null ? TextStyle(fontWeight: fontWeight) : null,
-    );
+    switch (_countdownRepository.eventStatus) {
+      case EventStatus.completed:
+        textSpans.add(CountdownTextSpan('bitti!'));
+        break;
+      case EventStatus.started:
+        textSpans.add(CountdownTextSpan('başladı!'));
+        break;
+      case EventStatus.waiting:
+        textSpans.add(CountdownTextSpan('başlıyor!'));
+        break;
+    }
+
+    return CountdownTextBuilder(textSpans: textSpans);
   }
 }
