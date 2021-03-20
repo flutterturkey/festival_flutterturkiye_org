@@ -1,4 +1,4 @@
-import 'package:festival_flutterturkiye_org/countdown/countdown_repository.dart';
+import 'package:festival_flutterturkiye_org/countdown/logic/countdown_repository.dart';
 import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_builder.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_span.dart';
