@@ -2,8 +2,8 @@ import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/responsive_builder.dart';
 import 'package:flutter/material.dart';
 
-const double _kFontSizeSmall = 24;
-const double _kFontSizeMedium = 48;
+const double _kFontSizeSmall = 40;
+const double _kFontSizeMedium = 56;
 const double _kFontSizeLarge = 72;
 
 class CountdownTextBuilder extends StatelessWidget {

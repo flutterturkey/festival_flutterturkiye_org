@@ -1,13 +1,15 @@
-import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
-import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
-import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
-import 'package:festival_flutterturkiye_org/countdown/countdown_repository.dart';
-import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
-import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_builder.dart';
-import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_span.dart';
-import 'package:festival_flutterturkiye_org/countdown/ui/countdown_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+
+import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
+import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/countdown/countdown_repository.dart';
+import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_counter.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_builder.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_span.dart';
+import 'package:festival_flutterturkiye_org/widgets/responsive_builder.dart';
 
 const double _paddingSmall = 24;
 const double _paddingMedium = 48;
@@ -82,29 +84,29 @@ class _CountdownSectionState extends State<CountdownSection> {
                 SizedBox(height: screenSize.height * 0.1),
                 CountdownCounter(),
                 SizedBox(height: screenSize.height * 0.1),
-                Container(
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  padding: const EdgeInsets.symmetric(vertical: 24),
-                  child: Column(
-                    children: [
-                      // For Countdown Section
-                      GenericButton(
-                        title: 'Kayıt Ol',
-                        onPressed: () {
-                          // TODO: Open the browser for the form or Kommunity
-                          debugPrint(
-                            'Open the browser for the form or Kommunity',
-                          );
-                        },
-                        isFilledButton: true,
-                        textStyle: const TextStyle(fontSize: 36),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                          horizontal: 24,
-                        ),
+                const Center(
+                  child: ResponsiveBuilder(
+                    smallWidget: _RegisterButton(
+                      fontSize: 32,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 16,
                       ),
-                    ],
+                    ),
+                    mediumWidget: _RegisterButton(
+                      fontSize: 40,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 20,
+                      ),
+                    ),
+                    largeWidget: _RegisterButton(
+                      fontSize: 48,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 24,
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -152,4 +154,31 @@ class _CountdownTitle extends StatelessWidget {
 
     return CountdownTextBuilder(textSpans: textSpans);
   }
+}
+
+class _RegisterButton extends StatelessWidget {
+  const _RegisterButton({
+    @required this.fontSize,
+    @required this.padding,
+    Key key,
+  })  : assert(fontSize != null),
+        assert(padding != null),
+        super(key: key);
+
+  final double fontSize;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) => GenericButton(
+        title: 'Kayıt Ol',
+        onPressed: () {
+          // TODO: Open the browser for the form or Kommunity
+          debugPrint(
+            'Open the browser for the form or Kommunity',
+          );
+        },
+        isFilledButton: true,
+        textStyle: TextStyle(fontSize: fontSize),
+        padding: padding,
+      );
 }
