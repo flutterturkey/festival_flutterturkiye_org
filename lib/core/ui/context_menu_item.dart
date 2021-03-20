@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class DrawerListTile extends StatelessWidget {
-  const DrawerListTile({
+class ContextMenuItem extends StatelessWidget {
+  const ContextMenuItem({
     @required this.title,
     @required this.icon,
-    @required this.onTapListTile,
+    @required this.onTap,
     Key key,
   })  : assert(title != null),
         assert(icon != null),
-        assert(onTapListTile != null),
+        assert(onTap != null),
         super(key: key);
 
   final String title;
   final IconData icon;
-  final VoidCallback onTapListTile;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) => ListTile(
@@ -27,6 +27,6 @@ class DrawerListTile extends StatelessWidget {
           icon ?? Icons.warning,
           color: Colors.white,
         ),
-        onTap: onTapListTile,
+        onTap: onTap,
       );
 }

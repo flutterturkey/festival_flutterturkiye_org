@@ -1,4 +1,4 @@
-import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/speaker_detail/speaker_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';

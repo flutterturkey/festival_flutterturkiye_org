@@ -1,8 +1,8 @@
-import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
 
-class AppBarActionButton extends StatelessWidget {
-  const AppBarActionButton({
+class GenericButton extends StatelessWidget {
+  const GenericButton({
     @required this.title,
     @required this.onPressed,
     this.isFilledButton = false,

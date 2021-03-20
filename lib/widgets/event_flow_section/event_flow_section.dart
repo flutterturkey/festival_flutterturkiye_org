@@ -1,4 +1,4 @@
-import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/sessions_widget.dart';
 import 'package:festival_flutterturkiye_org/widgets/section_subtitle.dart';
 import 'package:festival_flutterturkiye_org/widgets/section_title.dart';

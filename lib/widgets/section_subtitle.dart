@@ -1,4 +1,4 @@
-import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/responsive_builder.dart';
 import 'package:flutter/material.dart';
 

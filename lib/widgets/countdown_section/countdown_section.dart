@@ -1,7 +1,7 @@
-import 'package:festival_flutterturkiye_org/core/styles/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
-import 'package:festival_flutterturkiye_org/widgets/sign_in_button.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -79,14 +79,14 @@ class _CountdownSectionState extends State<CountdownSection> {
                   color: Colors.transparent,
                   padding: const EdgeInsets.symmetric(vertical: 24),
                   child: Column(
-                    children: const [
+                    children: [
                       // For Countdown Section
-                      SignInButton(
-                        fontSize: 28,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 56,
-                          vertical: 20,
-                        ),
+                      GenericButton(
+                        title: 'Kayit Ol',
+                        onPressed: (){
+                          // TODO: Open the browser for the form or Kommunity
+                        },
+                        isFilledButton: true,
                       ),
                     ],
                   ),
