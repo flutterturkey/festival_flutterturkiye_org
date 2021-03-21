@@ -105,7 +105,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const EventFlowSection(),
                 const FooterView(),
               ],
             ),

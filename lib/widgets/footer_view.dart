@@ -15,8 +15,7 @@ class _FooterViewState extends State<FooterView> {
   @override
   Widget build(BuildContext context) => Align(
         alignment: Alignment.bottomCenter,
-        child: Container(
-          padding: const EdgeInsets.only(top: 20),
+        child: SizedBox(
           height: MediaQuery.of(context).size.height / 2.3,
           width: MediaQuery.of(context).size.width,
           child: Stack(
