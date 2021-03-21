@@ -6,12 +6,12 @@ class GenericButton extends StatelessWidget {
     @required this.title,
     @required this.onPressed,
     this.isFilledButton = false,
-    this.padding = EdgeInsets.zero,
+    this.textPadding = EdgeInsets.zero,
     this.textStyle = const TextStyle(),
     Key key,
   })  : assert(title != null),
         assert(onPressed != null),
-        assert(padding != null),
+        assert(textPadding != null),
         assert(textStyle != null),
         super(key: key);
 
@@ -23,7 +23,7 @@ class GenericButton extends StatelessWidget {
   ///
   /// The background color is `ThemeHelper.appBarActionColor`
   final bool isFilledButton;
-  final EdgeInsets padding;
+  final EdgeInsets textPadding;
   final TextStyle textStyle;
 
   @override
@@ -34,7 +34,7 @@ class GenericButton extends StatelessWidget {
       );
 
   Widget get buildButtonTitle => Padding(
-        padding: padding,
+        padding: textPadding,
         child: Text(title, style: buildTextStyle),
       );
 

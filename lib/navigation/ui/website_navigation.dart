@@ -3,7 +3,7 @@ import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/core/ui/context_menu_item.dart';
 import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
 import 'package:festival_flutterturkiye_org/core/ui/app_logo.dart';
-import 'package:festival_flutterturkiye_org/widgets/responsive_builder.dart';
+import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:flutter/material.dart';
 
 class WebsiteNavigation extends StatefulWidget {
@@ -94,10 +94,14 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
               Row(
                 children: widget.actions
                     .map(
-                      (action) => GenericButton(
-                        title: action.title,
-                        onPressed: action.onPressed,
-                        isFilledButton: action.isFilled,
+                      (action) => Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: GenericButton(
+                          title: action.title,
+                          onPressed: action.onPressed,
+                          isFilledButton: action.isFilled,
+                          textPadding: const EdgeInsets.all(8),
+                        ),
                       ),
                     )
                     .toList(growable: false),

@@ -3,7 +3,7 @@ import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_session_point.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_info_field.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_time_field.dart';
-import 'package:festival_flutterturkiye_org/widgets/responsive_builder.dart';
+import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:flutter/material.dart';
 
 const _speakers = <Speaker>[
@@ -11,10 +11,9 @@ const _speakers = <Speaker>[
     id: '1',
     image: 'assets/images/speakers/salihgueler.jpg',
     name: 'Salih',
-    surname: 'Güler',
     about: "Superlist'te SSE olarak çalışan Salih, "
         'Flutteri le ilgili bütün etkinliklerde konuşmacı oluyor....',
-    company: 'Senior Software Engineer (Flutter) at Superlist',
+    title: 'Senior Software Engineer (Flutter) at Superlist',
     twitter: 'salihgueler',
     github: 'salihgueler',
     linkedin: 'msalihguler',

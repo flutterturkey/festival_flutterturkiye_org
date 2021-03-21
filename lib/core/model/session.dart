@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:meta/meta.dart';
 
 enum SessionStatus { waiting, active, passed }
 
-class Session {
+class Session extends Equatable {
   const Session({
     @required this.title,
     @required this.startingTime,
@@ -35,4 +36,13 @@ class Session {
       return SessionStatus.waiting;
     }
   }
+
+  @override
+  List<Object> get props => [
+        title,
+        startingTime,
+        speakerId,
+        duration,
+        status,
+      ];
 }

@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class NavigationAction {
-  NavigationAction(
+class NavigationAction extends Equatable {
+  const NavigationAction(
     this.title,
     this.icon,
     this.onPressed, {
@@ -15,4 +16,11 @@ class NavigationAction {
   final IconData icon;
   final VoidCallback onPressed;
   final bool isFilled;
+
+  @override
+  List<Object> get props => [
+        title,
+        icon,
+        isFilled,
+      ];
 }

@@ -9,7 +9,7 @@ import 'package:festival_flutterturkiye_org/countdown/logic/countdown_repository
 import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_builder.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_span.dart';
-import 'package:festival_flutterturkiye_org/widgets/responsive_builder.dart';
+import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 
 const double _paddingSmall = 24;
 const double _paddingMedium = 48;
@@ -179,7 +179,7 @@ class _RegisterButton extends StatelessWidget {
         },
         isFilledButton: true,
         textStyle: TextStyle(fontSize: fontSize),
-        padding: padding,
+        textPadding: padding,
       );
 }
 

@@ -93,7 +93,7 @@ class EventFlowSpeaker extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Text(
-            '${speaker.name} ${speaker.surname}',
+            speaker.name,
             style: const TextStyle(
               color: ThemeHelper.blueColor,
               fontSize: 16,
