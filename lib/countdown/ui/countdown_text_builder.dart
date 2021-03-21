@@ -2,9 +2,9 @@ import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/widgets/responsive_builder.dart';
 import 'package:flutter/material.dart';
 
-const double _kFontSizeSmall = 40;
-const double _kFontSizeMedium = 56;
-const double _kFontSizeLarge = 72;
+const double _fontSizeSmall = 40;
+const double _fontSizeMedium = 56;
+const double _fontSizeLarge = 72;
 
 class CountdownTextBuilder extends StatelessWidget {
   CountdownTextBuilder({
@@ -23,15 +23,15 @@ class CountdownTextBuilder extends StatelessWidget {
   Widget build(BuildContext context) => ResponsiveBuilder(
         smallWidget: _CountdownText(
           textSpans: textSpans,
-          fontSize: _kFontSizeSmall,
+          fontSize: _fontSizeSmall,
         ),
         mediumWidget: _CountdownText(
           textSpans: textSpans,
-          fontSize: _kFontSizeMedium,
+          fontSize: _fontSizeMedium,
         ),
         largeWidget: _CountdownText(
           textSpans: textSpans,
-          fontSize: _kFontSizeLarge,
+          fontSize: _fontSizeLarge,
         ),
       );
 }
