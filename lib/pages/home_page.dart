@@ -1,7 +1,6 @@
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
-import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
-import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_section.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_section.dart';
 import 'package:festival_flutterturkiye_org/widgets/footer_view.dart';
 import 'package:festival_flutterturkiye_org/widgets/section_title.dart';
@@ -113,7 +112,7 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.white,
       );
-  
+
   @override
   void dispose() {
     _scrollController.dispose();

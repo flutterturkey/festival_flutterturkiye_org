@@ -6,37 +6,42 @@ class GenericButton extends StatelessWidget {
     @required this.title,
     @required this.onPressed,
     this.isFilledButton = false,
+    this.padding = EdgeInsets.zero,
+    this.textStyle = const TextStyle(),
     Key key,
   })  : assert(title != null),
         assert(onPressed != null),
+        assert(padding != null),
+        assert(textStyle != null),
         super(key: key);
 
   final String title;
   final VoidCallback onPressed;
+
+  /// If [isFilledButton] is `true`,
+  /// it has a background.
+  ///
+  /// The background color is `ThemeHelper.appBarActionColor`
   final bool isFilledButton;
+  final EdgeInsets padding;
+  final TextStyle textStyle;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 7,
-          horizontal: 5,
-        ),
-        child: TextButton(
-          style: buildTextButtonStyle,
-          onPressed: onPressed,
-          child: buildButtonTitle,
-        ),
+  Widget build(BuildContext context) => TextButton(
+        style: buildTextButtonStyle,
+        onPressed: onPressed,
+        child: buildButtonTitle,
       );
 
   Widget get buildButtonTitle => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+        padding: padding,
         child: Text(title, style: buildTextStyle),
       );
 
   TextStyle get buildTextStyle => TextStyle(
         color: isFilledButton ? Colors.black : ThemeHelper.appBarActionColor,
         fontWeight: FontWeight.bold,
-      );
+      ).merge(textStyle);
 
   ButtonStyle get buildTextButtonStyle => TextButton.styleFrom(
         backgroundColor:
