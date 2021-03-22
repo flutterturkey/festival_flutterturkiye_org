@@ -28,6 +28,7 @@ dev_dependencies:
   flutrlint:
     git:
       url: git://github.com/flutterturkey/flutrlint.git
+      ref: main
 
 flutter:
   uses-material-design: true
