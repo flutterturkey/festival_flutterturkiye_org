@@ -9,25 +9,26 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  cupertino_icons: ^1.0.2
-  equatable: ^2.0.0
   flutter:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
+  cupertino_icons: ^1.0.2
+  equatable: ^2.0.0
   get_it: ^6.0.0
   material_design_icons_flutter: ^4.0.5855
   url_launcher: ^5.7.10
   video_player: ^1.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   integration_test:
     sdk: flutter
-  superlint:
+  flutrlint:
     git:
-      url: https://github.com/superlistapp/superlint
-      ref: main
+      url: git://github.com/flutterturkey/flutrlint.git
+
 flutter:
   uses-material-design: true
 

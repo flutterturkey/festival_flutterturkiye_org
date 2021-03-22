@@ -1,1 +1,1 @@
-include: package:superlint/analysis_options.yaml
+include: package:flutrlint/analysis_options.yaml
