@@ -6,7 +6,7 @@ const RESOURCES = {
   "manifest.json": "5751bd016b8bc0299e5d7f484c8a650c",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"assets/NOTICES": "25beaaf516fcf69b3cbd33073f27e7fd",
+"assets/NOTICES": "0453996a7bb12415f2eb513eccf5ba18",
 "assets/assets/images/speakers/salihgueler.jpg": "36487a73d3b94053253c628aaa621230",
 "assets/assets/images/logo.png": "733e929d696c4b8dab635907ee73d151",
 "assets/assets/images/speaker_placeholder.png": "44b7a2309b2a1553e145363a6e29a2c5",
@@ -26,9 +26,9 @@ const RESOURCES = {
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"index.html": "e3db61d6e1e40500ad5579b49241a330",
-"/": "e3db61d6e1e40500ad5579b49241a330",
-"main.dart.js": "0ee88b72cf04b2dfc636a746acc8eb2e",
+"index.html": "a0ecb23e610f3ade65cecdc60f70a9c5",
+"/": "a0ecb23e610f3ade65cecdc60f70a9c5",
+"main.dart.js": "2578c7b2f04e48573e2487916105437a",
 "version.json": "c11c92b7eee7515d5ca5c09497464ae4",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
 };
@@ -174,7 +174,7 @@ async function downloadOffline() {
     }
     currentContent[key] = true;
   }
-  for (var resourceKey in Object.keys(RESOURCES)) {
+  for (var resourceKey of Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
       resources.push(resourceKey);
     }
