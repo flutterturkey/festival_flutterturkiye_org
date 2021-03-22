@@ -1,95 +1,140 @@
-import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
+import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
+import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
+import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
+import 'package:festival_flutterturkiye_org/speaker/ui/speaker_section.dart';
 import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_section.dart';
-import 'package:festival_flutterturkiye_org/widgets/sign_in_button.dart';
-import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_section.dart';
-import 'package:festival_flutterturkiye_org/core/model/app_bar_and_drawer_item_model.dart';
 import 'package:festival_flutterturkiye_org/widgets/footer_view.dart';
-import 'package:festival_flutterturkiye_org/widgets/section_title.dart';
-import 'package:festival_flutterturkiye_org/widgets/speakers_section.dart';
-import 'package:festival_flutterturkiye_org/core/components/app_bar/app_bar_action_button.dart';
-import 'package:festival_flutterturkiye_org/core/components/drawer/base_drawer.dart';
-import 'package:festival_flutterturkiye_org/core/components/app_bar/base_app_bar.dart';
-
 import 'package:flutter/material.dart';
 
-part 'app_bar_view.dart';
-part 'drawer_view.dart';
-
-const _scrolloffset = 12.0;
+const _scrollOffset = 12.0;
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  const HomePage({
+    Key key,
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final ScrollController scrollController = ScrollController();
-  bool isAppbarCollapsing = false;
-  final List<DrawerItemModel> drawerWidgetList = [];
-  final List<Widget> appBarWidgetList = [];
+  final List<NavigationAction> navigationActions = [
+    NavigationAction(
+      'Konuşmacılar',
+      Icons.group_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'Etkinlik Programı',
+      Icons.event_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'Etkinlik',
+      Icons.celebration,
+      () {},
+    ),
+    NavigationAction(
+      'Sponsorlar',
+      Icons.help_center_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'SSS',
+      Icons.help_center_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'İletişim',
+      Icons.phone_in_talk_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'Kayıt Ol',
+      Icons.account_circle_rounded,
+      () {},
+      isFilled: true,
+    ),
+  ];
+  final ScrollController _scrollController = ScrollController();
+  bool isScrolling = false;
 
   @override
   void initState() {
     super.initState();
-
-    initAppBarWidgetList();
-    initDrawerWidgetList();
     _initializeScrollController();
   }
 
-  void _initializeScrollController() {
-    scrollController.addListener(() {
-      if (scrollController.offset == 0.0 &&
-          !scrollController.position.outOfRange) {
-        if (!mounted) return;
-        setState(() => isAppbarCollapsing = false);
-      }
-      if (scrollController.offset >= _scrolloffset &&
-          !scrollController.position.outOfRange) {
-        if (!mounted) return;
-        setState(() => isAppbarCollapsing = true);
-      }
-    });
-  }
-
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      extendBodyBehindAppBar: true,
-      appBar: (MediaQuery.of(context).size.width > 800)
-          ? buildAppBarWeb
-          : buildAppBarMobile,
-      body: SingleChildScrollView(
-        controller: scrollController,
-        child: ConstrainedBox(
-          constraints:
-              BoxConstraints(minHeight: MediaQuery.of(context).size.height),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+  Widget build(BuildContext context) => Scaffold(
+        body: Stack(
+          children: [
+            ListView(
+              controller: _scrollController,
               children: <Widget>[
-                CountdownSection(),
-                SectionTitle(title: 'Konuşmacılar'),
-                SpeakersSection(),
-                const EventFlowSection(),
-                FooterView(),
+                const CountdownSection(),
+                SpeakerSection(
+                  speakers: List.generate(
+                    9,
+                    (index) => const Speaker(
+                      name: 'Muhammed Salih Guler',
+                      title: 'Useless PoS',
+                      image: 'assets/images/speakers/salihgueler.jpg',
+                      id: 'id',
+                      about:
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing '
+                              'elit. Morbi interdum justo a mauris pharetra '
+                              'finibus. Fusce aliquet tortor mi, vitae feugiat '
+                              'arcu fringilla ut. Sed quis massa vulputate, '
+                              'dignissim sem a, rutrum dui. In ac nunc dui. '
+                              'Morbi scelerisque finibus libero et auctor. '
+                              'Aenean lacus mi, placerat eu commodo nec, '
+                              'luctus nec arcu. Suspendisse eleifend vehicula '
+                              'quam, sed tincidunt lorem consequat luctus. '
+                              'In hac habitasse platea dictumst. In malesuada '
+                              'luctus ex, volutpat auctor ex placerat eget. '
+                              'Aenean egestas tempor lorem a maximus. Ut sed '
+                              'risus urna. Sed facilisis lacus at fringilla '
+                              'maximus. Nulla id tempus magna. Aenean sit amet'
+                              ' t ellus odio. Cras tincidunt felis vitae odio '
+                              'elementum semper. ',
+                      github: 'salihgueler',
+                      linkedin: 'msalihguler',
+                      twitter: 'salihgueler',
+                    ),
+                  ),
+                ),
+                const FooterView(),
               ],
             ),
-          ),
-        ),
-      ),
-      backgroundColor: Colors.white,
-      drawer: (MediaQuery.of(context).size.width > 800)
-          ? SizedBox.shrink()
-          : BaseDrawer(
-              drawerList: drawerWidgetList,
+            WebsiteNavigation(
+              actions: navigationActions,
+              hasTransparentBackground: isScrolling,
             ),
-    );
+          ],
+        ),
+        backgroundColor: Colors.white,
+      );
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _initializeScrollController() {
+    _scrollController.addListener(() {
+      if (_scrollController.offset == 0.0 &&
+          !_scrollController.position.outOfRange &&
+          mounted) {
+        setState(() => isScrolling = false);
+      }
+      if (_scrollController.offset >= _scrollOffset &&
+          !_scrollController.position.outOfRange &&
+          mounted) {
+        setState(() => isScrolling = true);
+      }
+    });
   }
 }
