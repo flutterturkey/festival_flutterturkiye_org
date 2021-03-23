@@ -20,8 +20,7 @@ class SpeakerCard extends StatelessWidget {
             builder: (dialogContext) => AlertDialog(
               backgroundColor: ThemeHelper.darkColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16)
-              ),
+                  borderRadius: BorderRadius.circular(16)),
               content: _SpeakerDetailContent(speaker: speaker),
             ),
           );
