@@ -18,8 +18,7 @@ class WebsiteNavigation extends StatefulWidget {
   final bool hasTransparentBackground;
 
   @override
-  _WebsiteNavigationState createState() =>
-      _WebsiteNavigationState();
+  _WebsiteNavigationState createState() => _WebsiteNavigationState();
 }
 
 class _WebsiteNavigationState extends State<WebsiteNavigation> {

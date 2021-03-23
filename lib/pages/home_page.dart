@@ -1,11 +1,9 @@
-import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
-import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
-import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
-import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
-import 'package:festival_flutterturkiye_org/speaker/ui/speaker_section.dart';
-import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_section.dart';
-import 'package:festival_flutterturkiye_org/widgets/footer_view.dart';
 import 'package:flutter/material.dart';
+
+import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
+import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
+import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
 
 const _scrollOffset = 12.0;
 
@@ -72,40 +70,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             ListView(
               controller: _scrollController,
-              children: <Widget>[
-                const CountdownSection(),
-                SpeakerSection(
-                  speakers: List.generate(
-                    9,
-                    (index) => const Speaker(
-                      name: 'Muhammed Salih Guler',
-                      title: 'Useless PoS',
-                      image: 'assets/images/speakers/salihgueler.jpg',
-                      id: 'id',
-                      about:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing '
-                              'elit. Morbi interdum justo a mauris pharetra '
-                              'finibus. Fusce aliquet tortor mi, vitae feugiat '
-                              'arcu fringilla ut. Sed quis massa vulputate, '
-                              'dignissim sem a, rutrum dui. In ac nunc dui. '
-                              'Morbi scelerisque finibus libero et auctor. '
-                              'Aenean lacus mi, placerat eu commodo nec, '
-                              'luctus nec arcu. Suspendisse eleifend vehicula '
-                              'quam, sed tincidunt lorem consequat luctus. '
-                              'In hac habitasse platea dictumst. In malesuada '
-                              'luctus ex, volutpat auctor ex placerat eget. '
-                              'Aenean egestas tempor lorem a maximus. Ut sed '
-                              'risus urna. Sed facilisis lacus at fringilla '
-                              'maximus. Nulla id tempus magna. Aenean sit amet'
-                              ' t ellus odio. Cras tincidunt felis vitae odio '
-                              'elementum semper. ',
-                      github: 'salihgueler',
-                      linkedin: 'msalihguler',
-                      twitter: 'salihgueler',
-                    ),
-                  ),
-                ),
-                const FooterView(),
+              children: const <Widget>[
+                CountdownSection(),
+                FooterSection(),
               ],
             ),
             WebsiteNavigation(

@@ -19,12 +19,14 @@ class SpeakerSection extends StatelessWidget {
           const SectionTitle(title: 'Konuşmacılar'),
           Wrap(
             spacing: 8,
-            children: speakers.map(
-              (speaker) => Padding(
-                padding: const EdgeInsets.all(8),
-                child: SpeakerCard(speaker: speaker),
-              ),
-            ).toList(growable: false),
+            children: speakers
+                .map(
+                  (speaker) => Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: SpeakerCard(speaker: speaker),
+                  ),
+                )
+                .toList(growable: false),
           ),
         ],
       );
