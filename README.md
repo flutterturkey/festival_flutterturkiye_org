@@ -1,5 +1,9 @@
 # Flutter Turkiye, Flutter Festivali Website
 
+[![style: flutrlint][badge]][badge_link]
+
+[badge]: https://img.shields.io/badge/style-flutrlint-blue.svg
+[badge_link]: https://github.com/flutterturkey/flutrlint
 # Purpose
 
 The purpose is to learn best practices, write tests and use Flutter for Web on production.
