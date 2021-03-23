@@ -26,9 +26,9 @@ const RESOURCES = {
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"index.html": "a0ecb23e610f3ade65cecdc60f70a9c5",
-"/": "a0ecb23e610f3ade65cecdc60f70a9c5",
-"main.dart.js": "2578c7b2f04e48573e2487916105437a",
+"index.html": "8e6c17f31dd104b7f7692f1f165581cb",
+"/": "8e6c17f31dd104b7f7692f1f165581cb",
+"main.dart.js": "1e608c68c2fabede2b517298c0c595f4",
 "version.json": "c11c92b7eee7515d5ca5c09497464ae4",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
 };
