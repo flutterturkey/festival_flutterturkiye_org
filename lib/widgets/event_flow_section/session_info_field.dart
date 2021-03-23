@@ -35,6 +35,8 @@ class SessionInfoField extends StatelessWidget {
           text: session.title,
           sessionStatus: session.status,
         ),
+        // This part used in `SessionWidget`for
+        // Medium Screen and Large Screen
         if (isSmallScreen) ...[
           const SizedBox(height: 8),
           EventFlowSessionText(
@@ -42,7 +44,8 @@ class SessionInfoField extends StatelessWidget {
             sessionStatus: session.status,
           ),
         ],
-        const _EventFlowAddToCalendar(),
+        const SizedBox(height: 8),
+        _EventFlowAddToCalendar(session: session),
         const SizedBox(height: 8),
         EventFlowSpeaker(
           speaker: speaker,
@@ -58,16 +61,26 @@ class SessionInfoField extends StatelessWidget {
 }
 
 class _EventFlowAddToCalendar extends StatelessWidget {
-  const _EventFlowAddToCalendar();
+  const _EventFlowAddToCalendar({@required this.session});
 
+  final Session session;
   @override
-  Widget build(BuildContext context) => TextButton.icon(
+  Widget build(BuildContext context) {
+    if (session.status == SessionStatus.waiting) {
+      return TextButton.icon(
         icon: const Icon(MdiIcons.calendarPlus),
         label: const Text('Takvime ekle'),
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all(ThemeHelper.lightColor),
+        ),
         onPressed: () {
           //TODO: Add to Calendar Issue: #43
         },
       );
+    }
+
+    return const SizedBox.shrink();
+  }
 }
 
 class EventFlowSpeaker extends StatelessWidget {
