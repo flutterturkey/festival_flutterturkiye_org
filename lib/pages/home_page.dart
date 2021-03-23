@@ -1,4 +1,4 @@
-import 'package:festival_flutterturkiye_org/event_flow/event_flow_section.dart';
+import 'package:festival_flutterturkiye_org/event_flow/ui/event_flow_section.dart';
 import 'package:flutter/material.dart';
 
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';

@@ -1,7 +1,7 @@
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
-import 'package:festival_flutterturkiye_org/widgets/event_flow_section/session_time_field.dart';
+import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -35,6 +35,7 @@ class SessionInfoField extends StatelessWidget {
           text: session.title,
           sessionStatus: session.status,
         ),
+
         // This part used in `SessionWidget`for
         // Medium Screen and Large Screen
         if (isSmallScreen) ...[
@@ -47,9 +48,7 @@ class SessionInfoField extends StatelessWidget {
         const SizedBox(height: 8),
         _EventFlowAddToCalendar(session: session),
         const SizedBox(height: 8),
-        EventFlowSpeaker(
-          speaker: speaker,
-        ),
+        _EventFlowSpeaker(speaker: speaker),
       ],
     );
   }
@@ -71,7 +70,7 @@ class _EventFlowAddToCalendar extends StatelessWidget {
         icon: const Icon(MdiIcons.calendarPlus),
         label: const Text('Takvime ekle'),
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all(ThemeHelper.lightColor),
+          foregroundColor: MaterialStateProperty.all(ThemeHelper.blueColor),
         ),
         onPressed: () {
           //TODO: Add to Calendar Issue: #43
@@ -83,8 +82,8 @@ class _EventFlowAddToCalendar extends StatelessWidget {
   }
 }
 
-class EventFlowSpeaker extends StatelessWidget {
-  const EventFlowSpeaker({Key key, this.speaker}) : super(key: key);
+class _EventFlowSpeaker extends StatelessWidget {
+  const _EventFlowSpeaker({Key key, this.speaker}) : super(key: key);
 
   final Speaker speaker;
 
@@ -119,7 +118,6 @@ class EventFlowSpeaker extends StatelessWidget {
   }
 }
 
-// TODO: It will be merged with SpeakerImage after PR #38
 class _SpeakerImage extends StatelessWidget {
   const _SpeakerImage({
     @required this.speakerImage,
@@ -133,18 +131,20 @@ class _SpeakerImage extends StatelessWidget {
   final double imageSize;
 
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) => SizedBox(
         height: imageSize,
         width: imageSize,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(speakerImage),
-            fit: BoxFit.cover,
-          ),
-          shape: BoxShape.circle,
-          border: Border.all(
-            color: ThemeHelper.blueColor,
-            width: 2,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(speakerImage),
+              fit: BoxFit.cover,
+            ),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: ThemeHelper.blueColor,
+              width: 2,
+            ),
           ),
         ),
       );
