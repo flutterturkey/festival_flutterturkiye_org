@@ -13,14 +13,14 @@ class FooterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ResponsiveBuilder(
-        largeWidget: _LargeSizeWidget(),
-        mediumWidget: _LargeSizeWidget(),
-        smallWidget: _SmallSizeWidget(),
+        largeWidget: _FooterLarge(),
+        mediumWidget: _FooterLarge(),
+        smallWidget: _FooterSmall(),
       );
 }
 
-class _SmallSizeWidget extends _FooterWidget {
-  _SmallSizeWidget({Key key})
+class _FooterSmall extends _FooterWidget {
+  _FooterSmall({Key key})
       : super(
           key: key,
           heightRatio: 1.25,
@@ -34,8 +34,8 @@ class _SmallSizeWidget extends _FooterWidget {
         );
 }
 
-class _LargeSizeWidget extends _FooterWidget {
-  _LargeSizeWidget({Key key})
+class _FooterLarge extends _FooterWidget {
+  _FooterLarge({Key key})
       : super(
           key: key,
           heightRatio: 2.5,
@@ -58,7 +58,7 @@ class _FooterWidget extends StatelessWidget {
     @required this.flutterTurkiyeCopyrightPadding,
     @required this.isSmallScreen,
     Key key,
-  })  : _footerRepository = getIt.get<CommunityRepository>(),
+  })  : _communityRepository = getIt.get<CommunityRepository>(),
         assert(heightRatio != null),
         assert(mailAddressFontSize != null),
         assert(flutterTurkiyeCopyrightFontSize != null),
@@ -71,7 +71,7 @@ class _FooterWidget extends StatelessWidget {
   final double flutterTurkiyeCopyrightFontSize;
   final EdgeInsets flutterTurkiyeCopyrightPadding;
   final bool isSmallScreen;
-  final CommunityRepository _footerRepository;
+  final CommunityRepository _communityRepository;
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
@@ -96,7 +96,7 @@ class _FooterWidget extends StatelessWidget {
                 // Mail
                 const SizedBox(height: 32),
                 InkWell(
-                  onTap: _footerRepository.sendMail,
+                  onTap: _communityRepository.sendMail,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
