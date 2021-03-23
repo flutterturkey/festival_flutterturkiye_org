@@ -4,8 +4,11 @@ import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
 import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const _scrollOffset = 12.0;
+const String _registrationUrl =
+    'https://kommunity.com/flutter-turkiye/events/flutter-festivali-81b8ee21?key=dudavx';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -51,7 +54,11 @@ class _HomePageState extends State<HomePage> {
     NavigationAction(
       'Kayıt Ol',
       Icons.account_circle_rounded,
-      () {},
+      () async {
+        if (await canLaunch(_registrationUrl)) {
+          await launch(_registrationUrl);
+        }
+      },
       isFilled: true,
     ),
   ];

@@ -1,5 +1,6 @@
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 
 import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
@@ -14,6 +15,8 @@ import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 const double _paddingSmall = 24;
 const double _paddingMedium = 48;
 const double _paddingLarge = 72;
+const String _registrationUrl =
+    'https://kommunity.com/flutter-turkiye/events/flutter-festivali-81b8ee21?key=dudavx';
 
 // TODO: When the screen height too low, it has a bottom overflowed error.
 class CountdownSection extends StatefulWidget {
@@ -171,11 +174,10 @@ class _RegisterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GenericButton(
         title: 'Kayıt Ol',
-        onPressed: () {
-          // TODO: Open the browser for the form or Kommunity
-          debugPrint(
-            'Open the browser for the form or Kommunity',
-          );
+        onPressed: () async {
+          if (await canLaunch(_registrationUrl)) {
+            await launch(_registrationUrl);
+          }
         },
         isFilledButton: true,
         textStyle: TextStyle(fontSize: fontSize),
