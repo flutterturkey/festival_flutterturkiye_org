@@ -8,11 +8,13 @@ class GenericButton extends StatelessWidget {
     this.isFilledButton = false,
     this.textPadding = EdgeInsets.zero,
     this.textStyle = const TextStyle(),
+    this.buttonStyle = const ButtonStyle(),
     Key key,
   })  : assert(title != null),
         assert(onPressed != null),
         assert(textPadding != null),
         assert(textStyle != null),
+        assert(buttonStyle != null),
         super(key: key);
 
   final String title;
@@ -25,6 +27,7 @@ class GenericButton extends StatelessWidget {
   final bool isFilledButton;
   final EdgeInsets textPadding;
   final TextStyle textStyle;
+  final ButtonStyle buttonStyle;
 
   @override
   Widget build(BuildContext context) => TextButton(
@@ -39,15 +42,18 @@ class GenericButton extends StatelessWidget {
       );
 
   TextStyle get buildTextStyle => TextStyle(
-        color: isFilledButton ? Colors.black : ThemeHelper.appBarActionColor,
+        color: isFilledButton
+            ? ThemeHelper.darkColor
+            : ThemeHelper.appBarActionColor,
         fontWeight: FontWeight.bold,
       ).merge(textStyle);
 
-  ButtonStyle get buildTextButtonStyle => TextButton.styleFrom(
+  ButtonStyle get buildTextButtonStyle =>
+      buttonStyle.merge(TextButton.styleFrom(
         backgroundColor:
             isFilledButton ? ThemeHelper.appBarActionColor : Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-      );
+      ));
 }
