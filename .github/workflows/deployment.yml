@@ -1,4 +1,3 @@
----
 name: On Website Deploy
 'on':
   push:
@@ -16,6 +15,8 @@ jobs:
         run: flutter config --enable-web
       - name: Build Web application
         run: flutter build web
+      - name: Add CNAME
+        run: echo "festival.flutterturkiye.org" > ./build/web/CNAME
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
