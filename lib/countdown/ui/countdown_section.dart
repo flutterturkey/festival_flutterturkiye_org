@@ -17,6 +17,8 @@ const double _paddingMedium = 48;
 const double _paddingLarge = 72;
 const String _registrationUrl =
     'https://kommunity.com/flutter-turkiye/events/flutter-festivali-81b8ee21?key=dudavx';
+const String _callForPapersUrl =
+    'https://sessionize.com/flutter-festival-turkiye';
 
 // TODO: When the screen height too low, it has a bottom overflowed error.
 class CountdownSection extends StatefulWidget {
@@ -81,33 +83,32 @@ class _CountdownSectionState extends State<CountdownSection> {
             padding: _padding(context),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                const SizedBox(height: kToolbarHeight),
                 _CountdownTitle(),
-                SizedBox(height: screenSize.height * 0.1),
                 _CountdownCounter(),
-                SizedBox(height: screenSize.height * 0.1),
-                const Center(
+                const Flexible(
                   child: ResponsiveBuilder(
-                    smallWidget: _RegisterButton(
+                    smallWidget: _RegisterCallForPapersButtons(
                       fontSize: 32,
                       padding: EdgeInsets.symmetric(
                         vertical: 4,
-                        horizontal: 8,
-                      ),
-                    ),
-                    mediumWidget: _RegisterButton(
-                      fontSize: 40,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 8,
                         horizontal: 16,
                       ),
                     ),
-                    largeWidget: _RegisterButton(
+                    mediumWidget: _RegisterCallForPapersButtons(
+                      fontSize: 40,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 32,
+                      ),
+                    ),
+                    largeWidget: _RegisterCallForPapersButtons(
                       fontSize: 48,
                       padding: EdgeInsets.symmetric(
-                        vertical: 12,
-                        horizontal: 24,
+                        vertical: 16,
+                        horizontal: 64,
                       ),
                     ),
                   ),
@@ -159,6 +160,36 @@ class _CountdownTitle extends StatelessWidget {
   }
 }
 
+class _RegisterCallForPapersButtons extends StatelessWidget {
+  const _RegisterCallForPapersButtons({
+    @required this.fontSize,
+    @required this.padding,
+    Key key,
+  })  : assert(fontSize != null),
+        assert(padding != null),
+        super(key: key);
+
+  final double fontSize;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) => Wrap(
+        runSpacing: 20,
+        spacing: 24,
+        alignment: WrapAlignment.center,
+        children: [
+          _RegisterButton(
+            fontSize: fontSize,
+            padding: padding,
+          ),
+          _CallForPapersButton(
+            fontSize: fontSize,
+            padding: padding,
+          ),
+        ],
+      );
+}
+
 class _RegisterButton extends StatelessWidget {
   const _RegisterButton({
     @required this.fontSize,
@@ -182,6 +213,37 @@ class _RegisterButton extends StatelessWidget {
         isFilledButton: true,
         textStyle: TextStyle(fontSize: fontSize),
         textPadding: padding,
+      );
+}
+
+class _CallForPapersButton extends StatelessWidget {
+  const _CallForPapersButton({
+    @required this.fontSize,
+    @required this.padding,
+    Key key,
+  })  : assert(fontSize != null),
+        assert(padding != null),
+        super(key: key);
+
+  final double fontSize;
+  final EdgeInsets padding;
+  @override
+  Widget build(BuildContext context) => GenericButton(
+        title: 'Konuşmacı Ol',
+        onPressed: () async {
+          if (await canLaunch(_callForPapersUrl)) {
+            await launch(_callForPapersUrl);
+          }
+        },
+        isFilledButton: true,
+        textStyle: TextStyle(
+          fontSize: fontSize,
+          color: ThemeHelper.appBarActionColor,
+        ),
+        textPadding: padding,
+        buttonStyle: TextButton.styleFrom(
+          backgroundColor: ThemeHelper.darkColor,
+        ),
       );
 }
 
