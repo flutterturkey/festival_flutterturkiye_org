@@ -90,21 +90,21 @@ class _CountdownSectionState extends State<CountdownSection> {
                 _CountdownCounter(),
                 const Flexible(
                   child: ResponsiveBuilder(
-                    smallWidget: _RegisterCallForPapersButtons(
+                    smallWidget: _CountdownSectionButtons(
                       fontSize: 32,
                       padding: EdgeInsets.symmetric(
                         vertical: 4,
                         horizontal: 16,
                       ),
                     ),
-                    mediumWidget: _RegisterCallForPapersButtons(
+                    mediumWidget: _CountdownSectionButtons(
                       fontSize: 40,
                       padding: EdgeInsets.symmetric(
                         vertical: 8,
                         horizontal: 32,
                       ),
                     ),
-                    largeWidget: _RegisterCallForPapersButtons(
+                    largeWidget: _CountdownSectionButtons(
                       fontSize: 48,
                       padding: EdgeInsets.symmetric(
                         vertical: 16,
@@ -160,8 +160,8 @@ class _CountdownTitle extends StatelessWidget {
   }
 }
 
-class _RegisterCallForPapersButtons extends StatelessWidget {
-  const _RegisterCallForPapersButtons({
+class _CountdownSectionButtons extends StatelessWidget {
+  const _CountdownSectionButtons({
     @required this.fontSize,
     @required this.padding,
     Key key,
