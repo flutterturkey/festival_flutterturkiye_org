@@ -41,7 +41,7 @@ As a rule of thumb, try to follow the Dart analyser and following rules.
 
 # Related Links
 
-- [Figma]( https://www.figma.com/file/hREXj4gXWuZ9dSvoW7q2ev/Flutter-Türkiye?node-id=353%3A166 )
+- [Figma](https://www.figma.com/file/JoNJNWFPumBdnzvY3WWDnI/Flutter-Turkey-Festival-Website?node-id=0%3A1)
 
 ## Current Flutter Development Version 
 
