@@ -1,148 +1,114 @@
-import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_exports.dart';
-import 'package:festival_flutterturkiye_org/widgets/event_flow_section/event_flow_section.dart';
-import 'package:festival_flutterturkiye_org/widgets/sign_in_button.dart';
 import 'package:flutter/material.dart';
-import 'package:festival_flutterturkiye_org/widgets/countdown_section/countdown_section.dart';
-import '../core/components/app_bar/app_bar_action_button.dart';
-import '../core/components/app_bar/base_app_bar.dart';
-import '../core/components/drawer/base_drawer.dart';
-import '../core/model/app_bar_and_drawer_item_model.dart';
-import '../widgets/footer_view.dart';
-import '../widgets/section_title.dart';
-import '../widgets/speakers_section.dart';
 
-const _scrolloffset = 12.0;
+import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
+import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
+import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
+import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+const _scrollOffset = 12.0;
+const String _registrationUrl =
+    'https://kommunity.com/flutter-turkiye/events/flutter-festivali-81b8ee21?key=dudavx';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  const HomePage({
+    Key key,
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final List<AppBarAndDrawerItemModel> pageSectionsList = [];
-  final ScrollController scrollController = ScrollController();
-  bool isAppbarCollapsing = false;
+  final List<NavigationAction> navigationActions = [
+    NavigationAction(
+      'Konuşmacılar',
+      Icons.group_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'Etkinlik Programı',
+      Icons.event_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'Etkinlik',
+      Icons.celebration,
+      () {},
+    ),
+    NavigationAction(
+      'Sponsorlar',
+      Icons.help_center_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'SSS',
+      Icons.help_center_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'İletişim',
+      Icons.phone_in_talk_rounded,
+      () {},
+    ),
+    NavigationAction(
+      'Kayıt Ol',
+      Icons.account_circle_rounded,
+      () async {
+        if (await canLaunch(_registrationUrl)) {
+          await launch(_registrationUrl);
+        }
+      },
+      isFilled: true,
+    ),
+  ];
+  final ScrollController _scrollController = ScrollController();
+  bool isScrolling = false;
 
   @override
   void initState() {
     super.initState();
     _initializeScrollController();
-    _initPageSectionList();
-  }
-
-  void _initializeScrollController() {
-    scrollController.addListener(() {
-      if (scrollController.offset == 0.0 &&
-          !scrollController.position.outOfRange) {
-        if (!mounted) return;
-        setState(() => isAppbarCollapsing = false);
-      }
-      if (scrollController.offset >= _scrolloffset &&
-          !scrollController.position.outOfRange) {
-        if (!mounted) return;
-        setState(() => isAppbarCollapsing = true);
-      }
-    });
-  }
-
-  void _initPageSectionList() {
-    pageSectionsList.add(
-      AppBarAndDrawerItemModel('Konuşmacılar', Icons.group_rounded, () {}),
-    );
-    pageSectionsList.add(
-      AppBarAndDrawerItemModel('Etkinlik Programı', Icons.event_rounded, () {}),
-    );
-    pageSectionsList.add(
-      AppBarAndDrawerItemModel('Etkinlik', Icons.celebration, () {}),
-    );
-    pageSectionsList.add(
-      AppBarAndDrawerItemModel('SSS', Icons.help_center_rounded, () {}),
-    );
-    pageSectionsList.add(
-      AppBarAndDrawerItemModel('İletişim', Icons.phone_in_talk_rounded, () {}),
-    );
-    pageSectionsList.add(
-      AppBarAndDrawerItemModel(
-        'Kayıt Ol',
-        Icons.account_circle_rounded,
-        () {},
-        isFilled: true,
-      ),
-    );
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      extendBodyBehindAppBar: true,
-      appBar: (MediaQuery.of(context).size.width > 800)
-          ? buildAppBarWeb
-          : buildAppBarMobile,
-      body: SingleChildScrollView(
-        controller: scrollController,
-        child: ConstrainedBox(
-          constraints:
-              BoxConstraints(minHeight: MediaQuery.of(context).size.height),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+  Widget build(BuildContext context) => Scaffold(
+        body: Stack(
+          children: [
+            ListView(
+              controller: _scrollController,
+              children: const <Widget>[
                 CountdownSection(),
-                SectionTitle(title: 'Konuşmacılar'),
-                SpeakersSection(),
-                const EventFlowSection(),
-                FooterView(),
+                FooterSection(),
               ],
             ),
-          ),
-        ),
-      ),
-      backgroundColor: Colors.white,
-      drawer: (MediaQuery.of(context).size.width > 800)
-          ? SizedBox.shrink()
-          : BaseDrawer(
-              drawerList: pageSectionsList,
+            WebsiteNavigation(
+              actions: navigationActions,
+              hasTransparentBackground: isScrolling,
             ),
-    );
+          ],
+        ),
+        backgroundColor: Colors.white,
+      );
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
-  List<Widget> get pageSectionsListActions {
-    return List.generate(
-      pageSectionsList.length,
-      (index) => AppBarActionButton(
-        title: pageSectionsList[index].title,
-        onPressed: pageSectionsList[index].onPressed,
-        isFilledButton: pageSectionsList[index].isFilled ?? false,
-      ),
-    );
-  }
-
-  Widget get buildAppBarWeb {
-    return BaseAppBar(
-      actions: pageSectionsListActions,
-      isAppbarCollapsing: isAppbarCollapsing,
-    );
-  }
-
-  Widget get buildAppBarMobile {
-    return BaseAppBar(
-      actions: [],
-      isCenterTitle: true,
-      leading: buildDrawerButton,
-      isAppbarCollapsing: isAppbarCollapsing,
-    );
-  }
-
-  IconButton get buildDrawerButton {
-    return IconButton(
-      icon: Icon(Icons.menu_rounded),
-      onPressed: () => _scaffoldKey.currentState.openDrawer(),
-    );
+  void _initializeScrollController() {
+    _scrollController.addListener(() {
+      if (_scrollController.offset == 0.0 &&
+          !_scrollController.position.outOfRange &&
+          mounted) {
+        setState(() => isScrolling = false);
+      }
+      if (_scrollController.offset >= _scrollOffset &&
+          !_scrollController.position.outOfRange &&
+          mounted) {
+        setState(() => isScrolling = true);
+      }
+    });
   }
 }

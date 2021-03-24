@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveHelper {
-  static const double mediumWidth = 768;
-  static const double largeWidth = 1200;
+  static const double mediumWidth = 500;
+  static const double largeWidth = 1000;
 
   static bool isSmallScreen(BuildContext context) =>
       MediaQuery.of(context).size.width < mediumWidth;
