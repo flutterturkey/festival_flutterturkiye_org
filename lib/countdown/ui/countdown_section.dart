@@ -83,13 +83,11 @@ class _CountdownSectionState extends State<CountdownSection> {
             padding: _padding(context),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const SizedBox(height: kToolbarHeight),
                 _CountdownTitle(),
-                SizedBox(height: screenSize.height * 0.1),
                 _CountdownCounter(),
-                SizedBox(height: screenSize.height * 0.1),
                 const Flexible(
                   child: ResponsiveBuilder(
                     smallWidget: _RegisterCallForPapersButtons(
