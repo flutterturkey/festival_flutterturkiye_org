@@ -178,35 +178,72 @@ class _RegisterCallForPapersButtons extends StatelessWidget {
         spacing: 24,
         alignment: WrapAlignment.center,
         children: [
-          GenericButton(
-            title: 'Kayıt Ol',
-            onPressed: () async {
-              if (await canLaunch(_registrationUrl)) {
-                await launch(_registrationUrl);
-              }
-            },
-            isFilledButton: true,
-            textStyle: TextStyle(fontSize: fontSize),
-            textPadding: padding,
+          _RegisterButton(
+            fontSize: fontSize,
+            padding: padding,
           ),
-          GenericButton(
-            title: 'Konuşmacı Ol',
-            onPressed: () async {
-              if (await canLaunch(_callForPapersUrl)) {
-                await launch(_callForPapersUrl);
-              }
-            },
-            isFilledButton: true,
-            textStyle: TextStyle(
-              fontSize: fontSize,
-              color: ThemeHelper.appBarActionColor,
-            ),
-            textPadding: padding,
-            buttonStyle: TextButton.styleFrom(
-              backgroundColor: ThemeHelper.darkColor,
-            ),
+          _CallForPapersButton(
+            fontSize: fontSize,
+            padding: padding,
           ),
         ],
+      );
+}
+
+class _RegisterButton extends StatelessWidget {
+  const _RegisterButton({
+    @required this.fontSize,
+    @required this.padding,
+    Key key,
+  })  : assert(fontSize != null),
+        assert(padding != null),
+        super(key: key);
+
+  final double fontSize;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) => GenericButton(
+        title: 'Kayıt Ol',
+        onPressed: () async {
+          if (await canLaunch(_registrationUrl)) {
+            await launch(_registrationUrl);
+          }
+        },
+        isFilledButton: true,
+        textStyle: TextStyle(fontSize: fontSize),
+        textPadding: padding,
+      );
+}
+
+class _CallForPapersButton extends StatelessWidget {
+  const _CallForPapersButton({
+    @required this.fontSize,
+    @required this.padding,
+    Key key,
+  })  : assert(fontSize != null),
+        assert(padding != null),
+        super(key: key);
+
+  final double fontSize;
+  final EdgeInsets padding;
+  @override
+  Widget build(BuildContext context) => GenericButton(
+        title: 'Konuşmacı Ol',
+        onPressed: () async {
+          if (await canLaunch(_callForPapersUrl)) {
+            await launch(_callForPapersUrl);
+          }
+        },
+        isFilledButton: true,
+        textStyle: TextStyle(
+          fontSize: fontSize,
+          color: ThemeHelper.appBarActionColor,
+        ),
+        textPadding: padding,
+        buttonStyle: TextButton.styleFrom(
+          backgroundColor: ThemeHelper.darkColor,
+        ),
       );
 }
 
