@@ -85,24 +85,25 @@ class _CountdownSectionState extends State<CountdownSection> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(height: kToolbarHeight),
                 _CountdownTitle(),
                 SizedBox(height: screenSize.height * 0.1),
                 _CountdownCounter(),
                 SizedBox(height: screenSize.height * 0.1),
-                const Center(
+                const Flexible(
                   child: ResponsiveBuilder(
                     smallWidget: _RegisterCallForPapersButtons(
                       fontSize: 32,
                       padding: EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 32,
+                        vertical: 4,
+                        horizontal: 16,
                       ),
                     ),
                     mediumWidget: _RegisterCallForPapersButtons(
                       fontSize: 40,
                       padding: EdgeInsets.symmetric(
-                        vertical: 12,
-                        horizontal: 48,
+                        vertical: 8,
+                        horizontal: 32,
                       ),
                     ),
                     largeWidget: _RegisterCallForPapersButtons(
