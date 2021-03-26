@@ -107,7 +107,7 @@ class _EventFlowSpeaker extends StatelessWidget {
           Text(
             speaker.name,
             style: const TextStyle(
-              color: ThemeHelper.blueColor,
+              color: ThemeHelper.speakerDetailImageBorder,
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
@@ -142,7 +142,7 @@ class _SpeakerImage extends StatelessWidget {
             ),
             shape: BoxShape.circle,
             border: Border.all(
-              color: ThemeHelper.blueColor,
+              color: ThemeHelper.speakerDetailImageBorder,
               width: 2,
             ),
           ),
