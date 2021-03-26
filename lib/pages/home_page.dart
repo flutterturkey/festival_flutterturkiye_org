@@ -80,7 +80,6 @@ class _HomePageState extends State<HomePage> {
               controller: _scrollController,
               children: const <Widget>[
                 CountdownSection(),
-                EventFlowSection(),
                 FooterSection(),
               ],
             ),
