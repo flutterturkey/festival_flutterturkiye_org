@@ -59,7 +59,7 @@ class _ActivityFlowListView extends StatelessWidget {
             subtitle: activityFlowList[index].subtitle,
             iconPath: activityFlowList[index].iconPath,
             index: index,
-            isLastIndex: (index == 3) || false,
+            isLastIndex: (index == activityFlowList.length - 1) || false,
           ),
         ),
       );
