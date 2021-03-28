@@ -139,16 +139,12 @@ class _ActivityFlowLineIndicatorBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isLastIndex) {
-      print('isLastIndex  -> $index');
       return const SizedBox.shrink();
     } else if (index.isEven) {
-      print('isEven  -> $index');
       return const _ActivityFlowLineIndicator(ImageAssets.lineIndicatorTop);
     } else if (index.isOdd) {
-      print('isOdd  -> $index');
       return const _ActivityFlowLineIndicator(ImageAssets.lineIndicatorBottom);
     } else {
-      print('else  -> $index');
       return const SizedBox.shrink();
     }
   }
