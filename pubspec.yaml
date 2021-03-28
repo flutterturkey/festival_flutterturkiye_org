@@ -35,6 +35,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/activity_flow/
     - assets/images/speakers/
     - assets/videos/
 
