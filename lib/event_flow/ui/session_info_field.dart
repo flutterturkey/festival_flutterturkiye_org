@@ -25,7 +25,7 @@ class SessionInfoField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final startingTime = _getTime(session.startingTime);
-    final dueTime = _getTime(session.startingTime.add(session.duration));
+    final endingTime = _getTime(session.endingTime);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -41,7 +41,7 @@ class SessionInfoField extends StatelessWidget {
         if (isSmallScreen) ...[
           const SizedBox(height: 8),
           EventFlowSessionText(
-            text: '$startingTime - $dueTime',
+            text: '$startingTime - $endingTime',
             sessionStatus: session.status,
           ),
         ],

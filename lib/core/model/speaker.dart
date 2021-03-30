@@ -1,7 +1,7 @@
-import 'package:equatable/equatable.dart';
+import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 import 'package:meta/meta.dart';
 
-class Speaker extends Equatable {
+class Speaker extends DatabaseModel {
   const Speaker({
     @required this.id,
     @required this.name,
@@ -14,6 +14,17 @@ class Speaker extends Equatable {
   })  : assert(id != null),
         assert(title != null),
         assert(name != null);
+
+  factory Speaker.fromMap(Map<String, dynamic> map) => Speaker(
+        id: map['id'],
+        image: map['image'],
+        name: map['name'],
+        title: map['title'],
+        about: map['about'],
+        twitter: map['twitter'],
+        github: map['github'],
+        linkedin: map['linkedin'],
+      );
 
   final String id;
   final String image;

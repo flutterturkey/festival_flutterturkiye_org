@@ -1,23 +1,31 @@
-import 'package:equatable/equatable.dart';
-import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
+
+import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 
 enum SessionStatus { waiting, active, passed }
 
-class Session extends Equatable {
+class Session extends DatabaseModel {
   const Session({
     @required this.title,
     @required this.startingTime,
-    @required this.duration,
-    this.speakerId,
+    @required this.endingTime,
+    this.speaker,
   })  : assert(title != null),
         assert(startingTime != null),
-        assert(duration != null);
+        assert(endingTime != null);
 
-  final Speaker speakerId;
+  factory Session.fromMap(Map<String, dynamic> map) => Session(
+        speaker: map['speaker'],
+        title: map['title'],
+        startingTime: _timestampToDateTime(map['startingTime']),
+        endingTime: _timestampToDateTime(map['endingTime']),
+      );
+
   final String title;
   final DateTime startingTime;
-  final Duration duration;
+  final DateTime endingTime;
+  final DocumentReference speaker;
 
   SessionStatus get status {
     final currentDate = DateTime(2021, 4, 17, 11);
@@ -25,8 +33,7 @@ class Session extends Equatable {
     final isStarted = currentDate.compareTo(startingTime);
 
     if (isStarted >= 0) {
-      final dueTime = startingTime.add(duration);
-      final isEnded = currentDate.compareTo(dueTime);
+      final isEnded = currentDate.compareTo(endingTime);
 
       if (isEnded < 0) {
         return SessionStatus.active;
@@ -41,8 +48,11 @@ class Session extends Equatable {
   List<Object> get props => [
         title,
         startingTime,
-        speakerId,
-        duration,
+        endingTime,
+        speaker,
         status,
       ];
+
+  static DateTime _timestampToDateTime(Timestamp timestamp) =>
+      timestamp.toDate();
 }
