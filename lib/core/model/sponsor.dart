@@ -47,6 +47,7 @@ class Sponsor extends DatabaseModel {
         logo,
         url,
         color,
+        reference,
       ];
 
   /// String is in the format "aabbcc" or
