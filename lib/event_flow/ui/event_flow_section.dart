@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
 import 'package:flutter/material.dart';
 
 import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
@@ -41,26 +42,16 @@ class _SessionsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final sessionRepository = getIt.get<SessionRepository>();
 
-    return FutureBuilder<List<Session>>(
-        future: sessionRepository.getAllAsModel(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting ||
-              snapshot.hasError ||
-              snapshot.data.isEmpty) {
-            return const SizedBox.shrink();
-          }
-          final sessions = snapshot.data;
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: sessions
-                  .map((session) => _SessionWidget(session: session))
-                  .toList(),
-            ),
-          );
-        });
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: sessionRepository.sessions
+            .map((session) => _SessionWidget(session: session))
+            .toList(),
+      ),
+    );
   }
 }
 
@@ -79,6 +70,10 @@ class _SessionWidget extends StatelessWidget {
     // final speaker = session.speaker;
     final startingTime = _getTime(session.startingTime);
     final endingTime = _getTime(session.endingTime);
+    final speakerRepository = getIt.get<SpeakerRepository>();
+
+    final speaker = speakerRepository.speakers
+        .firstWhere((speaker) => speaker.reference == session.speaker);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
@@ -86,21 +81,21 @@ class _SessionWidget extends StatelessWidget {
         smallWidget: _SmallSessionWidget(
           session: session,
           // TODO: Speaker
-          speaker: null,
+          speaker: speaker,
         ),
         mediumWidget: _LargeSessionWidget(
           startingTime: startingTime,
           dueTime: endingTime,
           session: session,
           // TODO: Speaker
-          speaker: null,
+          speaker: speaker,
         ),
         largeWidget: _LargeSessionWidget(
           startingTime: startingTime,
           dueTime: endingTime,
           session: session,
           // TODO: Speaker
-          speaker: null,
+          speaker: speaker,
         ),
       ),
     );

@@ -28,10 +28,7 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-  flutrlint:
-    git:
-      url: git://github.com/flutterturkey/flutrlint.git
-      ref: main
+  flutrlint: ^1.0.0
 
 flutter:
   uses-material-design: true

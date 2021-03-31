@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
@@ -11,6 +12,7 @@ void initializeGetIt() {
   getIt
     ..registerLazySingleton(() => CountdownRepository())
     ..registerLazySingleton(() => CommunityRepository())
+    ..registerLazySingleton(() => SpeakerRepository())
     ..registerLazySingleton(() => SessionRepository())
-    ..registerLazySingleton(() => SpeakerRepository());
+    ..registerLazySingleton(() => SponsorRepository());
 }

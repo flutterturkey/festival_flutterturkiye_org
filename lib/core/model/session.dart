@@ -10,22 +10,29 @@ class Session extends DatabaseModel {
     @required this.title,
     @required this.startingTime,
     @required this.endingTime,
+    @required this.reference,
     this.speaker,
   })  : assert(title != null),
         assert(startingTime != null),
-        assert(endingTime != null);
+        assert(endingTime != null),
+        assert(reference != null);
 
-  factory Session.fromMap(Map<String, dynamic> map) => Session(
-        speaker: map['speaker'],
-        title: map['title'],
-        startingTime: _timestampToDateTime(map['startingTime']),
-        endingTime: _timestampToDateTime(map['endingTime']),
-      );
+  factory Session.fromSnapshot(DocumentSnapshot snapshot) {
+    final data = snapshot.data();
+    return Session(
+      reference: snapshot.reference,
+      speaker: data['speaker'],
+      title: data['title'],
+      startingTime: _timestampToDateTime(data['startingTime']),
+      endingTime: _timestampToDateTime(data['endingTime']),
+    );
+  }
 
   final String title;
   final DateTime startingTime;
   final DateTime endingTime;
   final DocumentReference speaker;
+  final DocumentReference reference;
 
   SessionStatus get status {
     final currentDate = DateTime(2021, 4, 17, 11);
@@ -50,6 +57,7 @@ class Session extends DatabaseModel {
         startingTime,
         endingTime,
         speaker,
+        reference,
         status,
       ];
 

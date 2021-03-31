@@ -5,26 +5,25 @@ import 'package:festival_flutterturkiye_org/core/model/session.dart';
 class SessionRepository extends DatabaseRepository<Session> {
   SessionRepository() : super('sessions');
 
-  @override
-  Future<DocumentSnapshot> get(String documentId) =>
-      reference.doc(documentId).get();
+  List<Session> _sessions = [];
+
+  List<Session> get sessions => _sessions;
 
   @override
   Future<QuerySnapshot> getAll() => reference.orderBy('startingTime').get();
 
   @override
   Future<List<Session>> getAllAsModel() async {
-    final models = <Session>[];
+    _sessions = <Session>[];
     final querySnapshot = await getAll();
 
     for (final documentSnapshot in querySnapshot.docs) {
-      final session = Session.fromMap(documentSnapshot.data());
+      final session = Session.fromSnapshot(documentSnapshot);
 
       if (session != null) {
-        models.add(session);
+        _sessions.add(session);
       }
     }
-
-    return models;
+    return _sessions;
   }
 }

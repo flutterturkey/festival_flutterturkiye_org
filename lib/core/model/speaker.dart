@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 import 'package:meta/meta.dart';
 
 class Speaker extends DatabaseModel {
   const Speaker({
-    @required this.id,
+    @required this.reference,
     @required this.name,
     @required this.title,
     this.image,
@@ -11,22 +12,24 @@ class Speaker extends DatabaseModel {
     this.twitter,
     this.github,
     this.linkedin,
-  })  : assert(id != null),
+  })  : assert(reference != null),
         assert(title != null),
         assert(name != null);
 
-  factory Speaker.fromMap(Map<String, dynamic> map) => Speaker(
-        id: map['id'],
-        image: map['image'],
-        name: map['name'],
-        title: map['title'],
-        about: map['about'],
-        twitter: map['twitter'],
-        github: map['github'],
-        linkedin: map['linkedin'],
-      );
+  factory Speaker.fromSnapshot(DocumentSnapshot snapshot) {
+    final data = snapshot.data();
+    return Speaker(
+      reference: snapshot.reference,
+      image: data['image'],
+      name: data['name'],
+      title: data['title'],
+      about: data['about'],
+      twitter: data['twitter'],
+      github: data['github'],
+      linkedin: data['linkedin'],
+    );
+  }
 
-  final String id;
   final String image;
   final String name;
   final String title;
@@ -34,10 +37,11 @@ class Speaker extends DatabaseModel {
   final String twitter;
   final String github;
   final String linkedin;
+  final DocumentReference reference;
 
   @override
   List<Object> get props => [
-        id,
+        reference,
         image,
         name,
         title,
@@ -45,5 +49,6 @@ class Speaker extends DatabaseModel {
         twitter,
         github,
         linkedin,
+        reference,
       ];
 }

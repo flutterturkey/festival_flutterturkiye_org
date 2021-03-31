@@ -5,26 +5,25 @@ import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 class SpeakerRepository extends DatabaseRepository<Speaker> {
   SpeakerRepository() : super('speakers');
 
-  @override
-  Future<DocumentSnapshot> get(String documentId) =>
-      reference.doc(documentId).get();
+  List<Speaker> _speakers = [];
+
+  List<Speaker> get speakers => _speakers;
 
   @override
   Future<QuerySnapshot> getAll() => reference.orderBy('name').get();
 
   @override
   Future<List<Speaker>> getAllAsModel() async {
+    _speakers = <Speaker>[];
     final querySnapshot = await getAll();
-    final models = <Speaker>[];
 
     for (final documentSnapshot in querySnapshot.docs) {
-      final speaker = Speaker.fromMap(documentSnapshot.data());
+      final speaker = Speaker.fromSnapshot(documentSnapshot);
 
       if (speaker != null) {
-        models.add(speaker);
+        _speakers.add(speaker);
       }
     }
-
-    return models;
+    return _speakers;
   }
 }

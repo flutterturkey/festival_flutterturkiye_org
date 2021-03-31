@@ -137,7 +137,7 @@ class _SpeakerImage extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(speakerImage),
+              image: NetworkImage(speakerImage),
               fit: BoxFit.cover,
             ),
             shape: BoxShape.circle,
