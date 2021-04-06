@@ -1,23 +1,38 @@
-import 'package:equatable/equatable.dart';
-import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
+
+import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 
 enum SessionStatus { waiting, active, passed }
 
-class Session extends Equatable {
+class Session extends DatabaseModel {
   const Session({
     @required this.title,
     @required this.startingTime,
-    @required this.duration,
-    this.speakerId,
+    @required this.endingTime,
+    @required this.reference,
+    this.speaker,
   })  : assert(title != null),
         assert(startingTime != null),
-        assert(duration != null);
+        assert(endingTime != null),
+        assert(reference != null);
 
-  final Speaker speakerId;
+  factory Session.fromSnapshot(DocumentSnapshot snapshot) {
+    final data = snapshot.data();
+    return Session(
+      reference: snapshot.reference,
+      speaker: data['speaker'],
+      title: data['title'],
+      startingTime: _timestampToDateTime(data['startingTime']),
+      endingTime: _timestampToDateTime(data['endingTime']),
+    );
+  }
+
   final String title;
   final DateTime startingTime;
-  final Duration duration;
+  final DateTime endingTime;
+  final DocumentReference speaker;
+  final DocumentReference reference;
 
   SessionStatus get status {
     final currentDate = DateTime(2021, 4, 17, 11);
@@ -25,8 +40,7 @@ class Session extends Equatable {
     final isStarted = currentDate.compareTo(startingTime);
 
     if (isStarted >= 0) {
-      final dueTime = startingTime.add(duration);
-      final isEnded = currentDate.compareTo(dueTime);
+      final isEnded = currentDate.compareTo(endingTime);
 
       if (isEnded < 0) {
         return SessionStatus.active;
@@ -41,8 +55,12 @@ class Session extends Equatable {
   List<Object> get props => [
         title,
         startingTime,
-        speakerId,
-        duration,
+        endingTime,
+        speaker,
+        reference,
         status,
       ];
+
+  static DateTime _timestampToDateTime(Timestamp timestamp) =>
+      timestamp.toDate();
 }

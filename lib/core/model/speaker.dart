@@ -1,9 +1,10 @@
-import 'package:equatable/equatable.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 import 'package:meta/meta.dart';
 
-class Speaker extends Equatable {
+class Speaker extends DatabaseModel {
   const Speaker({
-    @required this.id,
+    @required this.reference,
     @required this.name,
     @required this.title,
     this.image,
@@ -11,11 +12,24 @@ class Speaker extends Equatable {
     this.twitter,
     this.github,
     this.linkedin,
-  })  : assert(id != null),
+  })  : assert(reference != null),
         assert(title != null),
         assert(name != null);
 
-  final String id;
+  factory Speaker.fromSnapshot(DocumentSnapshot snapshot) {
+    final data = snapshot.data();
+    return Speaker(
+      reference: snapshot.reference,
+      image: data['image'],
+      name: data['name'],
+      title: data['title'],
+      about: data['about'],
+      twitter: data['twitter'],
+      github: data['github'],
+      linkedin: data['linkedin'],
+    );
+  }
+
   final String image;
   final String name;
   final String title;
@@ -23,10 +37,11 @@ class Speaker extends Equatable {
   final String twitter;
   final String github;
   final String linkedin;
+  final DocumentReference reference;
 
   @override
   List<Object> get props => [
-        id,
+        reference,
         image,
         name,
         title,
@@ -34,5 +49,6 @@ class Speaker extends Equatable {
         twitter,
         github,
         linkedin,
+        reference,
       ];
 }

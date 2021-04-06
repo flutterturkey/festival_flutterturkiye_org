@@ -1,10 +1,13 @@
+import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
 import 'package:flutter/material.dart';
 
+import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_subtitle.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
+import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_info_field.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
@@ -36,16 +39,20 @@ class _SessionsWidget extends StatelessWidget {
   const _SessionsWidget({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: _sessions
-              .map((session) => _SessionWidget(session: session))
-              .toList(),
-        ),
-      );
+  Widget build(BuildContext context) {
+    final sessionRepository = getIt.get<SessionRepository>();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: sessionRepository.sessions
+            .map((session) => _SessionWidget(session: session))
+            .toList(),
+      ),
+    );
+  }
 }
 
 class _SessionWidget extends StatelessWidget {
@@ -59,27 +66,35 @@ class _SessionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final speaker = session.speakerId;
+    // TODO: Speaker
+    // final speaker = session.speaker;
     final startingTime = _getTime(session.startingTime);
-    final dueTime = _getTime(session.startingTime.add(session.duration));
+    final endingTime = _getTime(session.endingTime);
+    final speakerRepository = getIt.get<SpeakerRepository>();
+
+    final speaker = speakerRepository.speakers
+        .firstWhere((speaker) => speaker.reference == session.speaker);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: ResponsiveBuilder(
         smallWidget: _SmallSessionWidget(
           session: session,
+          // TODO: Speaker
           speaker: speaker,
         ),
         mediumWidget: _LargeSessionWidget(
           startingTime: startingTime,
-          dueTime: dueTime,
+          dueTime: endingTime,
           session: session,
+          // TODO: Speaker
           speaker: speaker,
         ),
         largeWidget: _LargeSessionWidget(
           startingTime: startingTime,
-          dueTime: dueTime,
+          dueTime: endingTime,
           session: session,
+          // TODO: Speaker
           speaker: speaker,
         ),
       ),
@@ -194,89 +209,3 @@ class _EventFlowSessionPoint extends StatelessWidget {
     );
   }
 }
-
-const _speakers = <Speaker>[
-  Speaker(
-    id: '1',
-    image: 'assets/images/speakers/salihgueler.jpg',
-    name: 'Salih',
-    about: "Superlist'te SSE olarak çalışan Salih, "
-        'Flutteri le ilgili bütün etkinliklerde konuşmacı oluyor....',
-    title: 'Senior Software Engineer (Flutter) at Superlist',
-    twitter: 'salihgueler',
-    github: 'salihgueler',
-    linkedin: 'msalihguler',
-  ),
-];
-
-final _sessions = <Session>[
-  Session(
-    title: 'Açılış Konuşması ve Hackathon Başlangıcı',
-    startingTime: DateTime(2021, 4, 17, 9),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 9, 30),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 10),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 10, 30),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 11),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 11, 30),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 12),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 12, 30),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 14),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    speakerId: _speakers[0],
-    title: "Superlist'te nasıl uygulama geliştiriyoruz?",
-    startingTime: DateTime(2021, 4, 17, 14, 30),
-    duration: const Duration(minutes: 30),
-  ),
-  Session(
-    title: 'Festival Sonu',
-    startingTime: DateTime(2021, 4, 17, 15),
-    duration: const Duration(minutes: 60),
-  ),
-  Session(
-    title: 'Kapanış',
-    startingTime: DateTime(2021, 4, 17, 16),
-    duration: const Duration(minutes: 30),
-  ),
-];
