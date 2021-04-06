@@ -2,7 +2,7 @@ name: On Website Deploy
 'on':
   push:
     branches:
-      - "main"
+      - "feature/FTW-73-firebase"
 jobs:
   on-push-main:
     runs-on: ubuntu-latest
@@ -13,6 +13,8 @@ jobs:
           channel: stable
       - name: Enable Web
         run: flutter config --enable-web
+      - name: Add Firebase Code
+        run: echo ${{ secrets.FIREBASE_CONFIG}} > web/index.html
       - name: Build Web application
         run: flutter build web
       - name: Add CNAME
