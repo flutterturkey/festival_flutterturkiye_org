@@ -17,7 +17,7 @@ jobs:
         env:
           FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG}}
         run: |
-          echo "$env:FIREBASE_CONFIG" > web/index.html
+          echo $FIREBASE_CONFIG > web/index.html
       - name: Build Web application
         run: flutter build web
       - name: Add CNAME
