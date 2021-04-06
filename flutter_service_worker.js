@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "11a10872bf24083cbe090de8bf08e962",
-"/": "11a10872bf24083cbe090de8bf08e962",
+"index.html": "26396ec1f6eb7dbb697cde3c42e2f97a",
+"/": "26396ec1f6eb7dbb697cde3c42e2f97a",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/NOTICES": "9e0a5c51e1735a88586bbb6957a5b556",
@@ -32,7 +32,7 @@ const RESOURCES = {
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
 "main.dart.js": "1f239c790e7d4cded787edc8f6ef113b",
-"version.json": "e1f4ae54c2796a6c74742cee85a0ba75"
+"version.json": "85a5482f4a8fe57adaf70f8ebedf172f"
 };
 
 // The application shell files that are downloaded before a service worker can
