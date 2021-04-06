@@ -14,8 +14,10 @@ jobs:
       - name: Enable Web
         run: flutter config --enable-web
       - name: Add Firebase Code
+        env:
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG}}
         run: |
-          echo "${{ secrets.FIREBASE_CONFIG}}" > web/index.html
+          echo "$env:FIREBASE_CONFIG" > web/index.html
       - name: Build Web application
         run: flutter build web
       - name: Add CNAME
