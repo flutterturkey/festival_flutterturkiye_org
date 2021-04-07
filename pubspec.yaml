@@ -14,6 +14,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  expansion_tile_card: ^2.0.0
   equatable: ^2.0.0
   get_it: ^6.0.0
   material_design_icons_flutter: ^4.0.5855
