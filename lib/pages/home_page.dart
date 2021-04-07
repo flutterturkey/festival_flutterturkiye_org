@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/faq/ui/faq_section.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -79,6 +80,7 @@ class _HomePageState extends State<HomePage> {
               controller: _scrollController,
               children: const <Widget>[
                 CountdownSection(),
+                FAQSection(),
                 FooterSection(),
               ],
             ),
