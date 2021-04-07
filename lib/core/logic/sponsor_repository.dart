@@ -7,7 +7,7 @@ class SponsorRepository extends DatabaseRepository<Sponsor> {
 
   List<Sponsor> _sponsors = [];
 
-  List<Sponsor> get speakers => _sponsors;
+  List<Sponsor> get sponsors => _sponsors;
 
   @override
   Future<QuerySnapshot> getAll() => reference.orderBy('name').get();
@@ -18,10 +18,10 @@ class SponsorRepository extends DatabaseRepository<Sponsor> {
     final querySnapshot = await getAll();
 
     for (final documentSnapshot in querySnapshot.docs) {
-      final speaker = Sponsor.fromSnapshot(documentSnapshot);
+      final sponsor = Sponsor.fromSnapshot(documentSnapshot);
 
-      if (speaker != null) {
-        _sponsors.add(speaker);
+      if (sponsor != null) {
+        _sponsors.add(sponsor);
       }
     }
     return _sponsors;
