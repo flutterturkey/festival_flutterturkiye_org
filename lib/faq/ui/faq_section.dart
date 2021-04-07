@@ -81,38 +81,6 @@ class _FAQSectionState extends State<FAQSection> {
               ),
             ],
           );
-          /*  return ExpansionTile(
-            expandedAlignment: const Alignment(-1, 0),
-            childrenPadding:
-                const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-            title: Container(
-              padding: EdgeInsets.zero,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-              width: screenSize.width,
-              child: Text(
-                item.question,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-            tilePadding: const EdgeInsets.all(8),
-            children: [
-              Text(
-                item.answer,
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ); */
         },
       ),
     );
