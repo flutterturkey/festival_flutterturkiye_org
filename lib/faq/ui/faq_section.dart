@@ -1,3 +1,4 @@
+import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/faq/model/faq_item.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,27 @@ class FAQSection extends StatefulWidget {
 
 class _FAQSectionState extends State<FAQSection> {
   List<FAQItem> faqList = [
-    const FAQItem(question: 'question', answer: 'answer'),
-    const FAQItem(question: 'question', answer: 'answer'),
-    const FAQItem(question: 'question', answer: 'answer'),
+    const FAQItem(
+        question:
+            '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit''',
+        answer:
+            '''Vestibulum finibus lacus felis, in vulputate eros molestie ac. Nullam eget vulputate elit. Vestibulum finibus lacus felis, in vulputate eros molestie ac. Nullam eget vulputate elit. Vestibulum finibus lacus felis, in vulputate eros molestie ac. Nullam eget vulputate elit.'''),
+    const FAQItem(
+        question:
+            'Mauris varius posuere porta. Aliquam maximus feugiat consequat.',
+        answer:
+            'Maecenas at mauris mattis, pellentesque nulla ac, rhoncus velit.'),
+    const FAQItem(
+        question:
+            '''Morbi suscipit consectetur hendrerit. Donec sit amet odio sollicitudin, hendrerit ipsum a, mollis sapien.''',
+        answer:
+            '''Quisque diam purus, lacinia vestibulum mattis nec, luctus et risus.'''),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,71 +42,79 @@ class _FAQSectionState extends State<FAQSection> {
       color: ThemeHelper.darkColor,
       height: screenSize.height,
       child: ListView.builder(
-          primary: false,
-          itemCount: faqList.length,
-          itemBuilder: (context, index) {
-            var isExpanded = false;
-            final item = faqList[index];
-            return Theme(
-              data: ThemeData(),
-              child: ExpansionTile(
-                  expandedAlignment: const Alignment(-1, 0),
-                  childrenPadding: const EdgeInsets.symmetric(horizontal: 32),
-                  title: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      width: screenSize.width,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                item.question,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              !isExpanded ? '+' : '-',
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                              ),
-                            )
-                          ],
-                        ),
-                      )),
-                  trailing: Text(
-                    !isExpanded ? '+' : '-',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                    ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        primary: false,
+        itemCount: faqList.length,
+        itemBuilder: (context, index) {
+          final item = faqList[index];
+          return ExpansionTileCard(
+            initialPadding: const EdgeInsets.symmetric(vertical: 8),
+            finalPadding: const EdgeInsets.symmetric(vertical: 16),
+            baseColor: ThemeHelper.footerTextColor,
+            duration: const Duration(milliseconds: 100),
+            expandedTextColor: Colors.black,
+            expandedColor: Colors.white,
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10),
+            ),
+            title: Text(item.question),
+            children: <Widget>[
+              const Divider(
+                thickness: 1,
+                height: 1,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
                   ),
-                  //backgroundColor: ThemeHelper.activityFlowColor,
-                  onExpansionChanged: (value) {
-                    setState(() {
-                      isExpanded = !isExpanded;
-                    });
-                    print(isExpanded);
-                  },
-                  children: [
-                    Text(
-                      item.answer,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ]),
-            );
-          }),
+                  child: Text(
+                    item.answer,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2
+                        .copyWith(fontSize: 16),
+                  ),
+                ),
+              ),
+            ],
+          );
+          /*  return ExpansionTile(
+            expandedAlignment: const Alignment(-1, 0),
+            childrenPadding:
+                const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            title: Container(
+              padding: EdgeInsets.zero,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
+              width: screenSize.width,
+              child: Text(
+                item.question,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            tilePadding: const EdgeInsets.all(8),
+            children: [
+              Text(
+                item.answer,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ); */
+        },
+      ),
     );
   }
 }
