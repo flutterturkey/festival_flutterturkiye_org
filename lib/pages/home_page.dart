@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
 import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 const _scrollOffset = 12.0;
 const String _registrationUrl =

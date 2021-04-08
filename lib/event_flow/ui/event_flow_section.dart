@@ -201,11 +201,15 @@ class _EventFlowSessionPoint extends StatelessWidget {
         radius = 20.0;
         break;
     }
-    return Container(
-      height: radius,
-      width: radius,
-      margin: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: pointColor),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: SizedBox(
+        height: radius,
+        width: radius,
+        child: DecoratedBox(
+          decoration: BoxDecoration(shape: BoxShape.circle, color: pointColor),
+        ),
+      ),
     );
   }
 }
