@@ -4,8 +4,10 @@ import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/pages/home_page.dart';
+import 'package:festival_flutterturkiye_org/router/ft_router.gr.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 // ignore: always_use_package_imports
 import 'configure_nonweb.dart' if (dart.library.html) 'configure_web.dart';
 
@@ -31,5 +33,6 @@ class FlutterFestivalApp extends StatelessWidget {
         theme: ThemeHelper.themeData,
         home: const HomePage(),
         debugShowCheckedModeBanner: false,
+        onGenerateRoute: FTRouter(),
       );
 }
