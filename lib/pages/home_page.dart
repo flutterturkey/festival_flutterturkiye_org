@@ -5,6 +5,7 @@ import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
 import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
+import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_section.dart';
 
 const _scrollOffset = 12.0;
 const String _registrationUrl =
@@ -79,6 +80,7 @@ class _HomePageState extends State<HomePage> {
               controller: _scrollController,
               children: const <Widget>[
                 CountdownSection(),
+                SponsorSection(),
                 FooterSection(),
               ],
             ),
