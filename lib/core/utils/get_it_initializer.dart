@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/logic/faq_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';

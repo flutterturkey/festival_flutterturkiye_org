@@ -31,7 +31,6 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-  flutrlint: ^1.0.0
   auto_route_generator: ^0.6.10
   build_runner: ^1.11.0
   flutrlint: ^2.0.0+1

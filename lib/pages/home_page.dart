@@ -5,6 +5,7 @@ import 'package:festival_flutterturkiye_org/faq/ui/faq_section.dart';
 import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
 import 'package:festival_flutterturkiye_org/router/ft_router.gr.dart';
+import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_section.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,11 +36,11 @@ class _HomePageState extends State<HomePage> {
           children: [
             ListView(
               controller: _scrollController,
-              children: const <Widget>[
-                CountdownSection(),
+              children: <Widget>[
+                const CountdownSection(),
                 SponsorSection(),
                 FAQSection(),
-                FooterSection(),
+                const FooterSection(),
               ],
             ),
             WebsiteNavigation(
@@ -121,14 +122,12 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void _openSponsorSection() {
-    //TODO: UI not ready yet
-    DialogHelper.showAvailableSoon(context);
+  void _openFAQSection() {
+    Navigator.of(context, rootNavigator: true).pushNamed(Routes.fAQSection);
   }
 
-  void _openFAQSection() {
-    //TODO: UI not ready yet
-    DialogHelper.showAvailableSoon(context);
+  void _openSponsorSection() {
+    Navigator.of(context, rootNavigator: true).pushNamed(Routes.sponsorSection);
   }
 
   void _openContactSection() {

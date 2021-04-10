@@ -1,46 +1,48 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-
 import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';
 import 'package:festival_flutterturkiye_org/core/model/sponsor.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_card.dart';
+import 'package:flutter/material.dart';
 
 class SponsorSection extends StatelessWidget {
-  const SponsorSection({Key key}) : super(key: key);
+  SponsorSection({Key key}) : super(key: key);
+
+  final _sessionRepository = getIt.get<SponsorRepository>();
 
   @override
-  Widget build(BuildContext context) {
-    final _sessionRepository = getIt.get<SponsorRepository>();
-    return Column(
-      children: [
-        const SectionTitle(title: 'Sponsorlarımız'),
-        const _SponsorSectionInfoTitle(
-          title: 'Etkinliğimize sponsor olmak için '
-              'sponsorluk@flutterturkiye.org üzerinden '
-              'iletişime geçebilirsiniz.',
+  Widget build(BuildContext context) => Material(
+        color: ThemeHelper.lightColor,
+        child: Column(
+          children: [
+            const SectionTitle(title: 'Sponsorlarımız'),
+            const _SponsorSectionInfoTitle(
+              title: 'Etkinliğimize sponsor olmak için '
+                  'sponsorluk@flutterturkiye.org üzerinden '
+                  'iletişime geçebilirsiniz.',
+            ),
+            const SizedBox(height: 15),
+            _SponsorsBuilder(
+              sponsorsList: _sessionRepository.goldSponsors,
+              sponsorTypeTitle: 'Gold',
+            ),
+            const SizedBox(height: 25),
+            _SponsorsBuilder(
+              sponsorsList: _sessionRepository.silverSponsors,
+              sponsorTypeTitle: 'Silver',
+            ),
+            const SizedBox(height: 25),
+            _SponsorsBuilder(
+              sponsorsList: _sessionRepository.bronzSponsors,
+              sponsorTypeTitle: 'Bronz',
+            ),
+            const SizedBox(height: 100),
+          ],
         ),
-        const SizedBox(height: 15),
-        _SponsorsBuilder(
-          sponsorsList: _sessionRepository.goldSponsors,
-          sponsorTypeTitle: 'Gold',
-        ),
-        const SizedBox(height: 25),
-        _SponsorsBuilder(
-          sponsorsList: _sessionRepository.silverSponsors,
-          sponsorTypeTitle: 'Silver',
-        ),
-        const SizedBox(height: 25),
-        _SponsorsBuilder(
-          sponsorsList: _sessionRepository.bronzSponsors,
-          sponsorTypeTitle: 'Bronz',
-        ),
-        const SizedBox(height: 100),
-      ],
-    );
-  }
+      );
 }
 
 class _SponsorSectionInfoTitle extends StatelessWidget {
