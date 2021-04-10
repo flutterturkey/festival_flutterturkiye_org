@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
+import 'package:festival_flutterturkiye_org/faq/ui/faq_section.dart';
 import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
 import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_section.dart';
@@ -81,6 +82,7 @@ class _HomePageState extends State<HomePage> {
               children: const <Widget>[
                 CountdownSection(),
                 SponsorSection(),
+                FAQSection(),
                 FooterSection(),
               ],
             ),

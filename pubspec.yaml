@@ -16,6 +16,7 @@ dependencies:
   carousel_slider: ^3.0.0
   cloud_firestore: ^1.0.3
   cupertino_icons: ^1.0.2
+  expansion_tile_card: ^2.0.0
   equatable: ^2.0.0
   firebase_core: ^1.0.2
   firebase_core_web: ^1.0.2

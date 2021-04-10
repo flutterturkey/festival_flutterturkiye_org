@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/logic/faq_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,5 +15,6 @@ void initializeGetIt() {
     ..registerLazySingleton(() => CommunityRepository())
     ..registerLazySingleton(() => SpeakerRepository())
     ..registerLazySingleton(() => SessionRepository())
-    ..registerLazySingleton(() => SponsorRepository());
+    ..registerLazySingleton(() => SponsorRepository())
+    ..registerLazySingleton(() => FaqRepository());
 }
