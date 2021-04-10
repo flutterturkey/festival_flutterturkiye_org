@@ -17,9 +17,9 @@ const double _paddingMedium = 48;
 const double _paddingLarge = 72;
 const String _registrationUrl =
     'https://kommunity.com/flutter-turkiye/events/flutter-festivali-81b8ee21?key=dudavx';
-const String _callForPapersUrl =
-    'https://sessionize.com/flutter-festival-turkiye';
 const String _hackathonUrl = 'https://bit.ly/flutter-festivali-hackathon';
+// const String _callForPapersUrl =
+//     'https://sessionize.com/flutter-festival-turkiye';
 
 // TODO: When the screen height too low, it has a bottom overflowed error.
 class CountdownSection extends StatefulWidget {
