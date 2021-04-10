@@ -1,5 +1,6 @@
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/speaker_detail_content.dart';
+import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
 import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class SpeakerCard extends StatelessWidget {
         child: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(15)),
-            color: Color(0xff212937),
+            color: ThemeHelper.darkColor,
           ),
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -37,10 +38,16 @@ class SpeakerCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: ClipOval(
-                    child: Image.asset(
-                      ImageAssets.speakerPlaceHolder,
-                      fit: BoxFit.fitHeight,
-                    ),
+                    child: speaker.image == null
+                        ? Image.asset(
+                            ImageAssets.speakerPlaceHolder,
+                            fit: BoxFit.fitHeight,
+                          )
+                        : SpeakerImage(
+                            speakerImage: speaker.image,
+                            imageSize: 72,
+                            borderSize: 4,
+                          ),
                   ),
                 ),
                 Column(
@@ -53,7 +60,7 @@ class SpeakerCard extends StatelessWidget {
                       style: const TextStyle(
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: ThemeHelper.lightColor,
                         fontSize: 20,
                       ),
                     ),
@@ -62,7 +69,7 @@ class SpeakerCard extends StatelessWidget {
                       maxLines: 2,
                       style: const TextStyle(
                         fontFamily: 'Montserrat',
-                        color: Colors.white,
+                        color: ThemeHelper.lightColor,
                         fontSize: 16,
                       ),
                     ),

@@ -1,7 +1,5 @@
-import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
-import 'package:flutter/material.dart';
-
 import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
+import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
@@ -11,26 +9,29 @@ import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_info_field.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
+import 'package:flutter/material.dart';
 
 class EventFlowSection extends StatelessWidget {
   const EventFlowSection({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-        color: ThemeHelper.darkColor,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            SectionTitle(
-              title: 'Etkinlik Programı',
-              textColor: ThemeHelper.lightColor,
-            ),
-            SectionSubtitle(
-              title: '17 Nisan Cumartesi',
-              padding: EdgeInsets.only(bottom: 16),
-            ),
-            _SessionsWidget(),
-          ],
+  Widget build(BuildContext context) => Scaffold(
+        body: Container(
+          color: ThemeHelper.darkColor,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              SectionTitle(
+                title: 'Etkinlik Programı',
+                textColor: ThemeHelper.lightColor,
+              ),
+              SectionSubtitle(
+                title: '17 Nisan Cumartesi',
+                padding: EdgeInsets.only(bottom: 16),
+              ),
+              _SessionsWidget(),
+            ],
+          ),
         ),
       );
 }

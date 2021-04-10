@@ -31,4 +31,22 @@ class DialogHelper {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         content: SpeakerDetailContent(speaker: speaker),
       );
+
+  static void showAvailableSoon(BuildContext context) => show(
+        context,
+        backgroundColor: ThemeHelper.darkColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        content: const SizedBox(
+          height: 100,
+          child: Center(
+            child: Text(
+              'Bu sayfa yakında hazır olacak :)',
+              style: TextStyle(
+                color: ThemeHelper.lightColor,
+                fontSize: 36,
+              ),
+            ),
+          ),
+        ),
+      );
 }
