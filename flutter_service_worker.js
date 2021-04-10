@@ -7,11 +7,11 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "9540a6d2af362a868104c9ca6cbd35d0",
-"/": "9540a6d2af362a868104c9ca6cbd35d0",
+"index.html": "4468e47dbff771f3417acf1793b0d7ea",
+"/": "4468e47dbff771f3417acf1793b0d7ea",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
-"assets/NOTICES": "7c231e34c4111370e6895d97d60a37cc",
+"assets/NOTICES": "32914a11dee1bce7105c55e1397537c5",
 "assets/fonts/Manrope-Bold.ttf": "98ea53ab8548a5f9e984dd93a94e07c4",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
 "assets/fonts/Montserrat-Bold.ttf": "ade91f473255991f410f61857696434b",
@@ -38,7 +38,7 @@ const RESOURCES = {
 "assets/assets/images/speaker_placeholder.png": "44b7a2309b2a1553e145363a6e29a2c5",
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"main.dart.js": "4e93313cce9e278945218a4372b5482b",
+"main.dart.js": "fc57e6bb871dd43feebacf1850af810d",
 "version.json": "85a5482f4a8fe57adaf70f8ebedf172f"
 };
 
