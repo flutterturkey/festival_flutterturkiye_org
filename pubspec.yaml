@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
+  carousel_slider: ^3.0.0
   cloud_firestore: ^1.0.3
   cupertino_icons: ^1.0.2
   expansion_tile_card: ^2.0.0
@@ -29,7 +30,7 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-  flutrlint: ^1.0.0
+  flutrlint: ^2.0.0+1
 
 flutter:
   uses-material-design: true
@@ -38,6 +39,7 @@ flutter:
     - assets/images/
     - assets/images/activity_flow/
     - assets/images/speakers/
+    - assets/images/sponsors/
     - assets/videos/
 
   fonts:

@@ -9,8 +9,21 @@ class SponsorRepository extends DatabaseRepository<Sponsor> {
 
   List<Sponsor> get sponsors => _sponsors;
 
+  List<Sponsor> get goldSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.gold)
+      .toList(growable: false);
+
+  List<Sponsor> get silverSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.silver)
+      .toList(growable: false);
+
+  List<Sponsor> get bronzSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.bronze)
+      .toList(growable: false);
+
   @override
-  Future<QuerySnapshot> getAll() => reference.orderBy('name').get();
+  Future<QuerySnapshot> getAll() =>
+      reference.where('isActive', isEqualTo: true).orderBy('order').get();
 
   @override
   Future<List<Sponsor>> getAllAsModel() async {

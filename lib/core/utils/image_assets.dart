@@ -10,4 +10,6 @@ class ImageAssets {
       'assets/images/activity_flow/line_indicator_bottom.png';
   static const String lineIndicatorTop =
       'assets/images/activity_flow/line_indicator_top.png';
+
+  static const String sponsorAssets = 'assets/images/sponsors/';
 }
