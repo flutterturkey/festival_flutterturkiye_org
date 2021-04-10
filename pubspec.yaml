@@ -38,6 +38,7 @@ flutter:
     - assets/images/
     - assets/images/activity_flow/
     - assets/images/speakers/
+    - assets/images/sponsors/
     - assets/videos/
 
   fonts:
