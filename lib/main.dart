@@ -1,5 +1,6 @@
 import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
+import 'package:festival_flutterturkiye_org/core/logic/faq_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
@@ -18,6 +19,7 @@ Future<void> main() async {
   await getIt.get<SpeakerRepository>().getAllAsModel();
   await getIt.get<SessionRepository>().getAllAsModel();
   await getIt.get<SponsorRepository>().getAllAsModel();
+  await getIt.get<FaqRepository>().getAllAsModel();
 
   runApp(const FlutterFestivalApp());
 }
