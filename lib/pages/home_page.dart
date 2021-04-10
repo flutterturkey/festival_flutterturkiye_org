@@ -1,6 +1,7 @@
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
 import 'package:festival_flutterturkiye_org/core/utils/dialog_helper.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
+import 'package:festival_flutterturkiye_org/faq/ui/faq_section.dart';
 import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
 import 'package:festival_flutterturkiye_org/router/ft_router.gr.dart';
@@ -36,6 +37,8 @@ class _HomePageState extends State<HomePage> {
               controller: _scrollController,
               children: const <Widget>[
                 CountdownSection(),
+                SponsorSection(),
+                FAQSection(),
                 FooterSection(),
               ],
             ),

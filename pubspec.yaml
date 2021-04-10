@@ -14,8 +14,10 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   auto_route: ^0.6.9
+  carousel_slider: ^3.0.0
   cloud_firestore: ^1.0.3
   cupertino_icons: ^1.0.2
+  expansion_tile_card: ^2.0.0
   equatable: ^2.0.0
   firebase_core: ^1.0.2
   firebase_core_web: ^1.0.2
@@ -32,6 +34,7 @@ dev_dependencies:
   flutrlint: ^1.0.0
   auto_route_generator: ^0.6.10
   build_runner: ^1.11.0
+  flutrlint: ^2.0.0+1
 
 flutter:
   uses-material-design: true
@@ -40,6 +43,7 @@ flutter:
     - assets/images/
     - assets/images/activity_flow/
     - assets/images/speakers/
+    - assets/images/sponsors/
     - assets/videos/
 
   fonts:

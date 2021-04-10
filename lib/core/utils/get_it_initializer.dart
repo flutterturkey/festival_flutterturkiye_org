@@ -13,5 +13,6 @@ void initializeGetIt() {
     ..registerLazySingleton(() => CommunityRepository())
     ..registerLazySingleton(() => SpeakerRepository())
     ..registerLazySingleton(() => SessionRepository())
-    ..registerLazySingleton(() => SponsorRepository());
+    ..registerLazySingleton(() => SponsorRepository())
+    ..registerLazySingleton(() => FaqRepository());
 }
