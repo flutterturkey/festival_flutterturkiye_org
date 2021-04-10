@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
-import 'package:festival_flutterturkiye_org/core/model/sponsor.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:festival_flutterturkiye_org/core/model/sponsor.dart';
+import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 
 class SponsorCard extends StatelessWidget {
   const SponsorCard({
@@ -26,8 +27,13 @@ class SponsorCard extends StatelessWidget {
           child: InkWell(
             borderRadius: const BorderRadius.all(Radius.circular(15)),
             onTap: _onTapCard,
-            child: Center(
-              child: Image.network(sponsor.logo),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Center(
+                child: Image.asset(
+                  '${ImageAssets.sponsorAssets}${sponsor.logo}',
+                ),
+              ),
             ),
           ),
         ),
