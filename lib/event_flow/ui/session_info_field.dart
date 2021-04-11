@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/model/calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -8,6 +9,7 @@ import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
 import 'package:festival_flutterturkiye_org/core/utils/dialog_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SessionInfoField extends StatelessWidget {
   const SessionInfoField({
@@ -76,8 +78,18 @@ class _EventFlowAddToCalendar extends StatelessWidget {
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all(ThemeHelper.blueColor),
         ),
-        onPressed: () {
-          //TODO: Add to Calendar Issue: #43
+        onPressed: () async {
+          final calendar = Calendar(
+            title: session.title,
+            description: 'Flutter Festivali',
+            startingTime: session.startingTime,
+            endingTime: session.endingTime,
+          );
+          final link = calendar.toLink();
+
+          if (await canLaunch(link)) {
+            await launch(link);
+          }
         },
       );
     }

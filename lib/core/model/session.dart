@@ -35,7 +35,7 @@ class Session extends DatabaseModel {
   final DocumentReference reference;
 
   SessionStatus get status {
-    final currentDate = DateTime(2021, 4, 17, 11);
+    final currentDate = DateTime.now();
 
     final isStarted = currentDate.compareTo(startingTime);
 
