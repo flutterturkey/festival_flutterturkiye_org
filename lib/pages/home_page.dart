@@ -1,3 +1,5 @@
+import 'package:festival_flutterturkiye_org/event_flow/ui/event_flow_section.dart';
+import 'package:festival_flutterturkiye_org/speaker/ui/speaker_section.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -44,18 +46,12 @@ class _HomePageState extends State<HomePage> {
               controller: _scrollController,
               child: Column(
                 children: <Widget>[
-                  CountdownSection(
-                    focusNode: focusNodes[0],
-                  ),
-                  SponsorSection(
-                    focusNode: focusNodes[1],
-                  ),
-                  FAQSection(
-                    focusNode: focusNodes[2],
-                  ),
-                  FooterSection(
-                    focusNode: focusNodes[3],
-                  ),
+                  CountdownSection(focusNode: focusNodes[0]),
+                  // SpeakerSection(focusNode: focusNodes[1]),
+                  EventFlowSection(focusNode: focusNodes[2]),
+                  SponsorSection(focusNode: focusNodes[3]),
+                  FAQSection(focusNode: focusNodes[4]),
+                  FooterSection(focusNode: focusNodes[5]),
                 ],
               ),
             ),
@@ -93,6 +89,8 @@ class _HomePageState extends State<HomePage> {
     focusNodes.addAll(
       [
         FocusNode(debugLabel: 'Etkinlik'),
+        FocusNode(debugLabel: 'Konuşmacılar'),
+        FocusNode(debugLabel: 'Program'),
         FocusNode(debugLabel: 'Sponsorlar'),
         FocusNode(debugLabel: 'SSS'),
         FocusNode(debugLabel: 'İletişim'),
@@ -100,41 +98,40 @@ class _HomePageState extends State<HomePage> {
       ],
     );
     navigationActions.addAll([
-      // TODO: Enable them with the relevant sections
-      // NavigationAction(
-      //   'Konuşmacılar',
-      //   Icons.group_rounded,
-      //   () {},
-      // ),
-      // NavigationAction(
-      //   'Etkinlik Programı',
-      //   Icons.event_rounded,
-      //   () {},
-      // ),
       NavigationAction(
         title: 'Etkinlik',
         icon: Icons.celebration,
         focusNode: focusNodes[0],
       ),
+      // NavigationAction(
+      //   title: 'Konuşmacılar',
+      //   icon: Icons.group_rounded,
+      //   focusNode: focusNodes[1],
+      // ),
+      NavigationAction(
+        title: 'Etkinlik Programı',
+        icon: Icons.event_rounded,
+        focusNode: focusNodes[2],
+      ),
       NavigationAction(
         title: 'Sponsorlar',
         icon: Icons.help_center_rounded,
-        focusNode: focusNodes[1],
+        focusNode: focusNodes[3],
       ),
       NavigationAction(
         title: 'SSS',
         icon: Icons.help_center_rounded,
-        focusNode: focusNodes[2],
+        focusNode: focusNodes[4],
       ),
       NavigationAction(
         title: 'İletişim',
         icon: Icons.phone_in_talk_rounded,
-        focusNode: focusNodes[3],
+        focusNode: focusNodes[5],
       ),
       NavigationAction(
         title: 'Kayıt Ol',
         icon: Icons.account_circle_rounded,
-        focusNode: focusNodes[4],
+        focusNode: focusNodes[6],
         onPressed: () async {
           if (await canLaunch(_registrationUrl)) {
             await launch(_registrationUrl);

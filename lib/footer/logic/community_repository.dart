@@ -32,6 +32,10 @@ class CommunityRepository {
       icon: MdiIcons.slack,
       url: 'https://bit.ly/flutterTR',
     ),
+    SocialMedia(
+      icon: MdiIcons.github,
+      url: 'https://github.com/flutterturkey',
+    ),
   ];
 
   static const String _mailAdressLink = 'mailto:$mailAddress';

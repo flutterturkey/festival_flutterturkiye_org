@@ -38,7 +38,7 @@ class GenericButton extends StatelessWidget {
 
   Widget get buildButtonTitle => Padding(
         padding: textPadding,
-        child: Text(title, style: buildTextStyle),
+        child: Text(title, style: buildTextStyle, textAlign: TextAlign.center),
       );
 
   TextStyle get buildTextStyle => TextStyle(

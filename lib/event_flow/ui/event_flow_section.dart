@@ -13,46 +13,96 @@ import 'package:festival_flutterturkiye_org/event_flow/ui/session_info_field.dar
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
 
 class EventFlowSection extends StatelessWidget {
-  const EventFlowSection({Key key}) : super(key: key);
+  EventFlowSection({
+    @required this.focusNode,
+    Key key,
+  })  : assert(focusNode != null),
+        super(key: key);
 
-  @override
-  Widget build(BuildContext context) => Container(
-        color: ThemeHelper.darkColor,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            SectionTitle(
-              title: 'Etkinlik Programı',
-              textColor: ThemeHelper.lightColor,
-            ),
-            SectionSubtitle(
-              title: '17 Nisan Cumartesi',
-              padding: EdgeInsets.only(bottom: 16),
-            ),
-            _SessionsWidget(),
-          ],
-        ),
-      );
-}
-
-class _SessionsWidget extends StatelessWidget {
-  const _SessionsWidget({Key key}) : super(key: key);
+  final FocusNode focusNode;
+  final sessionRepository = getIt.get<SessionRepository>();
 
   @override
   Widget build(BuildContext context) {
-    final sessionRepository = getIt.get<SessionRepository>();
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: sessionRepository.sessions
-            .map((session) => _SessionWidget(session: session))
+    final sessionDays = <Widget>[
+      _SessionsWidget(
+        title: '17 Nisan Cumartesi',
+        sessions: sessionRepository.sessions
+            .where((session) =>
+                session.startingTime.compareTo(DateTime(2021, 04, 18)) < 0)
             .toList(),
+      ),
+      _SessionsWidget(
+        title: '18 Nisan Pazar',
+        sessions: sessionRepository.sessions
+            .where((session) =>
+                session.startingTime.compareTo(DateTime(2021, 04, 18)) > 0)
+            .toList(),
+      ),
+    ];
+
+    return Focus(
+      focusNode: focusNode,
+      child: DecoratedBox(
+        decoration: const BoxDecoration(color: ThemeHelper.darkColor),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SectionTitle(
+              title: 'Etkinlik Programı',
+              textColor: ThemeHelper.lightColor,
+            ),
+            // TODO: It is faster solution. It will be fixed later.
+            ResponsiveBuilder(
+              smallWidget: Column(children: sessionDays),
+              mediumWidget: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: sessionDays
+                      .map(
+                        (day) => Expanded(child: day),
+                      )
+                      .toList()),
+              largeWidget: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: sessionDays
+                      .map(
+                        (day) => Expanded(child: day),
+                      )
+                      .toList()),
+            )
+          ],
+        ),
       ),
     );
   }
+}
+
+class _SessionsWidget extends StatelessWidget {
+  const _SessionsWidget(
+      {@required this.title, @required this.sessions, Key key})
+      : super(key: key);
+
+  final String title;
+  final List<Session> sessions;
+  @override
+  Widget build(BuildContext context) => Column(
+        children: [
+          SectionSubtitle(
+            title: title,
+            padding: const EdgeInsets.only(bottom: 16),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: sessions
+                  .map((session) => _SessionWidget(session: session))
+                  .toList(growable: false),
+            ),
+          ),
+        ],
+      );
 }
 
 class _SessionWidget extends StatelessWidget {
@@ -66,35 +116,32 @@ class _SessionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Speaker
-    // final speaker = session.speaker;
     final startingTime = _getTime(session.startingTime);
     final endingTime = _getTime(session.endingTime);
     final speakerRepository = getIt.get<SpeakerRepository>();
 
-    final speaker = speakerRepository.speakers
-        .firstWhere((speaker) => speaker.reference == session.speaker);
+    final speaker = speakerRepository.speakers.firstWhere(
+      (speaker) => speaker.reference == session.speaker,
+      orElse: () => null,
+    );
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: ResponsiveBuilder(
         smallWidget: _SmallSessionWidget(
           session: session,
-          // TODO: Speaker
           speaker: speaker,
         ),
         mediumWidget: _LargeSessionWidget(
           startingTime: startingTime,
           dueTime: endingTime,
           session: session,
-          // TODO: Speaker
           speaker: speaker,
         ),
         largeWidget: _LargeSessionWidget(
           startingTime: startingTime,
           dueTime: endingTime,
           session: session,
-          // TODO: Speaker
           speaker: speaker,
         ),
       ),

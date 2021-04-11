@@ -85,8 +85,9 @@ class _CountdownSectionState extends State<CountdownSection> {
               height: screenSize.height,
               width: screenSize.width,
               child: DecoratedBox(
-                decoration:
-                    BoxDecoration(color: Colors.black.withOpacity(0.75)),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.75),
+                ),
               ),
             ),
             Padding(

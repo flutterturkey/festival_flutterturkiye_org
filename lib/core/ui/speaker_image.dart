@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 
 class SpeakerImage extends StatelessWidget {
   const SpeakerImage({
-    @required this.speakerImage,
     @required this.imageSize,
+    this.speakerImage,
     this.borderSize = 2,
     Key key,
-  })  : assert(speakerImage != null),
-        assert(imageSize != null),
+  })  : assert(imageSize != null),
         assert(borderSize != null),
         super(key: key);
 
@@ -23,7 +22,9 @@ class SpeakerImage extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(speakerImage),
+              image: AssetImage(
+                'assets/images/speakers/${speakerImage ?? 'dashatar.png'}',
+              ),
               fit: BoxFit.cover,
             ),
             shape: BoxShape.circle,
