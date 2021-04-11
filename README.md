@@ -51,12 +51,13 @@ As a rule of thumb, try to follow the Dart analyser and following rules.
 
 ## Current Flutter Development Version 
 
+```
 [√] Flutter (Channel stable, 2.0.4)
     • Flutter version 2.0.4
     • Framework revision b1395592de 2021-04-01 14:25:01 -0700
     • Engine revision 2dce47073a
     • Dart version 2.12.2
-
+```
 
 # Preview
 ![web-last](https://user-images.githubusercontent.com/26827403/107076254-3a273680-67fc-11eb-87fa-e2ad6e467682.png)
