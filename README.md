@@ -11,7 +11,13 @@ The purpose is to learn best practices, write tests and use Flutter for Web on p
 # Development Flow
 
 - We will be using classic git-flow. No one has to fork to project. Everyone who has access to the project can and should clone it. 
-- The direct merge to main branch is forbidden. All the code should go through the code review process.
+- The direct merge to main branch is forbidden. All the code should go through the code review process.]
+
+# Contributing
+
+- Write on any issue you want to work on.
+- Clarify the details
+- Then, do the implementation.
 
 ## Branch creation 
 
@@ -45,12 +51,12 @@ As a rule of thumb, try to follow the Dart analyser and following rules.
 
 ## Current Flutter Development Version 
 
-##### Flutter (Channel dev, 1.26.0-8.0.pre, on macOS 11.1 20C69 darwin-x64, locale en-TR)
+[√] Flutter (Channel stable, 2.0.4)
+    • Flutter version 2.0.4
+    • Framework revision b1395592de 2021-04-01 14:25:01 -0700
+    • Engine revision 2dce47073a
+    • Dart version 2.12.2
 
-    • Flutter version 1.26.0-8.0.pre at /Users/salih/Desktop/flutter
-    • Framework revision b9d06fffb2 (9 days ago), 2021-01-07 18:36:48 -0800
-    • Engine revision 42a8d4c681
-    • Dart version 2.12.0 (build 2.12.0-179.0.dev)
 
 # Preview
 ![web-last](https://user-images.githubusercontent.com/26827403/107076254-3a273680-67fc-11eb-87fa-e2ad6e467682.png)
