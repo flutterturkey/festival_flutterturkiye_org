@@ -9,14 +9,23 @@ import 'package:festival_flutterturkiye_org/footer/logic/community_repository.da
 import 'package:festival_flutterturkiye_org/footer/model/social_icon.dart';
 
 class FooterSection extends StatelessWidget {
-  const FooterSection({Key key}) : super(key: key);
+  const FooterSection({
+    @required this.focusNode,
+    Key key,
+  })  : assert(focusNode != null),
+        super(key: key);
+
+  final FocusNode focusNode;
 
   @override
-  Widget build(BuildContext context) => ResponsiveBuilder(
-        largeWidget: _FooterLarge(),
-        mediumWidget: _FooterLarge(),
-        smallWidget: _FooterSmall(),
-      );
+  Widget build(BuildContext context) => Focus(
+    focusNode: focusNode,
+    child: ResponsiveBuilder(
+          largeWidget: _FooterLarge(),
+          mediumWidget: _FooterLarge(),
+          smallWidget: _FooterSmall(),
+        ),
+  );
 }
 
 class _FooterSmall extends _FooterWidget {

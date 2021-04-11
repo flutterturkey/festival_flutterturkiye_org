@@ -23,7 +23,13 @@ const String _hackathonUrl = 'https://bit.ly/flutter-festivali-hackathon';
 
 // TODO: When the screen height too low, it has a bottom overflowed error.
 class CountdownSection extends StatefulWidget {
-  const CountdownSection({Key key}) : super(key: key);
+  const CountdownSection({
+    @required this.focusNode,
+    Key key,
+  })  : assert(focusNode != null),
+        super(key: key);
+
+  final FocusNode focusNode;
 
   @override
   _CountdownSectionState createState() => _CountdownSectionState();
@@ -57,67 +63,71 @@ class _CountdownSectionState extends State<CountdownSection> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    return Container(
-      height: screenSize.height,
-      width: screenSize.width,
-      color: ThemeHelper.cardBackgroundColor,
-      child: Stack(
-        children: [
-          SizedBox.expand(
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: SizedBox(
-                width: _videoPlayerController.value.size?.width ?? 0,
-                height: _videoPlayerController.value.size?.height ?? 0,
-                child: VideoPlayer(_videoPlayerController),
+    return Focus(
+      focusNode: widget.focusNode,
+      child: Container(
+        height: screenSize.height,
+        width: screenSize.width,
+        color: ThemeHelper.cardBackgroundColor,
+        child: Stack(
+          children: [
+            SizedBox.expand(
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: SizedBox(
+                  width: _videoPlayerController.value.size?.width ?? 0,
+                  height: _videoPlayerController.value.size?.height ?? 0,
+                  child: VideoPlayer(_videoPlayerController),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: screenSize.height,
-            width: screenSize.width,
-            child: DecoratedBox(
-              decoration: BoxDecoration(color: Colors.black.withOpacity(0.75)),
+            SizedBox(
+              height: screenSize.height,
+              width: screenSize.width,
+              child: DecoratedBox(
+                decoration:
+                    BoxDecoration(color: Colors.black.withOpacity(0.75)),
+              ),
             ),
-          ),
-          Padding(
-            padding: _padding(context),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const SizedBox(height: kToolbarHeight),
-                _CountdownTitle(),
-                _CountdownCounter(),
-                const Flexible(
-                  child: ResponsiveBuilder(
-                    smallWidget: _CountdownSectionButtons(
-                      fontSize: 32,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 16,
+            Padding(
+              padding: _padding(context),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(height: kToolbarHeight),
+                  _CountdownTitle(),
+                  _CountdownCounter(),
+                  const Flexible(
+                    child: ResponsiveBuilder(
+                      smallWidget: _CountdownSectionButtons(
+                        fontSize: 32,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 4,
+                          horizontal: 16,
+                        ),
                       ),
-                    ),
-                    mediumWidget: _CountdownSectionButtons(
-                      fontSize: 40,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 32,
+                      mediumWidget: _CountdownSectionButtons(
+                        fontSize: 40,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 32,
+                        ),
                       ),
-                    ),
-                    largeWidget: _CountdownSectionButtons(
-                      fontSize: 48,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 16,
-                        horizontal: 64,
+                      largeWidget: _CountdownSectionButtons(
+                        fontSize: 48,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 64,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

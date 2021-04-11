@@ -22,48 +22,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<NavigationAction> navigationActions = [
-    NavigationAction(
-      'Konuşmacılar',
-      Icons.group_rounded,
-      () {},
-    ),
-    NavigationAction(
-      'Etkinlik Programı',
-      Icons.event_rounded,
-      () {},
-    ),
-    NavigationAction(
-      'Etkinlik',
-      Icons.celebration,
-      () {},
-    ),
-    NavigationAction(
-      'Sponsorlar',
-      Icons.help_center_rounded,
-      () {},
-    ),
-    NavigationAction(
-      'SSS',
-      Icons.help_center_rounded,
-      () {},
-    ),
-    NavigationAction(
-      'İletişim',
-      Icons.phone_in_talk_rounded,
-      () {},
-    ),
-    NavigationAction(
-      'Kayıt Ol',
-      Icons.account_circle_rounded,
-      () async {
-        if (await canLaunch(_registrationUrl)) {
-          await launch(_registrationUrl);
-        }
-      },
-      isFilled: true,
-    ),
-  ];
+  final navigationActions = <NavigationAction>[];
+  final focusNodes = <FocusNode>[];
   final ScrollController _scrollController = ScrollController();
   bool isScrolling = false;
 
@@ -71,20 +31,33 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _initializeScrollController();
+    _initializeNavigationActions();
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Stack(
           children: [
-            ListView(
+            /// Using SingleChildScrollView because we want to lay down
+            /// all the children to be able to scroll to them.
+            SingleChildScrollView(
               controller: _scrollController,
-              children: const <Widget>[
-                CountdownSection(),
-                SponsorSection(),
-                FAQSection(),
-                FooterSection(),
-              ],
+              child: Column(
+                children: <Widget>[
+                  CountdownSection(
+                    focusNode: focusNodes[0],
+                  ),
+                  SponsorSection(
+                    focusNode: focusNodes[1],
+                  ),
+                  FAQSection(
+                    focusNode: focusNodes[2],
+                  ),
+                  FooterSection(
+                    focusNode: focusNodes[3],
+                  ),
+                ],
+              ),
             ),
             WebsiteNavigation(
               actions: navigationActions,
@@ -114,5 +87,61 @@ class _HomePageState extends State<HomePage> {
         setState(() => isScrolling = true);
       }
     });
+  }
+
+  void _initializeNavigationActions() {
+    focusNodes.addAll(
+      [
+        FocusNode(debugLabel: 'Etkinlik'),
+        FocusNode(debugLabel: 'Sponsorlar'),
+        FocusNode(debugLabel: 'SSS'),
+        FocusNode(debugLabel: 'İletişim'),
+        FocusNode(debugLabel: 'Kayıt Ol'),
+      ],
+    );
+    navigationActions.addAll([
+      // TODO: Enable them with the relevant sections
+      // NavigationAction(
+      //   'Konuşmacılar',
+      //   Icons.group_rounded,
+      //   () {},
+      // ),
+      // NavigationAction(
+      //   'Etkinlik Programı',
+      //   Icons.event_rounded,
+      //   () {},
+      // ),
+      NavigationAction(
+        title: 'Etkinlik',
+        icon: Icons.celebration,
+        focusNode: focusNodes[0],
+      ),
+      NavigationAction(
+        title: 'Sponsorlar',
+        icon: Icons.help_center_rounded,
+        focusNode: focusNodes[1],
+      ),
+      NavigationAction(
+        title: 'SSS',
+        icon: Icons.help_center_rounded,
+        focusNode: focusNodes[2],
+      ),
+      NavigationAction(
+        title: 'İletişim',
+        icon: Icons.phone_in_talk_rounded,
+        focusNode: focusNodes[3],
+      ),
+      NavigationAction(
+        title: 'Kayıt Ol',
+        icon: Icons.account_circle_rounded,
+        focusNode: focusNodes[4],
+        onPressed: () async {
+          if (await canLaunch(_registrationUrl)) {
+            await launch(_registrationUrl);
+          }
+        },
+        isFilled: true,
+      ),
+    ]);
   }
 }
