@@ -1,5 +1,4 @@
 import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
-import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/speaker/ui/speaker_card.dart';

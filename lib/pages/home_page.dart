@@ -1,5 +1,4 @@
 import 'package:festival_flutterturkiye_org/event_flow/ui/event_flow_section.dart';
-import 'package:festival_flutterturkiye_org/speaker/ui/speaker_section.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
