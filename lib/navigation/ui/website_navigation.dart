@@ -70,7 +70,15 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
                       (action) => ContextMenuItem(
                         title: action.title,
                         icon: action.icon,
-                        onTap: action.onPressed,
+                        onTap: action.onPressed ??
+                            () => WidgetsBinding.instance.addPostFrameCallback(
+                                  (_) => Scrollable.ensureVisible(
+                                    action.focusNode.context,
+                                    alignment: 0.5,
+                                    duration: const Duration(milliseconds: 200),
+                                    curve: Curves.fastOutSlowIn,
+                                  ),
+                                ),
                       ),
                     )
                     .toList(growable: false)
@@ -97,7 +105,17 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
                         padding: const EdgeInsets.all(8),
                         child: GenericButton(
                           title: action.title,
-                          onPressed: action.onPressed,
+                          onPressed: action.onPressed ??
+                              () =>
+                                  WidgetsBinding.instance.addPostFrameCallback(
+                                    (_) => Scrollable.ensureVisible(
+                                      action.focusNode.context,
+                                      alignment: 0.5,
+                                      duration:
+                                          const Duration(milliseconds: 200),
+                                      curve: Curves.fastOutSlowIn,
+                                    ),
+                                  ),
                           isFilledButton: action.isFilled,
                           textPadding: const EdgeInsets.all(8),
                         ),

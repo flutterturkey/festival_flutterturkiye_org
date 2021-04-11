@@ -9,36 +9,45 @@ import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_card.dart';
 
 class SponsorSection extends StatelessWidget {
-  const SponsorSection({Key key}) : super(key: key);
+  const SponsorSection({
+    @required this.focusNode,
+    Key key,
+  })  : assert(focusNode != null),
+        super(key: key);
+
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
     final _sessionRepository = getIt.get<SponsorRepository>();
-    return Column(
-      children: [
-        const SectionTitle(title: 'Sponsorlarımız'),
-        const _SponsorSectionInfoTitle(
-          title: 'Etkinliğimize sponsor olmak için '
-              'sponsorluk@flutterturkiye.org üzerinden '
-              'iletişime geçebilirsiniz.',
-        ),
-        const SizedBox(height: 15),
-        _SponsorsBuilder(
-          sponsorsList: _sessionRepository.goldSponsors,
-          sponsorTypeTitle: 'Gold',
-        ),
-        const SizedBox(height: 25),
-        _SponsorsBuilder(
-          sponsorsList: _sessionRepository.silverSponsors,
-          sponsorTypeTitle: 'Silver',
-        ),
-        const SizedBox(height: 25),
-        _SponsorsBuilder(
-          sponsorsList: _sessionRepository.bronzSponsors,
-          sponsorTypeTitle: 'Bronz',
-        ),
-        const SizedBox(height: 100),
-      ],
+    return Focus(
+      focusNode: focusNode,
+      child: Column(
+        children: [
+          const SectionTitle(title: 'Sponsorlarımız'),
+          const _SponsorSectionInfoTitle(
+            title: 'Etkinliğimize sponsor olmak için '
+                'sponsorluk@flutterturkiye.org üzerinden '
+                'iletişime geçebilirsiniz.',
+          ),
+          const SizedBox(height: 15),
+          _SponsorsBuilder(
+            sponsorsList: _sessionRepository.goldSponsors,
+            sponsorTypeTitle: 'Gold',
+          ),
+          const SizedBox(height: 25),
+          _SponsorsBuilder(
+            sponsorsList: _sessionRepository.silverSponsors,
+            sponsorTypeTitle: 'Silver',
+          ),
+          const SizedBox(height: 25),
+          _SponsorsBuilder(
+            sponsorsList: _sessionRepository.bronzSponsors,
+            sponsorTypeTitle: 'Bronz',
+          ),
+          const SizedBox(height: 100),
+        ],
+      ),
     );
   }
 }
