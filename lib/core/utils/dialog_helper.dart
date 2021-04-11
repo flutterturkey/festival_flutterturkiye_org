@@ -29,6 +29,6 @@ class DialogHelper {
         context,
         backgroundColor: ThemeHelper.darkColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        content: SpeakerDetailContent(speaker: speaker),
+        content: SizedBox(child: SpeakerDetailContent(speaker: speaker)),
       );
 }
