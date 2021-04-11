@@ -19,13 +19,13 @@ class FooterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Focus(
-    focusNode: focusNode,
-    child: ResponsiveBuilder(
+        focusNode: focusNode,
+        child: ResponsiveBuilder(
           largeWidget: _FooterLarge(),
           mediumWidget: _FooterLarge(),
           smallWidget: _FooterSmall(),
         ),
-  );
+      );
 }
 
 class _FooterSmall extends _FooterWidget {
