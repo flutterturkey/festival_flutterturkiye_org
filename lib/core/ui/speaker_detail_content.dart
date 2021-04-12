@@ -1,10 +1,12 @@
-import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
-import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
-import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
-import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
+import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
+import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/string_formatter.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 
 class SpeakerDetailContent extends StatelessWidget {
   const SpeakerDetailContent({
@@ -33,7 +35,7 @@ class SpeakerDetailContent extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              speaker.about,
+              speaker.about.format(),
               style: const TextStyle(
                 color: ThemeHelper.lightColor,
                 fontSize: 16,
@@ -66,10 +68,7 @@ class _SpeakerHeader extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16, left: 4, right: 4),
-            child: _SpeakerInfo(
-              speaker: speaker,
-              textAlign: TextAlign.center,
-            ),
+            child: _SpeakerInfo(speaker: speaker, textAlign: TextAlign.center),
           ),
         ],
       );
@@ -122,7 +121,6 @@ class _SpeakerInfo extends StatelessWidget {
               fontSize: 36,
             ),
           ),
-          // TODO: Do not forget to clean it.
           Text(
             speaker.title,
             textAlign: textAlign,
