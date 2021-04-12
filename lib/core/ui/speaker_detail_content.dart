@@ -124,22 +124,7 @@ class _SpeakerInfo extends StatelessWidget {
           ),
           // TODO: Do not forget to clean it.
           Text(
-            speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title +
-                speaker.title,
+            speaker.title,
             textAlign: textAlign,
             style: const TextStyle(
               color: ThemeHelper.lightColor,
