@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "47e52d3c4b097ae425b9ebe8a2ab9bf1",
-"/": "47e52d3c4b097ae425b9ebe8a2ab9bf1",
+"index.html": "8fd3d06e05489dc81a129fc2d41f922b",
+"/": "8fd3d06e05489dc81a129fc2d41f922b",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/NOTICES": "32914a11dee1bce7105c55e1397537c5",
@@ -22,10 +22,12 @@ const RESOURCES = {
 "assets/fonts/Manrope-Medium.ttf": "9846b3db6e4eec04b6f956169f65b3aa",
 "assets/fonts/Manrope-SemiBold.ttf": "e03737a9e201df701880f20f727b90dc",
 "assets/fonts/Manrope-ExtraLight.ttf": "fc31f26b4b217f3af2aa6c103a3c45d8",
-"assets/AssetManifest.json": "d656ca7bf0fc9f20bc819dc8d429f101",
+"assets/AssetManifest.json": "dee9fd0dcadb2d0e94f3cf0f6d5661fb",
 "assets/assets/images/logo.png": "733e929d696c4b8dab635907ee73d151",
 "assets/assets/images/sponsors/sessionize.png": "0c1b50bea6498c24c2dc9e23716fba59",
+"assets/assets/images/sponsors/google_developers.png": "dfe596d5a617b7f7f6a2dc04a3d7eee5",
 "assets/assets/images/sponsors/dusyeri.png": "1da59bf0bbd03c0c38a57bacc1c85340",
+"assets/assets/images/sponsors/superlist.png": "c70faf138d8f7259b99bb29861f5867d",
 "assets/assets/images/sponsors/parasut.png": "a14e6f602962060d8805c4e6ff1ab408",
 "assets/assets/images/sponsors/streamyard.png": "646fb0015319df239ddd751eed94474f",
 "assets/assets/images/sponsors/radity.png": "294a1e126f2ce66efd6d9765b57fabd9",
@@ -53,7 +55,7 @@ const RESOURCES = {
 "assets/assets/images/speaker_placeholder.png": "44b7a2309b2a1553e145363a6e29a2c5",
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"main.dart.js": "c8c63ef9e22a485e334f778c75071943",
+"main.dart.js": "e38e7f98e4f76f287958709c37a5dd28",
 "version.json": "f8a0c9180b49aa6851ac78ec83ba461f"
 };
 
