@@ -200,16 +200,6 @@ class _CountdownSectionButtons extends StatelessWidget {
               }
             },
           ),
-          _DarkButton(
-            title: 'Hackathon Başvurusu',
-            fontSize: fontSize,
-            padding: padding,
-            onPressed: () async {
-              if (await canLaunch(_hackathonUrl)) {
-                await launch(_hackathonUrl);
-              }
-            },
-          ),
         ],
       );
 }
