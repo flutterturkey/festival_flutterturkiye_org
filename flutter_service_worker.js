@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "ea71a50e50ddb3609315d2bf7bf8775d",
-"/": "ea71a50e50ddb3609315d2bf7bf8775d",
+"index.html": "707c87813f57c1904c0b43ed1cc1133f",
+"/": "707c87813f57c1904c0b43ed1cc1133f",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/NOTICES": "32914a11dee1bce7105c55e1397537c5",
@@ -23,7 +23,7 @@ const RESOURCES = {
 "assets/fonts/Manrope-SemiBold.ttf": "e03737a9e201df701880f20f727b90dc",
 "assets/fonts/Manrope-ExtraLight.ttf": "fc31f26b4b217f3af2aa6c103a3c45d8",
 "assets/AssetManifest.json": "59568c0cf116f6c7060f290a0d8459ec",
-"assets/assets/images/logo.png": "733e929d696c4b8dab635907ee73d151",
+"assets/assets/images/logo.png": "14155d29dfef9e7702d0ec108d2f1475",
 "assets/assets/images/sponsors/sessionize.png": "0c1b50bea6498c24c2dc9e23716fba59",
 "assets/assets/images/sponsors/google_developers.png": "1a9364ba5312ee603a1cca2f022799d8",
 "assets/assets/images/sponsors/dusyeri.png": "1da59bf0bbd03c0c38a57bacc1c85340",
@@ -58,7 +58,7 @@ const RESOURCES = {
 "assets/assets/images/speaker_placeholder.png": "44b7a2309b2a1553e145363a6e29a2c5",
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"main.dart.js": "1bb2d3a03704c690768b99d465599d68",
+"main.dart.js": "7c350c682320e8cd95ba974aabbe5258",
 "version.json": "f8a0c9180b49aa6851ac78ec83ba461f"
 };
 
