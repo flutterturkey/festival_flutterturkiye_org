@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "672c8844131010a415b4f6510703c563",
-"/": "672c8844131010a415b4f6510703c563",
+"index.html": "5f6a4ab35333f92153b70df22b65ad7a",
+"/": "5f6a4ab35333f92153b70df22b65ad7a",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/NOTICES": "32914a11dee1bce7105c55e1397537c5",
@@ -22,7 +22,7 @@ const RESOURCES = {
 "assets/fonts/Manrope-Medium.ttf": "9846b3db6e4eec04b6f956169f65b3aa",
 "assets/fonts/Manrope-SemiBold.ttf": "e03737a9e201df701880f20f727b90dc",
 "assets/fonts/Manrope-ExtraLight.ttf": "fc31f26b4b217f3af2aa6c103a3c45d8",
-"assets/AssetManifest.json": "59568c0cf116f6c7060f290a0d8459ec",
+"assets/AssetManifest.json": "24c2e4e74f8b8d5d048e3ddd0922e78a",
 "assets/assets/images/logo.png": "14155d29dfef9e7702d0ec108d2f1475",
 "assets/assets/images/sponsors/sessionize.png": "0c1b50bea6498c24c2dc9e23716fba59",
 "assets/assets/images/sponsors/google_developers.png": "1a9364ba5312ee603a1cca2f022799d8",
@@ -52,6 +52,7 @@ const RESOURCES = {
 "assets/assets/images/speakers/dashatar.png": "ac9d3e804bfc692c064b9647e3ebff5b",
 "assets/assets/images/speakers/elif_bilge_parlak.jpg": "55425509fb6bbdd2c21515f1b68a4991",
 "assets/assets/images/speakers/mirsaid_ismailov.jpg": "367989653dd02807434872882052d1ab",
+"assets/assets/images/speakers/osman_celik.jpg": "96f3902f7c8289e09e415ff31358e0f3",
 "assets/assets/images/activity_flow/line_indicator_top.png": "0a68354ac84a21b9335c5eab0c2313dc",
 "assets/assets/images/activity_flow/line_indicator_bottom.png": "af8c498e8c52740ff4d80dfd05578b55",
 "assets/assets/images/footer_bg.jpg": "16489d16bd8133b7d63b275dd26ecd1e",
@@ -59,7 +60,7 @@ const RESOURCES = {
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
 "main.dart.js": "5405392946c4ba286e18900d3956e7c5",
-"version.json": "f8a0c9180b49aa6851ac78ec83ba461f"
+"version.json": "7ffff5b98a84d83097d205978f7acec2"
 };
 
 // The application shell files that are downloaded before a service worker can
