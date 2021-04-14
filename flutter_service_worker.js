@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "5f6a4ab35333f92153b70df22b65ad7a",
-"/": "5f6a4ab35333f92153b70df22b65ad7a",
+"index.html": "bcfdef97027d8344a91ab71840a27717",
+"/": "bcfdef97027d8344a91ab71840a27717",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/NOTICES": "32914a11dee1bce7105c55e1397537c5",
@@ -22,7 +22,7 @@ const RESOURCES = {
 "assets/fonts/Manrope-Medium.ttf": "9846b3db6e4eec04b6f956169f65b3aa",
 "assets/fonts/Manrope-SemiBold.ttf": "e03737a9e201df701880f20f727b90dc",
 "assets/fonts/Manrope-ExtraLight.ttf": "fc31f26b4b217f3af2aa6c103a3c45d8",
-"assets/AssetManifest.json": "24c2e4e74f8b8d5d048e3ddd0922e78a",
+"assets/AssetManifest.json": "41e225bbf1ac4505b49056b01c979f73",
 "assets/assets/images/logo.png": "14155d29dfef9e7702d0ec108d2f1475",
 "assets/assets/images/sponsors/sessionize.png": "0c1b50bea6498c24c2dc9e23716fba59",
 "assets/assets/images/sponsors/google_developers.png": "1a9364ba5312ee603a1cca2f022799d8",
@@ -43,6 +43,7 @@ const RESOURCES = {
 "assets/assets/images/speakers/ganesh_s_p.jpg": "6b2b4137942682444e315d190d93b073",
 "assets/assets/images/speakers/cagatay_ulusoy.jpg": "170f67f8e58512cc04a1bf41fa71790a",
 "assets/assets/images/speakers/muhammed_salih_guler.jpg": "52e96e3ae6217ab5dd1a922c9dc3a646",
+"assets/assets/images/speakers/thomas_burkhart.jpeg": "271e151cc997a09e58ab116df3e4f7ac",
 "assets/assets/images/speakers/majid_hajian.jpg": "eaf01b716094fb212e09483d97c22b4d",
 "assets/assets/images/speakers/salih_can_binboga.jpg": "2aa24121aa1327a59564a564cc56fb5f",
 "assets/assets/images/speakers/kadriye_macit.jpg": "12683dc9f79c07da4c7012a50bbb9ef8",
@@ -59,7 +60,7 @@ const RESOURCES = {
 "assets/assets/images/speaker_placeholder.png": "44b7a2309b2a1553e145363a6e29a2c5",
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"main.dart.js": "5405392946c4ba286e18900d3956e7c5",
+"main.dart.js": "3083f073256c7d0b99d3361d3972641d",
 "version.json": "7ffff5b98a84d83097d205978f7acec2"
 };
 
