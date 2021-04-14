@@ -3,7 +3,7 @@ description: Flutter Türkiye Flutter Festivali Resmi Sitesi
 
 publish_to: "none"
 
-version: 1.0.3+4
+version: 1.0.4+5
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
