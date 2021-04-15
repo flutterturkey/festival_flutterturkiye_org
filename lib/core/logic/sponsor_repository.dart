@@ -21,6 +21,10 @@ class SponsorRepository extends DatabaseRepository<Sponsor> {
       .where((sponsor) => sponsor.type == SponsorType.bronze)
       .toList(growable: false);
 
+  List<Sponsor> get mediaSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.media)
+      .toList(growable: false);
+
   @override
   Future<QuerySnapshot> getAll() =>
       reference.where('isActive', isEqualTo: true).orderBy('order').get();

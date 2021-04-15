@@ -17,7 +17,7 @@ const double _paddingMedium = 48;
 const double _paddingLarge = 72;
 const String _registrationUrl =
     'https://kommunity.com/flutter-turkiye/events/flutter-festivali-81b8ee21?key=dudavx';
-const String _hackathonUrl = 'https://bit.ly/flutter-festivali-hackathon';
+// const String _hackathonUrl = 'https://bit.ly/flutter-festivali-hackathon';
 // const String _callForPapersUrl =
 //     'https://sessionize.com/flutter-festival-turkiye';
 
@@ -232,39 +232,39 @@ class _LightButton extends StatelessWidget {
       );
 }
 
-class _DarkButton extends StatelessWidget {
-  const _DarkButton({
-    @required this.fontSize,
-    @required this.padding,
-    @required this.title,
-    @required this.onPressed,
-    Key key,
-  })  : assert(fontSize != null),
-        assert(padding != null),
-        assert(title != null),
-        assert(onPressed != null),
-        super(key: key);
+// class _DarkButton extends StatelessWidget {
+//   const _DarkButton({
+//     @required this.fontSize,
+//     @required this.padding,
+//     @required this.title,
+//     @required this.onPressed,
+//     Key key,
+//   })  : assert(fontSize != null),
+//         assert(padding != null),
+//         assert(title != null),
+//         assert(onPressed != null),
+//         super(key: key);
 
-  final double fontSize;
-  final EdgeInsets padding;
-  final String title;
-  final Function onPressed;
+//   final double fontSize;
+//   final EdgeInsets padding;
+//   final String title;
+//   final Function onPressed;
 
-  @override
-  Widget build(BuildContext context) => GenericButton(
-        title: title,
-        onPressed: onPressed,
-        isFilledButton: true,
-        textStyle: TextStyle(
-          fontSize: fontSize,
-          color: ThemeHelper.appBarActionColor,
-        ),
-        textPadding: padding,
-        buttonStyle: TextButton.styleFrom(
-          backgroundColor: ThemeHelper.darkColor,
-        ),
-      );
-}
+//   @override
+//   Widget build(BuildContext context) => GenericButton(
+//         title: title,
+//         onPressed: onPressed,
+//         isFilledButton: true,
+//         textStyle: TextStyle(
+//           fontSize: fontSize,
+//           color: ThemeHelper.appBarActionColor,
+//         ),
+//         textPadding: padding,
+//         buttonStyle: TextButton.styleFrom(
+//           backgroundColor: ThemeHelper.darkColor,
+//         ),
+//       );
+// }
 
 class _CountdownCounter extends StatelessWidget {
   _CountdownCounter({Key key})
