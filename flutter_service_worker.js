@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "bcfdef97027d8344a91ab71840a27717",
-"/": "bcfdef97027d8344a91ab71840a27717",
+"index.html": "77de08ea5125dfc0d4e938b7f921dca8",
+"/": "77de08ea5125dfc0d4e938b7f921dca8",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/NOTICES": "32914a11dee1bce7105c55e1397537c5",
@@ -22,7 +22,7 @@ const RESOURCES = {
 "assets/fonts/Manrope-Medium.ttf": "9846b3db6e4eec04b6f956169f65b3aa",
 "assets/fonts/Manrope-SemiBold.ttf": "e03737a9e201df701880f20f727b90dc",
 "assets/fonts/Manrope-ExtraLight.ttf": "fc31f26b4b217f3af2aa6c103a3c45d8",
-"assets/AssetManifest.json": "41e225bbf1ac4505b49056b01c979f73",
+"assets/AssetManifest.json": "5800085e662b70baa49de61eb30945fc",
 "assets/assets/images/logo.png": "14155d29dfef9e7702d0ec108d2f1475",
 "assets/assets/images/sponsors/sessionize.png": "0c1b50bea6498c24c2dc9e23716fba59",
 "assets/assets/images/sponsors/google_developers.png": "1a9364ba5312ee603a1cca2f022799d8",
@@ -32,6 +32,8 @@ const RESOURCES = {
 "assets/assets/images/sponsors/streamyard.png": "646fb0015319df239ddd751eed94474f",
 "assets/assets/images/sponsors/radity.png": "294a1e126f2ce66efd6d9765b57fabd9",
 "assets/assets/images/sponsors/appcircle.png": "e30b8480e5d798e8693fe3c5e9999a97",
+"assets/assets/images/sponsors/kablosuz_beyin.png": "793a29b3aadc1ad4f4bd0d0b74ed4daf",
+"assets/assets/images/sponsors/yazilim_toplulugu.png": "2435cb0192faffaa2b60a5c76d6da142",
 "assets/assets/images/sponsors/complete_reference.png": "aac378a65cd888879dadda6aa872df7d",
 "assets/assets/images/speakers/mehmet_ali_bayram.jpg": "269676bd5209099bb5720fbb046c1a80",
 "assets/assets/images/speakers/gazihan_alankus.jpg": "2d7efedc20b338c6f9bec88d8fd69f1d",
@@ -60,7 +62,7 @@ const RESOURCES = {
 "assets/assets/images/speaker_placeholder.png": "44b7a2309b2a1553e145363a6e29a2c5",
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"main.dart.js": "3083f073256c7d0b99d3361d3972641d",
+"main.dart.js": "a7519c453aa7de84076bda77b14432be",
 "version.json": "7ffff5b98a84d83097d205978f7acec2"
 };
 
