@@ -45,6 +45,11 @@ class SponsorSection extends StatelessWidget {
             sponsorsList: _sessionRepository.bronzSponsors,
             sponsorTypeTitle: 'Bronz',
           ),
+          const SizedBox(height: 25),
+          _SponsorsBuilder(
+            sponsorsList: _sessionRepository.mediaSponsors,
+            sponsorTypeTitle: 'Medya',
+          ),
           const SizedBox(height: 100),
         ],
       ),
@@ -92,23 +97,27 @@ class _SponsorsBuilder extends StatelessWidget {
   final String sponsorTypeTitle;
 
   @override
-  Widget build(BuildContext context) => Visibility(
-        visible: sponsorsList.isNotEmpty,
-        child: ResponsiveBuilder(
-          smallWidget: _SponsorsSlider(
-            aspectRatio: 2.75,
-            viewportFraction: 0.4,
-            sponsorsList: sponsorsList,
-            sponsorTypeTitle: sponsorTypeTitle,
-          ),
-          largeWidget: _SponsorsSlider(
-            aspectRatio: 9,
-            viewportFraction: 0.15,
-            sponsorsList: sponsorsList,
-            sponsorTypeTitle: sponsorTypeTitle,
-          ),
+  Widget build(BuildContext context) {
+    final isSmall = sponsorTypeTitle == 'Medya';
+
+    return Visibility(
+      visible: sponsorsList.isNotEmpty,
+      child: ResponsiveBuilder(
+        smallWidget: _SponsorsSlider(
+          aspectRatio: isSmall ? 5 : 2.75,
+          viewportFraction: isSmall ? 0.3 : 0.4,
+          sponsorsList: sponsorsList,
+          sponsorTypeTitle: sponsorTypeTitle,
         ),
-      );
+        largeWidget: _SponsorsSlider(
+          aspectRatio: isSmall ? 16 : 9,
+          viewportFraction: isSmall ? 0.1 : 0.15,
+          sponsorsList: sponsorsList,
+          sponsorTypeTitle: sponsorTypeTitle,
+        ),
+      ),
+    );
+  }
 }
 
 class _SponsorsSlider extends StatefulWidget {
