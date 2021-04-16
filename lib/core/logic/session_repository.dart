@@ -15,6 +15,7 @@ class SessionRepository extends DatabaseRepository<Session> {
   @override
   Future<List<Session>> getAllAsModel() async {
     _sessions = <Session>[];
+
     final querySnapshot = await getAll();
 
     for (final documentSnapshot in querySnapshot.docs) {

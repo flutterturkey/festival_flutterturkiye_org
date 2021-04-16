@@ -24,6 +24,7 @@ class EventFlowSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: It is faster solution. It will be fixed later.
     final sessionDays = <Widget>[
       _SessionsWidget(
         title: '17 Nisan Cumartesi',
@@ -120,29 +121,28 @@ class _SessionWidget extends StatelessWidget {
     final endingTime = _getTime(session.endingTime);
     final speakerRepository = getIt.get<SpeakerRepository>();
 
-    final speaker = speakerRepository.speakers.firstWhere(
-      (speaker) => speaker.reference == session.speaker,
-      orElse: () => null,
-    );
+    final speaker = speakerRepository.speakers
+        .where((speaker) => session.speakers?.contains(speaker.reference))
+        .toList();
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: ResponsiveBuilder(
         smallWidget: _SmallSessionWidget(
           session: session,
-          speaker: speaker,
+          speakers: speaker,
         ),
         mediumWidget: _LargeSessionWidget(
           startingTime: startingTime,
           dueTime: endingTime,
           session: session,
-          speaker: speaker,
+          speakers: speaker,
         ),
         largeWidget: _LargeSessionWidget(
           startingTime: startingTime,
           dueTime: endingTime,
           session: session,
-          speaker: speaker,
+          speakers: speaker,
         ),
       ),
     );
@@ -159,7 +159,7 @@ class _LargeSessionWidget extends StatelessWidget {
     @required this.startingTime,
     @required this.dueTime,
     @required this.session,
-    this.speaker,
+    this.speakers,
     Key key,
   })  : assert(startingTime != null),
         assert(dueTime != null),
@@ -168,7 +168,7 @@ class _LargeSessionWidget extends StatelessWidget {
 
   final String startingTime, dueTime;
   final Session session;
-  final Speaker speaker;
+  final List<Speaker> speakers;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -185,7 +185,7 @@ class _LargeSessionWidget extends StatelessWidget {
           Expanded(
             child: SessionInfoField(
               session: session,
-              speaker: speaker,
+              speakers: speakers,
             ),
           ),
         ],
@@ -195,13 +195,13 @@ class _LargeSessionWidget extends StatelessWidget {
 class _SmallSessionWidget extends StatelessWidget {
   const _SmallSessionWidget({
     @required this.session,
-    this.speaker,
+    this.speakers,
     Key key,
   })  : assert(session != null),
         super(key: key);
 
   final Session session;
-  final Speaker speaker;
+  final List<Speaker> speakers;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -212,7 +212,7 @@ class _SmallSessionWidget extends StatelessWidget {
           Expanded(
             child: SessionInfoField(
               session: session,
-              speaker: speaker,
+              speakers: speakers,
               isSmallScreen: true,
             ),
           ),

@@ -11,7 +11,7 @@ class Session extends DatabaseModel {
     @required this.startingTime,
     @required this.endingTime,
     @required this.reference,
-    this.speaker,
+    this.speakers,
   })  : assert(title != null),
         assert(startingTime != null),
         assert(endingTime != null),
@@ -21,7 +21,11 @@ class Session extends DatabaseModel {
     final data = snapshot.data();
     return Session(
       reference: snapshot.reference,
-      speaker: data['speaker'],
+      speakers: data['speakers'] != null
+          ? List<DocumentReference>.from(
+              data['speakers'].map((speaker) => speaker),
+            )
+          : [],
       title: data['title'],
       startingTime: _timestampToDateTime(data['startingTime']),
       endingTime: _timestampToDateTime(data['endingTime']),
@@ -31,12 +35,11 @@ class Session extends DatabaseModel {
   final String title;
   final DateTime startingTime;
   final DateTime endingTime;
-  final DocumentReference speaker;
+  final List<DocumentReference> speakers;
   final DocumentReference reference;
 
   SessionStatus get status {
     final currentDate = DateTime.now();
-
     final isStarted = currentDate.compareTo(startingTime);
 
     if (isStarted >= 0) {
@@ -56,7 +59,7 @@ class Session extends DatabaseModel {
         title,
         startingTime,
         endingTime,
-        speaker,
+        speakers,
         reference,
         status,
       ];
