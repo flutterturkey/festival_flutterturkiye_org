@@ -21,7 +21,6 @@ class Session extends DatabaseModel {
     final data = snapshot.data();
     return Session(
       reference: snapshot.reference,
-      // speaker: data['speaker'],
       speakers: data['speakers'] != null
           ? List<DocumentReference>.from(
               data['speakers'].map((speaker) => speaker),
