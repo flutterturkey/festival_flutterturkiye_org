@@ -16,7 +16,7 @@ class SessionInfoField extends StatelessWidget {
     @required this.session,
     this.horizontalAxisAlignment = CrossAxisAlignment.start,
     this.isSmallScreen = false,
-    this.speaker,
+    this.speakers,
     Key key,
   })  : assert(session != null),
         assert(horizontalAxisAlignment != null),
@@ -24,7 +24,7 @@ class SessionInfoField extends StatelessWidget {
         super(key: key);
 
   final Session session;
-  final Speaker speaker;
+  final List<Speaker> speakers;
   final CrossAxisAlignment horizontalAxisAlignment;
   final bool isSmallScreen;
 
@@ -54,7 +54,13 @@ class SessionInfoField extends StatelessWidget {
         const SizedBox(height: 8),
         _EventFlowAddToCalendar(session: session),
         const SizedBox(height: 8),
-        _EventFlowSpeaker(speaker: speaker),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: speakers
+              .map((speaker) => _EventFlowSpeaker(speaker: speaker))
+              .toList(),
+        ),
       ],
     );
   }
@@ -108,27 +114,30 @@ class _EventFlowSpeaker extends StatelessWidget {
     if (speaker == null) {
       return const SizedBox.shrink();
     }
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () => DialogHelper.showSpeaker(context, speaker: speaker),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SpeakerImage(
-              speakerImage: speaker.image,
-              imageSize: 64,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              speaker.name,
-              style: const TextStyle(
-                color: ThemeHelper.speakerDetailImageBorder,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: () => DialogHelper.showSpeaker(context, speaker: speaker),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SpeakerImage(
+                speakerImage: speaker.image,
+                imageSize: 64,
               ),
-            )
-          ],
+              const SizedBox(width: 8),
+              Text(
+                speaker.name,
+                style: const TextStyle(
+                  color: ThemeHelper.speakerDetailImageBorder,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
