@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "77de08ea5125dfc0d4e938b7f921dca8",
-"/": "77de08ea5125dfc0d4e938b7f921dca8",
+"index.html": "df328b553079b7d464dcda2a9665bb66",
+"/": "df328b553079b7d464dcda2a9665bb66",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/NOTICES": "32914a11dee1bce7105c55e1397537c5",
@@ -22,7 +22,7 @@ const RESOURCES = {
 "assets/fonts/Manrope-Medium.ttf": "9846b3db6e4eec04b6f956169f65b3aa",
 "assets/fonts/Manrope-SemiBold.ttf": "e03737a9e201df701880f20f727b90dc",
 "assets/fonts/Manrope-ExtraLight.ttf": "fc31f26b4b217f3af2aa6c103a3c45d8",
-"assets/AssetManifest.json": "5800085e662b70baa49de61eb30945fc",
+"assets/AssetManifest.json": "cb7b9edccf969fc8b986f6da94905806",
 "assets/assets/images/logo.png": "14155d29dfef9e7702d0ec108d2f1475",
 "assets/assets/images/sponsors/sessionize.png": "0c1b50bea6498c24c2dc9e23716fba59",
 "assets/assets/images/sponsors/google_developers.png": "1a9364ba5312ee603a1cca2f022799d8",
@@ -36,9 +36,11 @@ const RESOURCES = {
 "assets/assets/images/sponsors/yazilim_toplulugu.png": "2435cb0192faffaa2b60a5c76d6da142",
 "assets/assets/images/sponsors/complete_reference.png": "aac378a65cd888879dadda6aa872df7d",
 "assets/assets/images/speakers/mehmet_ali_bayram.jpg": "269676bd5209099bb5720fbb046c1a80",
+"assets/assets/images/speakers/rihanna_kedir.jpeg": "236b7764d1d422570798339737ede358",
 "assets/assets/images/speakers/gazihan_alankus.jpg": "2d7efedc20b338c6f9bec88d8fd69f1d",
 "assets/assets/images/speakers/muhammet_omer.jpg": "2c03c8dfc134f6395c3dc825498b686b",
 "assets/assets/images/speakers/bartosz_kraszewski.jpg": "b0acde78866dd94f8ccb670e87d6b83b",
+"assets/assets/images/speakers/nawal_alhamwi.jpeg": "32113743292340e9c072d85f8ab68c5b",
 "assets/assets/images/speakers/berat_goktug_ozdemir.png": "4821222e9276a4d728abf457aacf8a05",
 "assets/assets/images/speakers/berkay_cayli.jpg": "16feca98bf1b0e9549314095759c670e",
 "assets/assets/images/speakers/levent_kantaroglu.jpg": "b8599d0a908ead79b6251b874da380d2",
@@ -62,8 +64,8 @@ const RESOURCES = {
 "assets/assets/images/speaker_placeholder.png": "44b7a2309b2a1553e145363a6e29a2c5",
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"main.dart.js": "a7519c453aa7de84076bda77b14432be",
-"version.json": "7ffff5b98a84d83097d205978f7acec2"
+"main.dart.js": "0af79232318023b897fff5ad60eec400",
+"version.json": "3638177900f57b9fbb29395674bbe86f"
 };
 
 // The application shell files that are downloaded before a service worker can
