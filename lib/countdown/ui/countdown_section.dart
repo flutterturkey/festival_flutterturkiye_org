@@ -187,7 +187,7 @@ class _CountdownSectionButtons extends StatelessWidget {
         spacing: 24,
         alignment: WrapAlignment.center,
         children: [
-          _DarkButton(
+          _LightButton(
             title: 'Yayına Git',
             fontSize: fontSize,
             padding: padding,
