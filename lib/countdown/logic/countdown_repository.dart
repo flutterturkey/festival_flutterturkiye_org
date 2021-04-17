@@ -1,7 +1,7 @@
 import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
 
 final DateTime _eventStartingDate = DateTime(2021, 4, 17, 10, 30);
-final DateTime _eventCompletingDate = DateTime(2021, 4, 18, 45);
+final DateTime _eventCompletingDate = DateTime(2021, 4, 18, 18, 45);
 
 class CountdownRepository {
   Duration get countdownInitialData {
