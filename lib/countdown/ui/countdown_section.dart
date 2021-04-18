@@ -192,7 +192,7 @@ class _CountdownSectionButtons extends StatelessWidget {
             fontSize: fontSize,
             padding: padding,
             onPressed: () async {
-              const _streamLink = 'https://www.youtube.com/watch?v=PjeeFIoJBBI';
+              const _streamLink = 'https://www.youtube.com/watch?v=gSvPHOy3ra4';
               if (await canLaunch(_streamLink)) {
                 await launch(_streamLink);
               }
