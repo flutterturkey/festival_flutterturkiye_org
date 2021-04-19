@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +23,10 @@ class SpeakerImage extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(
-                'assets/images/speakers/${speakerImage ?? 'dashatar.png'}',
-              ),
+              image: AssetImage('${ImageAsset(
+                speakerImage ?? 'dashatar.png',
+                subfolder: 'speakers',
+              )}'),
               fit: BoxFit.cover,
             ),
             shape: BoxShape.circle,

@@ -1,15 +1,20 @@
-import 'package:festival_flutterturkiye_org/core/model/calendar.dart';
+import 'dart:convert';
+import 'dart:html' as html;
+import 'dart:io';
+
+import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import 'package:festival_flutterturkiye_org/core/model/calendar.dart';
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
 import 'package:festival_flutterturkiye_org/core/utils/dialog_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SessionInfoField extends StatelessWidget {
   const SessionInfoField({
@@ -53,6 +58,7 @@ class SessionInfoField extends StatelessWidget {
         ],
         const SizedBox(height: 8),
         _EventFlowAddToCalendar(session: session),
+        _EventFlowDownloadSlides(session: session),
         const SizedBox(height: 8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,6 +81,7 @@ class _EventFlowAddToCalendar extends StatelessWidget {
   const _EventFlowAddToCalendar({@required this.session});
 
   final Session session;
+
   @override
   Widget build(BuildContext context) {
     if (session.status == SessionStatus.waiting) {
@@ -95,6 +102,34 @@ class _EventFlowAddToCalendar extends StatelessWidget {
 
           if (await canLaunch(link)) {
             await launch(link);
+          }
+        },
+      );
+    }
+
+    return const SizedBox.shrink();
+  }
+}
+
+class _EventFlowDownloadSlides extends StatelessWidget {
+  const _EventFlowDownloadSlides({@required this.session});
+
+  final Session session;
+
+  @override
+  Widget build(BuildContext context) {
+    if (session.presentation != null) {
+      return TextButton.icon(
+        icon: const Icon(MdiIcons.download),
+        label: const Text('Sunumu indir'),
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all(ThemeHelper.blueColor),
+        ),
+        onPressed: () async {
+          final presentation = session.presentation;
+
+          if (await canLaunch(presentation)) {
+            await launch(presentation);
           }
         },
       );

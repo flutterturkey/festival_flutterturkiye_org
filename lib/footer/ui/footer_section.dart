@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -84,9 +85,11 @@ class _FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(ImageAssets.footerBackground),
+            image: AssetImage(
+              '${const ImageAsset(ImageAssets.footerBackground)}',
+            ),
             fit: BoxFit.cover,
           ),
         ),
@@ -101,7 +104,7 @@ class _FooterWidget extends StatelessWidget {
               children: [
                 const SizedBox(height: 16),
                 // Logo
-                Image.asset(ImageAssets.logo),
+                Image.asset('${const ImageAsset(ImageAssets.logo)}'),
                 // Mail
                 const SizedBox(height: 32),
                 InkWell(

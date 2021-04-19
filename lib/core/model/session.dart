@@ -10,6 +10,7 @@ class Session extends DatabaseModel {
     @required this.title,
     @required this.startingTime,
     @required this.endingTime,
+    @required this.presentation,
     @required this.reference,
     this.speakers,
   })  : assert(title != null),
@@ -27,6 +28,7 @@ class Session extends DatabaseModel {
             )
           : [],
       title: data['title'],
+      presentation: data['presentation'],
       startingTime: _timestampToDateTime(data['startingTime']),
       endingTime: _timestampToDateTime(data['endingTime']),
     );
@@ -36,6 +38,7 @@ class Session extends DatabaseModel {
   final DateTime startingTime;
   final DateTime endingTime;
   final List<DocumentReference> speakers;
+  final String presentation;
   final DocumentReference reference;
 
   SessionStatus get status {
@@ -60,6 +63,7 @@ class Session extends DatabaseModel {
         startingTime,
         endingTime,
         speakers,
+        presentation,
         reference,
         status,
       ];
