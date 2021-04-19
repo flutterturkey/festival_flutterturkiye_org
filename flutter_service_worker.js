@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "f734be520ccdb09c10e2bbc6ec0b191b",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "manifest.json": "21ec26c3d3fde1fd00fb3b188a7bc64d",
-"index.html": "4346f1eed1ce21214019c61ae2790b8f",
-"/": "4346f1eed1ce21214019c61ae2790b8f",
+"index.html": "8237701fa3d7d9099e2483b88b7e9db5",
+"/": "8237701fa3d7d9099e2483b88b7e9db5",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "174c02fc4609e8fc4389f5d21f16a296",
 "assets/NOTICES": "32914a11dee1bce7105c55e1397537c5",
@@ -69,8 +69,8 @@ const RESOURCES = {
 "assets/assets/images/speaker_placeholder.png": "44b7a2309b2a1553e145363a6e29a2c5",
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"main.dart.js": "8c6d44cf4bc6420ea108ca591f11fd65",
-"version.json": "32869796894c88eaa29c4d4ddfee7b58"
+"main.dart.js": "2f3a6786aea7d76d52c7506473aa3032",
+"version.json": "a74add15ecb728208f4db9a1e6bf9a83"
 };
 
 // The application shell files that are downloaded before a service worker can
