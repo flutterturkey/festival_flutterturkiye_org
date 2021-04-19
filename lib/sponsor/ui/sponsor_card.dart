@@ -1,8 +1,8 @@
+import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:festival_flutterturkiye_org/core/model/sponsor.dart';
-import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 
 class SponsorCard extends StatelessWidget {
@@ -31,7 +31,7 @@ class SponsorCard extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               child: Center(
                 child: Image.asset(
-                  '${ImageAssets.sponsorAssets}${sponsor.logo}',
+                  '${ImageAsset(sponsor.logo, subfolder: 'sponsors')}',
                 ),
               ),
             ),

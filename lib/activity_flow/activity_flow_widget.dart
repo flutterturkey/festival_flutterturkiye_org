@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
@@ -141,9 +142,13 @@ class _ActivityFlowLineIndicatorBuilder extends StatelessWidget {
     if (isLastIndex) {
       return const SizedBox.shrink();
     } else if (index.isEven) {
-      return const _ActivityFlowLineIndicator(ImageAssets.lineIndicatorTop);
+      return _ActivityFlowLineIndicator(
+        '${const ImageAsset(ImageAssets.lineIndicatorTop)}',
+      );
     } else if (index.isOdd) {
-      return const _ActivityFlowLineIndicator(ImageAssets.lineIndicatorBottom);
+      return _ActivityFlowLineIndicator(
+        '${const ImageAsset(ImageAssets.lineIndicatorBottom)}',
+      );
     } else {
       return const SizedBox.shrink();
     }

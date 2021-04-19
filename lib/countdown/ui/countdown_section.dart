@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,8 +16,6 @@ import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 const double _paddingSmall = 24;
 const double _paddingMedium = 48;
 const double _paddingLarge = 72;
-const String _registrationUrl =
-    'https://kommunity.com/flutter-turkiye/events/flutter-festivali-81b8ee21?key=dudavx';
 
 // TODO: When the screen height too low, it has a bottom overflowed error.
 class CountdownSection extends StatefulWidget {
@@ -34,7 +33,7 @@ class CountdownSection extends StatefulWidget {
 
 class _CountdownSectionState extends State<CountdownSection> {
   final VideoPlayerController _videoPlayerController =
-      VideoPlayerController.asset('assets/videos/countdown_bg.mp4');
+      VideoPlayerController.asset('${const VideoAsset('countdown_bg.mp4')}');
 
   @override
   void initState() {
@@ -188,23 +187,24 @@ class _CountdownSectionButtons extends StatelessWidget {
         alignment: WrapAlignment.center,
         children: [
           _LightButton(
-            title: 'Yayına Git',
+            title: 'Birinci Gün',
             fontSize: fontSize,
             padding: padding,
             onPressed: () async {
-              const _streamLink = 'https://www.youtube.com/watch?v=gSvPHOy3ra4';
+              const _streamLink = 'https://youtu.be/PjeeFIoJBBI';
               if (await canLaunch(_streamLink)) {
                 await launch(_streamLink);
               }
             },
           ),
           _DarkButton(
-            title: 'Kayıt Ol',
+            title: 'İkinci Gün',
             fontSize: fontSize,
             padding: padding,
             onPressed: () async {
-              if (await canLaunch(_registrationUrl)) {
-                await launch(_registrationUrl);
+              const _streamLink = 'https://youtu.be/gSvPHOy3ra4';
+              if (await canLaunch(_streamLink)) {
+                await launch(_streamLink);
               }
             },
           ),
