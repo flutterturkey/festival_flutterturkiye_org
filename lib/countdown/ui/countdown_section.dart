@@ -33,7 +33,7 @@ class CountdownSection extends StatefulWidget {
 class _CountdownSectionState extends State<CountdownSection> {
   final VideoPlayerController _videoPlayerController =
       VideoPlayerController.asset(
-          '${VideoAsset('countdown_bg.mp4', subfolder: '')}');
+          '${const VideoAsset('countdown_bg.mp4', subfolder: '')}');
 
   @override
   void initState() {
