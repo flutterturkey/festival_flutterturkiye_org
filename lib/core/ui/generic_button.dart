@@ -3,19 +3,14 @@ import 'package:flutter/material.dart';
 
 class GenericButton extends StatelessWidget {
   const GenericButton({
-    @required this.title,
-    @required this.onPressed,
+    required this.title,
+    required this.onPressed,
     this.isFilledButton = false,
     this.textPadding = EdgeInsets.zero,
     this.textStyle = const TextStyle(),
     this.buttonStyle = const ButtonStyle(),
-    Key key,
-  })  : assert(title != null),
-        assert(onPressed != null),
-        assert(textPadding != null),
-        assert(textStyle != null),
-        assert(buttonStyle != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final VoidCallback onPressed;

@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
-    @required this.title,
+    required this.title,
     this.textColor = Colors.black,
     this.padding = const EdgeInsets.symmetric(vertical: 48),
     this.fontSize = 48,
     this.textAlign = TextAlign.center,
-    Key key,
-  })  : assert(title != null),
-        assert(textColor != null),
-        assert(padding != null),
-        assert(fontSize != null),
-        assert(textAlign != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final Color textColor;

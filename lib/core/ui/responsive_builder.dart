@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 
 class ResponsiveBuilder extends StatelessWidget {
   const ResponsiveBuilder({
-    @required this.smallWidget,
-    @required this.largeWidget,
-    this.mediumWidget,
-    Key key,
-  })  : assert(smallWidget != null),
-        assert(largeWidget != null),
-        super(key: key);
+    required this.smallWidget,
+    required this.largeWidget,
+    required this.mediumWidget,
+    Key? key,
+  }) : super(key: key);
 
   /// It can displayable on small screens.
   final Widget smallWidget;
@@ -26,7 +24,7 @@ class ResponsiveBuilder extends StatelessWidget {
           if (constraints.maxWidth >= ResponsiveHelper.largeWidth) {
             return largeWidget;
           } else if (constraints.maxWidth >= ResponsiveHelper.mediumWidth) {
-            return mediumWidget ?? smallWidget;
+            return mediumWidget;
           } else {
             return smallWidget;
           }

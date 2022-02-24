@@ -1,23 +1,16 @@
-import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
-import 'package:flutter/material.dart';
-
 import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
+import 'package:flutter/material.dart';
 
 class ActivityFlowWidget extends StatelessWidget {
   const ActivityFlowWidget({
-    @required this.title,
-    @required this.subtitle,
-    @required this.iconPath,
-    @required this.index,
-    @required this.isLastIndex,
-    Key key,
-  })  : assert(title != null),
-        assert(subtitle != null),
-        assert(iconPath != null),
-        assert(index != null),
-        assert(isLastIndex != null),
-        super(key: key);
+    required this.title,
+    required this.subtitle,
+    required this.iconPath,
+    required this.index,
+    required this.isLastIndex,
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final String subtitle;
@@ -50,14 +43,11 @@ class ActivityFlowWidget extends StatelessWidget {
 
 class _BuildRowHeader extends StatelessWidget {
   const _BuildRowHeader({
-    @required this.iconPath,
-    @required this.index,
-    @required this.isLastIndex,
-    Key key,
-  })  : assert(iconPath != null),
-        assert(index != null),
-        assert(isLastIndex != null),
-        super(key: key);
+    required this.iconPath,
+    required this.index,
+    required this.isLastIndex,
+    Key? key,
+  }) : super(key: key);
 
   final String iconPath;
   final int index;
@@ -80,12 +70,10 @@ class _BuildRowHeader extends StatelessWidget {
 
 class _ActivityFlowTitle extends StatelessWidget {
   const _ActivityFlowTitle({
-    @required this.title,
+    required this.title,
     this.isTitle = true,
-    Key key,
-  })  : assert(title != null),
-        assert(isTitle != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final bool isTitle;
@@ -110,10 +98,9 @@ class _ActivityFlowTitle extends StatelessWidget {
 
 class _ActivityFlowIcon extends StatelessWidget {
   const _ActivityFlowIcon({
-    @required this.iconPath,
-    Key key,
-  })  : assert(iconPath != null),
-        super(key: key);
+    required this.iconPath,
+    Key? key,
+  }) : super(key: key);
 
   final String iconPath;
 
@@ -127,12 +114,10 @@ class _ActivityFlowIcon extends StatelessWidget {
 
 class _ActivityFlowLineIndicatorBuilder extends StatelessWidget {
   const _ActivityFlowLineIndicatorBuilder({
-    @required this.index,
-    @required this.isLastIndex,
-    Key key,
-  })  : assert(index != null),
-        assert(isLastIndex != null),
-        super(key: key);
+    required this.index,
+    required this.isLastIndex,
+    Key? key,
+  }) : super(key: key);
 
   final int index;
   final bool isLastIndex;
@@ -142,12 +127,12 @@ class _ActivityFlowLineIndicatorBuilder extends StatelessWidget {
     if (isLastIndex) {
       return const SizedBox.shrink();
     } else if (index.isEven) {
-      return _ActivityFlowLineIndicator(
-        '${const ImageAsset(ImageAssets.lineIndicatorTop)}',
+      return const _ActivityFlowLineIndicator(
+        ImageAssets.lineIndicatorTop,
       );
     } else if (index.isOdd) {
-      return _ActivityFlowLineIndicator(
-        '${const ImageAsset(ImageAssets.lineIndicatorBottom)}',
+      return const _ActivityFlowLineIndicator(
+        ImageAssets.lineIndicatorBottom,
       );
     } else {
       return const SizedBox.shrink();
@@ -158,9 +143,8 @@ class _ActivityFlowLineIndicatorBuilder extends StatelessWidget {
 class _ActivityFlowLineIndicator extends StatelessWidget {
   const _ActivityFlowLineIndicator(
     this.assetsPath, {
-    Key key,
-  })  : assert(assetsPath != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String assetsPath;
 

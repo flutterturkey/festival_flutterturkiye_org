@@ -1,19 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-
 import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';
 import 'package:festival_flutterturkiye_org/core/model/sponsor.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_card.dart';
+import 'package:flutter/material.dart';
 
 class SponsorSection extends StatelessWidget {
   const SponsorSection({
-    @required this.focusNode,
-    Key key,
-  })  : assert(focusNode != null),
-        super(key: key);
+    required this.focusNode,
+    Key? key,
+  }) : super(key: key);
 
   final FocusNode focusNode;
 
@@ -59,12 +57,10 @@ class SponsorSection extends StatelessWidget {
 
 class _SponsorSectionInfoTitle extends StatelessWidget {
   const _SponsorSectionInfoTitle({
-    @required this.title,
+    required this.title,
     this.fontSize = 18,
-    Key key,
-  })  : assert(title != null),
-        assert(fontSize != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final double fontSize;
@@ -86,12 +82,10 @@ class _SponsorSectionInfoTitle extends StatelessWidget {
 
 class _SponsorsBuilder extends StatelessWidget {
   const _SponsorsBuilder({
-    @required this.sponsorsList,
-    @required this.sponsorTypeTitle,
-    Key key,
-  })  : assert(sponsorsList != null),
-        assert(sponsorTypeTitle != null),
-        super(key: key);
+    required this.sponsorsList,
+    required this.sponsorTypeTitle,
+    Key? key,
+  }) : super(key: key);
 
   final List<Sponsor> sponsorsList;
   final String sponsorTypeTitle;
@@ -115,6 +109,7 @@ class _SponsorsBuilder extends StatelessWidget {
           sponsorsList: sponsorsList,
           sponsorTypeTitle: sponsorTypeTitle,
         ),
+        mediumWidget: const SizedBox(),
       ),
     );
   }
@@ -122,16 +117,12 @@ class _SponsorsBuilder extends StatelessWidget {
 
 class _SponsorsSlider extends StatefulWidget {
   const _SponsorsSlider({
-    @required this.aspectRatio,
-    @required this.viewportFraction,
-    @required this.sponsorsList,
-    @required this.sponsorTypeTitle,
-    Key key,
-  })  : assert(aspectRatio != null),
-        assert(viewportFraction != null),
-        assert(sponsorsList != null),
-        assert(sponsorTypeTitle != null),
-        super(key: key);
+    required this.aspectRatio,
+    required this.viewportFraction,
+    required this.sponsorsList,
+    required this.sponsorTypeTitle,
+    Key? key,
+  }) : super(key: key);
 
   final double aspectRatio;
   final double viewportFraction;

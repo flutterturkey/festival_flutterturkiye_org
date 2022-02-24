@@ -1,19 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/string_formatter.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SpeakerDetailContent extends StatelessWidget {
   const SpeakerDetailContent({
-    @required this.speaker,
-    Key key,
-  })  : assert(speaker != null),
-        super(key: key);
+    required this.speaker,
+    Key? key,
+  }) : super(key: key);
   final Speaker speaker;
 
   @override
@@ -48,10 +46,9 @@ class SpeakerDetailContent extends StatelessWidget {
 
 class _SpeakerHeader extends StatelessWidget {
   const _SpeakerHeader({
-    @required this.speaker,
-    Key key,
-  })  : assert(speaker != null),
-        super(key: key);
+    required this.speaker,
+    Key? key,
+  }) : super(key: key);
 
   final Speaker speaker;
 
@@ -95,12 +92,10 @@ class _SpeakerHeader extends StatelessWidget {
 
 class _SpeakerInfo extends StatelessWidget {
   const _SpeakerInfo({
-    @required this.speaker,
+    required this.speaker,
     this.textAlign = TextAlign.start,
-    Key key,
-  })  : assert(speaker != null),
-        assert(textAlign != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final Speaker speaker;
   final TextAlign textAlign;
@@ -136,21 +131,18 @@ class _SpeakerInfo extends StatelessWidget {
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
             children: [
-              if (speaker.github != null)
-                _SocialMediaButton(
-                  icon: MdiIcons.github,
-                  url: 'https://www.github.com/${speaker.github}',
-                ),
-              if (speaker.linkedin != null)
-                _SocialMediaButton(
-                  icon: MdiIcons.linkedin,
-                  url: 'https://www.linkedin.com/in/${speaker.linkedin}',
-                ),
-              if (speaker.twitter != null)
-                _SocialMediaButton(
-                  icon: MdiIcons.twitter,
-                  url: 'https://www.twitter.com/${speaker.twitter}',
-                ),
+              _SocialMediaButton(
+                icon: MdiIcons.github,
+                url: 'https://www.github.com/${speaker.github}',
+              ),
+              _SocialMediaButton(
+                icon: MdiIcons.linkedin,
+                url: 'https://www.linkedin.com/in/${speaker.linkedin}',
+              ),
+              _SocialMediaButton(
+                icon: MdiIcons.twitter,
+                url: 'https://www.twitter.com/${speaker.twitter}',
+              ),
             ],
           ),
         ],
@@ -159,12 +151,10 @@ class _SpeakerInfo extends StatelessWidget {
 
 class _SocialMediaButton extends StatelessWidget {
   const _SocialMediaButton({
-    @required this.icon,
-    @required this.url,
-    Key key,
-  })  : assert(icon != null),
-        assert(url != null),
-        super(key: key);
+    required this.icon,
+    required this.url,
+    Key? key,
+  }) : super(key: key);
 
   final IconData icon;
   final String url;

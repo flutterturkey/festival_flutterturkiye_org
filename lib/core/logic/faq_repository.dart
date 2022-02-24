@@ -20,9 +20,7 @@ class FaqRepository extends DatabaseRepository<FAQ> {
     for (final documentSnapshot in querySnapshot.docs) {
       final faq = FAQ.fromSnapshot(documentSnapshot);
 
-      if (faq != null) {
-        _faqs.add(faq);
-      }
+      _faqs.add(faq);
     }
     return _faqs;
   }

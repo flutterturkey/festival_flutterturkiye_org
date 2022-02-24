@@ -17,7 +17,7 @@ class ThemeHelper {
 
   static final ThemeData themeData = ThemeData(
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    accentColor: lightColor,
+    secondaryHeaderColor: lightColor,
     primaryColor: darkColor,
     canvasColor: ThemeHelper.darkColor,
     brightness: brightness,

@@ -37,9 +37,7 @@ class SponsorRepository extends DatabaseRepository<Sponsor> {
     for (final documentSnapshot in querySnapshot.docs) {
       final sponsor = Sponsor.fromSnapshot(documentSnapshot);
 
-      if (sponsor != null) {
-        _sponsors.add(sponsor);
-      }
+      _sponsors.add(sponsor);
     }
     return _sponsors;
   }

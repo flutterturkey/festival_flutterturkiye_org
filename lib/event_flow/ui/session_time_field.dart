@@ -4,14 +4,11 @@ import 'package:flutter/material.dart';
 
 class EventFlowSessionText extends StatelessWidget {
   const EventFlowSessionText({
-    @required this.text,
+    required this.text,
     this.textAlign = TextAlign.start,
     this.sessionStatus = SessionStatus.waiting,
-    Key key,
-  })  : assert(text != null),
-        assert(textAlign != null),
-        assert(sessionStatus != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String text;
   final TextAlign textAlign;

@@ -1,25 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meta/meta.dart';
-
 import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 
 enum SessionStatus { waiting, active, passed }
 
 class Session extends DatabaseModel {
   const Session({
-    @required this.title,
-    @required this.startingTime,
-    @required this.endingTime,
-    @required this.presentation,
-    @required this.reference,
-    this.speakers,
-  })  : assert(title != null),
-        assert(startingTime != null),
-        assert(endingTime != null),
-        assert(reference != null);
+    required this.title,
+    required this.startingTime,
+    required this.endingTime,
+    required this.presentation,
+    required this.reference,
+    required this.speakers,
+  });
 
   factory Session.fromSnapshot(DocumentSnapshot snapshot) {
-    final data = snapshot.data();
+    final data = snapshot;
     return Session(
       reference: snapshot.reference,
       speakers: data['speakers'] != null

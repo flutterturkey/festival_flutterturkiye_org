@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 
 class ContextMenuItem extends StatelessWidget {
   const ContextMenuItem({
-    @required this.title,
-    @required this.icon,
-    @required this.onTap,
-    Key key,
-  })  : assert(title != null),
-        assert(icon != null),
-        assert(onTap != null),
-        super(key: key);
+    required this.title,
+    required this.icon,
+    required this.onTap,
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final IconData icon;
@@ -24,7 +21,7 @@ class ContextMenuItem extends StatelessWidget {
           ),
         ),
         leading: Icon(
-          icon ?? Icons.warning,
+          icon,
           color: Colors.white,
         ),
         onTap: onTap,

@@ -1,18 +1,16 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
-import 'package:flutter/material.dart';
-
 import 'package:festival_flutterturkiye_org/core/logic/faq_repository.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/string_formatter.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
+import 'package:flutter/material.dart';
 
 class FAQSection extends StatelessWidget {
   const FAQSection({
-    @required this.focusNode,
-    Key key,
-  })  : assert(focusNode != null),
-        super(key: key);
+    required this.focusNode,
+    Key? key,
+  }) : super(key: key);
 
   final FocusNode focusNode;
 
@@ -60,7 +58,7 @@ class FAQSection extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .bodyText2
-                              .copyWith(fontSize: 16),
+                              ?.copyWith(fontSize: 16),
                         ),
                       ),
                     ),

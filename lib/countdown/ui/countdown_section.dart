@@ -1,29 +1,28 @@
+import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
+import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:video_player/video_player.dart';
-
-import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/countdown/logic/countdown_repository.dart';
 import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_builder.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_span.dart';
-import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:video_player/video_player.dart';
 
 const double _paddingSmall = 24;
 const double _paddingMedium = 48;
 const double _paddingLarge = 72;
 
+// ignore: todo
 // TODO: When the screen height too low, it has a bottom overflowed error.
 class CountdownSection extends StatefulWidget {
   const CountdownSection({
-    @required this.focusNode,
-    Key key,
-  })  : assert(focusNode != null),
-        super(key: key);
+    required this.focusNode,
+    Key? key,
+  }) : super(key: key);
 
   final FocusNode focusNode;
 
@@ -33,7 +32,8 @@ class CountdownSection extends StatefulWidget {
 
 class _CountdownSectionState extends State<CountdownSection> {
   final VideoPlayerController _videoPlayerController =
-      VideoPlayerController.asset('${const VideoAsset('countdown_bg.mp4')}');
+      VideoPlayerController.asset(
+          '${VideoAsset('countdown_bg.mp4', subfolder: '')}');
 
   @override
   void initState() {
@@ -71,8 +71,8 @@ class _CountdownSectionState extends State<CountdownSection> {
               child: FittedBox(
                 fit: BoxFit.fill,
                 child: SizedBox(
-                  width: _videoPlayerController.value.size?.width ?? 0,
-                  height: _videoPlayerController.value.size?.height ?? 0,
+                  width: _videoPlayerController.value.size.width,
+                  height: _videoPlayerController.value.size.height,
                   child: VideoPlayer(_videoPlayerController),
                 ),
               ),
@@ -170,12 +170,10 @@ class _CountdownTitle extends StatelessWidget {
 
 class _CountdownSectionButtons extends StatelessWidget {
   const _CountdownSectionButtons({
-    @required this.fontSize,
-    @required this.padding,
-    Key key,
-  })  : assert(fontSize != null),
-        assert(padding != null),
-        super(key: key);
+    required this.fontSize,
+    required this.padding,
+    Key? key,
+  }) : super(key: key);
 
   final double fontSize;
   final EdgeInsets padding;
@@ -214,16 +212,12 @@ class _CountdownSectionButtons extends StatelessWidget {
 
 class _LightButton extends StatelessWidget {
   const _LightButton({
-    @required this.fontSize,
-    @required this.padding,
-    @required this.title,
-    @required this.onPressed,
-    Key key,
-  })  : assert(fontSize != null),
-        assert(padding != null),
-        assert(title != null),
-        assert(onPressed != null),
-        super(key: key);
+    required this.fontSize,
+    required this.padding,
+    required this.title,
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
 
   final double fontSize;
   final EdgeInsets padding;
@@ -233,7 +227,7 @@ class _LightButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GenericButton(
         title: title,
-        onPressed: onPressed,
+        onPressed: onPressed(),
         isFilledButton: true,
         textStyle: TextStyle(fontSize: fontSize),
         textPadding: padding,
@@ -242,16 +236,12 @@ class _LightButton extends StatelessWidget {
 
 class _DarkButton extends StatelessWidget {
   const _DarkButton({
-    @required this.fontSize,
-    @required this.padding,
-    @required this.title,
-    @required this.onPressed,
-    Key key,
-  })  : assert(fontSize != null),
-        assert(padding != null),
-        assert(title != null),
-        assert(onPressed != null),
-        super(key: key);
+    required this.fontSize,
+    required this.padding,
+    required this.title,
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
 
   final double fontSize;
   final EdgeInsets padding;
@@ -261,7 +251,7 @@ class _DarkButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GenericButton(
         title: title,
-        onPressed: onPressed,
+        onPressed: onPressed(),
         isFilledButton: true,
         textStyle: TextStyle(
           fontSize: fontSize,
@@ -275,7 +265,7 @@ class _DarkButton extends StatelessWidget {
 }
 
 class _CountdownCounter extends StatelessWidget {
-  _CountdownCounter({Key key})
+  _CountdownCounter({Key? key})
       : _countdownRepository = getIt.get<CountdownRepository>(),
         super(key: key);
 
@@ -292,13 +282,13 @@ class _CountdownCounter extends StatelessWidget {
 
           switch (_countdownRepository.eventStatus) {
             case EventStatus.completed:
-              textSpans = _completedTextSpan(remainingTime);
+              textSpans = _completedTextSpan(remainingTime ?? Duration.zero);
               break;
             case EventStatus.started:
-              textSpans = _startedTextSpan(remainingTime);
+              textSpans = _startedTextSpan(remainingTime ?? Duration.zero);
               break;
             case EventStatus.waiting:
-              textSpans = _waitingTextSpan(remainingTime);
+              textSpans = _waitingTextSpan(remainingTime ?? Duration.zero);
               break;
           }
 
@@ -348,7 +338,5 @@ class _CountdownCounter extends StatelessWidget {
 class _DateText extends CountdownTextSpan {
   /// If you give a [fontWeight], it will override the default [FontWeight].
   _DateText(String text, {FontWeight fontWeight = FontWeight.bold})
-      : assert(text != null),
-        assert(fontWeight != null),
-        super(text, fontWeight: fontWeight);
+      : super(text, fontWeight: fontWeight);
 }

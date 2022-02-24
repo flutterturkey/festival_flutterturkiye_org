@@ -1,13 +1,12 @@
-import 'package:festival_flutterturkiye_org/event_flow/ui/event_flow_section.dart';
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
+import 'package:festival_flutterturkiye_org/event_flow/ui/event_flow_section.dart';
 import 'package:festival_flutterturkiye_org/faq/ui/faq_section.dart';
 import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
 import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_section.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const _scrollOffset = 12.0;
 const String _registrationUrl =
@@ -15,7 +14,7 @@ const String _registrationUrl =
 
 class HomePage extends StatefulWidget {
   const HomePage({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -101,6 +100,7 @@ class _HomePageState extends State<HomePage> {
         title: 'Etkinlik',
         icon: Icons.celebration,
         focusNode: focusNodes[0],
+        onPressed: () {},
       ),
       // NavigationAction(
       //   title: 'Konuşmacılar',
@@ -111,21 +111,25 @@ class _HomePageState extends State<HomePage> {
         title: 'Etkinlik Programı',
         icon: Icons.event_rounded,
         focusNode: focusNodes[2],
+        onPressed: () {},
       ),
       NavigationAction(
         title: 'Sponsorlar',
         icon: Icons.help_center_rounded,
         focusNode: focusNodes[3],
+        onPressed: () {},
       ),
       NavigationAction(
         title: 'SSS',
         icon: Icons.help_center_rounded,
         focusNode: focusNodes[4],
+        onPressed: () {},
       ),
       NavigationAction(
         title: 'İletişim',
         icon: Icons.phone_in_talk_rounded,
         focusNode: focusNodes[5],
+        onPressed: () {},
       ),
       NavigationAction(
         title: 'Kayıt Ol',

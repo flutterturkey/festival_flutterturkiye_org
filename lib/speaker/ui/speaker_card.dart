@@ -1,14 +1,11 @@
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/speaker_detail_content.dart';
-import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class SpeakerCard extends StatelessWidget {
-  const SpeakerCard({@required this.speaker, Key key})
-      : assert(speaker != null),
-        super(key: key);
+  const SpeakerCard({required this.speaker, Key? key}) : super(key: key);
 
   final Speaker speaker;
 
@@ -39,7 +36,7 @@ class SpeakerCard extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 20),
                   child: ClipOval(
                     child: Image.asset(
-                      '${const ImageAsset(ImageAssets.speakerPlaceHolder)}',
+                      ImageAssets.speakerPlaceHolder,
                       fit: BoxFit.fitHeight,
                     ),
                   ),
