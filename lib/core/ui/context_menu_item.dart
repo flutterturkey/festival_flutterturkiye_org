@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class ContextMenuItem extends StatelessWidget {
   const ContextMenuItem({
     required this.title,
-    required this.icon,
     required this.onTap,
+    this.icon = Icons.warning,
     Key? key,
   }) : super(key: key);
 

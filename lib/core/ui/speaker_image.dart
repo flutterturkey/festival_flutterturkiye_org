@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 class SpeakerImage extends StatelessWidget {
   const SpeakerImage({
     required this.imageSize,
-    required this.speakerImage,
+    this.speakerImage,
     this.borderSize = 2,
     Key? key,
   }) : super(key: key);
 
-  final String speakerImage;
+  final String? speakerImage;
   final double imageSize;
   final double borderSize;
 
@@ -21,8 +21,8 @@ class SpeakerImage extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('${const ImageAsset(
-                'dashatar.png',
+              image: AssetImage('${ImageAsset(
+                speakerImage ?? 'dashatar.png',
                 subfolder: 'speakers',
               )}'),
               fit: BoxFit.cover,

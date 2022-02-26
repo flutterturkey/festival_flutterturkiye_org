@@ -12,20 +12,20 @@ abstract class Asset {
 }
 
 class ImageAsset extends Asset {
-  const ImageAsset(String file, {required String subfolder})
+  const ImageAsset(String file, {String? subfolder})
       : super(
           file: file,
-          path: '$_folder/$subfolder',
+          path: subfolder == null ? _folder : '$_folder/$subfolder',
         );
 
   static const _folder = 'images';
 }
 
 class VideoAsset extends Asset {
-  const VideoAsset(String file, {required String subfolder})
+  const VideoAsset(String file, {String? subfolder})
       : super(
           file: file,
-          path: '$_folder/$subfolder',
+          path: subfolder == null ? _folder : '$_folder/$subfolder',
         );
 
   static const _folder = 'videos';
