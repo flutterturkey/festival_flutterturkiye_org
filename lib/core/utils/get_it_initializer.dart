@@ -10,10 +10,10 @@ GetIt getIt = GetIt.instance;
 
 void initializeGetIt() {
   getIt
-    ..registerLazySingleton(() => CountdownRepository())
-    ..registerLazySingleton(() => CommunityRepository())
-    ..registerLazySingleton(() => SpeakerRepository())
-    ..registerLazySingleton(() => SessionRepository())
-    ..registerLazySingleton(() => SponsorRepository())
-    ..registerLazySingleton(() => FaqRepository());
+    ..registerLazySingleton(CountdownRepository.new)
+    ..registerLazySingleton(CommunityRepository.new)
+    ..registerLazySingleton(SpeakerRepository.new)
+    ..registerLazySingleton(SessionRepository.new)
+    ..registerLazySingleton(SponsorRepository.new)
+    ..registerLazySingleton(FaqRepository.new);
 }
