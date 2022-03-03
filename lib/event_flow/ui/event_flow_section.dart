@@ -26,17 +26,17 @@ class EventFlowSection extends StatelessWidget {
     // TODO: It is faster solution. It will be fixed later.
     final sessionDays = <Widget>[
       _SessionsWidget(
-        title: '17 Nisan Cumartesi',
+        title: '26 Mart Cumartesi',
         sessions: sessionRepository.sessions
             .where((session) =>
-                session.startingTime.compareTo(DateTime(2021, 04, 18)) < 0)
+                session.startingTime!.compareTo(DateTime(2021, 04, 18)) < 0)
             .toList(),
       ),
       _SessionsWidget(
-        title: '18 Nisan Pazar',
+        title: '27 Mart Pazar',
         sessions: sessionRepository.sessions
             .where((session) =>
-                session.startingTime.compareTo(DateTime(2021, 04, 18)) > 0)
+                session.startingTime!.compareTo(DateTime(2021, 04, 18)) > 0)
             .toList(),
       ),
     ];
@@ -114,12 +114,14 @@ class _SessionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startingTime = _getTime(session.startingTime);
-    final endingTime = _getTime(session.endingTime);
+    final startingTime = _getTime(session.startingTime!);
+    final endingTime = _getTime(session.endingTime!);
     final speakerRepository = getIt.get<SpeakerRepository>();
 
     final speaker = speakerRepository.speakers
-        .where((speaker) => session.speakers.contains(speaker.reference))
+        .where(
+          (speaker) => session.speakers?.contains(speaker.reference) ?? false,
+        )
         .toList();
 
     return Padding(

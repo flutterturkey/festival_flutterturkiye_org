@@ -3,14 +3,14 @@ import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 
 class Speaker extends DatabaseModel {
   const Speaker({
-    required this.reference,
-    required this.name,
-    required this.title,
-    required this.image,
-    required this.about,
-    required this.twitter,
-    required this.github,
-    required this.linkedin,
+    this.reference,
+    this.name,
+    this.title,
+    this.image,
+    this.about,
+    this.twitter,
+    this.github,
+    this.linkedin,
   });
 
   factory Speaker.fromSnapshot(DocumentSnapshot snapshot) {
@@ -27,17 +27,17 @@ class Speaker extends DatabaseModel {
     );
   }
 
-  final String image;
-  final String name;
-  final String title;
-  final String about;
-  final String twitter;
-  final String github;
-  final String linkedin;
-  final DocumentReference reference;
+  final String? image;
+  final String? name;
+  final String? title;
+  final String? about;
+  final String? twitter;
+  final String? github;
+  final String? linkedin;
+  final DocumentReference? reference;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         reference,
         image,
         name,

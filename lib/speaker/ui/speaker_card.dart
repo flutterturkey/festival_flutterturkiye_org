@@ -46,7 +46,7 @@ class SpeakerCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      speaker.name,
+                      speaker.name ?? '',
                       maxLines: 2,
                       style: const TextStyle(
                         fontFamily: 'Montserrat',
@@ -56,7 +56,7 @@ class SpeakerCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      speaker.title,
+                      speaker.title ?? '',
                       maxLines: 2,
                       style: const TextStyle(
                         fontFamily: 'Montserrat',

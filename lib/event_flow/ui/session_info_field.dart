@@ -25,15 +25,15 @@ class SessionInfoField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startingTime = _getTime(session.startingTime);
-    final endingTime = _getTime(session.endingTime);
+    final startingTime = _getTime(session.startingTime!);
+    final endingTime = _getTime(session.endingTime!);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: horizontalAxisAlignment,
       children: [
         EventFlowSessionText(
-          text: session.title,
+          text: session.title ?? '',
           sessionStatus: session.status,
         ),
 
@@ -83,10 +83,10 @@ class _EventFlowAddToCalendar extends StatelessWidget {
         ),
         onPressed: () async {
           final calendar = Calendar(
-            title: session.title,
+            title: session.title ?? '',
             description: 'Flutter Festivali',
-            startingTime: session.startingTime,
-            endingTime: session.endingTime,
+            startingTime: session.startingTime!,
+            endingTime: session.endingTime!,
           );
           final link = calendar.toLink();
 
@@ -116,8 +116,10 @@ class _EventFlowDownloadSlides extends StatelessWidget {
         onPressed: () async {
           final presentation = session.presentation;
 
-          if (await canLaunch(presentation)) {
-            await launch(presentation);
+          if (presentation != null) {
+            if (await canLaunch(presentation)) {
+              await launch(presentation);
+            }
           }
         },
       );
@@ -144,7 +146,7 @@ class _EventFlowSpeaker extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  speaker.name,
+                  speaker.name ?? '',
                   style: const TextStyle(
                     color: ThemeHelper.speakerDetailImageBorder,
                     fontSize: 16,

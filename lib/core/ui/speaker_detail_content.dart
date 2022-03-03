@@ -33,7 +33,7 @@ class SpeakerDetailContent extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              speaker.about.format(),
+              speaker.about?.format() ?? '',
               style: const TextStyle(
                 color: ThemeHelper.lightColor,
                 fontSize: 16,
@@ -108,7 +108,7 @@ class _SpeakerInfo extends StatelessWidget {
             : CrossAxisAlignment.start,
         children: [
           Text(
-            speaker.name,
+            speaker.name ?? '',
             textAlign: textAlign,
             style: const TextStyle(
               color: ThemeHelper.lightColor,
@@ -117,7 +117,7 @@ class _SpeakerInfo extends StatelessWidget {
             ),
           ),
           Text(
-            speaker.title,
+            speaker.title ?? '',
             textAlign: textAlign,
             style: const TextStyle(
               color: ThemeHelper.lightColor,

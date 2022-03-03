@@ -221,12 +221,12 @@ class _LightButton extends StatelessWidget {
   final double fontSize;
   final EdgeInsets padding;
   final String title;
-  final Function onPressed;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) => GenericButton(
         title: title,
-        onPressed: onPressed(),
+        onPressed: onPressed,
         isFilledButton: true,
         textStyle: TextStyle(fontSize: fontSize),
         textPadding: padding,
@@ -245,12 +245,12 @@ class _DarkButton extends StatelessWidget {
   final double fontSize;
   final EdgeInsets padding;
   final String title;
-  final Function onPressed;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) => GenericButton(
         title: title,
-        onPressed: onPressed(),
+        onPressed: onPressed,
         isFilledButton: true,
         textStyle: TextStyle(
           fontSize: fontSize,
