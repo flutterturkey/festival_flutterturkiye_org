@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveHelper {
+  const ResponsiveHelper._();
+
   static const double mediumWidth = 500;
   static const double largeWidth = 1000;
 
