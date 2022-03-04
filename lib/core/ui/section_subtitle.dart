@@ -1,5 +1,5 @@
-import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 /// It uses [Responsive Builder].
@@ -11,14 +11,11 @@ import 'package:flutter/material.dart';
 /// - 32.0 => Large Screen
 class SectionSubtitle extends StatelessWidget {
   const SectionSubtitle({
-    @required this.title,
+    required this.title,
     this.textColor = ThemeHelper.lightColor,
     this.padding = EdgeInsets.zero,
-    Key key,
-  })  : assert(title != null),
-        assert(textColor != null),
-        assert(padding != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final Color textColor;
@@ -49,16 +46,12 @@ class SectionSubtitle extends StatelessWidget {
 
 class _SectionSubtitleResponsiveText extends StatelessWidget {
   const _SectionSubtitleResponsiveText({
-    @required this.title,
+    required this.title,
     this.textColor = ThemeHelper.lightColor,
     this.padding = EdgeInsets.zero,
     this.fontSize = 36.0,
-    Key key,
-  })  : assert(title != null),
-        assert(textColor != null),
-        assert(padding != null),
-        assert(fontSize != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final String title;
   final Color textColor;

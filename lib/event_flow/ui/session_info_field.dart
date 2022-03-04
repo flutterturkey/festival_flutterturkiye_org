@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import 'package:festival_flutterturkiye_org/core/model/calendar.dart';
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
@@ -10,18 +5,18 @@ import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
 import 'package:festival_flutterturkiye_org/core/utils/dialog_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
+import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SessionInfoField extends StatelessWidget {
   const SessionInfoField({
-    @required this.session,
+    required this.speakers,
+    required this.session,
     this.horizontalAxisAlignment = CrossAxisAlignment.start,
     this.isSmallScreen = false,
-    this.speakers,
-    Key key,
-  })  : assert(session != null),
-        assert(horizontalAxisAlignment != null),
-        assert(isSmallScreen != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final Session session;
   final List<Speaker> speakers;
@@ -30,15 +25,15 @@ class SessionInfoField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startingTime = _getTime(session.startingTime);
-    final endingTime = _getTime(session.endingTime);
+    final startingTime = _getTime(session.startingTime!);
+    final endingTime = _getTime(session.endingTime!);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: horizontalAxisAlignment,
       children: [
         EventFlowSessionText(
-          text: session.title,
+          text: session.title ?? '',
           sessionStatus: session.status,
         ),
 
@@ -73,7 +68,7 @@ class SessionInfoField extends StatelessWidget {
 }
 
 class _EventFlowAddToCalendar extends StatelessWidget {
-  const _EventFlowAddToCalendar({@required this.session});
+  const _EventFlowAddToCalendar({required this.session});
 
   final Session session;
 
@@ -88,10 +83,10 @@ class _EventFlowAddToCalendar extends StatelessWidget {
         ),
         onPressed: () async {
           final calendar = Calendar(
-            title: session.title,
+            title: session.title ?? '',
             description: 'Flutter Festivali',
-            startingTime: session.startingTime,
-            endingTime: session.endingTime,
+            startingTime: session.startingTime!,
+            endingTime: session.endingTime!,
           );
           final link = calendar.toLink();
 
@@ -107,14 +102,12 @@ class _EventFlowAddToCalendar extends StatelessWidget {
 }
 
 class _EventFlowDownloadSlides extends StatelessWidget {
-  const _EventFlowDownloadSlides({@required this.session});
+  const _EventFlowDownloadSlides({required this.session});
 
   final Session session;
 
   @override
-  Widget build(BuildContext context) {
-    if (session.presentation != null) {
-      return TextButton.icon(
+  Widget build(BuildContext context) => TextButton.icon(
         icon: const Icon(MdiIcons.download),
         label: const Text('Sunumu indir'),
         style: ButtonStyle(
@@ -123,53 +116,46 @@ class _EventFlowDownloadSlides extends StatelessWidget {
         onPressed: () async {
           final presentation = session.presentation;
 
-          if (await canLaunch(presentation)) {
-            await launch(presentation);
+          if (presentation != null) {
+            if (await canLaunch(presentation)) {
+              await launch(presentation);
+            }
           }
         },
       );
-    }
-
-    return const SizedBox.shrink();
-  }
 }
 
 class _EventFlowSpeaker extends StatelessWidget {
-  const _EventFlowSpeaker({Key key, this.speaker}) : super(key: key);
+  const _EventFlowSpeaker({required this.speaker, Key? key}) : super(key: key);
 
   final Speaker speaker;
 
   @override
-  Widget build(BuildContext context) {
-    if (speaker == null) {
-      return const SizedBox.shrink();
-    }
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () => DialogHelper.showSpeaker(context, speaker: speaker),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SpeakerImage(
-                speakerImage: speaker.image,
-                imageSize: 64,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                speaker.name,
-                style: const TextStyle(
-                  color: ThemeHelper.speakerDetailImageBorder,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: () => DialogHelper.showSpeaker(context, speaker: speaker),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SpeakerImage(
+                  speakerImage: speaker.image,
+                  imageSize: 64,
                 ),
-              )
-            ],
+                const SizedBox(width: 8),
+                Text(
+                  speaker.name ?? '',
+                  style: const TextStyle(
+                    color: ThemeHelper.speakerDetailImageBorder,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

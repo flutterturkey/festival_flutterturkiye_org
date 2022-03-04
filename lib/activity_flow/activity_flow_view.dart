@@ -1,16 +1,14 @@
-import 'package:flutter/material.dart';
-
+import 'package:festival_flutterturkiye_org/activity_flow/activity_flow_widget.dart';
 import 'package:festival_flutterturkiye_org/core/model/activity_flow.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
-import 'package:festival_flutterturkiye_org/activity_flow/activity_flow_widget.dart';
+import 'package:flutter/material.dart';
 
 class ActivityFlowView extends StatelessWidget {
   const ActivityFlowView({
-    @required this.activityFlowList,
-    Key key,
-  })  : assert(activityFlowList != null),
-        super(key: key);
+    required this.activityFlowList,
+    Key? key,
+  }) : super(key: key);
 
   final List<ActivityFlow> activityFlowList;
 
@@ -38,10 +36,9 @@ class ActivityFlowView extends StatelessWidget {
 
 class _ActivityFlowListView extends StatelessWidget {
   const _ActivityFlowListView({
-    @required this.activityFlowList,
-    Key key,
-  })  : assert(activityFlowList != null),
-        super(key: key);
+    required this.activityFlowList,
+    Key? key,
+  }) : super(key: key);
 
   final List<ActivityFlow> activityFlowList;
 

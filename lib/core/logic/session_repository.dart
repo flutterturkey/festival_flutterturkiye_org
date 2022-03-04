@@ -21,9 +21,7 @@ class SessionRepository extends DatabaseRepository<Session> {
     for (final documentSnapshot in querySnapshot.docs) {
       final session = Session.fromSnapshot(documentSnapshot);
 
-      if (session != null) {
-        _sessions.add(session);
-      }
+      _sessions.add(session);
     }
     return _sessions;
   }

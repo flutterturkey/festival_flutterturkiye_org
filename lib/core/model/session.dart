@@ -1,25 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meta/meta.dart';
-
 import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 
 enum SessionStatus { waiting, active, passed }
 
 class Session extends DatabaseModel {
   const Session({
-    @required this.title,
-    @required this.startingTime,
-    @required this.endingTime,
-    @required this.presentation,
-    @required this.reference,
+    this.title,
+    this.startingTime,
+    this.endingTime,
+    this.presentation,
+    this.reference,
     this.speakers,
-  })  : assert(title != null),
-        assert(startingTime != null),
-        assert(endingTime != null),
-        assert(reference != null);
+  });
 
   factory Session.fromSnapshot(DocumentSnapshot snapshot) {
-    final data = snapshot.data();
+    final data = snapshot.data() as Map<String, dynamic>;
     return Session(
       reference: snapshot.reference,
       speakers: data['speakers'] != null
@@ -34,19 +29,19 @@ class Session extends DatabaseModel {
     );
   }
 
-  final String title;
-  final DateTime startingTime;
-  final DateTime endingTime;
-  final List<DocumentReference> speakers;
-  final String presentation;
-  final DocumentReference reference;
+  final String? title;
+  final DateTime? startingTime;
+  final DateTime? endingTime;
+  final List<DocumentReference>? speakers;
+  final String? presentation;
+  final DocumentReference? reference;
 
   SessionStatus get status {
     final currentDate = DateTime.now();
-    final isStarted = currentDate.compareTo(startingTime);
+    final isStarted = currentDate.compareTo(startingTime!);
 
     if (isStarted >= 0) {
-      final isEnded = currentDate.compareTo(endingTime);
+      final isEnded = currentDate.compareTo(endingTime!);
 
       if (isEnded < 0) {
         return SessionStatus.active;
@@ -58,7 +53,7 @@ class Session extends DatabaseModel {
   }
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         title,
         startingTime,
         endingTime,

@@ -7,10 +7,9 @@ import 'package:flutter/material.dart';
 
 class SpeakerSection extends StatelessWidget {
   const SpeakerSection({
-    @required this.focusNode,
-    Key key,
-  })  : assert(focusNode != null),
-        super(key: key);
+    required this.focusNode,
+    Key? key,
+  }) : super(key: key);
 
   final FocusNode focusNode;
 

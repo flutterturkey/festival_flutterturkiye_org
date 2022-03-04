@@ -8,9 +8,9 @@ class DialogHelper {
 
   static void show(
     BuildContext context, {
-    @required Color backgroundColor,
-    @required ShapeBorder shape,
-    @required Widget content,
+    required Color backgroundColor,
+    required ShapeBorder shape,
+    required Widget content,
   }) =>
       showDialog(
         context: context,
@@ -23,7 +23,7 @@ class DialogHelper {
 
   static void showSpeaker(
     BuildContext context, {
-    @required Speaker speaker,
+    required Speaker speaker,
   }) =>
       show(
         context,

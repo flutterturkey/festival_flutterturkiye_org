@@ -1,20 +1,16 @@
-import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
 import 'package:festival_flutterturkiye_org/footer/logic/community_repository.dart';
 import 'package:festival_flutterturkiye_org/footer/model/social_icon.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({
-    @required this.focusNode,
-    Key key,
-  })  : assert(focusNode != null),
-        super(key: key);
+    required this.focusNode,
+    Key? key,
+  }) : super(key: key);
 
   final FocusNode focusNode;
 
@@ -30,7 +26,7 @@ class FooterSection extends StatelessWidget {
 }
 
 class _FooterSmall extends _FooterWidget {
-  _FooterSmall({Key key})
+  _FooterSmall({Key? key})
       : super(
           key: key,
           heightRatio: 1.25,
@@ -45,7 +41,7 @@ class _FooterSmall extends _FooterWidget {
 }
 
 class _FooterLarge extends _FooterWidget {
-  _FooterLarge({Key key})
+  _FooterLarge({Key? key})
       : super(
           key: key,
           heightRatio: 2.5,
@@ -62,18 +58,13 @@ class _FooterLarge extends _FooterWidget {
 
 class _FooterWidget extends StatelessWidget {
   _FooterWidget({
-    @required this.heightRatio,
-    @required this.mailAddressFontSize,
-    @required this.flutterTurkiyeCopyrightFontSize,
-    @required this.flutterTurkiyeCopyrightPadding,
-    @required this.isSmallScreen,
-    Key key,
+    required this.heightRatio,
+    required this.mailAddressFontSize,
+    required this.flutterTurkiyeCopyrightFontSize,
+    required this.flutterTurkiyeCopyrightPadding,
+    required this.isSmallScreen,
+    Key? key,
   })  : _communityRepository = getIt.get<CommunityRepository>(),
-        assert(heightRatio != null),
-        assert(mailAddressFontSize != null),
-        assert(flutterTurkiyeCopyrightFontSize != null),
-        assert(flutterTurkiyeCopyrightPadding != null),
-        assert(isSmallScreen != null),
         super(key: key);
 
   final double heightRatio;
@@ -85,10 +76,10 @@ class _FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              '${const ImageAsset(ImageAssets.footerBackground)}',
+              ImageAssets.footerBackground,
             ),
             fit: BoxFit.cover,
           ),
@@ -104,7 +95,7 @@ class _FooterWidget extends StatelessWidget {
               children: [
                 const SizedBox(height: 16),
                 // Logo
-                Image.asset('${const ImageAsset(ImageAssets.logo)}'),
+                Image.asset(ImageAssets.logo),
                 // Mail
                 const SizedBox(height: 32),
                 InkWell(
@@ -161,9 +152,7 @@ class _FooterWidget extends StatelessWidget {
 }
 
 class _BottomView extends StatelessWidget {
-  const _BottomView({@required this.isSmallScreen, Key key})
-      : assert(isSmallScreen != null),
-        super(key: key);
+  const _BottomView({required this.isSmallScreen, Key? key}) : super(key: key);
 
   final bool isSmallScreen;
 
@@ -193,12 +182,10 @@ class _BottomView extends StatelessWidget {
 
 class _SocialIcon extends StatelessWidget {
   const _SocialIcon({
-    @required this.socialMedia,
+    required this.socialMedia,
     this.iconColor = Colors.white,
-    Key key,
-  })  : assert(socialMedia != null),
-        assert(iconColor != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final SocialMedia socialMedia;
   final Color iconColor;

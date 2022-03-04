@@ -6,9 +6,7 @@ class CountdownTextSpan extends TextSpan {
   /// Default [FontWeight] is `FontWeight.normal`
   CountdownTextSpan(
     String text, {
-    TextStyle style,
+    TextStyle? style,
     FontWeight fontWeight = FontWeight.normal,
-  })  : assert(text != null),
-        assert(fontWeight != null),
-        super(text: text, style: style ?? TextStyle(fontWeight: fontWeight));
+  }) : super(text: text, style: style ?? TextStyle(fontWeight: fontWeight));
 }

@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 
 class NavigationAction extends Equatable {
   const NavigationAction({
-    @required this.title,
-    @required this.icon,
-    @required this.focusNode,
+    required this.onPressed,
+    required this.title,
+    required this.icon,
+    required this.focusNode,
     this.isFilled = false,
-    this.onPressed,
-  })  : assert(title != null),
-        assert(icon != null),
-        assert(focusNode != null),
-        assert(isFilled != null);
+  });
 
   final String title;
   final IconData icon;

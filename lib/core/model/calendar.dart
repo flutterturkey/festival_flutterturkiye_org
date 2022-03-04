@@ -1,16 +1,12 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 class Calendar extends Equatable {
   const Calendar({
-    @required this.title,
-    @required this.description,
-    @required this.startingTime,
-    @required this.endingTime,
-  })  : assert(title != null),
-        assert(description != null),
-        assert(startingTime != null),
-        assert(endingTime != null);
+    required this.title,
+    required this.description,
+    required this.startingTime,
+    required this.endingTime,
+  });
 
   final String title;
   final String description;

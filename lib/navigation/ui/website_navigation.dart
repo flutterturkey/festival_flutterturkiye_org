@@ -1,18 +1,17 @@
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
-import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
+import 'package:festival_flutterturkiye_org/core/ui/app_logo.dart';
 import 'package:festival_flutterturkiye_org/core/ui/context_menu_item.dart';
 import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
-import 'package:festival_flutterturkiye_org/core/ui/app_logo.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class WebsiteNavigation extends StatefulWidget {
   const WebsiteNavigation({
     this.actions = const <NavigationAction>[],
     this.hasTransparentBackground = false,
-    Key key,
-  })  : assert(actions != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
   final List<NavigationAction> actions;
   final bool hasTransparentBackground;
@@ -68,18 +67,9 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
                 ...widget.actions
                     .map(
                       (action) => ContextMenuItem(
-                        title: action.title,
-                        icon: action.icon,
-                        onTap: action.onPressed ??
-                            () => WidgetsBinding.instance.addPostFrameCallback(
-                                  (_) => Scrollable.ensureVisible(
-                                    action.focusNode.context,
-                                    alignment: 0.5,
-                                    duration: const Duration(milliseconds: 200),
-                                    curve: Curves.fastOutSlowIn,
-                                  ),
-                                ),
-                      ),
+                          title: action.title,
+                          icon: action.icon,
+                          onTap: action.onPressed),
                     )
                     .toList(growable: false)
             ],
@@ -105,17 +95,7 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
                         padding: const EdgeInsets.all(8),
                         child: GenericButton(
                           title: action.title,
-                          onPressed: action.onPressed ??
-                              () =>
-                                  WidgetsBinding.instance.addPostFrameCallback(
-                                    (_) => Scrollable.ensureVisible(
-                                      action.focusNode.context,
-                                      alignment: 0.5,
-                                      duration:
-                                          const Duration(milliseconds: 200),
-                                      curve: Curves.fastOutSlowIn,
-                                    ),
-                                  ),
+                          onPressed: action.onPressed,
                           isFilledButton: action.isFilled,
                           textPadding: const EdgeInsets.all(8),
                         ),
@@ -126,5 +106,6 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
             ],
           ),
         ),
+        mediumWidget: const SizedBox(),
       );
 }

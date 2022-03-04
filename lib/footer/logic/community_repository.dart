@@ -1,4 +1,5 @@
 import 'package:festival_flutterturkiye_org/footer/model/social_icon.dart';
+import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -21,7 +22,7 @@ class CommunityRepository {
       url: 'https://www.youtube.com/c/fluttert%C3%BCrkiye',
     ),
     SocialMedia(
-      icon: MdiIcons.telegram,
+      icon: Icons.telegram,
       url: 'https://t.me/FlutterTR',
     ),
     SocialMedia(

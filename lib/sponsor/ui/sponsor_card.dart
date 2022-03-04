@@ -1,16 +1,14 @@
+import 'package:festival_flutterturkiye_org/core/model/sponsor.dart';
 import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:festival_flutterturkiye_org/core/model/sponsor.dart';
-import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
-
 class SponsorCard extends StatelessWidget {
   const SponsorCard({
-    @required this.sponsor,
-    Key key,
-  })  : assert(sponsor != null),
-        super(key: key);
+    required this.sponsor,
+    Key? key,
+  }) : super(key: key);
 
   final Sponsor sponsor;
 

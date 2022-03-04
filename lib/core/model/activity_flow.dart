@@ -5,9 +5,7 @@ class ActivityFlow extends Equatable {
     this.title,
     this.subtitle,
     this.iconPath,
-  )   : assert(title != null),
-        assert(subtitle != null),
-        assert(iconPath != null);
+  );
 
   final String title;
   final String subtitle;

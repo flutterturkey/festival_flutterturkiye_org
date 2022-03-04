@@ -20,9 +20,7 @@ class SpeakerRepository extends DatabaseRepository<Speaker> {
     for (final documentSnapshot in querySnapshot.docs) {
       final speaker = Speaker.fromSnapshot(documentSnapshot);
 
-      if (speaker != null) {
-        _speakers.add(speaker);
-      }
+      _speakers.add(speaker);
     }
     return _speakers;
   }

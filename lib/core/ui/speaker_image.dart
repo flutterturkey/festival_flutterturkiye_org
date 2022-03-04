@@ -4,15 +4,13 @@ import 'package:flutter/material.dart';
 
 class SpeakerImage extends StatelessWidget {
   const SpeakerImage({
-    @required this.imageSize,
+    required this.imageSize,
     this.speakerImage,
     this.borderSize = 2,
-    Key key,
-  })  : assert(imageSize != null),
-        assert(borderSize != null),
-        super(key: key);
+    Key? key,
+  }) : super(key: key);
 
-  final String speakerImage;
+  final String? speakerImage;
   final double imageSize;
   final double borderSize;
 

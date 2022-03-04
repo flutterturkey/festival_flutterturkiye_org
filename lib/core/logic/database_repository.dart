@@ -3,8 +3,7 @@ import 'package:flutter/foundation.dart';
 
 abstract class DatabaseRepository<DatabaseModel> {
   DatabaseRepository(String collection)
-      : assert(collection != null),
-        _collection = collection,
+      : _collection = collection,
         _firestore = FirebaseFirestore.instance;
 
   /// Firebase Collection Name

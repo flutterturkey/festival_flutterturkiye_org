@@ -1,7 +1,5 @@
-import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
-import 'package:flutter/material.dart';
-
 import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
+import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
@@ -11,33 +9,34 @@ import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_info_field.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
+import 'package:flutter/material.dart';
 
 class EventFlowSection extends StatelessWidget {
   EventFlowSection({
-    @required this.focusNode,
-    Key key,
-  })  : assert(focusNode != null),
-        super(key: key);
+    required this.focusNode,
+    Key? key,
+  }) : super(key: key);
 
   final FocusNode focusNode;
   final sessionRepository = getIt.get<SessionRepository>();
 
   @override
   Widget build(BuildContext context) {
+    // ignore: todo
     // TODO: It is faster solution. It will be fixed later.
     final sessionDays = <Widget>[
       _SessionsWidget(
-        title: '17 Nisan Cumartesi',
+        title: '26 Mart Cumartesi',
         sessions: sessionRepository.sessions
             .where((session) =>
-                session.startingTime.compareTo(DateTime(2021, 04, 18)) < 0)
+                session.startingTime!.compareTo(DateTime(2021, 04, 18)) < 0)
             .toList(),
       ),
       _SessionsWidget(
-        title: '18 Nisan Pazar',
+        title: '27 Mart Pazar',
         sessions: sessionRepository.sessions
             .where((session) =>
-                session.startingTime.compareTo(DateTime(2021, 04, 18)) > 0)
+                session.startingTime!.compareTo(DateTime(2021, 04, 18)) > 0)
             .toList(),
       ),
     ];
@@ -79,8 +78,7 @@ class EventFlowSection extends StatelessWidget {
 }
 
 class _SessionsWidget extends StatelessWidget {
-  const _SessionsWidget(
-      {@required this.title, @required this.sessions, Key key})
+  const _SessionsWidget({required this.title, required this.sessions, Key? key})
       : super(key: key);
 
   final String title;
@@ -108,21 +106,22 @@ class _SessionsWidget extends StatelessWidget {
 
 class _SessionWidget extends StatelessWidget {
   const _SessionWidget({
-    @required this.session,
-    Key key,
-  })  : assert(session != null),
-        super(key: key);
+    required this.session,
+    Key? key,
+  }) : super(key: key);
 
   final Session session;
 
   @override
   Widget build(BuildContext context) {
-    final startingTime = _getTime(session.startingTime);
-    final endingTime = _getTime(session.endingTime);
+    final startingTime = _getTime(session.startingTime!);
+    final endingTime = _getTime(session.endingTime!);
     final speakerRepository = getIt.get<SpeakerRepository>();
 
     final speaker = speakerRepository.speakers
-        .where((speaker) => session.speakers?.contains(speaker.reference))
+        .where(
+          (speaker) => session.speakers?.contains(speaker.reference) ?? false,
+        )
         .toList();
 
     return Padding(
@@ -156,15 +155,12 @@ class _SessionWidget extends StatelessWidget {
 
 class _LargeSessionWidget extends StatelessWidget {
   const _LargeSessionWidget({
-    @required this.startingTime,
-    @required this.dueTime,
-    @required this.session,
-    this.speakers,
-    Key key,
-  })  : assert(startingTime != null),
-        assert(dueTime != null),
-        assert(session != null),
-        super(key: key);
+    required this.startingTime,
+    required this.dueTime,
+    required this.session,
+    required this.speakers,
+    Key? key,
+  }) : super(key: key);
 
   final String startingTime, dueTime;
   final Session session;
@@ -194,11 +190,10 @@ class _LargeSessionWidget extends StatelessWidget {
 
 class _SmallSessionWidget extends StatelessWidget {
   const _SmallSessionWidget({
-    @required this.session,
-    this.speakers,
-    Key key,
-  })  : assert(session != null),
-        super(key: key);
+    required this.session,
+    required this.speakers,
+    Key? key,
+  }) : super(key: key);
 
   final Session session;
   final List<Speaker> speakers;
@@ -222,10 +217,9 @@ class _SmallSessionWidget extends StatelessWidget {
 
 class _EventFlowSessionPoint extends StatelessWidget {
   const _EventFlowSessionPoint({
-    @required this.sessionStatus,
-    Key key,
-  })  : assert(sessionStatus != null),
-        super(key: key);
+    required this.sessionStatus,
+    Key? key,
+  }) : super(key: key);
   final SessionStatus sessionStatus;
 
   @override
