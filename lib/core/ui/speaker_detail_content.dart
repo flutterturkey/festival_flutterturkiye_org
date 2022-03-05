@@ -78,11 +78,13 @@ class _SpeakerHeader extends StatelessWidget {
           imageSize: 144,
           borderSize: 4,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: _SpeakerInfo(
-            speaker: speaker,
-            textAlign: TextAlign.start,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: _SpeakerInfo(
+              speaker: speaker,
+              textAlign: TextAlign.start,
+            ),
           ),
         ),
       ],
@@ -110,6 +112,7 @@ class _SpeakerInfo extends StatelessWidget {
           Text(
             speaker.name ?? '',
             textAlign: textAlign,
+            softWrap: true,
             style: const TextStyle(
               color: ThemeHelper.lightColor,
               fontWeight: FontWeight.w600,
@@ -119,6 +122,7 @@ class _SpeakerInfo extends StatelessWidget {
           Text(
             speaker.title ?? '',
             textAlign: textAlign,
+            softWrap: true,
             style: const TextStyle(
               color: ThemeHelper.lightColor,
               fontWeight: FontWeight.w300,
