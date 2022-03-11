@@ -26,10 +26,6 @@ dependencies:
   video_player: ^2.2.19
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  integration_test:
-    sdk: flutter
   flutrlint: ^2.0.0+1
 
 flutter:
