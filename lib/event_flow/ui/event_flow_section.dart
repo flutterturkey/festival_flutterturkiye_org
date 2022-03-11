@@ -8,6 +8,7 @@ import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
 import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/core/utils/date_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
+import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_info_field.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
@@ -82,8 +83,8 @@ class EventFlowSection extends StatelessWidget {
     required Session session,
     required DateTime eventDate,
   }) {
-    final starting = session.startingTime!.compareDateTo(eventDate);
-    final ending = session.endingTime!.compareDateTo(eventDate);
+    final starting = session.startingTime.compareDateTo(eventDate);
+    final ending = session.endingTime.compareDateTo(eventDate);
 
     return starting || ending;
   }
@@ -126,8 +127,8 @@ class _SessionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startingTime = _getTime(session.startingTime!);
-    final endingTime = _getTime(session.endingTime!);
+    final startingTime = _getTime(session.startingTime);
+    final endingTime = _getTime(session.endingTime);
     final speakerRepository = getIt.get<SpeakerRepository>();
 
     final speaker = speakerRepository.speakers
@@ -189,7 +190,10 @@ class _LargeSessionWidget extends StatelessWidget {
               textAlign: TextAlign.end,
             ),
           ),
-          _EventFlowSessionPoint(sessionStatus: session.status),
+          _EventFlowSessionPoint(
+            sessionStatus: session.status,
+            sessionLanguage: session.sessionLanguage,
+          ),
           Expanded(
             child: SessionInfoField(
               session: session,
@@ -198,6 +202,15 @@ class _LargeSessionWidget extends StatelessWidget {
           ),
         ],
       );
+
+  String get image {
+    switch (session.sessionLanguage) {
+      case SessionLanguage.en:
+        return ImageAssets.languageEN;
+      case SessionLanguage.tr:
+        return ImageAssets.languageTR;
+    }
+  }
 }
 
 class _SmallSessionWidget extends StatelessWidget {
@@ -215,7 +228,10 @@ class _SmallSessionWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _EventFlowSessionPoint(sessionStatus: session.status),
+          _EventFlowSessionPoint(
+            sessionStatus: session.status,
+            sessionLanguage: session.sessionLanguage,
+          ),
           Expanded(
             child: SessionInfoField(
               session: session,
@@ -230,9 +246,11 @@ class _SmallSessionWidget extends StatelessWidget {
 class _EventFlowSessionPoint extends StatelessWidget {
   const _EventFlowSessionPoint({
     required this.sessionStatus,
+    required this.sessionLanguage,
     Key? key,
   }) : super(key: key);
   final SessionStatus sessionStatus;
+  final SessionLanguage sessionLanguage;
 
   @override
   Widget build(BuildContext context) {
@@ -242,16 +260,16 @@ class _EventFlowSessionPoint extends StatelessWidget {
     switch (sessionStatus) {
       case SessionStatus.active:
         pointColor = ThemeHelper.eventPointColor;
-        radius = 28.0;
+        radius = 32.0;
         break;
       case SessionStatus.passed:
         pointColor = ThemeHelper.appBarActionColor;
-        radius = 20.0;
+        radius = 24.0;
         break;
       case SessionStatus.waiting:
       default:
         pointColor = ThemeHelper.blueColor;
-        radius = 20.0;
+        radius = 24.0;
         break;
     }
     return Padding(
@@ -261,8 +279,23 @@ class _EventFlowSessionPoint extends StatelessWidget {
         width: radius,
         child: DecoratedBox(
           decoration: BoxDecoration(shape: BoxShape.circle, color: pointColor),
+          child: Padding(
+            padding: const EdgeInsets.all(2),
+            child: CircleAvatar(
+              backgroundImage: AssetImage(image),
+            ),
+          ),
         ),
       ),
     );
+  }
+
+  String get image {
+    switch (sessionLanguage) {
+      case SessionLanguage.en:
+        return ImageAssets.languageEN;
+      case SessionLanguage.tr:
+        return ImageAssets.languageTR;
+    }
   }
 }

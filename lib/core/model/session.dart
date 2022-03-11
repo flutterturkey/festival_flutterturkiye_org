@@ -2,14 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 
 enum SessionStatus { waiting, active, passed }
+enum SessionLanguage { en, tr }
 
 class Session extends DatabaseModel {
   const Session({
-    this.title,
-    this.startingTime,
-    this.endingTime,
+    required this.title,
+    required this.startingTime,
+    required this.endingTime,
+    required this.sessionLanguage,
+    required this.reference,
     this.presentation,
-    this.reference,
     this.speakers,
   });
 
@@ -23,25 +25,28 @@ class Session extends DatabaseModel {
             )
           : [],
       title: data['title'],
+      sessionLanguage:
+          data['language'] == 'EN' ? SessionLanguage.en : SessionLanguage.tr,
       presentation: data['presentation'],
       startingTime: _timestampToDateTime(data['startingTime']),
       endingTime: _timestampToDateTime(data['endingTime']),
     );
   }
 
-  final String? title;
-  final DateTime? startingTime;
-  final DateTime? endingTime;
+  final String title;
+  final DateTime startingTime;
+  final DateTime endingTime;
+  final SessionLanguage sessionLanguage;
   final List<DocumentReference>? speakers;
   final String? presentation;
-  final DocumentReference? reference;
+  final DocumentReference reference;
 
   SessionStatus get status {
     final currentDate = DateTime.now();
-    final isStarted = currentDate.compareTo(startingTime!);
+    final isStarted = currentDate.compareTo(startingTime);
 
     if (isStarted >= 0) {
-      final isEnded = currentDate.compareTo(endingTime!);
+      final isEnded = currentDate.compareTo(endingTime);
 
       if (isEnded < 0) {
         return SessionStatus.active;
@@ -57,6 +62,7 @@ class Session extends DatabaseModel {
         title,
         startingTime,
         endingTime,
+        sessionLanguage,
         speakers,
         presentation,
         reference,

@@ -26,15 +26,15 @@ class SessionInfoField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startingTime = _getTime(session.startingTime!);
-    final endingTime = _getTime(session.endingTime!);
+    final startingTime = _getTime(session.startingTime);
+    final endingTime = _getTime(session.endingTime);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: horizontalAxisAlignment,
       children: [
         EventFlowSessionText(
-          text: session.title ?? '',
+          text: session.title,
           sessionStatus: session.status,
         ),
 
@@ -84,10 +84,10 @@ class _EventFlowAddToCalendar extends StatelessWidget {
         ),
         onPressed: () async {
           final calendar = Calendar(
-            title: session.title ?? '',
+            title: session.title,
             description: Config.eventConfig.name,
-            startingTime: session.startingTime!,
-            endingTime: session.endingTime!,
+            startingTime: session.startingTime,
+            endingTime: session.endingTime,
           );
           final link = calendar.toLink();
 

@@ -38,14 +38,20 @@ class EventFlowSessionText extends StatelessWidget {
         fontWeight = FontWeight.w500;
     }
 
-    return Text(
-      text,
-      textAlign: textAlign,
-      style: TextStyle(
-        color: textColor,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-      ),
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            text,
+            textAlign: textAlign,
+            style: TextStyle(
+              color: textColor,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
