@@ -173,35 +173,66 @@ class _CountdownSectionButtons extends StatelessWidget {
   final EdgeInsets padding;
 
   @override
-  Widget build(BuildContext context) => Wrap(
-        runSpacing: 20,
-        spacing: 24,
-        alignment: WrapAlignment.center,
-        children: [
-          _LightButton(
-            title: 'Birinci Gün',
-            fontSize: fontSize,
-            padding: padding,
-            onPressed: () async {
-              const _streamLink = 'https://youtu.be/PjeeFIoJBBI';
-              if (await canLaunch(_streamLink)) {
-                await launch(_streamLink);
-              }
-            },
-          ),
-          _DarkButton(
-            title: 'İkinci Gün',
-            fontSize: fontSize,
-            padding: padding,
-            onPressed: () async {
-              const _streamLink = 'https://youtu.be/gSvPHOy3ra4';
-              if (await canLaunch(_streamLink)) {
-                await launch(_streamLink);
-              }
-            },
-          ),
-        ],
-      );
+  Widget build(BuildContext context) {
+    final countdownRepository = getIt.get<CountdownRepository>();
+    return Wrap(
+      runSpacing: 20,
+      spacing: 24,
+      alignment: WrapAlignment.center,
+      children: countdownRepository.eventStatus == EventStatus.waiting
+          ? _preEventButtons
+          : _eventButtons,
+    );
+  }
+
+  List<Widget> get _preEventButtons => [
+        _LightButton(
+          title: 'Konuşmacı Ol',
+          fontSize: fontSize,
+          padding: padding,
+          onPressed: () async {
+            const cfp = Config.callForPapersUrl;
+            if (await canLaunch(cfp)) {
+              await launch(cfp);
+            }
+          },
+        ),
+        _DarkButton(
+          title: 'Kayıt Ol',
+          fontSize: fontSize,
+          padding: padding,
+          onPressed: () async {
+            const meetup = Config.attendeeRegistrationUrl;
+            if (await canLaunch(meetup)) {
+              await launch(meetup);
+            }
+          },
+        ),
+      ];
+  List<Widget> get _eventButtons => [
+        _LightButton(
+          title: 'Birinci Gün',
+          fontSize: fontSize,
+          padding: padding,
+          onPressed: () async {
+            const _streamLink = 'https://youtu.be/PjeeFIoJBBI';
+            if (await canLaunch(_streamLink)) {
+              await launch(_streamLink);
+            }
+          },
+        ),
+        _DarkButton(
+          title: 'İkinci Gün',
+          fontSize: fontSize,
+          padding: padding,
+          onPressed: () async {
+            const _streamLink = 'https://youtu.be/gSvPHOy3ra4';
+            if (await canLaunch(_streamLink)) {
+              await launch(_streamLink);
+            }
+          },
+        ),
+      ];
 }
 
 class _LightButton extends StatelessWidget {
