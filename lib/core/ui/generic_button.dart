@@ -38,7 +38,7 @@ class GenericButton extends StatelessWidget {
 
   TextStyle get buildTextStyle => TextStyle(
         color: isFilledButton
-            ? ThemeHelper.darkColor
+            ? ThemeHelper.primaryColor
             : ThemeHelper.appBarActionColor,
         fontWeight: FontWeight.bold,
       ).merge(textStyle);

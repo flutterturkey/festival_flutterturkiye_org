@@ -15,7 +15,7 @@ class SpeakerCard extends StatelessWidget {
           showDialog(
             context: context,
             builder: (dialogContext) => AlertDialog(
-              backgroundColor: ThemeHelper.darkColor,
+              backgroundColor: ThemeHelper.primaryColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)),
               content: SpeakerDetailContent(speaker: speaker),
@@ -25,7 +25,7 @@ class SpeakerCard extends StatelessWidget {
         child: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(15)),
-            color: Color(0xff212937),
+            color: ThemeHelper.primaryColor,
           ),
           child: Padding(
             padding: const EdgeInsets.all(20),

@@ -3,7 +3,17 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:festival_flutterturkiye_org/core/model/database_model.dart';
 
-enum SponsorType { gold, silver, bronze, media }
+enum SponsorType {
+  partner, // 0
+  platin, // 1
+  gold, // 2
+  silver, // 3
+  bronze, // 4
+  giveawayWithLogo, // 5
+  giveawayWithoutLogo, // 6
+  media, // 7
+  other, // 8
+}
 
 class Sponsor extends DatabaseModel {
   const Sponsor({
@@ -55,15 +65,9 @@ class Sponsor extends DatabaseModel {
   }
 
   static SponsorType _fromIntToType(int typeId) {
-    switch (typeId) {
-      case 1:
-        return SponsorType.gold;
-      case 2:
-        return SponsorType.silver;
-      case 3:
-        return SponsorType.bronze;
-      default:
-        return SponsorType.media;
+    if (typeId >= SponsorType.values.length) {
+      return SponsorType.other;
     }
+    return SponsorType.values.elementAt(typeId);
   }
 }

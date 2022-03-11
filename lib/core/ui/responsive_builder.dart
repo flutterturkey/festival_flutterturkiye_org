@@ -5,7 +5,7 @@ class ResponsiveBuilder extends StatelessWidget {
   const ResponsiveBuilder({
     required this.smallWidget,
     required this.largeWidget,
-    required this.mediumWidget,
+    this.mediumWidget,
     Key? key,
   }) : super(key: key);
 
@@ -13,7 +13,7 @@ class ResponsiveBuilder extends StatelessWidget {
   final Widget smallWidget;
 
   /// It can displayable on medium screens.
-  final Widget mediumWidget;
+  final Widget? mediumWidget;
 
   /// It can displayable on large screens.
   final Widget largeWidget;
@@ -24,7 +24,7 @@ class ResponsiveBuilder extends StatelessWidget {
           if (constraints.maxWidth >= ResponsiveHelper.largeWidth) {
             return largeWidget;
           } else if (constraints.maxWidth >= ResponsiveHelper.mediumWidth) {
-            return mediumWidget;
+            return mediumWidget ?? smallWidget;
           } else {
             return smallWidget;
           }

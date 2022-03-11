@@ -2,10 +2,14 @@ import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
+import 'package:festival_flutterturkiye_org/core/ui/circle_image_with_border.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_subtitle.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
+import 'package:festival_flutterturkiye_org/core/utils/config.dart';
+import 'package:festival_flutterturkiye_org/core/utils/date_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
+import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_info_field.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
@@ -26,17 +30,21 @@ class EventFlowSection extends StatelessWidget {
     // TODO: It is faster solution. It will be fixed later.
     final sessionDays = <Widget>[
       _SessionsWidget(
-        title: '26 Mart Cumartesi',
+        title: Config.eventConfig.startingDateName,
         sessions: sessionRepository.sessions
-            .where((session) =>
-                session.startingTime!.compareTo(DateTime(2021, 04, 18)) < 0)
+            .where((session) => _isVisible(
+                  session: session,
+                  eventDate: Config.eventConfig.startingDate,
+                ))
             .toList(),
       ),
       _SessionsWidget(
-        title: '27 Mart Pazar',
+        title: Config.eventConfig.endingDateName,
         sessions: sessionRepository.sessions
-            .where((session) =>
-                session.startingTime!.compareTo(DateTime(2021, 04, 18)) > 0)
+            .where((session) => _isVisible(
+                  session: session,
+                  eventDate: Config.eventConfig.endingDate,
+                ))
             .toList(),
       ),
     ];
@@ -44,7 +52,12 @@ class EventFlowSection extends StatelessWidget {
     return Focus(
       focusNode: focusNode,
       child: DecoratedBox(
-        decoration: const BoxDecoration(color: ThemeHelper.darkColor),
+        decoration: const BoxDecoration(
+          color: ThemeHelper.primaryColor,
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(64),
+          ),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -56,24 +69,30 @@ class EventFlowSection extends StatelessWidget {
             ResponsiveBuilder(
               smallWidget: Column(children: sessionDays),
               mediumWidget: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: sessionDays
-                      .map(
-                        (day) => Expanded(child: day),
-                      )
-                      .toList()),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                    sessionDays.map((day) => Expanded(child: day)).toList(),
+              ),
               largeWidget: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: sessionDays
-                      .map(
-                        (day) => Expanded(child: day),
-                      )
-                      .toList()),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                    sessionDays.map((day) => Expanded(child: day)).toList(),
+              ),
             )
           ],
         ),
       ),
     );
+  }
+
+  bool _isVisible({
+    required Session session,
+    required DateTime eventDate,
+  }) {
+    final starting = session.startingTime.compareDateTo(eventDate);
+    final ending = session.endingTime.compareDateTo(eventDate);
+
+    return starting || ending;
   }
 }
 
@@ -114,8 +133,8 @@ class _SessionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startingTime = _getTime(session.startingTime!);
-    final endingTime = _getTime(session.endingTime!);
+    final startingTime = _getTime(session.startingTime);
+    final endingTime = _getTime(session.endingTime);
     final speakerRepository = getIt.get<SpeakerRepository>();
 
     final speaker = speakerRepository.speakers
@@ -177,7 +196,10 @@ class _LargeSessionWidget extends StatelessWidget {
               textAlign: TextAlign.end,
             ),
           ),
-          _EventFlowSessionPoint(sessionStatus: session.status),
+          _EventFlowSessionPoint(
+            sessionStatus: session.status,
+            sessionLanguage: session.sessionLanguage,
+          ),
           Expanded(
             child: SessionInfoField(
               session: session,
@@ -203,7 +225,10 @@ class _SmallSessionWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _EventFlowSessionPoint(sessionStatus: session.status),
+          _EventFlowSessionPoint(
+            sessionStatus: session.status,
+            sessionLanguage: session.sessionLanguage,
+          ),
           Expanded(
             child: SessionInfoField(
               session: session,
@@ -218,9 +243,11 @@ class _SmallSessionWidget extends StatelessWidget {
 class _EventFlowSessionPoint extends StatelessWidget {
   const _EventFlowSessionPoint({
     required this.sessionStatus,
+    required this.sessionLanguage,
     Key? key,
   }) : super(key: key);
   final SessionStatus sessionStatus;
+  final SessionLanguage sessionLanguage;
 
   @override
   Widget build(BuildContext context) {
@@ -230,27 +257,35 @@ class _EventFlowSessionPoint extends StatelessWidget {
     switch (sessionStatus) {
       case SessionStatus.active:
         pointColor = ThemeHelper.eventPointColor;
-        radius = 28.0;
+        radius = 16.0;
         break;
       case SessionStatus.passed:
         pointColor = ThemeHelper.appBarActionColor;
-        radius = 20.0;
+        radius = 12.0;
         break;
       case SessionStatus.waiting:
       default:
         pointColor = ThemeHelper.blueColor;
-        radius = 20.0;
+        radius = 12.0;
         break;
     }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: SizedBox(
-        height: radius,
-        width: radius,
-        child: DecoratedBox(
-          decoration: BoxDecoration(shape: BoxShape.circle, color: pointColor),
-        ),
+      child: CircleImageWithBorder(
+        image: image,
+        imageSize: radius,
+        borderSize: 2,
+        borderColor: pointColor,
       ),
     );
+  }
+
+  String get image {
+    switch (sessionLanguage) {
+      case SessionLanguage.en:
+        return ImageAssets.flagEN;
+      case SessionLanguage.tr:
+        return ImageAssets.flagTR;
+    }
   }
 }

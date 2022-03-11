@@ -2,6 +2,7 @@ import 'package:festival_flutterturkiye_org/core/model/calendar.dart';
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
+import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/core/utils/dialog_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
@@ -25,15 +26,15 @@ class SessionInfoField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final startingTime = _getTime(session.startingTime!);
-    final endingTime = _getTime(session.endingTime!);
+    final startingTime = _getTime(session.startingTime);
+    final endingTime = _getTime(session.endingTime);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: horizontalAxisAlignment,
       children: [
         EventFlowSessionText(
-          text: session.title ?? '',
+          text: session.title,
           sessionStatus: session.status,
         ),
 
@@ -83,10 +84,10 @@ class _EventFlowAddToCalendar extends StatelessWidget {
         ),
         onPressed: () async {
           final calendar = Calendar(
-            title: session.title ?? '',
-            description: 'Flutter Festivali',
-            startingTime: session.startingTime!,
-            endingTime: session.endingTime!,
+            title: session.title,
+            description: Config.eventConfig.name,
+            startingTime: session.startingTime,
+            endingTime: session.endingTime,
           );
           final link = calendar.toLink();
 
@@ -107,7 +108,9 @@ class _EventFlowDownloadSlides extends StatelessWidget {
   final Session session;
 
   @override
-  Widget build(BuildContext context) => TextButton.icon(
+  Widget build(BuildContext context) {
+    if (session.presentation?.isNotEmpty == true) {
+      return TextButton.icon(
         icon: const Icon(MdiIcons.download),
         label: const Text('Sunumu indir'),
         style: ButtonStyle(
@@ -123,6 +126,10 @@ class _EventFlowDownloadSlides extends StatelessWidget {
           }
         },
       );
+    }
+
+    return const SizedBox.shrink();
+  }
 }
 
 class _EventFlowSpeaker extends StatelessWidget {
@@ -142,15 +149,18 @@ class _EventFlowSpeaker extends StatelessWidget {
               children: [
                 SpeakerImage(
                   speakerImage: speaker.image,
-                  imageSize: 64,
+                  imageSize: 32,
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  speaker.name ?? '',
-                  style: const TextStyle(
-                    color: ThemeHelper.speakerDetailImageBorder,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                Flexible(
+                  child: Text(
+                    speaker.name ?? '',
+                    softWrap: true,
+                    style: const TextStyle(
+                      color: ThemeHelper.speakerDetailImageBorder,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 )
               ],

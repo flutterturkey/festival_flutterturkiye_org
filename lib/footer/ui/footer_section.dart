@@ -1,6 +1,8 @@
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
+import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/footer/logic/community_repository.dart';
 import 'package:festival_flutterturkiye_org/footer/model/social_icon.dart';
 import 'package:flutter/material.dart';
@@ -76,76 +78,63 @@ class _FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              ImageAssets.footerBackground,
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
-        // Black Filter
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.75),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Column(
-              children: [
-                const SizedBox(height: 16),
-                // Logo
-                Image.asset(ImageAssets.logo),
-                // Mail
-                const SizedBox(height: 32),
-                InkWell(
-                  onTap: _communityRepository.sendMail,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.mail, color: Colors.white),
-                      const SizedBox(width: 12),
-                      Flexible(
-                        child: Text(
-                          CommunityRepository.mailAddress,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: mailAddressFontSize,
-                            fontFamily: 'Montserrat',
-                          ),
+        decoration: const BoxDecoration(color: ThemeHelper.primaryColor),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              // Logo
+              Image.asset(ImageAssets.logo),
+              // Mail
+              const SizedBox(height: 32),
+              InkWell(
+                onTap: _communityRepository.sendMail,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.mail, color: Colors.white),
+                    const SizedBox(width: 12),
+                    Flexible(
+                      child: Text(
+                        Config.supportEmailAddress,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: mailAddressFontSize,
+                          fontFamily: 'Montserrat',
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 12),
-                const Divider(
-                  indent: 100,
-                  endIndent: 100,
-                  color: Colors.white,
-                  thickness: 0.5,
-                ),
-                Padding(
-                  padding: flutterTurkiyeCopyrightPadding,
-                  child: Text(
-                    '© 2021 Flutter Türkiye',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: flutterTurkiyeCopyrightFontSize,
                     ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 12),
+              const Divider(
+                indent: 100,
+                endIndent: 100,
+                color: Colors.white,
+                thickness: 0.5,
+              ),
+              Padding(
+                padding: flutterTurkiyeCopyrightPadding,
+                child: Text(
+                  '© ${Config.now.year} Flutter Türkiye',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: flutterTurkiyeCopyrightFontSize,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 16,
-                  ),
-                  child: _BottomView(isSmallScreen: isSmallScreen),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 16,
                 ),
-              ],
-            ),
+                child: _BottomView(isSmallScreen: isSmallScreen),
+              ),
+            ],
           ),
         ),
       );

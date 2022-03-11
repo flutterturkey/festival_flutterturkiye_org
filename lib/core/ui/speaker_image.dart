@@ -1,3 +1,4 @@
+import 'package:festival_flutterturkiye_org/core/ui/circle_image_with_border.dart';
 import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
@@ -15,24 +16,13 @@ class SpeakerImage extends StatelessWidget {
   final double borderSize;
 
   @override
-  Widget build(BuildContext context) => SizedBox(
-        height: imageSize,
-        width: imageSize,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('${ImageAsset(
-                speakerImage ?? 'dashatar.png',
-                subfolder: 'speakers',
-              )}'),
-              fit: BoxFit.cover,
-            ),
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: ThemeHelper.speakerDetailImageBorder,
-              width: borderSize,
-            ),
-          ),
-        ),
+  Widget build(BuildContext context) => CircleImageWithBorder(
+        image: ImageAsset(
+          speakerImage ?? 'dashatar.png',
+          subfolder: 'speakers',
+        ).toString(),
+        imageSize: imageSize,
+        borderSize: borderSize,
+        borderColor: ThemeHelper.speakerDetailImageBorder,
       );
 }

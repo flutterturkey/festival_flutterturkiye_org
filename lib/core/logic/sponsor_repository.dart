@@ -9,6 +9,14 @@ class SponsorRepository extends DatabaseRepository<Sponsor> {
 
   List<Sponsor> get sponsors => _sponsors;
 
+  List<Sponsor> get partnerSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.partner)
+      .toList(growable: false);
+
+  List<Sponsor> get platinSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.platin)
+      .toList(growable: false);
+
   List<Sponsor> get goldSponsors => _sponsors
       .where((sponsor) => sponsor.type == SponsorType.gold)
       .toList(growable: false);
@@ -17,12 +25,24 @@ class SponsorRepository extends DatabaseRepository<Sponsor> {
       .where((sponsor) => sponsor.type == SponsorType.silver)
       .toList(growable: false);
 
-  List<Sponsor> get bronzSponsors => _sponsors
+  List<Sponsor> get bronzeSponsors => _sponsors
       .where((sponsor) => sponsor.type == SponsorType.bronze)
+      .toList(growable: false);
+
+  List<Sponsor> get giveawayWithLogoSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.giveawayWithLogo)
+      .toList(growable: false);
+
+  List<Sponsor> get giveawayWithoutLogoSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.giveawayWithoutLogo)
       .toList(growable: false);
 
   List<Sponsor> get mediaSponsors => _sponsors
       .where((sponsor) => sponsor.type == SponsorType.media)
+      .toList(growable: false);
+
+  List<Sponsor> get otherSponsors => _sponsors
+      .where((sponsor) => sponsor.type == SponsorType.other)
       .toList(growable: false);
 
   @override
