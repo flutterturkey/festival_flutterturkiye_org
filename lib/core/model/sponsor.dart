@@ -69,16 +69,5 @@ class Sponsor extends DatabaseModel {
       return SponsorType.other;
     }
     return SponsorType.values.elementAt(typeId);
-
-    switch (typeId) {
-      case 1:
-        return SponsorType.gold;
-      case 2:
-        return SponsorType.silver;
-      case 3:
-        return SponsorType.bronze;
-      default:
-        return SponsorType.media;
-    }
   }
 }

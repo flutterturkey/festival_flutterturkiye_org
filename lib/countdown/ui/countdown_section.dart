@@ -215,7 +215,7 @@ class _CountdownSectionButtons extends StatelessWidget {
           fontSize: fontSize,
           padding: padding,
           onPressed: () async {
-            const _streamLink = 'https://youtu.be/PjeeFIoJBBI';
+            const _streamLink = Config.firstDayStreamUrl;
             if (await canLaunch(_streamLink)) {
               await launch(_streamLink);
             }
@@ -226,7 +226,7 @@ class _CountdownSectionButtons extends StatelessWidget {
           fontSize: fontSize,
           padding: padding,
           onPressed: () async {
-            const _streamLink = 'https://youtu.be/gSvPHOy3ra4';
+            const _streamLink = Config.secondDayStreamUrl;
             if (await canLaunch(_streamLink)) {
               await launch(_streamLink);
             }

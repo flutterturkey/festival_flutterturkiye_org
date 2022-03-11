@@ -32,23 +32,44 @@ class SponsorSection extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _SponsorsBuilder(
+            sponsorsList: _sessionRepository.partnerSponsors,
+            sponsorTypeTitle: 'Partnerler',
+          ),
+          _SponsorsBuilder(
+            sponsorsList: _sessionRepository.platinSponsors,
+            sponsorTypeTitle: 'Platin',
+          ),
+          _SponsorsBuilder(
             sponsorsList: _sessionRepository.goldSponsors,
-            sponsorTypeTitle: 'Gold',
+            sponsorTypeTitle: 'Altın',
           ),
           const SizedBox(height: 25),
           _SponsorsBuilder(
             sponsorsList: _sessionRepository.silverSponsors,
-            sponsorTypeTitle: 'Silver',
+            sponsorTypeTitle: 'Gümüş',
           ),
           const SizedBox(height: 25),
           _SponsorsBuilder(
-            sponsorsList: _sessionRepository.bronzSponsors,
+            sponsorsList: _sessionRepository.bronzeSponsors,
             sponsorTypeTitle: 'Bronz',
+          ),
+          const SizedBox(height: 25),
+          _SponsorsBuilder(
+            sponsorsList: [
+              ..._sessionRepository.giveawayWithLogoSponsors,
+              ..._sessionRepository.giveawayWithoutLogoSponsors,
+            ],
+            sponsorTypeTitle: 'Çekiliş Sponsorları',
           ),
           const SizedBox(height: 25),
           _SponsorsBuilder(
             sponsorsList: _sessionRepository.mediaSponsors,
             sponsorTypeTitle: 'Medya',
+          ),
+          const SizedBox(height: 25),
+          _SponsorsBuilder(
+            sponsorsList: _sessionRepository.otherSponsors,
+            sponsorTypeTitle: 'Diğer',
           ),
           const SizedBox(height: 100),
         ],

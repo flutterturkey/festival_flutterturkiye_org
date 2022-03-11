@@ -9,6 +9,11 @@ class Config {
 
   static const supportEmailAddress = 'the.flutter.turkey@gmail.com';
 
+  static const firstDayStreamUrl =
+      'https://www.youtube.com/c/FlutterT%C3%BCrkiye';
+  static const secondDayStreamUrl =
+      'https://www.youtube.com/c/FlutterT%C3%BCrkiye';
+
   static const attendeeRegistrationUrl =
       'https://www.meetup.com/Flutter-Turkiye/events/283858428/';
   static const callForPapersUrl = 'https://forms.gle/dNoi8zgZN5Bn1cfF8';

@@ -62,19 +62,15 @@ class EventFlowSection extends StatelessWidget {
             ResponsiveBuilder(
               smallWidget: Column(children: sessionDays),
               mediumWidget: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: sessionDays
-                      .map(
-                        (day) => Expanded(child: day),
-                      )
-                      .toList()),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                    sessionDays.map((day) => Expanded(child: day)).toList(),
+              ),
               largeWidget: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: sessionDays
-                      .map(
-                        (day) => Expanded(child: day),
-                      )
-                      .toList()),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                    sessionDays.map((day) => Expanded(child: day)).toList(),
+              ),
             )
           ],
         ),
