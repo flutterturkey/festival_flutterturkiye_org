@@ -36,7 +36,7 @@ flutter:
     - assets/images/activity_flow/
     - assets/images/speakers/
     - assets/images/sponsors/
-    - assets/images/languages/
+    - assets/images/flags/
     - assets/videos/
 
   fonts:
