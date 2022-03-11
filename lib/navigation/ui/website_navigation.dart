@@ -106,6 +106,5 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
             ],
           ),
         ),
-        mediumWidget: const SizedBox(),
       );
 }

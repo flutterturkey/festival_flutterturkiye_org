@@ -1,13 +1,14 @@
 import 'package:festival_flutterturkiye_org/core/ui/generic_button.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
+import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/responsive_helper.dart';
+import 'package:festival_flutterturkiye_org/core/utils/text_span.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/countdown/logic/countdown_repository.dart';
 import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_builder.dart';
-import 'package:festival_flutterturkiye_org/countdown/ui/countdown_text_span.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
@@ -145,25 +146,19 @@ class _CountdownTitle extends StatelessWidget {
   final CountdownRepository _countdownRepository;
 
   @override
-  Widget build(BuildContext context) {
-    final textSpans = <TextSpan>[
-      CountdownTextSpan("Türkiye'nin en büyük\n"),
-      CountdownTextSpan('Flutter Festivali ', fontWeight: FontWeight.bold),
-    ];
+  Widget build(BuildContext context) => CountdownTextBuilder(
+        textSpans: TextSpanUtils.stringToTextSpans(_eventMessage),
+      );
 
+  String get _eventMessage {
     switch (_countdownRepository.eventStatus) {
-      case EventStatus.completed:
-        textSpans.add(CountdownTextSpan('bitti!'));
-        break;
-      case EventStatus.started:
-        textSpans.add(CountdownTextSpan('başladı!'));
-        break;
       case EventStatus.waiting:
-        textSpans.add(CountdownTextSpan('başlıyor!'));
-        break;
+        return CountdownConfig.waitingEventMessage;
+      case EventStatus.started:
+        return CountdownConfig.startedEventMessage;
+      case EventStatus.completed:
+        return CountdownConfig.completedEventMessage;
     }
-
-    return CountdownTextBuilder(textSpans: textSpans);
   }
 }
 
@@ -277,7 +272,7 @@ class _CountdownCounter extends StatelessWidget {
       builder: (context, remainingTimeSnapshot) {
         if (remainingTimeSnapshot.hasData) {
           final remainingTime = remainingTimeSnapshot.data;
-          var textSpans = <TextSpan>[];
+          late final List<InlineSpan> textSpans;
 
           switch (_countdownRepository.eventStatus) {
             case EventStatus.completed:
@@ -298,44 +293,24 @@ class _CountdownCounter extends StatelessWidget {
 
   String _dateFixer(int date) => '${date < 10 ? '0' : ''}$date';
 
-  List<TextSpan> _waitingTextSpan(Duration remainingTime) => <TextSpan>[
-        _DateText(_dateFixer(remainingTime.inDays)),
-        CountdownTextSpan(' gün '),
-        _DateText(_dateFixer(remainingTime.inHours % 24)),
-        CountdownTextSpan(' saat '),
-        _DateText(_dateFixer(remainingTime.inMinutes % 60)),
-        CountdownTextSpan(' dakika '),
-        _DateText(_dateFixer(remainingTime.inSeconds % 60)),
-        CountdownTextSpan(' saniye kaldı'),
-      ];
+  List<InlineSpan> _waitingTextSpan(Duration remainingTime) {
+    final text = '**${_dateFixer(remainingTime.inDays)}**'
+        ' gün '
+        '**${_dateFixer(remainingTime.inHours % 24)}**'
+        ' saat '
+        '**${_dateFixer(remainingTime.inMinutes % 60)}**'
+        ' dakika '
+        '**${_dateFixer(remainingTime.inSeconds % 60)}**'
+        ' saniye '
+        'kaldı';
 
-  List<TextSpan> _startedTextSpan(Duration remainingTime) => <TextSpan>[
-        _DateText(_dateFixer(remainingTime.inDays)),
-        CountdownTextSpan(' gün '),
-        _DateText(_dateFixer(remainingTime.inHours % 24)),
-        CountdownTextSpan(' saat '),
-        _DateText(_dateFixer(remainingTime.inMinutes % 60)),
-        CountdownTextSpan(' dakika '),
-        _DateText(_dateFixer(remainingTime.inSeconds % 60)),
-        CountdownTextSpan(' saniye kaldı'),
-      ];
+    return TextSpanUtils.stringToTextSpans(text);
+  }
 
-  List<TextSpan> _completedTextSpan(Duration remainingTime) => <TextSpan>[
-        CountdownTextSpan(
-          'Etkinliğimize göstermiş olduğunuz ilgi için\n',
-        ),
-        CountdownTextSpan(
-          'TEŞEKKÜR EDERİZ',
-          fontWeight: FontWeight.bold,
-        )
-      ];
-}
+  List<InlineSpan> _startedTextSpan(Duration remainingTime) =>
+      _waitingTextSpan(remainingTime);
 
-/// The only difference with [CountdownTextSpan] is [FontWeight]
-///
-/// Default [FontWeight] is `FontWeight.bold`
-class _DateText extends CountdownTextSpan {
-  /// If you give a [fontWeight], it will override the default [FontWeight].
-  _DateText(String text, {FontWeight fontWeight = FontWeight.bold})
-      : super(text, fontWeight: fontWeight);
+  List<InlineSpan> _completedTextSpan(Duration remainingTime) =>
+      TextSpanUtils.stringToTextSpans(
+          Config.eventConfig.thankYouForAttendingMessage);
 }

@@ -5,6 +5,8 @@ import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_subtitle.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
+import 'package:festival_flutterturkiye_org/core/utils/config.dart';
+import 'package:festival_flutterturkiye_org/core/utils/date_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_info_field.dart';
@@ -26,17 +28,21 @@ class EventFlowSection extends StatelessWidget {
     // TODO: It is faster solution. It will be fixed later.
     final sessionDays = <Widget>[
       _SessionsWidget(
-        title: '26 Mart Cumartesi',
+        title: Config.eventConfig.startingDateName,
         sessions: sessionRepository.sessions
-            .where((session) =>
-                session.startingTime!.compareTo(DateTime(2021, 04, 18)) < 0)
+            .where((session) => _isVisible(
+                  session: session,
+                  eventDate: Config.eventConfig.startingDate,
+                ))
             .toList(),
       ),
       _SessionsWidget(
-        title: '27 Mart Pazar',
+        title: Config.eventConfig.endingDateName,
         sessions: sessionRepository.sessions
-            .where((session) =>
-                session.startingTime!.compareTo(DateTime(2021, 04, 18)) > 0)
+            .where((session) => _isVisible(
+                  session: session,
+                  eventDate: Config.eventConfig.endingDate,
+                ))
             .toList(),
       ),
     ];
@@ -74,6 +80,16 @@ class EventFlowSection extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool _isVisible({
+    required Session session,
+    required DateTime eventDate,
+  }) {
+    final starting = session.startingTime!.compareDateTo(eventDate);
+    final ending = session.endingTime!.compareDateTo(eventDate);
+
+    return starting || ending;
   }
 }
 

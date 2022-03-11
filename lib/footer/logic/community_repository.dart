@@ -1,11 +1,10 @@
+import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/footer/model/social_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CommunityRepository {
-  static const String mailAddress = 'festival@flutterturkiye.org';
-
   Future<void> sendMail() async {
     if (await canLaunch(_mailAdressLink)) {
       await launch(_mailAdressLink);
@@ -15,29 +14,33 @@ class CommunityRepository {
   static const List<SocialMedia> socialMedias = [
     SocialMedia(
       icon: MdiIcons.twitter,
-      url: 'https://twitter.com/Flutter_Turkiye',
-    ),
-    SocialMedia(
-      icon: MdiIcons.youtube,
-      url: 'https://www.youtube.com/c/fluttert%C3%BCrkiye',
+      url: FlutterTurkiyeSocialMedias.twitter,
     ),
     SocialMedia(
       icon: Icons.telegram,
-      url: 'https://t.me/FlutterTR',
+      url: FlutterTurkiyeSocialMedias.telegram,
+    ),
+    SocialMedia(
+      icon: MdiIcons.post,
+      url: FlutterTurkiyeSocialMedias.medium,
     ),
     SocialMedia(
       icon: MdiIcons.discord,
-      url: 'https://discord.gg/bkSkTzw',
+      url: FlutterTurkiyeSocialMedias.discord,
     ),
     SocialMedia(
       icon: MdiIcons.slack,
-      url: 'https://bit.ly/flutterTR',
+      url: FlutterTurkiyeSocialMedias.slack,
     ),
     SocialMedia(
       icon: MdiIcons.github,
-      url: 'https://github.com/flutterturkey',
+      url: FlutterTurkiyeSocialMedias.github,
+    ),
+    SocialMedia(
+      icon: MdiIcons.youtube,
+      url: FlutterTurkiyeSocialMedias.youtube,
     ),
   ];
 
-  static const String _mailAdressLink = 'mailto:$mailAddress';
+  static const String _mailAdressLink = 'mailto:${Config.supportEmailAddress}';
 }

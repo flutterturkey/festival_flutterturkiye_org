@@ -3,7 +3,9 @@ import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';
 import 'package:festival_flutterturkiye_org/core/model/sponsor.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
+import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
+import 'package:festival_flutterturkiye_org/core/utils/text_span.dart';
 import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_card.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +27,7 @@ class SponsorSection extends StatelessWidget {
           const SectionTitle(title: 'Sponsorlarımız'),
           const _SponsorSectionInfoTitle(
             title: 'Etkinliğimize sponsor olmak için '
-                'sponsorluk@flutterturkiye.org üzerinden '
+                '**${Config.supportEmailAddress}** üzerinden '
                 'iletişime geçebilirsiniz.',
           ),
           const SizedBox(height: 15),
@@ -68,13 +70,12 @@ class _SponsorSectionInfoTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(bottom: 25),
-        child: Text(
-          title,
+        child: Text.rich(
+          TextSpan(children: TextSpanUtils.stringToTextSpans(title)),
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black,
             fontSize: fontSize,
-            fontWeight: FontWeight.bold,
           ),
         ),
       );
@@ -109,7 +110,6 @@ class _SponsorsBuilder extends StatelessWidget {
           sponsorsList: sponsorsList,
           sponsorTypeTitle: sponsorTypeTitle,
         ),
-        mediumWidget: const SizedBox(),
       ),
     );
   }
