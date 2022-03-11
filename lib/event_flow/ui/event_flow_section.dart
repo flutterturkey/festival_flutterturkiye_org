@@ -202,15 +202,6 @@ class _LargeSessionWidget extends StatelessWidget {
           ),
         ],
       );
-
-  String get image {
-    switch (session.sessionLanguage) {
-      case SessionLanguage.en:
-        return ImageAssets.languageEN;
-      case SessionLanguage.tr:
-        return ImageAssets.languageTR;
-    }
-  }
 }
 
 class _SmallSessionWidget extends StatelessWidget {
@@ -293,9 +284,9 @@ class _EventFlowSessionPoint extends StatelessWidget {
   String get image {
     switch (sessionLanguage) {
       case SessionLanguage.en:
-        return ImageAssets.languageEN;
+        return ImageAssets.flagEN;
       case SessionLanguage.tr:
-        return ImageAssets.languageTR;
+        return ImageAssets.flagTR;
     }
   }
 }
