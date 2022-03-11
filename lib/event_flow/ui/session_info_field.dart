@@ -149,7 +149,7 @@ class _EventFlowSpeaker extends StatelessWidget {
               children: [
                 SpeakerImage(
                   speakerImage: speaker.image,
-                  imageSize: 64,
+                  imageSize: 32,
                 ),
                 const SizedBox(width: 8),
                 Flexible(

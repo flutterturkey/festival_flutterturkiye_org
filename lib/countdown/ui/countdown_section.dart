@@ -284,7 +284,7 @@ class _DarkButton extends StatelessWidget {
         ),
         textPadding: padding,
         buttonStyle: TextButton.styleFrom(
-          backgroundColor: ThemeHelper.darkColor,
+          backgroundColor: ThemeHelper.primaryColor,
         ),
       );
 }

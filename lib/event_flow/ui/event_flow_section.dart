@@ -2,6 +2,7 @@ import 'package:festival_flutterturkiye_org/core/logic/session_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
 import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
+import 'package:festival_flutterturkiye_org/core/ui/circle_image_with_border.dart';
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_subtitle.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
@@ -51,7 +52,12 @@ class EventFlowSection extends StatelessWidget {
     return Focus(
       focusNode: focusNode,
       child: DecoratedBox(
-        decoration: const BoxDecoration(color: ThemeHelper.darkColor),
+        decoration: const BoxDecoration(
+          color: ThemeHelper.primaryColor,
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(64),
+          ),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -251,32 +257,25 @@ class _EventFlowSessionPoint extends StatelessWidget {
     switch (sessionStatus) {
       case SessionStatus.active:
         pointColor = ThemeHelper.eventPointColor;
-        radius = 32.0;
+        radius = 16.0;
         break;
       case SessionStatus.passed:
         pointColor = ThemeHelper.appBarActionColor;
-        radius = 24.0;
+        radius = 12.0;
         break;
       case SessionStatus.waiting:
       default:
         pointColor = ThemeHelper.blueColor;
-        radius = 24.0;
+        radius = 12.0;
         break;
     }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: SizedBox(
-        height: radius,
-        width: radius,
-        child: DecoratedBox(
-          decoration: BoxDecoration(shape: BoxShape.circle, color: pointColor),
-          child: Padding(
-            padding: const EdgeInsets.all(2),
-            child: CircleAvatar(
-              backgroundImage: AssetImage(image),
-            ),
-          ),
-        ),
+      child: CircleImageWithBorder(
+        image: image,
+        imageSize: radius,
+        borderSize: 2,
+        borderColor: pointColor,
       ),
     );
   }

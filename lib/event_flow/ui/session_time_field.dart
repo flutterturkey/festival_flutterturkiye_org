@@ -27,7 +27,7 @@ class EventFlowSessionText extends StatelessWidget {
         fontWeight = FontWeight.bold;
         break;
       case SessionStatus.passed:
-        textColor = ThemeHelper.footerTextColor;
+        textColor = ThemeHelper.lightColor;
         fontSize = 16.0;
         fontWeight = FontWeight.normal;
         break;

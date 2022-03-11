@@ -29,7 +29,7 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
           duration: const Duration(milliseconds: 200),
           decoration: BoxDecoration(
             color: widget.hasTransparentBackground || _isContextMenuVisible
-                ? ThemeHelper.darkColor
+                ? ThemeHelper.primaryColor
                 : Colors.transparent,
           ),
           child: Column(
@@ -80,7 +80,7 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
           height: kToolbarHeight,
           decoration: BoxDecoration(
             color: widget.hasTransparentBackground
-                ? ThemeHelper.darkColor
+                ? ThemeHelper.primaryColor
                 : Colors.transparent,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24),

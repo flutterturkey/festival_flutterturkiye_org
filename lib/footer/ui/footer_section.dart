@@ -2,6 +2,7 @@ import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
+import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/footer/logic/community_repository.dart';
 import 'package:festival_flutterturkiye_org/footer/model/social_icon.dart';
 import 'package:flutter/material.dart';
@@ -77,9 +78,7 @@ class _FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
-        decoration: const BoxDecoration(
-          color: Color(0xFF072349),
-        ),
+        decoration: const BoxDecoration(color: ThemeHelper.primaryColor),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(

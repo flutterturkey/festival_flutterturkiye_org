@@ -60,7 +60,7 @@ class _SpeakerHeader extends StatelessWidget {
         children: [
           SpeakerImage(
             speakerImage: speaker.image,
-            imageSize: 120,
+            imageSize: 60,
             borderSize: 4,
           ),
           Padding(
@@ -75,7 +75,7 @@ class _SpeakerHeader extends StatelessWidget {
       children: [
         SpeakerImage(
           speakerImage: speaker.image,
-          imageSize: 144,
+          imageSize: 72,
           borderSize: 4,
         ),
         Expanded(
