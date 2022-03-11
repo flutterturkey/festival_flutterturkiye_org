@@ -6,10 +6,10 @@ import 'package:festival_flutterturkiye_org/core/ui/circle_image_with_border.dar
 import 'package:festival_flutterturkiye_org/core/ui/responsive_builder.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_subtitle.dart';
 import 'package:festival_flutterturkiye_org/core/ui/section_title.dart';
+import 'package:festival_flutterturkiye_org/core/utils/assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/core/utils/date_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
-import 'package:festival_flutterturkiye_org/core/utils/image_assets.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_info_field.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
@@ -280,12 +280,6 @@ class _EventFlowSessionPoint extends StatelessWidget {
     );
   }
 
-  String get image {
-    switch (sessionLanguage) {
-      case SessionLanguage.en:
-        return ImageAssets.flagEN;
-      case SessionLanguage.tr:
-        return ImageAssets.flagTR;
-    }
-  }
+  String get image =>
+      ImageAsset('${sessionLanguage.name}.png', subfolder: 'flags').toString();
 }

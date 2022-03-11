@@ -22,6 +22,7 @@ class CircleImageWithBorder extends StatelessWidget {
         backgroundColor: borderColor,
         child: CircleAvatar(
           radius: imageSize - borderSize,
+          backgroundColor: borderColor,
           backgroundImage: AssetImage(image),
         ),
       );
