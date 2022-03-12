@@ -83,8 +83,8 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
                 : Colors.transparent,
           ),
           child: Container(
-          height: kToolbarHeight,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+            height: kToolbarHeight,
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
