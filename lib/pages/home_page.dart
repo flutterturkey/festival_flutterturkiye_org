@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
         title: 'Etkinlik',
         icon: Icons.celebration,
         focusNode: focusNodes[0],
-        onPressed: () {},
+        onPressed: () => _scrollToSection(focusNodes[0]),
       ),
       // NavigationAction(
       //   title: 'Konuşmacılar',
@@ -122,25 +122,25 @@ class _HomePageState extends State<HomePage> {
         title: 'Etkinlik Programı',
         icon: Icons.event_rounded,
         focusNode: focusNodes[2],
-        onPressed: () {},
+        onPressed: () => _scrollToSection(focusNodes[2]),
       ),
       NavigationAction(
         title: 'Sponsorlar',
         icon: Icons.help_center_rounded,
         focusNode: focusNodes[3],
-        onPressed: () {},
+        onPressed: () => _scrollToSection(focusNodes[3]),
       ),
       NavigationAction(
         title: 'SSS',
         icon: Icons.help_center_rounded,
         focusNode: focusNodes[4],
-        onPressed: () {},
+        onPressed: () => _scrollToSection(focusNodes[4]),
       ),
       NavigationAction(
         title: 'İletişim',
         icon: Icons.phone_in_talk_rounded,
         focusNode: focusNodes[5],
-        onPressed: () {},
+        onPressed: () => _scrollToSection(focusNodes[5]),
       ),
       ...eventStatus == EventStatus.waiting
           ? [
@@ -196,5 +196,16 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
     ]);
+  }
+
+  void _scrollToSection(FocusNode focusNode) {
+    final focusContext = focusNode.context;
+    if (focusContext != null) {
+      Scrollable.ensureVisible(
+        focusContext,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 }
