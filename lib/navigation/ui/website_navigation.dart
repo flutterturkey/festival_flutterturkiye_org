@@ -77,33 +77,35 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
         ),
         largeWidget: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          height: kToolbarHeight,
           decoration: BoxDecoration(
             color: widget.hasTransparentBackground
                 ? ThemeHelper.primaryColor
                 : Colors.transparent,
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const AppLogo(),
-              Row(
-                children: widget.actions
-                    .map(
-                      (action) => Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: GenericButton(
-                          title: action.title,
-                          onPressed: action.onPressed,
-                          isFilledButton: action.isFilled,
-                          textPadding: const EdgeInsets.all(8),
+          child: Container(
+            height: kToolbarHeight,
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const AppLogo(),
+                Row(
+                  children: widget.actions
+                      .map(
+                        (action) => Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: GenericButton(
+                            title: action.title,
+                            onPressed: action.onPressed,
+                            isFilledButton: action.isFilled,
+                            textPadding: const EdgeInsets.all(8),
+                          ),
                         ),
-                      ),
-                    )
-                    .toList(growable: false),
-              )
-            ],
+                      )
+                      .toList(growable: false),
+                )
+              ],
+            ),
           ),
         ),
       );
