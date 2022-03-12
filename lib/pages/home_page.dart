@@ -1,4 +1,8 @@
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
+import 'package:festival_flutterturkiye_org/core/utils/config.dart';
+import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
+import 'package:festival_flutterturkiye_org/countdown/logic/countdown_repository.dart';
+import 'package:festival_flutterturkiye_org/countdown/model/event_status.dart';
 import 'package:festival_flutterturkiye_org/countdown/ui/countdown_section.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/event_flow_section.dart';
 import 'package:festival_flutterturkiye_org/faq/ui/faq_section.dart';
@@ -9,8 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const _scrollOffset = 12.0;
-const String _registrationUrl =
-    'https://kommunity.com/flutter-turkiye/events/flutter-festivali-81b8ee21?key=dudavx';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -26,6 +28,7 @@ class _HomePageState extends State<HomePage> {
   final focusNodes = <FocusNode>[];
   final ScrollController _scrollController = ScrollController();
   bool isScrolling = false;
+  final EventStatus eventStatus = getIt.get<CountdownRepository>().eventStatus;
 
   @override
   void initState() {
@@ -92,7 +95,15 @@ class _HomePageState extends State<HomePage> {
         FocusNode(debugLabel: 'Sponsorlar'),
         FocusNode(debugLabel: 'SSS'),
         FocusNode(debugLabel: 'İletişim'),
-        FocusNode(debugLabel: 'Kayıt Ol'),
+        ...eventStatus == EventStatus.waiting
+            ? [
+                FocusNode(debugLabel: 'Konuşmacı Ol'),
+                FocusNode(debugLabel: 'Kayıt Ol'),
+              ]
+            : [
+                FocusNode(debugLabel: 'Birinci Gün'),
+                FocusNode(debugLabel: 'İkinci Gün'),
+              ],
       ],
     );
     navigationActions.addAll([
@@ -131,17 +142,59 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[5],
         onPressed: () => _scrollToSection(focusNodes[5]),
       ),
-      NavigationAction(
-        title: 'Kayıt Ol',
-        icon: Icons.account_circle_rounded,
-        focusNode: focusNodes[6],
-        onPressed: () async {
-          if (await canLaunch(_registrationUrl)) {
-            await launch(_registrationUrl);
-          }
-        },
-        isFilled: true,
-      ),
+      ...eventStatus == EventStatus.waiting
+          ? [
+              NavigationAction(
+                title: 'Konuşmacı Ol',
+                icon: Icons.account_circle_rounded,
+                focusNode: focusNodes[6],
+                onPressed: () async {
+                  const url = Config.callForPapersUrl;
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  }
+                },
+                isFilled: true,
+              ),
+              NavigationAction(
+                title: 'Kayıt Ol',
+                icon: Icons.people,
+                focusNode: focusNodes[7],
+                onPressed: () async {
+                  const url = Config.attendeeRegistrationUrl;
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  }
+                },
+                isFilled: true,
+              ),
+            ]
+          : [
+              NavigationAction(
+                title: 'Birinci Gün',
+                icon: Icons.calendar_month,
+                focusNode: focusNodes[6],
+                onPressed: () async {
+                  const url = Config.firstDayStreamUrl;
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  }
+                },
+                isFilled: true,
+              ),
+              NavigationAction(
+                title: 'İkinci Gün',
+                icon: Icons.calendar_month,
+                focusNode: focusNodes[7],
+                onPressed: () async {
+                  const url = Config.secondDayStreamUrl;
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  }
+                },
+                isFilled: true,
+              ),
+            ],
     ]);
   }
 

@@ -21,7 +21,12 @@ class FAQSection extends StatelessWidget {
     return Focus(
       focusNode: focusNode,
       child: DecoratedBox(
-        decoration: const BoxDecoration(color: ThemeHelper.darkColor),
+        decoration: const BoxDecoration(
+          color: ThemeHelper.primaryColor,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(64),
+          ),
+        ),
         child: Column(
           children: [
             const SectionTitle(
@@ -38,12 +43,18 @@ class FAQSection extends StatelessWidget {
                 return ExpansionTileCard(
                   initialPadding: const EdgeInsets.symmetric(vertical: 8),
                   finalPadding: const EdgeInsets.symmetric(vertical: 16),
-                  baseColor: ThemeHelper.footerTextColor,
+                  baseColor: ThemeHelper.lightColor,
                   duration: const Duration(milliseconds: 100),
                   expandedTextColor: Colors.black,
                   expandedColor: Colors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  title: Text(item.question),
+                  borderRadius: const BorderRadius.all(Radius.circular(16)),
+                  title: Text(
+                    item.question,
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                          color: ThemeHelper.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                   children: <Widget>[
                     const Divider(thickness: 1, height: 1),
                     Align(

@@ -13,7 +13,7 @@ class CountdownTextBuilder extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final List<TextSpan> textSpans;
+  final List<InlineSpan> textSpans;
   final FontWeight fontWeight;
 
   @override
@@ -41,7 +41,7 @@ class _CountdownText extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final List<TextSpan> textSpans;
+  final List<InlineSpan> textSpans;
   final TextAlign textAlign;
   final double fontSize;
 

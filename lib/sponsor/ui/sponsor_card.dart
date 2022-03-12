@@ -17,7 +17,7 @@ class SponsorCard extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         child: Card(
           elevation: 5,
-          shadowColor: ThemeHelper.darkColor.withOpacity(0.5),
+          shadowColor: ThemeHelper.primaryColor.withOpacity(0.5),
           color: sponsor.color,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(15)),

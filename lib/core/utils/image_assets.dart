@@ -9,4 +9,7 @@ class ImageAssets {
       'images/activity_flow/line_indicator_bottom.png';
   static const String lineIndicatorTop =
       'images/activity_flow/line_indicator_top.png';
+
+  static const String flagEN = 'images/flags/en.png';
+  static const String flagTR = 'images/flags/tr.png';
 }

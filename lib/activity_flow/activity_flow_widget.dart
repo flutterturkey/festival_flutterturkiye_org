@@ -107,7 +107,7 @@ class _ActivityFlowIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) => CircleAvatar(
         radius: 25,
-        backgroundColor: const Color(0xFFF4F5F7),
+        backgroundColor: ThemeHelper.lightColor,
         child: Image.asset(iconPath, scale: 1.5),
       );
 }
