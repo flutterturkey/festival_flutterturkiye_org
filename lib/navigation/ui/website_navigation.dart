@@ -89,20 +89,24 @@ class _WebsiteNavigationState extends State<WebsiteNavigation> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const AppLogo(),
-                Row(
-                  children: widget.actions
-                      .map(
-                        (action) => Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: GenericButton(
-                            title: action.title,
-                            onPressed: action.onPressed,
-                            isFilledButton: action.isFilled,
-                            textPadding: const EdgeInsets.all(8),
-                          ),
-                        ),
-                      )
-                      .toList(growable: false),
+                Flexible(
+                  child: FittedBox(
+                    child: Row(
+                      children: widget.actions
+                          .map(
+                            (action) => Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: GenericButton(
+                                title: action.title,
+                                onPressed: action.onPressed,
+                                isFilledButton: action.isFilled,
+                                textPadding: const EdgeInsets.all(8),
+                              ),
+                            ),
+                          )
+                          .toList(growable: false),
+                    ),
+                  ),
                 )
               ],
             ),
