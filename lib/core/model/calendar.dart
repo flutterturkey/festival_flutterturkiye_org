@@ -29,7 +29,7 @@ class Calendar extends Equatable {
     final gmtDateTime = dateTime.toUtc();
     return '${gmtDateTime.year}'
         '${gmtDateTime.month.toString().padLeft(2, '0')}'
-        '${gmtDateTime.month.toString().padLeft(2, '0')}'
+        '${gmtDateTime.day.toString().padLeft(2, '0')}'
         'T'
         '${gmtDateTime.hour.toString().padLeft(2, '0')}'
         '${gmtDateTime.minute.toString().padLeft(2, '0')}'
