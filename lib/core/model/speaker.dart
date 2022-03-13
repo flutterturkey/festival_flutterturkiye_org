@@ -16,7 +16,7 @@ class Speaker extends DatabaseModel {
   factory Speaker.fromSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot;
     return Speaker(
-      reference: snapshot.reference,
+      reference: data.reference,
       image: data['image'],
       name: data['name'],
       title: data['title'],
