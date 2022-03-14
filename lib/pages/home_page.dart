@@ -1,4 +1,5 @@
 import 'package:festival_flutterturkiye_org/core/model/navigation_action.dart';
+import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/utils/config.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/countdown/logic/countdown_repository.dart';
@@ -8,6 +9,7 @@ import 'package:festival_flutterturkiye_org/event_flow/ui/event_flow_section.dar
 import 'package:festival_flutterturkiye_org/faq/ui/faq_section.dart';
 import 'package:festival_flutterturkiye_org/footer/ui/footer_section.dart';
 import 'package:festival_flutterturkiye_org/navigation/ui/website_navigation.dart';
+import 'package:festival_flutterturkiye_org/router/website_route_information_parser.dart';
 import 'package:festival_flutterturkiye_org/sponsor/ui/sponsor_section.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,9 +17,14 @@ import 'package:url_launcher/url_launcher.dart';
 const _scrollOffset = 12.0;
 
 class HomePage extends StatefulWidget {
-  const HomePage({
+  HomePage({
+    required this.speakerNotifier,
+    required this.pageTitleNotifier,
     Key? key,
   }) : super(key: key);
+
+  final ValueNotifier<Speaker?> speakerNotifier;
+  final ValueNotifier<String> pageTitleNotifier;
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -35,6 +42,17 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _initializeScrollController();
     _initializeNavigationActions();
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _jumpToInitialSection());
+  }
+
+  void _jumpToInitialSection() {
+    final initialPageName = widget.pageTitleNotifier.value;
+    if (availablePathSegmentNames.contains(initialPageName)) {
+      final target = availablePathInformationList.firstWhere(
+        (element) => element.pathSegmentName == initialPageName,
+      );
+      _scrollToSection(focusNodes[target.focusNodeIndex]);
+    }
   }
 
   @override
@@ -49,7 +67,10 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   CountdownSection(focusNode: focusNodes[0]),
                   // SpeakerSection(focusNode: focusNodes[1]),
-                  EventFlowSection(focusNode: focusNodes[2]),
+                  EventFlowSection(
+                    focusNode: focusNodes[2],
+                    speakerNotifier: widget.speakerNotifier,
+                  ),
                   SponsorSection(focusNode: focusNodes[3]),
                   FAQSection(focusNode: focusNodes[4]),
                   FooterSection(focusNode: focusNodes[5]),
@@ -110,8 +131,12 @@ class _HomePageState extends State<HomePage> {
       NavigationAction(
         title: 'Etkinlik',
         icon: Icons.celebration,
-        focusNode: focusNodes[0],
-        onPressed: () => _scrollToSection(focusNodes[0]),
+        focusNode: focusNodes[etkinlikPathInformation.focusNodeIndex],
+        onPressed: () {
+          _scrollToSection(focusNodes[etkinlikPathInformation.focusNodeIndex]);
+          widget.pageTitleNotifier.value = etkinlikPathInformation.pathSegmentName;
+        },
+        pathSegmentName: etkinlikPathInformation.pathSegmentName,
       ),
       // NavigationAction(
       //   title: 'Konuşmacılar',
@@ -121,26 +146,42 @@ class _HomePageState extends State<HomePage> {
       NavigationAction(
         title: 'Etkinlik Programı',
         icon: Icons.event_rounded,
-        focusNode: focusNodes[2],
-        onPressed: () => _scrollToSection(focusNodes[2]),
+        focusNode: focusNodes[programPathInformation.focusNodeIndex],
+        onPressed: () {
+          _scrollToSection(focusNodes[programPathInformation.focusNodeIndex]);
+          widget.pageTitleNotifier.value = programPathInformation.pathSegmentName;
+        },
+        pathSegmentName: programPathInformation.pathSegmentName,
       ),
       NavigationAction(
         title: 'Sponsorlar',
         icon: Icons.help_center_rounded,
-        focusNode: focusNodes[3],
-        onPressed: () => _scrollToSection(focusNodes[3]),
+        focusNode: focusNodes[sponsorPathInformation.focusNodeIndex],
+        onPressed: () {
+          _scrollToSection(focusNodes[sponsorPathInformation.focusNodeIndex]);
+          widget.pageTitleNotifier.value = sponsorPathInformation.pathSegmentName;
+        },
+        pathSegmentName: sponsorPathInformation.pathSegmentName,
       ),
       NavigationAction(
         title: 'SSS',
         icon: Icons.help_center_rounded,
-        focusNode: focusNodes[4],
-        onPressed: () => _scrollToSection(focusNodes[4]),
+        focusNode: focusNodes[sssPathInformation.focusNodeIndex],
+        onPressed: () {
+          _scrollToSection(focusNodes[sssPathInformation.focusNodeIndex]);
+          widget.pageTitleNotifier.value = sssPathInformation.pathSegmentName;
+        },
+        pathSegmentName: sssPathInformation.pathSegmentName,
       ),
       NavigationAction(
         title: 'İletişim',
         icon: Icons.phone_in_talk_rounded,
-        focusNode: focusNodes[5],
-        onPressed: () => _scrollToSection(focusNodes[5]),
+        focusNode: focusNodes[iletisimPathInformation.focusNodeIndex],
+        onPressed: () {
+          _scrollToSection(focusNodes[iletisimPathInformation.focusNodeIndex]);
+          widget.pageTitleNotifier.value = iletisimPathInformation.pathSegmentName;
+        },
+        pathSegmentName: iletisimPathInformation.pathSegmentName,
       ),
       ...eventStatus == EventStatus.waiting
           ? [

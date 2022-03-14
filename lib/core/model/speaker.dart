@@ -11,6 +11,7 @@ class Speaker extends DatabaseModel {
     this.twitter,
     this.github,
     this.linkedin,
+    this.pathSegmentQueryParam,
   });
 
   factory Speaker.fromSnapshot(DocumentSnapshot snapshot) {
@@ -24,6 +25,7 @@ class Speaker extends DatabaseModel {
       twitter: data['twitter'],
       github: data['github'],
       linkedin: data['linkedin'],
+      pathSegmentQueryParam: data['pathSegmentQueryParam'],
     );
   }
 
@@ -34,6 +36,7 @@ class Speaker extends DatabaseModel {
   final String? twitter;
   final String? github;
   final String? linkedin;
+  final String? pathSegmentQueryParam;
   final DocumentReference? reference;
 
   @override
@@ -47,5 +50,6 @@ class Speaker extends DatabaseModel {
         github,
         linkedin,
         reference,
+        pathSegmentQueryParam,
       ];
 }

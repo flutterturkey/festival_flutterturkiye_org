@@ -24,6 +24,7 @@ dependencies:
   material_design_icons_flutter: ^5.0.6595
   url_launcher: ^6.0.20
   video_player: ^2.2.19
+  collection: ^1.15.0
 
 dev_dependencies:
   flutrlint: ^2.0.0+1

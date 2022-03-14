@@ -18,11 +18,13 @@ import 'package:flutter/material.dart';
 class EventFlowSection extends StatelessWidget {
   EventFlowSection({
     required this.focusNode,
+    required this.speakerNotifier,
     Key? key,
   }) : super(key: key);
 
   final FocusNode focusNode;
   final sessionRepository = getIt.get<SessionRepository>();
+  final ValueNotifier<Speaker?> speakerNotifier;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class EventFlowSection extends StatelessWidget {
     // TODO: It is faster solution. It will be fixed later.
     final sessionDays = <Widget>[
       _SessionsWidget(
+        speakerNotifier: speakerNotifier,
         title: Config.eventConfig.startingDateName,
         sessions: sessionRepository.sessions
             .where((session) => _isVisible(
@@ -39,6 +42,7 @@ class EventFlowSection extends StatelessWidget {
             .toList(),
       ),
       _SessionsWidget(
+        speakerNotifier: speakerNotifier,
         title: Config.eventConfig.endingDateName,
         sessions: sessionRepository.sessions
             .where((session) => _isVisible(
@@ -97,11 +101,14 @@ class EventFlowSection extends StatelessWidget {
 }
 
 class _SessionsWidget extends StatelessWidget {
-  const _SessionsWidget({required this.title, required this.sessions, Key? key})
+  const _SessionsWidget(
+      {required this.title, required this.sessions, required this.speakerNotifier, Key? key})
       : super(key: key);
 
   final String title;
   final List<Session> sessions;
+  final ValueNotifier<Speaker?> speakerNotifier;
+
   @override
   Widget build(BuildContext context) => Column(
         children: [
@@ -115,7 +122,10 @@ class _SessionsWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: sessions
-                  .map((session) => _SessionWidget(session: session))
+                  .map((session) => _SessionWidget(
+                        session: session,
+                        speakerNotifier: speakerNotifier,
+                      ))
                   .toList(growable: false),
             ),
           ),
@@ -126,10 +136,12 @@ class _SessionsWidget extends StatelessWidget {
 class _SessionWidget extends StatelessWidget {
   const _SessionWidget({
     required this.session,
+    required this.speakerNotifier,
     Key? key,
   }) : super(key: key);
 
   final Session session;
+  final ValueNotifier<Speaker?> speakerNotifier;
 
   @override
   Widget build(BuildContext context) {
@@ -149,18 +161,21 @@ class _SessionWidget extends StatelessWidget {
         smallWidget: _SmallSessionWidget(
           session: session,
           speakers: speaker,
+          speakerNotifier: speakerNotifier,
         ),
         mediumWidget: _LargeSessionWidget(
           startingTime: startingTime,
           dueTime: endingTime,
           session: session,
           speakers: speaker,
+          speakerNotifier: speakerNotifier,
         ),
         largeWidget: _LargeSessionWidget(
           startingTime: startingTime,
           dueTime: endingTime,
           session: session,
           speakers: speaker,
+          speakerNotifier: speakerNotifier,
         ),
       ),
     );
@@ -178,12 +193,14 @@ class _LargeSessionWidget extends StatelessWidget {
     required this.dueTime,
     required this.session,
     required this.speakers,
+    required this.speakerNotifier,
     Key? key,
   }) : super(key: key);
 
   final String startingTime, dueTime;
   final Session session;
   final List<Speaker> speakers;
+  final ValueNotifier<Speaker?> speakerNotifier;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -204,6 +221,7 @@ class _LargeSessionWidget extends StatelessWidget {
             child: SessionInfoField(
               session: session,
               speakers: speakers,
+              speakerNotifier: speakerNotifier,
             ),
           ),
         ],
@@ -214,11 +232,13 @@ class _SmallSessionWidget extends StatelessWidget {
   const _SmallSessionWidget({
     required this.session,
     required this.speakers,
+    required this.speakerNotifier,
     Key? key,
   }) : super(key: key);
 
   final Session session;
   final List<Speaker> speakers;
+  final ValueNotifier<Speaker?> speakerNotifier;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -234,6 +254,7 @@ class _SmallSessionWidget extends StatelessWidget {
               session: session,
               speakers: speakers,
               isSmallScreen: true,
+              speakerNotifier: speakerNotifier,
             ),
           ),
         ],

@@ -4,7 +4,8 @@ import 'package:festival_flutterturkiye_org/core/logic/speaker_repository.dart';
 import 'package:festival_flutterturkiye_org/core/logic/sponsor_repository.dart';
 import 'package:festival_flutterturkiye_org/core/utils/get_it_initializer.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
-import 'package:festival_flutterturkiye_org/pages/home_page.dart';
+import 'package:festival_flutterturkiye_org/router/website_route_information_parser.dart';
+import 'package:festival_flutterturkiye_org/router/website_router_delegate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -25,14 +26,32 @@ Future<void> main() async {
   runApp(const FlutterFestivalApp());
 }
 
-class FlutterFestivalApp extends StatelessWidget {
+class FlutterFestivalApp extends StatefulWidget {
   const FlutterFestivalApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  State<FlutterFestivalApp> createState() => _FlutterFestivalAppState();
+}
+
+class _FlutterFestivalAppState extends State<FlutterFestivalApp> {
+  late WebsiteRouterDelegate delegate;
+  late WebsiteRouteInformationParser parser;
+
+  @override
+  void initState() {
+    super.initState();
+    final speakerRepository = getIt.get<SpeakerRepository>();
+    final speakers = speakerRepository.speakers;
+    delegate = WebsiteRouterDelegate();
+    parser = WebsiteRouteInformationParser(speakers: speakers);
+  }
+
+  @override
+  Widget build(BuildContext context) => MaterialApp.router(
         title: 'Flutter Festivali',
         theme: ThemeHelper.themeData,
-        home: const HomePage(),
         debugShowCheckedModeBanner: false,
+        routerDelegate: delegate,
+        routeInformationParser: parser,
       );
 }

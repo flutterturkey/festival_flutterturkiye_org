@@ -1,6 +1,3 @@
-import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
-import 'package:festival_flutterturkiye_org/core/ui/speaker_detail_content.dart';
-import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class DialogHelper {
@@ -19,16 +16,5 @@ class DialogHelper {
           shape: shape,
           content: content,
         ),
-      );
-
-  static void showSpeaker(
-    BuildContext context, {
-    required Speaker speaker,
-  }) =>
-      show(
-        context,
-        backgroundColor: ThemeHelper.primaryColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        content: SizedBox(child: SpeakerDetailContent(speaker: speaker)),
       );
 }
