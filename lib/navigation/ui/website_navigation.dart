@@ -23,56 +23,83 @@ class WebsiteNavigation extends StatefulWidget {
 class _WebsiteNavigationState extends State<WebsiteNavigation> {
   bool _isContextMenuVisible = false;
 
+  final FocusNode menuFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    initFocusListener();
+  }
+
+  void initFocusListener() {
+    menuFocusNode.addListener(() {
+      setState(() {
+        if (!menuFocusNode.hasFocus) {
+          _isContextMenuVisible = false;
+          menuFocusNode.requestFocus();
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) => ResponsiveBuilder(
-        smallWidget: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          decoration: BoxDecoration(
-            color: widget.hasTransparentBackground || _isContextMenuVisible
-                ? ThemeHelper.primaryColor
-                : Colors.transparent,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: kToolbarHeight,
-                child: Row(
-                  children: [
-                    IconButton(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      icon: const Icon(
-                        Icons.menu_rounded,
-                        color: Colors.white,
-                        size: 36,
+        smallWidget: Focus(
+          autofocus: true,
+          focusNode: menuFocusNode,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            decoration: BoxDecoration(
+              color: widget.hasTransparentBackground || _isContextMenuVisible
+                  ? ThemeHelper.primaryColor
+                  : Colors.transparent,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: kToolbarHeight,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        icon: const Icon(
+                          Icons.menu_rounded,
+                          color: Colors.white,
+                          size: 36,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isContextMenuVisible = !_isContextMenuVisible;
+                          });
+                        },
                       ),
-                      onPressed: () {
-                        setState(() {
-                          _isContextMenuVisible = !_isContextMenuVisible;
-                        });
-                      },
-                    ),
-                    const Expanded(child: AppLogo()),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
-                      child: SizedBox(
-                        height: 36,
-                        width: 36,
-                      ),
-                    )
-                  ],
+                      const Expanded(child: AppLogo()),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24),
+                        child: SizedBox(
+                          height: 36,
+                          width: 36,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              if (_isContextMenuVisible)
-                ...widget.actions
-                    .map(
-                      (action) => ContextMenuItem(
-                          title: action.title,
-                          icon: action.icon,
-                          onTap: action.onPressed),
-                    )
-                    .toList(growable: false)
-            ],
+                if (_isContextMenuVisible)
+                  ...widget.actions
+                      .map(
+                        (action) => ContextMenuItem(
+                            title: action.title,
+                            icon: action.icon,
+                            onTap: () {
+                              action.onPressed();
+                              _isContextMenuVisible = !_isContextMenuVisible;
+                              setState(() {});
+                            }),
+                      )
+                      .toList(growable: false)
+              ],
+            ),
           ),
         ),
         largeWidget: AnimatedContainer(
