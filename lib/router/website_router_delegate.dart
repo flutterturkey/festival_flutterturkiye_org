@@ -54,7 +54,7 @@ class WebsiteRouterDelegate extends RouterDelegate<WebsiteConfiguration>
       pages: _unknownStateNotifier.value == true
           ? [
               const MaterialPage(
-                key: ValueKey<String>("Unknown"),
+                key: ValueKey<String>('Unknown'),
                 child: UnknownPage(),
               )
             ]

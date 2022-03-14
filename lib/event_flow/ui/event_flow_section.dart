@@ -102,7 +102,10 @@ class EventFlowSection extends StatelessWidget {
 
 class _SessionsWidget extends StatelessWidget {
   const _SessionsWidget(
-      {required this.title, required this.sessions, required this.speakerNotifier, Key? key})
+      {required this.title,
+      required this.sessions,
+      required this.speakerNotifier,
+      Key? key})
       : super(key: key);
 
   final String title;

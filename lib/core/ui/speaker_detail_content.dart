@@ -131,8 +131,9 @@ class _SpeakerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment:
-            textAlign == TextAlign.center ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+        crossAxisAlignment: textAlign == TextAlign.center
+            ? CrossAxisAlignment.center
+            : CrossAxisAlignment.start,
         children: [
           Text(
             speaker.name ?? '',
@@ -156,8 +157,9 @@ class _SpeakerInfo extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Row(
-            mainAxisAlignment:
-                textAlign == TextAlign.center ? MainAxisAlignment.center : MainAxisAlignment.start,
+            mainAxisAlignment: textAlign == TextAlign.center
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.start,
             children: [
               _SocialMediaButton(
                 icon: MdiIcons.github,

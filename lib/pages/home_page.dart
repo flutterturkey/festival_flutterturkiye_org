@@ -17,7 +17,7 @@ import 'package:url_launcher/url_launcher.dart';
 const _scrollOffset = 12.0;
 
 class HomePage extends StatefulWidget {
-  HomePage({
+  const HomePage({
     required this.speakerNotifier,
     required this.pageTitleNotifier,
     Key? key,
@@ -42,7 +42,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _initializeScrollController();
     _initializeNavigationActions();
-    WidgetsBinding.instance!.addPostFrameCallback((_) => _jumpToInitialSection());
+    WidgetsBinding.instance!.addPostFrameCallback(
+      (_) => _jumpToInitialSection(),
+    );
   }
 
   void _jumpToInitialSection() {
@@ -134,7 +136,8 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[etkinlikPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[etkinlikPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value = etkinlikPathInformation.pathSegmentName;
+          widget.pageTitleNotifier.value =
+              etkinlikPathInformation.pathSegmentName;
         },
         pathSegmentName: etkinlikPathInformation.pathSegmentName,
       ),
@@ -149,7 +152,8 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[programPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[programPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value = programPathInformation.pathSegmentName;
+          widget.pageTitleNotifier.value =
+              programPathInformation.pathSegmentName;
         },
         pathSegmentName: programPathInformation.pathSegmentName,
       ),
@@ -159,7 +163,8 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[sponsorPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[sponsorPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value = sponsorPathInformation.pathSegmentName;
+          widget.pageTitleNotifier.value =
+              sponsorPathInformation.pathSegmentName;
         },
         pathSegmentName: sponsorPathInformation.pathSegmentName,
       ),
@@ -179,7 +184,8 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[iletisimPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[iletisimPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value = iletisimPathInformation.pathSegmentName;
+          widget.pageTitleNotifier.value =
+              iletisimPathInformation.pathSegmentName;
         },
         pathSegmentName: iletisimPathInformation.pathSegmentName,
       ),

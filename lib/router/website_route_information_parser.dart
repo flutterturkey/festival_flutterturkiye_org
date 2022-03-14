@@ -58,7 +58,8 @@ List<String> get availablePathSegmentNames => availablePathInformationList
     )
     .toList();
 
-class WebsiteRouteInformationParser extends RouteInformationParser<WebsiteConfiguration> {
+class WebsiteRouteInformationParser
+    extends RouteInformationParser<WebsiteConfiguration> {
   WebsiteRouteInformationParser({required this.speakers});
 
   final List<Speaker> speakers;
@@ -73,7 +74,8 @@ class WebsiteRouteInformationParser extends RouteInformationParser<WebsiteConfig
     } else if (uri.pathSegments.length == 1) {
       final pathSegment = uri.pathSegments[0];
       if (availablePathSegmentNames.contains(pathSegment)) {
-        if (pathSegment == programPathInformation.pathSegmentName && uri.query.isNotEmpty) {
+        if (pathSegment == programPathInformation.pathSegmentName &&
+            uri.query.isNotEmpty) {
           final targetQueryParam = programPathInformation.queryParameter!;
           final speakerQueryParam = uri.queryParameters[targetQueryParam];
           return WebsiteConfiguration.home(
