@@ -133,13 +133,12 @@ class _HomePageState extends State<HomePage> {
       NavigationAction(
         title: 'Etkinlik',
         icon: Icons.celebration,
-        focusNode: focusNodes[etkinlikPathInformation.focusNodeIndex],
+        focusNode: focusNodes[eventPathInformation.focusNodeIndex],
         onPressed: () {
-          _scrollToSection(focusNodes[etkinlikPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value =
-              etkinlikPathInformation.pathSegmentName;
+          _scrollToSection(focusNodes[eventPathInformation.focusNodeIndex]);
+          widget.pageTitleNotifier.value = eventPathInformation.pathSegmentName;
         },
-        pathSegmentName: etkinlikPathInformation.pathSegmentName,
+        pathSegmentName: eventPathInformation.pathSegmentName,
       ),
       // NavigationAction(
       //   title: 'Konuşmacılar',
@@ -171,23 +170,23 @@ class _HomePageState extends State<HomePage> {
       NavigationAction(
         title: 'SSS',
         icon: Icons.help_center_rounded,
-        focusNode: focusNodes[sssPathInformation.focusNodeIndex],
+        focusNode: focusNodes[faqPathInformation.focusNodeIndex],
         onPressed: () {
-          _scrollToSection(focusNodes[sssPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value = sssPathInformation.pathSegmentName;
+          _scrollToSection(focusNodes[faqPathInformation.focusNodeIndex]);
+          widget.pageTitleNotifier.value = faqPathInformation.pathSegmentName;
         },
-        pathSegmentName: sssPathInformation.pathSegmentName,
+        pathSegmentName: faqPathInformation.pathSegmentName,
       ),
       NavigationAction(
         title: 'İletişim',
         icon: Icons.phone_in_talk_rounded,
-        focusNode: focusNodes[iletisimPathInformation.focusNodeIndex],
+        focusNode: focusNodes[contactUsPathInformation.focusNodeIndex],
         onPressed: () {
-          _scrollToSection(focusNodes[iletisimPathInformation.focusNodeIndex]);
+          _scrollToSection(focusNodes[contactUsPathInformation.focusNodeIndex]);
           widget.pageTitleNotifier.value =
-              iletisimPathInformation.pathSegmentName;
+              contactUsPathInformation.pathSegmentName;
         },
-        pathSegmentName: iletisimPathInformation.pathSegmentName,
+        pathSegmentName: contactUsPathInformation.pathSegmentName,
       ),
       ...eventStatus == EventStatus.waiting
           ? [

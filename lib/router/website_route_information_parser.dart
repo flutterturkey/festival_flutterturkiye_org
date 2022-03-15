@@ -6,29 +6,29 @@ import 'package:flutter/material.dart';
 
 const unknownPageSegmentName = '404';
 
-final etkinlikPathInformation = PathInformation(
-  pathSegmentName: 'etkinlik',
+final eventPathInformation = PathInformation(
+  pathSegmentName: 'event',
   focusNodeIndex: 0,
 );
 
 final programPathInformation = PathInformation(
   pathSegmentName: 'program',
   focusNodeIndex: 2,
-  queryParameter: 'konusmaci',
+  queryParameter: 'speaker',
 );
 
 final sponsorPathInformation = PathInformation(
-  pathSegmentName: 'sponsorlar',
+  pathSegmentName: 'sponsors',
   focusNodeIndex: 3,
 );
 
-final sssPathInformation = PathInformation(
-  pathSegmentName: 'sss',
+final faqPathInformation = PathInformation(
+  pathSegmentName: 'faq',
   focusNodeIndex: 4,
 );
 
-final iletisimPathInformation = PathInformation(
-  pathSegmentName: 'iletisim',
+final contactUsPathInformation = PathInformation(
+  pathSegmentName: 'contact-us',
   focusNodeIndex: 5,
 );
 
@@ -45,18 +45,15 @@ class PathInformation {
 }
 
 List<PathInformation> availablePathInformationList = [
-  etkinlikPathInformation,
+  eventPathInformation,
   programPathInformation,
   sponsorPathInformation,
-  sssPathInformation,
-  iletisimPathInformation,
+  faqPathInformation,
+  contactUsPathInformation,
 ];
 
-List<String> get availablePathSegmentNames => availablePathInformationList
-    .map(
-      (e) => e.pathSegmentName,
-    )
-    .toList();
+List<String> get availablePathSegmentNames =>
+    availablePathInformationList.map((e) => e.pathSegmentName).toList();
 
 class WebsiteRouteInformationParser
     extends RouteInformationParser<WebsiteConfiguration> {
