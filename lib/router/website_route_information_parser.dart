@@ -65,8 +65,10 @@ class WebsiteRouteInformationParser
   Future<WebsiteConfiguration> parseRouteInformation(
     RouteInformation routeInformation,
   ) async {
-    final uri = Uri.parse(routeInformation.location!);
-    if (uri.pathSegments.isEmpty) {
+    final uri = Uri.tryParse(routeInformation.location!);
+    if (uri == null) {
+      return WebsiteConfiguration.home(sectionName: '');
+    } else if (uri.pathSegments.isEmpty) {
       return WebsiteConfiguration.home(sectionName: '');
     } else if (uri.pathSegments.length == 1) {
       final pathSegment = uri.pathSegments[0];
