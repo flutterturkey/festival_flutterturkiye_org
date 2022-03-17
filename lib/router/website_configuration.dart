@@ -4,14 +4,14 @@ import 'package:festival_flutterturkiye_org/router/website_route_information_par
 class WebsiteConfiguration {
   WebsiteConfiguration.unknown()
       : unknown = true,
-        pageTitle = unknownPageSegmentName;
+        sectionName = unknownPageSegmentName;
 
   WebsiteConfiguration.home({
-    required this.pageTitle,
+    this.sectionName,
     this.speaker,
   }) : unknown = false;
 
-  String pageTitle;
+  String? sectionName;
   Speaker? speaker;
   bool unknown;
 }

@@ -11,12 +11,12 @@ class WebsiteRouterDelegate extends RouterDelegate<WebsiteConfiguration>
     _homePage = MaterialPage(
       key: const ValueKey<String>('HomePage'),
       child: HomePage(
-        pageTitleNotifier: _pageTitleNotifier,
+        selectedSectionNotifier: _selectedSectionNotifier,
         speakerNotifier: _speakerNotifier,
       ),
     );
     Listenable.merge([
-      _pageTitleNotifier,
+      _selectedSectionNotifier,
       _unknownStateNotifier,
       _speakerNotifier,
     ]).addListener(notifyListeners);
@@ -29,7 +29,7 @@ class WebsiteRouterDelegate extends RouterDelegate<WebsiteConfiguration>
 
   // App state fields
   final ValueNotifier<Speaker?> _speakerNotifier = ValueNotifier(null);
-  final ValueNotifier<String> _pageTitleNotifier = ValueNotifier('');
+  final ValueNotifier<String?> _selectedSectionNotifier = ValueNotifier(null);
   final ValueNotifier<bool?> _unknownStateNotifier = ValueNotifier(null);
 
   late Page _homePage;
@@ -40,7 +40,7 @@ class WebsiteRouterDelegate extends RouterDelegate<WebsiteConfiguration>
       return WebsiteConfiguration.unknown();
     } else {
       return WebsiteConfiguration.home(
-        pageTitle: _pageTitleNotifier.value,
+        sectionName: _selectedSectionNotifier.value,
         speaker: _speakerNotifier.value,
       );
     }
@@ -86,7 +86,7 @@ class WebsiteRouterDelegate extends RouterDelegate<WebsiteConfiguration>
       _speakerNotifier.value = null;
     } else {
       _unknownStateNotifier.value = false;
-      _pageTitleNotifier.value = configuration.pageTitle;
+      _selectedSectionNotifier.value = configuration.sectionName;
       _speakerNotifier.value = configuration.speaker;
     }
   }

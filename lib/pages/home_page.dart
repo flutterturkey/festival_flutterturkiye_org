@@ -19,12 +19,12 @@ const _scrollOffset = 12.0;
 class HomePage extends StatefulWidget {
   const HomePage({
     required this.speakerNotifier,
-    required this.pageTitleNotifier,
+    required this.selectedSectionNotifier,
     Key? key,
   }) : super(key: key);
 
   final ValueNotifier<Speaker?> speakerNotifier;
-  final ValueNotifier<String> pageTitleNotifier;
+  final ValueNotifier<String?> selectedSectionNotifier;
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -48,14 +48,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _jumpToInitialSection() {
-    final initialPageName = widget.pageTitleNotifier.value;
-    if (availablePathSegmentNames.contains(initialPageName)) {
-      final target = availablePathInformationList.firstWhere(
-        (element) => element.pathSegmentName == initialPageName,
-      );
+    final initialSectionName = widget.selectedSectionNotifier.value;
+    if (initialSectionName != null &&
+        availablePathSegmentNames.contains(initialSectionName)) {
+      final target = _findTargetPathInformation(initialSectionName);
       _scrollToSection(focusNodes[target.focusNodeIndex]);
     }
   }
+
+  PathInformation _findTargetPathInformation(String pathName) =>
+      availablePathInformationList.firstWhere(
+        (element) => element.pathSegmentName == pathName,
+      );
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -63,20 +67,37 @@ class _HomePageState extends State<HomePage> {
           children: [
             /// Using SingleChildScrollView because we want to lay down
             /// all the children to be able to scroll to them.
-            SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                children: <Widget>[
-                  CountdownSection(focusNode: focusNodes[0]),
-                  // SpeakerSection(focusNode: focusNodes[1]),
-                  EventFlowSection(
-                    focusNode: focusNodes[2],
-                    speakerNotifier: widget.speakerNotifier,
-                  ),
-                  SponsorSection(focusNode: focusNodes[3]),
-                  FAQSection(focusNode: focusNodes[4]),
-                  FooterSection(focusNode: focusNodes[5]),
-                ],
+            NotificationListener(
+              onNotification: (notification) {
+                if (notification is UserScrollNotification) {
+                  _onUserScrolled(notification.metrics.pixels);
+                }
+                return true;
+              },
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Column(
+                  children: <Widget>[
+                    CountdownSection(
+                        focusNode:
+                            focusNodes[eventPathInformation.focusNodeIndex]),
+                    // SpeakerSection(focusNode: focusNodes[1]),
+                    EventFlowSection(
+                      focusNode:
+                          focusNodes[programPathInformation.focusNodeIndex],
+                      speakerNotifier: widget.speakerNotifier,
+                    ),
+                    SponsorSection(
+                        focusNode:
+                            focusNodes[sponsorPathInformation.focusNodeIndex]),
+                    FAQSection(
+                        focusNode:
+                            focusNodes[faqPathInformation.focusNodeIndex]),
+                    FooterSection(
+                        focusNode: focusNodes[
+                            contactUsPathInformation.focusNodeIndex]),
+                  ],
+                ),
               ),
             ),
             WebsiteNavigation(
@@ -92,6 +113,20 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _onUserScrolled(double offset) {
+    var totalItemHeight = 0.0;
+    for (var i = 0; i < focusNodes.length; i++) {
+      totalItemHeight += focusNodes[i].context!.size!.height;
+      if (totalItemHeight > offset) {
+        final name = availablePathInformationList
+            .firstWhere((element) => element.focusNodeIndex == i)
+            .pathSegmentName;
+        widget.selectedSectionNotifier.value = name;
+        break;
+      }
+    }
   }
 
   void _initializeScrollController() {
@@ -136,7 +171,8 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[eventPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[eventPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value = eventPathInformation.pathSegmentName;
+          widget.selectedSectionNotifier.value =
+              eventPathInformation.pathSegmentName;
         },
         pathSegmentName: eventPathInformation.pathSegmentName,
       ),
@@ -151,7 +187,7 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[programPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[programPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value =
+          widget.selectedSectionNotifier.value =
               programPathInformation.pathSegmentName;
         },
         pathSegmentName: programPathInformation.pathSegmentName,
@@ -162,7 +198,7 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[sponsorPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[sponsorPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value =
+          widget.selectedSectionNotifier.value =
               sponsorPathInformation.pathSegmentName;
         },
         pathSegmentName: sponsorPathInformation.pathSegmentName,
@@ -173,7 +209,8 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[faqPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[faqPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value = faqPathInformation.pathSegmentName;
+          widget.selectedSectionNotifier.value =
+              faqPathInformation.pathSegmentName;
         },
         pathSegmentName: faqPathInformation.pathSegmentName,
       ),
@@ -183,7 +220,7 @@ class _HomePageState extends State<HomePage> {
         focusNode: focusNodes[contactUsPathInformation.focusNodeIndex],
         onPressed: () {
           _scrollToSection(focusNodes[contactUsPathInformation.focusNodeIndex]);
-          widget.pageTitleNotifier.value =
+          widget.selectedSectionNotifier.value =
               contactUsPathInformation.pathSegmentName;
         },
         pathSegmentName: contactUsPathInformation.pathSegmentName,

@@ -13,23 +13,23 @@ final eventPathInformation = PathInformation(
 
 final programPathInformation = PathInformation(
   pathSegmentName: 'program',
-  focusNodeIndex: 2,
+  focusNodeIndex: 1,
   queryParameter: 'speaker',
 );
 
 final sponsorPathInformation = PathInformation(
   pathSegmentName: 'sponsors',
-  focusNodeIndex: 3,
+  focusNodeIndex: 2,
 );
 
 final faqPathInformation = PathInformation(
   pathSegmentName: 'faq',
-  focusNodeIndex: 4,
+  focusNodeIndex: 3,
 );
 
 final contactUsPathInformation = PathInformation(
   pathSegmentName: 'contact-us',
-  focusNodeIndex: 5,
+  focusNodeIndex: 4,
 );
 
 class PathInformation {
@@ -67,7 +67,7 @@ class WebsiteRouteInformationParser
   ) async {
     final uri = Uri.parse(routeInformation.location!);
     if (uri.pathSegments.isEmpty) {
-      return WebsiteConfiguration.home(pageTitle: '');
+      return WebsiteConfiguration.home(sectionName: '');
     } else if (uri.pathSegments.length == 1) {
       final pathSegment = uri.pathSegments[0];
       if (availablePathSegmentNames.contains(pathSegment)) {
@@ -76,13 +76,13 @@ class WebsiteRouteInformationParser
           final targetQueryParam = programPathInformation.queryParameter!;
           final speakerQueryParam = uri.queryParameters[targetQueryParam];
           return WebsiteConfiguration.home(
-            pageTitle: pathSegment,
+            sectionName: pathSegment,
             speaker: speakers.firstWhereOrNull(
               (speaker) => speaker.pathSegmentQueryParam == speakerQueryParam,
             ),
           );
         } else {
-          return WebsiteConfiguration.home(pageTitle: pathSegment);
+          return WebsiteConfiguration.home(sectionName: pathSegment);
         }
       }
     }
@@ -96,7 +96,7 @@ class WebsiteRouteInformationParser
     } else {
       final speaker = configuration.speaker;
       if (speaker == null) {
-        return RouteInformation(location: '/${configuration.pageTitle}');
+        return RouteInformation(location: '/${configuration.sectionName}');
       } else {
         return RouteInformation(
           location:
