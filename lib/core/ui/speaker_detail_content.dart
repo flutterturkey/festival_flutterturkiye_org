@@ -10,36 +10,62 @@ import 'package:url_launcher/url_launcher.dart';
 class SpeakerDetailContent extends StatelessWidget {
   const SpeakerDetailContent({
     required this.speaker,
+    required this.speakerNotifier,
     Key? key,
   }) : super(key: key);
+
   final Speaker speaker;
+  final ValueNotifier<Speaker?> speakerNotifier;
 
   @override
-  Widget build(BuildContext context) => SingleChildScrollView(
-        primary: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _SpeakerHeader(speaker: speaker),
-            const SizedBox(height: 16),
-            const Text(
-              'Hakkında',
-              style: TextStyle(
-                color: ThemeHelper.lightColor,
-                fontWeight: FontWeight.w500,
-                fontSize: 28,
-              ),
+  Widget build(BuildContext context) => Center(
+        child: Material(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(32),
+            height: 400,
+            width: 600,
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  primary: false,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _SpeakerHeader(speaker: speaker),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Hakkında',
+                        style: TextStyle(
+                          color: ThemeHelper.lightColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 28,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        speaker.about?.format() ?? '',
+                        style: const TextStyle(
+                          color: ThemeHelper.lightColor,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional.topEnd,
+                  child: CloseButton(
+                    onPressed: () => speakerNotifier.value = null,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 8),
-            Text(
-              speaker.about?.format() ?? '',
-              style: const TextStyle(
-                color: ThemeHelper.lightColor,
-                fontSize: 16,
-              ),
-            ),
-          ],
+          ),
         ),
       );
 }

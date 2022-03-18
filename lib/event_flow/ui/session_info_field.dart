@@ -3,7 +3,6 @@ import 'package:festival_flutterturkiye_org/core/model/session.dart';
 import 'package:festival_flutterturkiye_org/core/model/speaker.dart';
 import 'package:festival_flutterturkiye_org/core/ui/speaker_image.dart';
 import 'package:festival_flutterturkiye_org/core/utils/config.dart';
-import 'package:festival_flutterturkiye_org/core/utils/dialog_helper.dart';
 import 'package:festival_flutterturkiye_org/core/utils/theme_helper.dart';
 import 'package:festival_flutterturkiye_org/event_flow/ui/session_time_field.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,7 @@ class SessionInfoField extends StatelessWidget {
   const SessionInfoField({
     required this.speakers,
     required this.session,
+    required this.speakerNotifier,
     this.horizontalAxisAlignment = CrossAxisAlignment.start,
     this.isSmallScreen = false,
     Key? key,
@@ -23,6 +23,7 @@ class SessionInfoField extends StatelessWidget {
   final List<Speaker> speakers;
   final CrossAxisAlignment horizontalAxisAlignment;
   final bool isSmallScreen;
+  final ValueNotifier<Speaker?> speakerNotifier;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,10 @@ class SessionInfoField extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: speakers
-              .map((speaker) => _EventFlowSpeaker(speaker: speaker))
+              .map((speaker) => _EventFlowSpeaker(
+                    speaker: speaker,
+                    speakerNotifier: speakerNotifier,
+                  ))
               .toList(),
         ),
       ],
@@ -133,9 +137,14 @@ class _EventFlowDownloadSlides extends StatelessWidget {
 }
 
 class _EventFlowSpeaker extends StatelessWidget {
-  const _EventFlowSpeaker({required this.speaker, Key? key}) : super(key: key);
+  const _EventFlowSpeaker({
+    required this.speakerNotifier,
+    required this.speaker,
+    Key? key,
+  }) : super(key: key);
 
   final Speaker speaker;
+  final ValueNotifier<Speaker?> speakerNotifier;
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -143,7 +152,7 @@ class _EventFlowSpeaker extends StatelessWidget {
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
-            onTap: () => DialogHelper.showSpeaker(context, speaker: speaker),
+            onTap: () => speakerNotifier.value = speaker,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

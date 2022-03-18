@@ -7,6 +7,7 @@ class NavigationAction extends Equatable {
     required this.title,
     required this.icon,
     required this.focusNode,
+    this.pathSegmentName,
     this.isFilled = false,
   });
 
@@ -15,11 +16,13 @@ class NavigationAction extends Equatable {
   final VoidCallback onPressed;
   final FocusNode focusNode;
   final bool isFilled;
+  final String? pathSegmentName;
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         title,
         icon,
         isFilled,
+        pathSegmentName,
       ];
 }
