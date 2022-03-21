@@ -1,24 +1,57 @@
 name: On Website Deploy
-'on':
+"on":
   push:
     branches:
       - "main"
+# jobs:
+#   on-push-main:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: subosito/flutter-action@v1
+#         with:
+#           channel: stable
+#       - name: Enable Web
+#         run: flutter config --enable-web
+#       - name: Build Web application
+#         run: flutter build web
+#       - name: Add CNAME
+#         run: echo "festival.flutterturkiye.org" > ./build/web/CNAME
+#       - name: Deploy
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./build/web
+
 jobs:
-  on-push-main:
+  build_web:
+    name: Build Flutter (Web)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+      - name: 🌍 Enable Web
+        run: flutter config --enable-web
+
+      - name: 📦 Get packages
+        run: flutter pub get
+
+      - name: 🏭 Build Web Application
+        run: flutter build web --release
+
+  deploy_web:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          channel: stable
-      - name: Enable Web
-        run: flutter config --enable-web
-      - name: Build Web application
-        run: flutter build web
-      - name: Add CNAME
-        run: echo "festival.flutterturkiye.org" > ./build/web/CNAME
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FLUTTER_FESTIVAL_TURKIYE }}"
+          channelId: live
+          projectId: flutter-festival-turkiye
