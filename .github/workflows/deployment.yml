@@ -3,26 +3,6 @@ name: On Website Deploy
   push:
     branches:
       - "main"
-# jobs:
-#   on-push-main:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: subosito/flutter-action@v1
-#         with:
-#           channel: stable
-#       - name: Enable Web
-#         run: flutter config --enable-web
-#       - name: Build Web application
-#         run: flutter build web
-#       - name: Add CNAME
-#         run: echo "festival.flutterturkiye.org" > ./build/web/CNAME
-#       - name: Deploy
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_dir: ./build/web
-
 jobs:
   build_and_deploy_web:
     name: Build & Deploy Flutter to Web
@@ -43,9 +23,9 @@ jobs:
 
       - name: 🏭 Build Web Application
         run: flutter build web --release
-      - uses: actions/checkout@v2
-      - run: npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: 🖥 Deploying to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FLUTTER_FESTIVAL_TURKIYE }}"
