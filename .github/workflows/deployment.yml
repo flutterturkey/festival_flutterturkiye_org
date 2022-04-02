@@ -24,7 +24,16 @@ jobs:
       - name: 🏭 Build Web Application
         run: flutter build web --release
 
-      - name: 🖥 Deploying to Firebase
+      - name: ✍️ Add CNAME
+        run: echo "festival.flutterturkiye.org" > ./build/web/CNAME
+
+      - name: 💾 Deploying to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+
+      - name: 🖥 Deploying to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
