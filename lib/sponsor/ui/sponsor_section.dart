@@ -37,21 +37,21 @@ class SponsorSection extends StatelessWidget {
           ),
           _SponsorsBuilder(
             sponsorsList: _sessionRepository.platinSponsors,
-            sponsorTypeTitle: 'Platin',
+            sponsorTypeTitle: 'Platin Sponsorlar',
           ),
           _SponsorsBuilder(
             sponsorsList: _sessionRepository.goldSponsors,
-            sponsorTypeTitle: 'Altın',
+            sponsorTypeTitle: 'Altın Sponsorlar',
           ),
           const SizedBox(height: 25),
           _SponsorsBuilder(
             sponsorsList: _sessionRepository.silverSponsors,
-            sponsorTypeTitle: 'Gümüş',
+            sponsorTypeTitle: 'Gümüş Sponsorlar',
           ),
           const SizedBox(height: 25),
           _SponsorsBuilder(
             sponsorsList: _sessionRepository.bronzeSponsors,
-            sponsorTypeTitle: 'Bronz',
+            sponsorTypeTitle: 'Bronz Sponsorlar',
           ),
           const SizedBox(height: 25),
           _SponsorsBuilder(
@@ -64,12 +64,12 @@ class SponsorSection extends StatelessWidget {
           const SizedBox(height: 25),
           _SponsorsBuilder(
             sponsorsList: _sessionRepository.mediaSponsors,
-            sponsorTypeTitle: 'Medya',
+            sponsorTypeTitle: 'Medya Sponsorları',
           ),
           const SizedBox(height: 25),
           _SponsorsBuilder(
             sponsorsList: _sessionRepository.otherSponsors,
-            sponsorTypeTitle: 'Diğer',
+            sponsorTypeTitle: 'Diğer Sponsorlar',
           ),
           const SizedBox(height: 100),
         ],
