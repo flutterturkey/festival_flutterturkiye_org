@@ -37999,7 +37999,7 @@ return A.G($async$nm,r)}}
 A.Jc.prototype={
 C(a,b){var s=null,r=$.e8().dh(0,t.Rz),q=r.ga5v(),p=r.ga5A(),o=r.gLY(),n=r.gMM(),m=r.ga10(),l=A.Z(r.gLW(),!0,t.Oi)
 B.b.G(l,r.gLX())
-return A.i5(!1,s,A.dB(A.a([B.Fv,B.NZ,B.H_,new A.hR(q,"Partnerler",s),new A.hR(p,"Platin",s),new A.hR(o,"Alt\u0131n",s),B.cT,new A.hR(n,"G\xfcm\xfc\u015f",s),B.cT,new A.hR(m,"Bronz",s),B.cT,new A.hR(l,"\xc7ekili\u015f Sponsorlar\u0131",s),B.cT,new A.hR(r.ga56(),"Medya",s),B.cT,new A.hR(r.ga5r(),"Di\u011fer",s),B.GY],t.p),B.G,B.z,B.I),s,s,this.c,!0,s,s,s,s,s)}}
+return A.i5(!1,s,A.dB(A.a([B.Fv,B.NZ,B.H_,new A.hR(q,"Partnerler",s),new A.hR(p,"Platin Sponsorlar",s),new A.hR(o,"Alt\u0131n Sponsorlar",s),B.cT,new A.hR(n,"G\xfcm\xfc\u015f Sponsorlar",s),B.cT,new A.hR(m,"Bronz Sponsorlar",s),B.cT,new A.hR(l,"\xc7ekili\u015f Sponsorlar\u0131",s),B.cT,new A.hR(r.ga56(),"Medya Sponsorlar\u0131",s),B.cT,new A.hR(r.ga5r(),"Di\u011fer Sponsorlar",s),B.GY],t.p),B.G,B.z,B.I),s,s,this.c,!0,s,s,s,s,s)}}
 A.Bi.prototype={
 C(a,b){var s=null
 return new A.be(B.zh,A.akT(A.rA(A.a4X(this.c),s,s),A.dY(s,s,B.m,s,s,s,s,s,s,s,s,this.d,s,s,s,s,!0,s,s,s,s,s,s,s,s),B.aF),s)}}

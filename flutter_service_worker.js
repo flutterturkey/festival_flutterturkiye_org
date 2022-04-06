@@ -11,6 +11,7 @@ const RESOURCES = {
 "assets/assets/images/logo.png": "14155d29dfef9e7702d0ec108d2f1475",
 "assets/assets/images/sponsors/gdg_turkey.png": "4df319b3b240377570eb027e38107479",
 "assets/assets/images/sponsors/dop.png": "8d69ba8f642f4686c752f45d1c0a38cf",
+"assets/assets/images/sponsors/oyak.png": "799ae6463d5f544cc0d41103918dafd0",
 "assets/assets/images/sponsors/fluttertr.png": "6eebd6174c48e1648ec9e4f73070ee4f",
 "assets/assets/images/activity_flow/line_indicator_bottom.png": "af8c498e8c52740ff4d80dfd05578b55",
 "assets/assets/images/activity_flow/line_indicator_top.png": "0a68354ac84a21b9335c5eab0c2313dc",
@@ -39,7 +40,7 @@ const RESOURCES = {
 "assets/assets/images/speakers/gizem_malcok.jpeg": "a897fd36a08e1b308f7e90db40616d2b",
 "assets/assets/videos/countdown_bg.mp4": "6be1859926487e1bc7b101c093df5490",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
-"assets/AssetManifest.json": "2c69dcd87296f4dfe404ecada993831d",
+"assets/AssetManifest.json": "26d6ef72ee5c895825594509b2fa706d",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "b62641afc9ab487008e996a5c5865e56",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/fonts/Montserrat-Bold.ttf": "ade91f473255991f410f61857696434b",
@@ -61,7 +62,7 @@ const RESOURCES = {
 "canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
 "canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
 "canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
-"main.dart.js": "971b8ef9ec1f427c27cf4a18d631d68d",
+"main.dart.js": "5349c2222e6fc8350edcb5f6de4713d0",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
 "version.json": "10266a509d082b9f1d6a908271c18236"
 };
