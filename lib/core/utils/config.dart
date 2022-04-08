@@ -9,10 +9,8 @@ class Config {
 
   static const supportEmailAddress = 'the.flutter.turkey@gmail.com';
 
-  static const firstDayStreamUrl =
-      'https://www.youtube.com/c/FlutterT%C3%BCrkiye';
-  static const secondDayStreamUrl =
-      'https://www.youtube.com/c/FlutterT%C3%BCrkiye';
+  static const firstDayStreamUrl = 'https://youtu.be/M5sm3EsUmu4';
+  static const secondDayStreamUrl = 'https://youtu.be/WdV0uUC-eTw';
 
   static const attendeeRegistrationUrl =
       'https://www.meetup.com/Flutter-Turkiye/events/283858428/';
@@ -41,11 +39,11 @@ class EventConfig {
       'Etkinliğimize göstermiş olduğunuz ilgi için\n'
       '**TEŞEKKÜR EDERİZ**';
 
-  final DateTime firstDayStartingDate = DateTime(2022, 4, 16, 11, 30);
-  final DateTime firstDayEndingDate = DateTime(2022, 4, 16, 20, 00);
+  final DateTime firstDayStartingDate = DateTime(2022, 4, 16, 11, 55);
+  final DateTime firstDayEndingDate = DateTime(2022, 4, 16, 19, 30);
 
-  final DateTime secondDayStartingDate = DateTime(2022, 4, 17, 12, 00);
-  final DateTime secondDayEndingDate = DateTime(2022, 4, 17, 20, 45);
+  final DateTime secondDayStartingDate = DateTime(2022, 4, 17, 11, 55);
+  final DateTime secondDayEndingDate = DateTime(2022, 4, 17, 19, 00);
 
   final DateTime startingDate = DateTime.utc(2022, 4, 16);
   final DateTime endingDate = DateTime.utc(2022, 4, 17);
