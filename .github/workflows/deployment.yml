@@ -25,7 +25,7 @@ jobs:
         run: flutter build web --release
 
       - name: ✍️ Add CNAME
-        run: echo "festival.flutterturkiye.org" > ./build/web/CNAME
+        run: echo "flutterturkiye.org" > ./build/web/CNAME
 
       - name: 💾 Deploying to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
