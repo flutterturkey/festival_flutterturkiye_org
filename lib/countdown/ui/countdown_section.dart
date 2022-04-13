@@ -339,9 +339,12 @@ class _CountdownCounter extends StatelessWidget {
   }
 
   List<InlineSpan> _startedTextSpan(Duration remainingTime) =>
-      _waitingTextSpan(remainingTime);
+      TextSpanUtils.stringToTextSpans(
+        Config.eventConfig.informationForStreamUrls,
+      );
 
   List<InlineSpan> _completedTextSpan(Duration remainingTime) =>
       TextSpanUtils.stringToTextSpans(
-          Config.eventConfig.thankYouForAttendingMessage);
+        Config.eventConfig.thankYouForAttendingMessage,
+      );
 }

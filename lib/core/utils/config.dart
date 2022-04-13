@@ -35,6 +35,8 @@ class EventConfig {
   final String name = 'Flutter Festival Türkiye';
   final String startingDateName = '16 Nisan Cumartesi';
   final String endingDateName = '17 Nisan Pazar';
+  final String informationForStreamUrls = '**Aşağıdaki bağlantılardan**\n'
+      'yayına gidebilirsiniz!';
   final String thankYouForAttendingMessage =
       'Etkinliğimize göstermiş olduğunuz ilgi için\n'
       '**TEŞEKKÜR EDERİZ**';
