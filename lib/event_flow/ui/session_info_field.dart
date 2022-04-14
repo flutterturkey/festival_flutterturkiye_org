@@ -49,8 +49,7 @@ class SessionInfoField extends StatelessWidget {
           ),
         ],
         const SizedBox(height: 8),
-        _EventFlowAddToCalendar(session: session),
-        _EventFlowDownloadSlides(session: session),
+        _EventFlowActionButton(session: session),
         const SizedBox(height: 8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,15 +71,31 @@ class SessionInfoField extends StatelessWidget {
   String _dateFixer(int date) => '${date < 10 ? '0' : ''}$date';
 }
 
+class _EventFlowActionButton extends StatelessWidget {
+  const _EventFlowActionButton({required this.session});
+
+  final Session session;
+
+  @override
+  Widget build(BuildContext context) {
+    final status = session.status;
+    if (status == SessionStatus.waiting) {
+      return _EventFlowAddToCalendar(session: session);
+    } else if (status == SessionStatus.passed) {
+      return _EventFlowDownloadSlides(session: session);
+    } else {
+      return _EventFlowWatch(session: session);
+    }
+  }
+}
+
 class _EventFlowAddToCalendar extends StatelessWidget {
   const _EventFlowAddToCalendar({required this.session});
 
   final Session session;
 
   @override
-  Widget build(BuildContext context) {
-    if (session.status == SessionStatus.waiting) {
-      return TextButton.icon(
+  Widget build(BuildContext context) => TextButton.icon(
         icon: const Icon(MdiIcons.calendarPlus),
         label: const Text('Takvime ekle'),
         style: ButtonStyle(
@@ -100,10 +115,35 @@ class _EventFlowAddToCalendar extends StatelessWidget {
           }
         },
       );
-    }
+}
 
-    return const SizedBox.shrink();
-  }
+class _EventFlowWatch extends StatelessWidget {
+  const _EventFlowWatch({required this.session});
+
+  final Session session;
+
+  @override
+  Widget build(BuildContext context) => TextButton.icon(
+        onPressed: () async {
+          late final String streamUrl;
+          if (session.startingTime
+                  .compareTo(Config.eventConfig.firstDayEndingDate) >
+              0) {
+            streamUrl = Config.secondDayStreamUrl;
+          } else {
+            streamUrl = Config.firstDayStreamUrl;
+          }
+
+          if (await canLaunch(streamUrl)) {
+            await launch(streamUrl);
+          }
+        },
+        icon: const Icon(MdiIcons.video),
+        label: const Text('İzle'),
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all(ThemeHelper.blueColor),
+        ),
+      );
 }
 
 class _EventFlowDownloadSlides extends StatelessWidget {
