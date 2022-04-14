@@ -24,20 +24,24 @@ class CountdownRepository {
     }
   }
 
-  Stream<Duration> getCountdown() {
+  Stream<Duration>? getCountdown() {
     if (!isEventStarted) {
-      return _countdownDurationCalculator(Config.eventConfig.startingDate);
+      return _countdownDurationCalculator(
+        Config.eventConfig.startingDate,
+      );
     } else if (!isEventCompleted) {
-      return _countdownDurationCalculator(Config.eventConfig.endingDate);
+      return _countdownDurationCalculator(
+        Config.eventConfig.secondDayEndingDate,
+      );
     }
     return const Stream.empty();
   }
 
   Duration get _eventStartingRemainingTime =>
-      _remainingTimeCalculator(Config.eventConfig.startingDate);
+      _remainingTimeCalculator(Config.eventConfig.firstDayStartingDate);
 
   Duration get _eventCompletingRemainingTime =>
-      _remainingTimeCalculator(Config.eventConfig.endingDate);
+      _remainingTimeCalculator(Config.eventConfig.secondDayEndingDate);
 
   Stream<Duration> _countdownDurationCalculator(DateTime dateTime) =>
       Stream.periodic(
