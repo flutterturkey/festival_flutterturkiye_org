@@ -159,7 +159,9 @@ class __SponsorsSliderState extends State<_SponsorsSlider> {
   Widget build(BuildContext context) => Column(
         children: [
           _SponsorSectionInfoTitle(
-              title: widget.sponsorTypeTitle, fontSize: 32),
+            title: widget.sponsorTypeTitle,
+            fontSize: 32,
+          ),
           CarouselSlider(
             options: CarouselOptions(
               autoPlay: true,
