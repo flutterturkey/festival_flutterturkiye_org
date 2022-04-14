@@ -161,18 +161,21 @@ class _SpeakerInfo extends StatelessWidget {
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
             children: [
-              _SocialMediaButton(
-                icon: MdiIcons.github,
-                url: 'https://www.github.com/${speaker.github}',
-              ),
-              _SocialMediaButton(
-                icon: MdiIcons.linkedin,
-                url: 'https://www.linkedin.com/in/${speaker.linkedin}',
-              ),
-              _SocialMediaButton(
-                icon: MdiIcons.twitter,
-                url: 'https://www.twitter.com/${speaker.twitter}',
-              ),
+              if (speaker.github != null)
+                _SocialMediaButton(
+                  icon: MdiIcons.github,
+                  url: 'https://www.github.com/${speaker.github}',
+                ),
+              if (speaker.linkedin != null)
+                _SocialMediaButton(
+                  icon: MdiIcons.linkedin,
+                  url: 'https://www.linkedin.com/in/${speaker.linkedin}',
+                ),
+              if (speaker.twitter != null)
+                _SocialMediaButton(
+                  icon: MdiIcons.twitter,
+                  url: 'https://www.twitter.com/${speaker.twitter}',
+                ),
             ],
           ),
         ],
