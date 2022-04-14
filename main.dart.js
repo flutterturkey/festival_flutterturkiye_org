@@ -37335,13 +37335,20 @@ if(b.W(t.w).f.a.a<500){s=this.c
 return A.afK(B.ki,A.a([new A.rf(s.a,60,4,r),new A.be(B.zA,new A.Bc(s,B.aF,r),r)],t.p),0,0)}s=this.c
 return A.fb(A.a([new A.rf(s.a,72,4,r),A.pj(new A.be(B.bO,new A.Bc(s,B.b_,r),r))],t.p),B.G,B.z,B.I)}}
 A.Bc.prototype={
-C(a,b){var s,r=null,q=this.d,p=q===B.aF,o=p?B.G:B.aB,n=this.c,m=n.b
-m=A.eI(m==null?"":m,!0,B.KQ,q,r)
-s=n.c
-q=A.eI(s==null?"":s,!0,B.KR,q,r)
-p=p?B.qJ:B.z
+C(a,b){var s,r,q,p=null,o=this.d,n=o===B.aF,m=n?B.G:B.aB,l=this.c,k=l.b
+k=A.eI(k==null?"":k,!0,B.KQ,o,p)
+s=l.c
+o=A.eI(s==null?"":s,!0,B.KR,o,p)
+n=n?B.qJ:B.z
 s=t.p
-return A.dB(A.a([m,q,B.cU,A.fb(A.a([new A.tJ(B.ul,"https://www.github.com/"+A.e(n.f),r),new A.tJ(B.Ng,"https://www.linkedin.com/in/"+A.e(n.r),r),new A.tJ(B.uk,"https://www.twitter.com/"+A.e(n.e),r)],s),B.G,p,B.I)],s),o,B.z,B.ag)}}
+r=A.a([],s)
+q=l.f
+if(q!=null)r.push(new A.tJ(B.ul,"https://www.github.com/"+q,p))
+q=l.r
+if(q!=null)r.push(new A.tJ(B.Ng,"https://www.linkedin.com/in/"+q,p))
+l=l.e
+if(l!=null)r.push(new A.tJ(B.uk,"https://www.twitter.com/"+l,p))
+return A.dB(A.a([k,o,B.cU,A.fb(r,B.G,n,B.I)],s),m,B.z,B.ag)}}
 A.tJ.prototype={
 C(a,b){var s=null
 return new A.be(B.zj,new A.DG(A.n9(B.M,!0,s,A.pL(!1,s,!0,new A.be(B.aM,A.Fn(this.c,B.i,24),s),s,!0,s,s,s,B.eL,s,s,s,s,s,new A.aaJ(this),s,s,s),B.n,B.yL,8,s,B.m,s,s,B.bZ),s),s)}}
