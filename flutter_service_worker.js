@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "main.dart.js": "1fabb08914fe6872c81e9566f618eed4",
+  "main.dart.js": "a2823173821cbbba75fba1ae460ebf94",
 "index.html": "2faf9dd39fbea0f38970adcd1a006240",
 "/": "2faf9dd39fbea0f38970adcd1a006240",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
@@ -17,7 +17,7 @@ const RESOURCES = {
 "assets/fonts/Manrope-Medium.ttf": "9846b3db6e4eec04b6f956169f65b3aa",
 "assets/fonts/Manrope-Regular.ttf": "a9faa3e7843c86bd8693aa685101332b",
 "assets/fonts/Manrope-ExtraLight.ttf": "fc31f26b4b217f3af2aa6c103a3c45d8",
-"assets/AssetManifest.json": "64b12082d8ecba2f9da6435336f88d46",
+"assets/AssetManifest.json": "704c19eb2d6a4b8f47bae8b1b611754c",
 "assets/packages/material_design_icons_flutter/lib/fonts/materialdesignicons-webfont.ttf": "b62641afc9ab487008e996a5c5865e56",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/FontManifest.json": "e5f189376d751fa6cf98e1dd848daced",
@@ -53,6 +53,7 @@ const RESOURCES = {
 "assets/assets/images/sponsors/oyak.png": "799ae6463d5f544cc0d41103918dafd0",
 "assets/assets/images/sponsors/webtekno.png": "60f9f74f9749dffbdc685154c43db1fd",
 "assets/assets/images/sponsors/ceng_turkey.png": "a09da069181598685a5b153330696357",
+"assets/assets/images/sponsors/yazilim_karavani.png": "344b234bda8afc2ec1462875e84c7ae7",
 "assets/assets/images/sponsors/gdg_turkey.png": "4df319b3b240377570eb027e38107479",
 "assets/assets/images/sponsors/dop.png": "8d69ba8f642f4686c752f45d1c0a38cf",
 "assets/assets/images/sponsors/fluttertr.png": "6eebd6174c48e1648ec9e4f73070ee4f",
