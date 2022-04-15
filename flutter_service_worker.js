@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "main.dart.js": "8237a9edc01edd9bc18ce1f1a7e69c82",
+  "main.dart.js": "b96efb1b11286d4d6f375197b1224d0c",
 "index.html": "2faf9dd39fbea0f38970adcd1a006240",
 "/": "2faf9dd39fbea0f38970adcd1a006240",
 "favicon.png": "984542880c9a626c99c8984baa3f5c29",
@@ -53,7 +53,7 @@ const RESOURCES = {
 "assets/assets/images/sponsors/oyak.png": "799ae6463d5f544cc0d41103918dafd0",
 "assets/assets/images/sponsors/webtekno.png": "60f9f74f9749dffbdc685154c43db1fd",
 "assets/assets/images/sponsors/ceng_turkey.png": "a09da069181598685a5b153330696357",
-"assets/assets/images/sponsors/yazilim_karavani.png": "344b234bda8afc2ec1462875e84c7ae7",
+"assets/assets/images/sponsors/yazilim_karavani.png": "48c549211eafeb07ca2bc6d32f204e34",
 "assets/assets/images/sponsors/gdg_turkey.png": "4df319b3b240377570eb027e38107479",
 "assets/assets/images/sponsors/dop.png": "8d69ba8f642f4686c752f45d1c0a38cf",
 "assets/assets/images/sponsors/fluttertr.png": "6eebd6174c48e1648ec9e4f73070ee4f",
