@@ -5,8 +5,9 @@ class AppLogo extends StatelessWidget {
   const AppLogo({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Image.asset(
-        ImageAssets.logo,
-        scale: 2,
+  Widget build(BuildContext context) => const Image(
+        image: AssetImage(
+          ImageAssets.logo,
+        ),
       );
 }

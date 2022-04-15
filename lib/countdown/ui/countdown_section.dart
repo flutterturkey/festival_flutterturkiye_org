@@ -39,7 +39,7 @@ class _CountdownSectionState extends State<CountdownSection> {
       child: Container(
         height: screenSize.height,
         width: screenSize.width,
-        color: ThemeHelper.cardBackgroundColor,
+        color: const Color(0xFF081e3b),
         child: Padding(
           padding: _padding(context),
           child: Column(
