@@ -1,7 +1,7 @@
 class ImageAssets {
   ImageAssets._();
 
-  static const String logo = 'images/logo.png';
+  static const String logo = 'logo.png';
   static const String footerBackground = 'images/footer_bg.jpg';
   static const String speakerPlaceHolder = 'images/speaker_placeholder.png';
 
