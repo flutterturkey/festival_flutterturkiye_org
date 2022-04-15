@@ -225,59 +225,31 @@ class _HomePageState extends State<HomePage> {
         },
         pathSegmentName: contactUsPathInformation.pathSegmentName,
       ),
-      ...eventStatus == EventStatus.waiting
-          ? [
-              NavigationAction(
-                title: 'Konuşmacı Ol',
-                icon: Icons.account_circle_rounded,
-                focusNode: focusNodes[6],
-                onPressed: () async {
-                  const url = Config.callForPapersUrl;
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  }
-                },
-                isFilled: true,
-              ),
-              NavigationAction(
-                title: 'Kayıt Ol',
-                icon: Icons.people,
-                focusNode: focusNodes[7],
-                onPressed: () async {
-                  const url = Config.attendeeRegistrationUrl;
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  }
-                },
-                isFilled: true,
-              ),
-            ]
-          : [
-              NavigationAction(
-                title: 'Birinci Gün',
-                icon: Icons.calendar_month,
-                focusNode: focusNodes[6],
-                onPressed: () async {
-                  const url = Config.firstDayStreamUrl;
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  }
-                },
-                isFilled: true,
-              ),
-              NavigationAction(
-                title: 'İkinci Gün',
-                icon: Icons.calendar_month,
-                focusNode: focusNodes[7],
-                onPressed: () async {
-                  const url = Config.secondDayStreamUrl;
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  }
-                },
-                isFilled: true,
-              ),
-            ],
+      if (eventStatus == EventStatus.waiting)
+        NavigationAction(
+          title: 'Konuşmacı Ol',
+          icon: Icons.account_circle_rounded,
+          focusNode: focusNodes[6],
+          onPressed: () async {
+            const url = Config.callForPapersUrl;
+            if (await canLaunch(url)) {
+              await launch(url);
+            }
+          },
+          isFilled: true,
+        ),
+      NavigationAction(
+        title: 'Kayıt Ol',
+        icon: Icons.people,
+        focusNode: focusNodes[7],
+        onPressed: () async {
+          const url = Config.attendeeRegistrationUrl;
+          if (await canLaunch(url)) {
+            await launch(url);
+          }
+        },
+        isFilled: true,
+      ),
     ]);
   }
 
