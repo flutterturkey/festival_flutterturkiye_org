@@ -38,7 +38,7 @@ class CountdownRepository {
   }
 
   Duration get _eventStartingRemainingTime =>
-      _remainingTimeCalculator(Config.eventConfig.firstDayStartingDate);
+      _remainingTimeCalculator(Config.eventConfig.startingDate);
 
   Duration get _eventCompletingRemainingTime =>
       _remainingTimeCalculator(Config.eventConfig.secondDayEndingDate);

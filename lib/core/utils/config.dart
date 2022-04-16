@@ -41,7 +41,7 @@ class EventConfig {
       'Etkinliğimize göstermiş olduğunuz ilgi için\n'
       '**TEŞEKKÜR EDERİZ**';
 
-  final DateTime firstDayStartingDate = DateTime(2022, 4, 16, 11, 55);
+  final DateTime firstDayStartingDate = DateTime(2022, 4, 16, 12, 25);
   final DateTime firstDayEndingDate = DateTime(2022, 4, 16, 19, 30);
 
   final DateTime secondDayStartingDate = DateTime(2022, 4, 17, 11, 55);
