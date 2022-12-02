@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _initializeScrollController();
     _initializeNavigationActions();
-    WidgetsBinding.instance!.addPostFrameCallback(
+    WidgetsBinding.instance.addPostFrameCallback(
       (_) => _jumpToInitialSection(),
     );
   }
